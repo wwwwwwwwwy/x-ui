@@ -3,7 +3,8 @@
   "name": "navigation-menu",
   "dependencies": [
     "reka-ui",
-    "@vueuse/core"
+    "@vueuse/core",
+    "@meri-design/icon-vue"
   ],
   "registryDependencies": [],
   "files": [
@@ -45,7 +46,7 @@
     },
     {
       "path": "registry/default/navigation-menu/NavigationMenuTrigger.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { NavigationMenuTriggerProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { ChevronDown } from \"lucide-vue-next\"\nimport {\n  NavigationMenuTrigger,\n  useForwardProps,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\nimport { navigationMenuTriggerStyle } from \".\"\n\n/**\n * NavigationMenuTrigger 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<NavigationMenuTriggerProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 NavigationMenuTrigger 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 NavigationMenuTrigger 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <NavigationMenuTrigger\n    v-bind=\"forwardedProps\"\n    :class=\"cn(navigationMenuTriggerStyle(), 'group', props.class)\"\n  >\n    <slot />\n    <ChevronDown\n      class=\"relative top-px ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180\"\n      aria-hidden=\"true\"\n    />\n  </NavigationMenuTrigger>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { NavigationMenuTriggerProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { ActionIcon072 as ChevronDown } from \"@meri-design/icon-vue\"\nimport {\n  NavigationMenuTrigger,\n  useForwardProps,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\nimport { navigationMenuTriggerStyle } from \".\"\n\n/**\n * NavigationMenuTrigger 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<NavigationMenuTriggerProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 NavigationMenuTrigger 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 NavigationMenuTrigger 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <NavigationMenuTrigger\n    v-bind=\"forwardedProps\"\n    :class=\"cn(navigationMenuTriggerStyle(), 'group', props.class)\"\n  >\n    <slot />\n    <ChevronDown size=\"12\"\n    class=\"relative top-px ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180\"\n      aria-hidden=\"true\" />\n  </NavigationMenuTrigger>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/navigation-menu/NavigationMenuTrigger.vue"
     },

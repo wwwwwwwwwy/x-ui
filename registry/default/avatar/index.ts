@@ -18,13 +18,13 @@ export { default as AvatarImage } from "./AvatarImage.vue"
  * avatarVariant 定义组件的样式变体、默认值和视觉语义，供组件 props 复用。
  */
 export const avatarVariant = cva(
-  "inline-flex items-center justify-center font-normal text-foreground select-none shrink-0 bg-secondary overflow-hidden",
+  "inline-flex shrink-0 select-none items-center justify-center overflow-hidden bg-gray-100 font-normal text-gray-700",
   {
     variants: {
       size: {
-        sm: "h-10 w-10 text-xs",
-        base: "h-16 w-16 text-2xl",
-        lg: "h-32 w-32 text-5xl",
+        sm: "h-8 w-8 text-sm",
+        base: "h-10 w-10 text-xl",
+        lg: "h-16 w-16 text-xxxl",
       },
       shape: {
         circle: "rounded-full",

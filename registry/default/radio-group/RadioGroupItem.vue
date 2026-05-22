@@ -2,7 +2,7 @@
 import type { RadioGroupItemProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { Circle } from "lucide-vue-next"
+import { ActionIcon030 as Circle } from "@meri-design/icon-vue"
 import {
   RadioGroupIndicator,
   RadioGroupItem,
@@ -31,7 +31,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     v-bind="forwardedProps"
     :class="
       cn(
-        'peer aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        'peer aspect-square h-4 w-4 rounded-full border border-gray-500 bg-gray-0 text-blue-500 ring-offset-background hover:border-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:border-gray-200 disabled:text-gray-400 data-[state=checked]:border-blue-500',
         props.class,
       )
     "
@@ -39,7 +39,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     <RadioGroupIndicator
       class="flex items-center justify-center"
     >
-      <Circle class="h-2.5 w-2.5 fill-current text-current" />
+      <Circle size="10" class="h-2.5 w-2.5 fill-current text-current" />
     </RadioGroupIndicator>
   </RadioGroupItem>
 </template>

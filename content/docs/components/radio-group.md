@@ -89,7 +89,6 @@ No additional local API exports were found.
 
 - `reka-ui`
 - `@vueuse/core`
-- `lucide-vue-next`
 
 ## Registry
 

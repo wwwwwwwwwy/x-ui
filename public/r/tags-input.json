@@ -3,7 +3,8 @@
   "name": "tags-input",
   "dependencies": [
     "reka-ui",
-    "@vueuse/core"
+    "@vueuse/core",
+    "@meri-design/icon-vue"
   ],
   "registryDependencies": [],
   "files": [
@@ -27,7 +28,7 @@
     },
     {
       "path": "registry/default/tags-input/TagsInputItemDelete.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { TagsInputItemDeleteProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { X } from \"lucide-vue-next\"\nimport { TagsInputItemDelete, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * TagsInputItemDelete 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<TagsInputItemDeleteProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 TagsInputItemDelete 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 TagsInputItemDelete 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <TagsInputItemDelete v-bind=\"forwardedProps\" :class=\"cn('flex rounded bg-transparent mr-1', props.class)\">\n    <slot>\n      <X class=\"w-4 h-4\" />\n    </slot>\n  </TagsInputItemDelete>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { TagsInputItemDeleteProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { ActionIcon016 as X } from \"@meri-design/icon-vue\"\nimport { TagsInputItemDelete, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * TagsInputItemDelete 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<TagsInputItemDeleteProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 TagsInputItemDelete 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 TagsInputItemDelete 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <TagsInputItemDelete v-bind=\"forwardedProps\" :class=\"cn('flex rounded bg-transparent mr-1', props.class)\">\n    <slot>\n      <X size=\"16\" class=\"w-4 h-4\" />\n    </slot>\n  </TagsInputItemDelete>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/tags-input/TagsInputItemDelete.vue"
     },

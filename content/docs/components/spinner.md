@@ -63,7 +63,7 @@ No additional local API exports were found.
 
 ## Dependencies
 
-- `lucide-vue-next`
+No external runtime dependencies were detected in local component source.
 
 ## Registry
 

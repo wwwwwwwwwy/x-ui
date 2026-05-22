@@ -13,7 +13,7 @@ const props = defineProps<{
 <template>
   <span
     :class="cn(
-      'text-muted-foreground flex items-center gap-2 text-sm [&_svg]:pointer-events-none [&_svg:not([class*=\'size-\'])]:size-4',
+      'flex items-center gap-2 text-m text-gray-500 [&_svg]:pointer-events-none [&_svg:not([class*=\'size-\'])]:size-4',
       props.class,
     )"
   >

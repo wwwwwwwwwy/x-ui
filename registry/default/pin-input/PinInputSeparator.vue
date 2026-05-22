@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PrimitiveProps } from "reka-ui"
-import { Dot } from "lucide-vue-next"
+import { ActionIcon015 as Dot } from "@meri-design/icon-vue"
 import { Primitive, useForwardProps } from "reka-ui"
 
 /**
@@ -16,7 +16,7 @@ const forwardedProps = useForwardProps(props)
 <template>
   <Primitive v-bind="forwardedProps">
     <slot>
-      <Dot />
+      <Dot size="16" />
     </slot>
   </Primitive>
 </template>

@@ -2,7 +2,7 @@
 import type { MenubarSubTriggerProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { ChevronRight } from "lucide-vue-next"
+import { ActionIcon032 as ChevronRight } from "@meri-design/icon-vue"
 import { MenubarSubTrigger, useForwardProps } from "reka-ui"
 import { cn } from "@/lib/utils"
 
@@ -32,6 +32,6 @@ const forwardedProps = useForwardProps(delegatedProps)
     )"
   >
     <slot />
-    <ChevronRight class="ml-auto h-4 w-4" />
+    <ChevronRight size="16" class="ml-auto h-4 w-4" />
   </MenubarSubTrigger>
 </template>

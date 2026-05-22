@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { Loader2Icon } from "lucide-vue-next"
+import { ActionIcon047 as Loader2Icon } from "@meri-design/icon-vue"
 import { cn } from "@/lib/utils"
 
 /**
@@ -12,9 +12,8 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Loader2Icon
+  <Loader2Icon size="16"
     role="status"
     aria-label="Loading"
-    :class="cn('size-4 animate-spin', props.class)"
-  />
+    :class="cn('size-4 animate-spin', props.class)" />
 </template>

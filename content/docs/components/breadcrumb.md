@@ -161,7 +161,6 @@ No additional local API exports were found.
 
 ## Dependencies
 
-- `lucide-vue-next`
 - `reka-ui`
 
 ## Registry

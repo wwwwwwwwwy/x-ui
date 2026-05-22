@@ -3,7 +3,8 @@
   "name": "accordion",
   "dependencies": [
     "reka-ui",
-    "@vueuse/core"
+    "@vueuse/core",
+    "@meri-design/icon-vue"
   ],
   "registryDependencies": [],
   "files": [
@@ -27,7 +28,7 @@
     },
     {
       "path": "registry/default/accordion/AccordionTrigger.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { AccordionTriggerProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { ChevronDown } from \"lucide-vue-next\"\nimport {\n  AccordionHeader,\n  AccordionTrigger,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * AccordionTrigger 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<AccordionTriggerProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 AccordionTrigger 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <AccordionHeader class=\"flex\">\n    <AccordionTrigger\n      v-bind=\"delegatedProps\"\n      :class=\"\n        cn(\n          'flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180',\n          props.class,\n        )\n      \"\n    >\n      <slot />\n      <slot name=\"icon\">\n        <ChevronDown\n          class=\"h-4 w-4 shrink-0 transition-transform duration-200\"\n        />\n      </slot>\n    </AccordionTrigger>\n  </AccordionHeader>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { AccordionTriggerProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { ActionIcon072 as ChevronDown } from \"@meri-design/icon-vue\"\nimport {\n  AccordionHeader,\n  AccordionTrigger,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * AccordionTrigger 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<AccordionTriggerProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 AccordionTrigger 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <AccordionHeader class=\"flex\">\n    <AccordionTrigger\n      v-bind=\"delegatedProps\"\n      :class=\"\n        cn(\n          'flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180',\n          props.class,\n        )\n      \"\n    >\n      <slot />\n      <slot name=\"icon\">\n        <ChevronDown size=\"16\"\n    class=\"h-4 w-4 shrink-0 transition-transform duration-200\" />\n      </slot>\n    </AccordionTrigger>\n  </AccordionHeader>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/accordion/AccordionTrigger.vue"
     },

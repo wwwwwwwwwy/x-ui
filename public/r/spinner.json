@@ -1,12 +1,14 @@
 {
   "$schema": "https://shadcn-vue.com/schema/registry-item.json",
   "name": "spinner",
-  "dependencies": [],
+  "dependencies": [
+    "@meri-design/icon-vue"
+  ],
   "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/spinner/Spinner.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { Loader2Icon } from \"lucide-vue-next\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Spinner 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <Loader2Icon\n    role=\"status\"\n    aria-label=\"Loading\"\n    :class=\"cn('size-4 animate-spin', props.class)\"\n  />\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { ActionIcon047 as Loader2Icon } from \"@meri-design/icon-vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Spinner 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <Loader2Icon size=\"16\"\n    role=\"status\"\n    aria-label=\"Loading\"\n    :class=\"cn('size-4 animate-spin', props.class)\" />\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/spinner/Spinner.vue"
     },
