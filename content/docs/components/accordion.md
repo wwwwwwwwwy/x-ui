@@ -13,6 +13,8 @@ Accordion 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明�
 
 ## 示例预览
 
+### 基础示例
+
 ::component-preview{name="accordion" src="accordion/Basic.vue"}
 ::
 

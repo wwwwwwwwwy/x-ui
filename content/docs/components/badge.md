@@ -13,6 +13,8 @@ Badge 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层
 
 ## 示例预览
 
+### 基础示例
+
 ::component-preview{name="badge" src="badge/Basic.vue"}
 ::
 

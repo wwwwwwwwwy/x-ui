@@ -46,6 +46,9 @@
 - 外部运行时依赖必须写入 registry item 的 `dependencies`。
 - 组件之间的依赖必须写入 registry item 的 `registryDependencies`。
 - 禁止编造未在源码、依赖类型或 registry 中出现的 API。
+- 所有可点击组件必须显式维护鼠标状态：可点击状态使用 `cursor-pointer`，对应 CSS 为 `cursor: pointer;`；禁用状态使用 `disabled:cursor-not-allowed` 或等价 class，确保整个组件显示 `cursor: not-allowed;`。
+- 禁用状态不得使用会让鼠标命中穿透组件本体的 `disabled:pointer-events-none`；若底层 primitive 必须阻止交互，必须由禁用属性、事件守卫或内部子元素处理，不能破坏组件本体的 `not-allowed` 光标表现。
+- 支持 disabled 的交互组件，禁用态不得响应 hover、active、focus 等交互视觉反馈。hover、active、focus 相关 class 必须使用 `enabled:*`、`data-[disabled=false]:*`、`aria-disabled:false` 等等价条件限制，确保 disabled 视觉状态不会被交互态覆盖。
 
 ## JSDoc 注释规范
 

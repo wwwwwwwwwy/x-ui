@@ -27,7 +27,7 @@
     },
     {
       "path": "registry/default/stepper/StepperItem.vue",
-      "content": "<script lang=\"ts\" setup>\nimport type { StepperItemProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { StepperItem, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<StepperItemProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperItem\n    v-slot=\"slotProps\"\n    v-bind=\"forwarded\"\n    :class=\"cn('flex items-center gap-2 group data-[disabled]:pointer-events-none', props.class)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </StepperItem>\n</template>\n",
+      "content": "<script lang=\"ts\" setup>\nimport type { StepperItemProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { StepperItem, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<StepperItemProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperItem\n    v-slot=\"slotProps\"\n    v-bind=\"forwarded\"\n    :class=\"cn('flex items-center gap-2 group data-[disabled]:cursor-not-allowed', props.class)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </StepperItem>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/stepper/StepperItem.vue"
     },

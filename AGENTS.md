@@ -43,6 +43,8 @@ PLAN -> EXECUTE -> VERIFY -> DONE
 - registry install target 必须保持 `components/ui/<component>/<file>` 结构，禁止拍平。
 - 所有项目文档、组件文档和开发规范默认使用中文书写。
 - 新增或修改组件源码时，props、emits、slots、exports、variant、组合式函数和复杂逻辑必须使用 JSDoc 风格注释。
+- 所有可点击组件在可点击状态下必须显示 `cursor: pointer;`，禁用状态下整个组件必须显示 `cursor: not-allowed;`。
+- 支持 disabled 的交互组件，禁用态不得响应 hover、active、focus 等交互视觉反馈；相关样式必须使用 `enabled:*`、`data-[disabled=false]:*` 或等价条件限制。
 - 组件 API 文档只保证覆盖本仓库源码可提取的信息，不编造第三方继承 API。
 
 ## 常用命令

@@ -17,7 +17,7 @@
 
 | 顺序 | 状态 | 阶段 | 组件 | 本地依赖 | 修改后重点回归 |
 | --- | --- | --- | --- | --- | --- |
-| 1 | 待处理 | 基础枢纽 | `button` | 无 | `alert-dialog`, `calendar`, `carousel`, `chart`, `input-group`, `pagination`, `range-calendar`, `sidebar` |
+| 1 | 已完成 | 基础枢纽 | `button` | 无 | `alert-dialog`, `calendar`, `carousel`, `chart`, `input-group`, `pagination`, `range-calendar`, `sidebar` |
 | 2 | 待处理 | 基础枢纽 | `input` | 无 | `input-group`, `sidebar` |
 | 3 | 待处理 | 基础枢纽 | `textarea` | 无 | `input-group` |
 | 4 | 待处理 | 基础枢纽 | `separator` | 无 | `button-group`, `field`, `item`, `sidebar` |

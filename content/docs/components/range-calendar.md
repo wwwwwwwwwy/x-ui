@@ -13,6 +13,8 @@ RangeCalendar 遵循 Systematic Clarity 的工程化视觉原则：低噪声、�
 
 ## 示例预览
 
+### 基础示例
+
 ::component-preview{name="range-calendar" src="range-calendar/Basic.vue"}
 ::
 

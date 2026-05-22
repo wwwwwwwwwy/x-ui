@@ -913,6 +913,150 @@ function componentExampleSource(item, indexExports) {
   return (customDemoSource(item) || withScriptSetup(exampleSource(item, indexExports))).trimEnd() + '\n'
 }
 
+function buttonVariantExampleSource() {
+  return `<script setup lang="ts">
+import { Button } from '@/components/ui/button'
+
+type ButtonVariant = 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
+
+const variants: Array<{ value: ButtonVariant, label: string }> = [
+  { value: 'default', label: '默认按钮' },
+  { value: 'destructive', label: '危险按钮' },
+  { value: 'outline', label: '描边按钮' },
+  { value: 'secondary', label: '次要按钮' },
+  { value: 'ghost', label: '幽灵按钮' },
+  { value: 'link', label: '链接按钮' },
+]
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Button
+      v-for="item in variants"
+      :key="item.value"
+      :variant="item.value"
+    >
+      {{ item.label }}
+    </Button>
+  </div>
+</template>
+`
+}
+
+function buttonSizeExampleSource() {
+  return `<script setup lang="ts">
+import { Button } from '@/components/ui/button'
+
+type ButtonSize = 'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg'
+
+const sizes: Array<{ value: ButtonSize, label: string, icon?: boolean }> = [
+  { value: 'default', label: '默认尺寸' },
+  { value: 'sm', label: '小尺寸' },
+  { value: 'lg', label: '大尺寸' },
+  { value: 'icon', label: '图标尺寸', icon: true },
+  { value: 'icon-sm', label: '小图标尺寸', icon: true },
+  { value: 'icon-lg', label: '大图标尺寸', icon: true },
+]
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Button
+      v-for="item in sizes"
+      :key="item.value"
+      :size="item.value"
+      :aria-label="item.icon ? item.label : undefined"
+    >
+      <span v-if="item.icon" aria-hidden="true">+</span>
+      <span v-else>{{ item.label }}</span>
+    </Button>
+  </div>
+</template>
+`
+}
+
+function buttonDisabledExampleSource() {
+  return `<script setup lang="ts">
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Button disabled>
+      禁用按钮
+    </Button>
+    <Button variant="outline" disabled>
+      禁用描边
+    </Button>
+    <Button variant="secondary" disabled>
+      禁用次要
+    </Button>
+    <Button variant="ghost" disabled>
+      禁用幽灵
+    </Button>
+    <Button variant="link" disabled>
+      禁用链接
+    </Button>
+  </div>
+</template>
+`
+}
+
+function buttonLoadingExampleSource() {
+  return `<script setup lang="ts">
+import { RefreshCw } from 'lucide-vue-next'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Button loading>
+      保存中
+    </Button>
+    <Button loading variant="outline" :loading-icon="RefreshCw">
+      同步数据
+    </Button>
+    <Button loading variant="secondary">
+      <template #loading-icon>
+        <span class="block size-4 rounded-full border-2 border-current border-t-transparent" />
+      </template>
+      自定义图标
+    </Button>
+  </div>
+</template>
+`
+}
+
+function extraExampleSources(item) {
+  if (item.name !== 'button') return []
+  return [
+    {
+      fileName: 'Variants.vue',
+      title: 'Variant 变体',
+      previewName: 'button variant',
+      source: buttonVariantExampleSource(),
+    },
+    {
+      fileName: 'Sizes.vue',
+      title: 'Size 尺寸',
+      previewName: 'button size',
+      source: buttonSizeExampleSource(),
+    },
+    {
+      fileName: 'Disabled.vue',
+      title: 'Disabled 禁用',
+      previewName: 'button disabled',
+      source: buttonDisabledExampleSource(),
+    },
+    {
+      fileName: 'Loading.vue',
+      title: 'Loading 加载中',
+      previewName: 'button loading',
+      source: buttonLoadingExampleSource(),
+    },
+  ]
+}
+
 function generateDoc(item) {
   const files = item.files.filter((file) => file.path.endsWith('.vue'))
   const indexFile = item.files.find((file) => file.path.endsWith('/index.ts'))
@@ -940,9 +1084,18 @@ function generateDoc(item) {
     '',
     '## 示例预览',
     '',
+    '### 基础示例',
+    '',
     `::component-preview{name="${item.name}" src="${item.name}/Basic.vue"}`,
     '::',
     '',
+    ...extraExampleSources(item).flatMap((example) => [
+      `### ${example.title}`,
+      '',
+      `::component-preview{name="${example.previewName}" src="${item.name}/${example.fileName}"}`,
+      '::',
+      '',
+    ]),
     '## 安装',
     '',
     codeFence(`bunx shadcn-vue@latest add http://localhost:3000/r/${item.name}.json`, 'bash'),
@@ -1052,6 +1205,9 @@ for (const item of registry.items) {
   const itemExampleDir = path.join(examplesDir, item.name)
   mkdirSync(itemExampleDir, { recursive: true })
   writeFileSync(path.join(itemExampleDir, 'Basic.vue'), componentExampleSource(item, indexExports))
+  for (const example of extraExampleSources(item)) {
+    writeFileSync(path.join(itemExampleDir, example.fileName), example.source)
+  }
   writeFileSync(path.join(docsDir, `${item.name}.md`), generateDoc(item))
 }
 
