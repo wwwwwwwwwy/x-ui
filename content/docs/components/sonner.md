@@ -75,7 +75,6 @@ No additional local API exports were found.
 
 - `vue-sonner`
 - `@vueuse/core`
-- `lucide-vue-next`
 
 ## Registry
 

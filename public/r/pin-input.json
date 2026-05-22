@@ -3,7 +3,8 @@
   "name": "pin-input",
   "dependencies": [
     "reka-ui",
-    "@vueuse/core"
+    "@vueuse/core",
+    "@meri-design/icon-vue"
   ],
   "registryDependencies": [],
   "files": [
@@ -21,7 +22,7 @@
     },
     {
       "path": "registry/default/pin-input/PinInputSeparator.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PrimitiveProps } from \"reka-ui\"\nimport { Dot } from \"lucide-vue-next\"\nimport { Primitive, useForwardProps } from \"reka-ui\"\n\n/**\n * PinInputSeparator 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<PrimitiveProps>()\n/**\n * 转发 PinInputSeparator 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(props)\n</script>\n\n<template>\n  <Primitive v-bind=\"forwardedProps\">\n    <slot>\n      <Dot />\n    </slot>\n  </Primitive>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { PrimitiveProps } from \"reka-ui\"\nimport { ActionIcon015 as Dot } from \"@meri-design/icon-vue\"\nimport { Primitive, useForwardProps } from \"reka-ui\"\n\n/**\n * PinInputSeparator 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<PrimitiveProps>()\n/**\n * 转发 PinInputSeparator 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(props)\n</script>\n\n<template>\n  <Primitive v-bind=\"forwardedProps\">\n    <slot>\n      <Dot size=\"16\" />\n    </slot>\n  </Primitive>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/pin-input/PinInputSeparator.vue"
     },

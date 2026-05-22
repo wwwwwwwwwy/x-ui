@@ -311,7 +311,6 @@ The API below is extracted from local source files only. Props/events inherited 
 
 - `reka-ui`
 - `@vueuse/core`
-- `lucide-vue-next`
 
 ## Registry
 

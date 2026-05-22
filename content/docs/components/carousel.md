@@ -140,7 +140,7 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ## Dependencies
 
-- `lucide-vue-next`
+No external runtime dependencies were detected in local component source.
 
 ## Registry
 

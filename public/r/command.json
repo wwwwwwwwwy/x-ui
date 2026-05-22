@@ -3,7 +3,8 @@
   "name": "command",
   "dependencies": [
     "reka-ui",
-    "@vueuse/core"
+    "@vueuse/core",
+    "@meri-design/icon-vue"
   ],
   "registryDependencies": [
     "dialog"
@@ -35,7 +36,7 @@
     },
     {
       "path": "registry/default/command/CommandInput.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { ListboxFilterProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { Search } from \"lucide-vue-next\"\nimport { ListboxFilter, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\nimport { useCommand } from \".\"\n\n/**\n * CommandInput 的组件选项；用于控制 attrs 继承等 Vue 运行时兼容行为。\n */\ndefineOptions({\n  inheritAttrs: false,\n})\n\n/**\n * CommandInput 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<ListboxFilterProps & {\n  class?: HTMLAttributes[\"class\"]\n}>()\n\n/**\n * 移除仅由 CommandInput 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 CommandInput 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n\nconst { filterState } = useCommand()\n</script>\n\n<template>\n  <div class=\"flex items-center border-b px-3\" cmdk-input-wrapper>\n    <Search class=\"mr-2 h-4 w-4 shrink-0 opacity-50\" />\n    <ListboxFilter\n      v-bind=\"{ ...forwardedProps, ...$attrs }\"\n      v-model=\"filterState.search\"\n      auto-focus\n      :class=\"cn('flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50', props.class)\"\n    />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { ListboxFilterProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { ActionIcon048 as Search } from \"@meri-design/icon-vue\"\nimport { ListboxFilter, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\nimport { useCommand } from \".\"\n\n/**\n * CommandInput 的组件选项；用于控制 attrs 继承等 Vue 运行时兼容行为。\n */\ndefineOptions({\n  inheritAttrs: false,\n})\n\n/**\n * CommandInput 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<ListboxFilterProps & {\n  class?: HTMLAttributes[\"class\"]\n}>()\n\n/**\n * 移除仅由 CommandInput 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 CommandInput 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n\nconst { filterState } = useCommand()\n</script>\n\n<template>\n  <div class=\"flex items-center border-b px-3\" cmdk-input-wrapper>\n    <Search size=\"16\" class=\"mr-2 h-4 w-4 shrink-0 opacity-50\" />\n    <ListboxFilter\n      v-bind=\"{ ...forwardedProps, ...$attrs }\"\n      v-model=\"filterState.search\"\n      auto-focus\n      :class=\"cn('flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50', props.class)\" />\n  </div>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/command/CommandInput.vue"
     },

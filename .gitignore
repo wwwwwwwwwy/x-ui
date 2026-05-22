@@ -1,5 +1,7 @@
 # Dependencies
 node_modules/
+.pnp/
+.pnp.*
 
 # Nuxt build output and caches
 .nuxt/
@@ -7,7 +9,17 @@ node_modules/
 .data/
 .cache/
 .nitro/
+.vite/
+.turbo/
+.parcel-cache/
 dist
+
+# Test and coverage output
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+blob-report/
 
 # Logs
 logs/
@@ -22,17 +34,34 @@ bun-debug.log*
 .env
 .env.*
 !.env.example
+*.local
 
 # Editor and OS files
 .DS_Store
+._*
 Thumbs.db
 .idea/
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
 
+# Deployment and local platform state
+.vercel/
+.netlify/
+.wrangler/
+.deploy/
+
+# Tool caches
+.eslintcache
+.stylelintcache
+.tsbuildinfo
+*.tsbuildinfo
+
 # Temporary files
 *.tmp
 *.temp
 *.swp
 *.swo
+
+# Legacy source snapshot
+source/

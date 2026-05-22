@@ -2,7 +2,7 @@
 import type { RangeCalendarNextProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { ChevronRight } from "lucide-vue-next"
+import { ActionIcon032 as ChevronRight } from "@meri-design/icon-vue"
 import { RangeCalendarNext, useForwardProps } from "reka-ui"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/registry/default/ui/button"
@@ -33,7 +33,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     v-bind="forwardedProps"
   >
     <slot>
-      <ChevronRight class="h-4 w-4" />
+      <ChevronRight size="16" class="h-4 w-4" />
     </slot>
   </RangeCalendarNext>
 </template>
