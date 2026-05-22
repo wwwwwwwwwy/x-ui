@@ -1,33 +1,37 @@
 ---
 title: NavigationMenu
-description: NavigationMenu component documentation generated from source.
+description: NavigationMenu 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # NavigationMenu
 
-NavigationMenu component documentation generated from local source APIs.
+NavigationMenu 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+NavigationMenu 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/navigation-menu.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport } from '@/components/ui/navigation-menu'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <NavigationMenu>
-  Example content
+  示例内容
 </NavigationMenu>
 ```
 
-## Components
+## 组件导出
 
 - `NavigationMenu`
 - `NavigationMenuContent`
@@ -38,13 +42,13 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, Navigat
 - `NavigationMenuTrigger`
 - `NavigationMenuViewport`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `NavigationMenu` | `props` | `NavigationMenuRootProps & { class?: HTMLAttributes["class"] }` | `<NavigationMenu :example-prop="example" />` |
 | `NavigationMenuContent` | `props` | `NavigationMenuContentProps & { class?: HTMLAttributes["class"] }` | `<NavigationMenuContent :example-prop="example" />` |
@@ -57,7 +61,7 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `NavigationMenu` | `emits` | `NavigationMenuRootEmits` | `<NavigationMenu @emits="emits" />` |
 | `NavigationMenuContent` | `emits` | `NavigationMenuContentEmits` | `<NavigationMenuContent @emits="emits" />` |
@@ -65,20 +69,20 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `NavigationMenu` | `default` | `<NavigationMenu>Content</NavigationMenu>` |
-| `NavigationMenuContent` | `default` | `<NavigationMenuContent>Content</NavigationMenuContent>` |
-| `NavigationMenuItem` | `default` | `<NavigationMenuItem>Content</NavigationMenuItem>` |
-| `NavigationMenuLink` | `default` | `<NavigationMenuLink>Content</NavigationMenuLink>` |
-| `NavigationMenuList` | `default` | `<NavigationMenuList>Content</NavigationMenuList>` |
-| `NavigationMenuTrigger` | `default` | `<NavigationMenuTrigger>Content</NavigationMenuTrigger>` |
+| `NavigationMenu` | `default` | `<NavigationMenu>内容</NavigationMenu>` |
+| `NavigationMenuContent` | `default` | `<NavigationMenuContent>内容</NavigationMenuContent>` |
+| `NavigationMenuItem` | `default` | `<NavigationMenuItem>内容</NavigationMenuItem>` |
+| `NavigationMenuLink` | `default` | `<NavigationMenuLink>内容</NavigationMenuLink>` |
+| `NavigationMenuList` | `default` | `<NavigationMenuList>内容</NavigationMenuList>` |
+| `NavigationMenuTrigger` | `default` | `<NavigationMenuTrigger>内容</NavigationMenuTrigger>` |
 
 ### Exports
 
 - `export const navigationMenuTriggerStyle = cva(`
 
-## API Examples
+## API 示例
 
 ### NavigationMenu.exampleProp
 
@@ -149,43 +153,44 @@ The API below is extracted from local source files only. Props/events inherited 
 ### NavigationMenu slot: default
 
 ```vue
-<NavigationMenu>Content</NavigationMenu>
+<NavigationMenu>内容</NavigationMenu>
 ```
 
 ### NavigationMenuContent slot: default
 
 ```vue
-<NavigationMenuContent>Content</NavigationMenuContent>
+<NavigationMenuContent>内容</NavigationMenuContent>
 ```
 
 ### NavigationMenuItem slot: default
 
 ```vue
-<NavigationMenuItem>Content</NavigationMenuItem>
+<NavigationMenuItem>内容</NavigationMenuItem>
 ```
 
 ### NavigationMenuLink slot: default
 
 ```vue
-<NavigationMenuLink>Content</NavigationMenuLink>
+<NavigationMenuLink>内容</NavigationMenuLink>
 ```
 
 ### NavigationMenuList slot: default
 
 ```vue
-<NavigationMenuList>Content</NavigationMenuList>
+<NavigationMenuList>内容</NavigationMenuList>
 ```
 
 ### NavigationMenuTrigger slot: default
 
 ```vue
-<NavigationMenuTrigger>Content</NavigationMenuTrigger>
+<NavigationMenuTrigger>内容</NavigationMenuTrigger>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

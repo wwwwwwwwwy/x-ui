@@ -6,9 +6,6 @@ import { VisTooltip } from "@unovis/vue"
 import { createApp } from "vue"
 import { ChartTooltip } from "."
 
-/**
- * ChartSingleTooltip 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。
- */
 const props = defineProps<{
   selector: string
   index: string
@@ -17,11 +14,8 @@ const props = defineProps<{
   customTooltip?: Component
 }>()
 
-// 使用 WeakMap 缓存每个数据点对应的 Tooltip 内容。
+// Use weakmap to store reference to each datapoint for Tooltip
 const wm = new WeakMap()
-/**
- * template 处理 ChartSingleTooltip 的本地交互逻辑，并保持对外状态更新语义稳定。
- */
 function template(d: any, i: number, elements: (HTMLElement | SVGElement)[]) {
   const valueFormatter = props.valueFormatter ?? ((tick: number) => `${tick}`)
   if (props.index in d) {

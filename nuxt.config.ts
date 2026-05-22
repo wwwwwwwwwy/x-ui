@@ -1,4 +1,5 @@
 import tailwindcss from '@tailwindcss/vite'
+import { fileURLToPath } from 'node:url'
 
 export default defineNuxtConfig({
   modules: ['@nuxt/content'],
@@ -7,6 +8,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: [
+        {
+          find: /^@\/registry\/default\/ui\/(.*)$/,
+          replacement: `${fileURLToPath(new URL('./registry/default', import.meta.url))}/$1`,
+        },
+      ],
+    },
   },
   nitro: {
     prerender: {

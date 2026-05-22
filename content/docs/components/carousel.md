@@ -1,33 +1,37 @@
 ---
 title: Carousel
-description: Carousel component documentation generated from source.
+description: Carousel 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # Carousel
 
-Carousel component documentation generated from local source APIs.
+Carousel 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+Carousel 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/carousel.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <Carousel>
-  Example content
+  示例内容
 </Carousel>
 ```
 
-## Components
+## 组件导出
 
 - `Carousel`
 - `CarouselContent`
@@ -35,13 +39,13 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 - `CarouselNext`
 - `CarouselPrevious`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Carousel` | `props` | `CarouselProps & WithClassAsProps` | `<Carousel :example-prop="example" />` |
 | `CarouselContent` | `props` | `WithClassAsProps` | `<CarouselContent :example-prop="example" />` |
@@ -51,26 +55,26 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Carousel` | `emits` | `CarouselEmits` | `<Carousel @emits="emits" />` |
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `Carousel` | `default` | `<Carousel>Content</Carousel>` |
-| `CarouselContent` | `default` | `<CarouselContent>Content</CarouselContent>` |
-| `CarouselItem` | `default` | `<CarouselItem>Content</CarouselItem>` |
-| `CarouselNext` | `default` | `<CarouselNext>Content</CarouselNext>` |
-| `CarouselPrevious` | `default` | `<CarouselPrevious>Content</CarouselPrevious>` |
+| `Carousel` | `default` | `<Carousel>内容</Carousel>` |
+| `CarouselContent` | `default` | `<CarouselContent>内容</CarouselContent>` |
+| `CarouselItem` | `default` | `<CarouselItem>内容</CarouselItem>` |
+| `CarouselNext` | `default` | `<CarouselNext>内容</CarouselNext>` |
+| `CarouselPrevious` | `default` | `<CarouselPrevious>内容</CarouselPrevious>` |
 
 ### Exports
 
 - `export type {`
 - `export { useCarousel } from "./useCarousel"`
 
-## API Examples
+## API 示例
 
 ### Carousel.exampleProp
 
@@ -111,36 +115,36 @@ The API below is extracted from local source files only. Props/events inherited 
 ### Carousel slot: default
 
 ```vue
-<Carousel>Content</Carousel>
+<Carousel>内容</Carousel>
 ```
 
 ### CarouselContent slot: default
 
 ```vue
-<CarouselContent>Content</CarouselContent>
+<CarouselContent>内容</CarouselContent>
 ```
 
 ### CarouselItem slot: default
 
 ```vue
-<CarouselItem>Content</CarouselItem>
+<CarouselItem>内容</CarouselItem>
 ```
 
 ### CarouselNext slot: default
 
 ```vue
-<CarouselNext>Content</CarouselNext>
+<CarouselNext>内容</CarouselNext>
 ```
 
 ### CarouselPrevious slot: default
 
 ```vue
-<CarouselPrevious>Content</CarouselPrevious>
+<CarouselPrevious>内容</CarouselPrevious>
 ```
 
-## Dependencies
+## 依赖
 
-No external runtime dependencies were detected in local component source.
+- `@meri-design/icon-vue`
 
 ## Registry
 

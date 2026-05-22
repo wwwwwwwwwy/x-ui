@@ -91,7 +91,7 @@
             </div>
 
             <!-- Premium Interactive Showcase -->
-            <div v-if="hasDemo" class="space-y-4">
+            <div class="space-y-4">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
                   <span class="h-2 w-2 rounded-full bg-[#2D5AF2] animate-pulse"></span>
@@ -112,6 +112,15 @@
                 <SwitchDemo v-slot v-if="slug === 'switch'" />
                 <InputDemo v-slot v-if="slug === 'input'" />
                 <TableDemo v-slot v-if="slug === 'table'" />
+                <ComponentFallbackDemo
+                  v-if="!hasCustomDemo"
+                  :title="currentComponentDoc?.title || slug"
+                  :slug="slug"
+                  :primary-component="currentComponentDoc?.primaryComponent || slug"
+                  :import-path="currentComponentDoc?.importPath || `@/components/ui/${slug}`"
+                  :registry-path="currentComponentDoc?.registryPath || `/r/${slug}.json`"
+                  :component-exports="currentComponentDoc?.componentExports || []"
+                />
               </ComponentPreview>
             </div>
 
@@ -156,6 +165,7 @@ import CheckboxDemo from '@/components/CheckboxDemo.vue'
 import SwitchDemo from '@/components/SwitchDemo.vue'
 import InputDemo from '@/components/InputDemo.vue'
 import TableDemo from '@/components/TableDemo.vue'
+import ComponentFallbackDemo from '@/components/ComponentFallbackDemo.vue'
 import ComponentPreview from '@/components/ComponentPreview.vue'
 
 const route = useRoute()
@@ -165,8 +175,12 @@ const { data: page } = await useAsyncData(`component-${slug.value}`, () =>
   queryCollection('docs').path(`/docs/components/${slug.value}`).first(),
 )
 
+const currentComponentDoc = computed(() => {
+  return componentDocs.find((item) => item.slug === slug.value)
+})
+
 // Check if current component has a pre-built demo
-const hasDemo = computed(() => {
+const hasCustomDemo = computed(() => {
   return ['button', 'badge', 'checkbox', 'switch', 'input', 'table'].includes(slug.value)
 })
 
@@ -183,4 +197,3 @@ useHead({
   ]
 })
 </script>
-

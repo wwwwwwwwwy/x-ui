@@ -1,33 +1,37 @@
 ---
 title: Command
-description: Command component documentation generated from source.
+description: Command 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # Command
 
-Command component documentation generated from local source APIs.
+Command 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+Command 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/command.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from '@/components/ui/command'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <Command>
-  Example content
+  示例内容
 </Command>
 ```
 
-## Components
+## 组件导出
 
 - `Command`
 - `CommandDialog`
@@ -39,13 +43,13 @@ import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, Comma
 - `CommandSeparator`
 - `CommandShortcut`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Command` | `props` | `ListboxRootProps & { class?: HTMLAttributes["class"] }` | `<Command :example-prop="example" />` |
 | `CommandDialog` | `props` | `DialogRootProps` | `<CommandDialog :example-prop="example" />` |
@@ -59,7 +63,7 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Command` | `emits` | `ListboxRootEmits` | `<Command @emits="emits" />` |
 | `CommandDialog` | `emits` | `DialogRootEmits` | `<CommandDialog @emits="emits" />` |
@@ -67,23 +71,23 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `Command` | `default` | `<Command>Content</Command>` |
-| `CommandDialog` | `default` | `<CommandDialog>Content</CommandDialog>` |
-| `CommandEmpty` | `default` | `<CommandEmpty>Content</CommandEmpty>` |
-| `CommandGroup` | `default` | `<CommandGroup>Content</CommandGroup>` |
-| `CommandItem` | `default` | `<CommandItem>Content</CommandItem>` |
-| `CommandList` | `default` | `<CommandList>Content</CommandList>` |
-| `CommandSeparator` | `default` | `<CommandSeparator>Content</CommandSeparator>` |
-| `CommandShortcut` | `default` | `<CommandShortcut>Content</CommandShortcut>` |
+| `Command` | `default` | `<Command>内容</Command>` |
+| `CommandDialog` | `default` | `<CommandDialog>内容</CommandDialog>` |
+| `CommandEmpty` | `default` | `<CommandEmpty>内容</CommandEmpty>` |
+| `CommandGroup` | `default` | `<CommandGroup>内容</CommandGroup>` |
+| `CommandItem` | `default` | `<CommandItem>内容</CommandItem>` |
+| `CommandList` | `default` | `<CommandList>内容</CommandList>` |
+| `CommandSeparator` | `default` | `<CommandSeparator>内容</CommandSeparator>` |
+| `CommandShortcut` | `default` | `<CommandShortcut>内容</CommandShortcut>` |
 
 ### Exports
 
 - `export const [useCommand, provideCommandContext] = createContext<{`
 - `export const [useCommandGroup, provideCommandGroupContext] = createContext<{`
 
-## API Examples
+## API 示例
 
 ### Command.exampleProp
 
@@ -160,55 +164,56 @@ The API below is extracted from local source files only. Props/events inherited 
 ### Command slot: default
 
 ```vue
-<Command>Content</Command>
+<Command>内容</Command>
 ```
 
 ### CommandDialog slot: default
 
 ```vue
-<CommandDialog>Content</CommandDialog>
+<CommandDialog>内容</CommandDialog>
 ```
 
 ### CommandEmpty slot: default
 
 ```vue
-<CommandEmpty>Content</CommandEmpty>
+<CommandEmpty>内容</CommandEmpty>
 ```
 
 ### CommandGroup slot: default
 
 ```vue
-<CommandGroup>Content</CommandGroup>
+<CommandGroup>内容</CommandGroup>
 ```
 
 ### CommandItem slot: default
 
 ```vue
-<CommandItem>Content</CommandItem>
+<CommandItem>内容</CommandItem>
 ```
 
 ### CommandList slot: default
 
 ```vue
-<CommandList>Content</CommandList>
+<CommandList>内容</CommandList>
 ```
 
 ### CommandSeparator slot: default
 
 ```vue
-<CommandSeparator>Content</CommandSeparator>
+<CommandSeparator>内容</CommandSeparator>
 ```
 
 ### CommandShortcut slot: default
 
 ```vue
-<CommandShortcut>Content</CommandShortcut>
+<CommandShortcut>内容</CommandShortcut>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

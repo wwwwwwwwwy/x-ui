@@ -1,33 +1,37 @@
 ---
 title: Sheet
-description: Sheet component documentation generated from source.
+description: Sheet 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # Sheet
 
-Sheet component documentation generated from local source APIs.
+Sheet 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+Sheet 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/sheet.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <Sheet>
-  Example content
+  示例内容
 </Sheet>
 ```
 
-## Components
+## 组件导出
 
 - `Sheet`
 - `SheetClose`
@@ -38,13 +42,13 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHe
 - `SheetTitle`
 - `SheetTrigger`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Sheet` | `props` | `DialogRootProps` | `<Sheet :example-prop="example" />` |
 | `SheetClose` | `props` | `DialogCloseProps` | `<SheetClose :example-prop="example" />` |
@@ -57,30 +61,30 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Sheet` | `emits` | `DialogRootEmits` | `<Sheet @emits="emits" />` |
 | `SheetContent` | `emits` | `DialogContentEmits` | `<SheetContent @emits="emits" />` |
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `Sheet` | `default` | `<Sheet>Content</Sheet>` |
-| `SheetClose` | `default` | `<SheetClose>Content</SheetClose>` |
-| `SheetContent` | `default` | `<SheetContent>Content</SheetContent>` |
-| `SheetDescription` | `default` | `<SheetDescription>Content</SheetDescription>` |
-| `SheetFooter` | `default` | `<SheetFooter>Content</SheetFooter>` |
-| `SheetHeader` | `default` | `<SheetHeader>Content</SheetHeader>` |
-| `SheetTitle` | `default` | `<SheetTitle>Content</SheetTitle>` |
-| `SheetTrigger` | `default` | `<SheetTrigger>Content</SheetTrigger>` |
+| `Sheet` | `default` | `<Sheet>内容</Sheet>` |
+| `SheetClose` | `default` | `<SheetClose>内容</SheetClose>` |
+| `SheetContent` | `default` | `<SheetContent>内容</SheetContent>` |
+| `SheetDescription` | `default` | `<SheetDescription>内容</SheetDescription>` |
+| `SheetFooter` | `default` | `<SheetFooter>内容</SheetFooter>` |
+| `SheetHeader` | `default` | `<SheetHeader>内容</SheetHeader>` |
+| `SheetTitle` | `default` | `<SheetTitle>内容</SheetTitle>` |
+| `SheetTrigger` | `default` | `<SheetTrigger>内容</SheetTrigger>` |
 
 ### Exports
 
 - `export const sheetVariants = cva(`
 - `export type SheetVariants = VariantProps<typeof sheetVariants>`
 
-## API Examples
+## API 示例
 
 ### Sheet.exampleProp
 
@@ -145,55 +149,56 @@ The API below is extracted from local source files only. Props/events inherited 
 ### Sheet slot: default
 
 ```vue
-<Sheet>Content</Sheet>
+<Sheet>内容</Sheet>
 ```
 
 ### SheetClose slot: default
 
 ```vue
-<SheetClose>Content</SheetClose>
+<SheetClose>内容</SheetClose>
 ```
 
 ### SheetContent slot: default
 
 ```vue
-<SheetContent>Content</SheetContent>
+<SheetContent>内容</SheetContent>
 ```
 
 ### SheetDescription slot: default
 
 ```vue
-<SheetDescription>Content</SheetDescription>
+<SheetDescription>内容</SheetDescription>
 ```
 
 ### SheetFooter slot: default
 
 ```vue
-<SheetFooter>Content</SheetFooter>
+<SheetFooter>内容</SheetFooter>
 ```
 
 ### SheetHeader slot: default
 
 ```vue
-<SheetHeader>Content</SheetHeader>
+<SheetHeader>内容</SheetHeader>
 ```
 
 ### SheetTitle slot: default
 
 ```vue
-<SheetTitle>Content</SheetTitle>
+<SheetTitle>内容</SheetTitle>
 ```
 
 ### SheetTrigger slot: default
 
 ```vue
-<SheetTrigger>Content</SheetTrigger>
+<SheetTrigger>内容</SheetTrigger>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

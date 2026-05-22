@@ -1,33 +1,37 @@
 ---
 title: Calendar
-description: Calendar component documentation generated from source.
+description: Calendar 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # Calendar
 
-Calendar component documentation generated from local source APIs.
+Calendar 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+Calendar 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/calendar.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { Calendar, CalendarCell, CalendarCellTrigger, CalendarGrid, CalendarGridBody, CalendarGridHead, CalendarGridRow, CalendarHeadCell, CalendarHeader, CalendarHeading, CalendarNextButton, CalendarPrevButton } from '@/components/ui/calendar'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <Calendar>
-  Example content
+  示例内容
 </Calendar>
 ```
 
-## Components
+## 组件导出
 
 - `Calendar`
 - `CalendarCell`
@@ -42,13 +46,13 @@ import { Calendar, CalendarCell, CalendarCellTrigger, CalendarGrid, CalendarGrid
 - `CalendarNextButton`
 - `CalendarPrevButton`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Calendar` | `props` | `CalendarRootProps & { class?: HTMLAttributes["class"] }` | `<Calendar :example-prop="example" />` |
 | `CalendarCell` | `props` | `CalendarCellProps & { class?: HTMLAttributes["class"] }` | `<CalendarCell :example-prop="example" />` |
@@ -65,31 +69,31 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Calendar` | `emits` | `CalendarRootEmits` | `<Calendar @emits="emits" />` |
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `CalendarCell` | `default` | `<CalendarCell>Content</CalendarCell>` |
-| `CalendarCellTrigger` | `default` | `<CalendarCellTrigger>Content</CalendarCellTrigger>` |
-| `CalendarGrid` | `default` | `<CalendarGrid>Content</CalendarGrid>` |
-| `CalendarGridBody` | `default` | `<CalendarGridBody>Content</CalendarGridBody>` |
-| `CalendarGridHead` | `default` | `<CalendarGridHead>Content</CalendarGridHead>` |
-| `CalendarGridRow` | `default` | `<CalendarGridRow>Content</CalendarGridRow>` |
-| `CalendarHeadCell` | `default` | `<CalendarHeadCell>Content</CalendarHeadCell>` |
-| `CalendarHeader` | `default` | `<CalendarHeader>Content</CalendarHeader>` |
-| `CalendarHeading` | `default` | `<CalendarHeading>Content</CalendarHeading>` |
-| `CalendarNextButton` | `default` | `<CalendarNextButton>Content</CalendarNextButton>` |
-| `CalendarPrevButton` | `default` | `<CalendarPrevButton>Content</CalendarPrevButton>` |
+| `CalendarCell` | `default` | `<CalendarCell>内容</CalendarCell>` |
+| `CalendarCellTrigger` | `default` | `<CalendarCellTrigger>内容</CalendarCellTrigger>` |
+| `CalendarGrid` | `default` | `<CalendarGrid>内容</CalendarGrid>` |
+| `CalendarGridBody` | `default` | `<CalendarGridBody>内容</CalendarGridBody>` |
+| `CalendarGridHead` | `default` | `<CalendarGridHead>内容</CalendarGridHead>` |
+| `CalendarGridRow` | `default` | `<CalendarGridRow>内容</CalendarGridRow>` |
+| `CalendarHeadCell` | `default` | `<CalendarHeadCell>内容</CalendarHeadCell>` |
+| `CalendarHeader` | `default` | `<CalendarHeader>内容</CalendarHeader>` |
+| `CalendarHeading` | `default` | `<CalendarHeading>内容</CalendarHeading>` |
+| `CalendarNextButton` | `default` | `<CalendarNextButton>内容</CalendarNextButton>` |
+| `CalendarPrevButton` | `default` | `<CalendarPrevButton>内容</CalendarPrevButton>` |
 
 ### Exports
 
-No additional local API exports were found.
+源码中未发现额外本地 API 导出。
 
-## API Examples
+## API 示例
 
 ### Calendar.exampleProp
 
@@ -172,73 +176,74 @@ No additional local API exports were found.
 ### CalendarCell slot: default
 
 ```vue
-<CalendarCell>Content</CalendarCell>
+<CalendarCell>内容</CalendarCell>
 ```
 
 ### CalendarCellTrigger slot: default
 
 ```vue
-<CalendarCellTrigger>Content</CalendarCellTrigger>
+<CalendarCellTrigger>内容</CalendarCellTrigger>
 ```
 
 ### CalendarGrid slot: default
 
 ```vue
-<CalendarGrid>Content</CalendarGrid>
+<CalendarGrid>内容</CalendarGrid>
 ```
 
 ### CalendarGridBody slot: default
 
 ```vue
-<CalendarGridBody>Content</CalendarGridBody>
+<CalendarGridBody>内容</CalendarGridBody>
 ```
 
 ### CalendarGridHead slot: default
 
 ```vue
-<CalendarGridHead>Content</CalendarGridHead>
+<CalendarGridHead>内容</CalendarGridHead>
 ```
 
 ### CalendarGridRow slot: default
 
 ```vue
-<CalendarGridRow>Content</CalendarGridRow>
+<CalendarGridRow>内容</CalendarGridRow>
 ```
 
 ### CalendarHeadCell slot: default
 
 ```vue
-<CalendarHeadCell>Content</CalendarHeadCell>
+<CalendarHeadCell>内容</CalendarHeadCell>
 ```
 
 ### CalendarHeader slot: default
 
 ```vue
-<CalendarHeader>Content</CalendarHeader>
+<CalendarHeader>内容</CalendarHeader>
 ```
 
 ### CalendarHeading slot: default
 
 ```vue
-<CalendarHeading>Content</CalendarHeading>
+<CalendarHeading>内容</CalendarHeading>
 ```
 
 ### CalendarNextButton slot: default
 
 ```vue
-<CalendarNextButton>Content</CalendarNextButton>
+<CalendarNextButton>内容</CalendarNextButton>
 ```
 
 ### CalendarPrevButton slot: default
 
 ```vue
-<CalendarPrevButton>Content</CalendarPrevButton>
+<CalendarPrevButton>内容</CalendarPrevButton>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

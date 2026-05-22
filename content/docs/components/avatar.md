@@ -1,45 +1,49 @@
 ---
 title: Avatar
-description: Avatar component documentation generated from source.
+description: Avatar 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # Avatar
 
-Avatar component documentation generated from local source APIs.
+Avatar 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+Avatar 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/avatar.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <Avatar>
-  Example content
+  示例内容
 </Avatar>
 ```
 
-## Components
+## 组件导出
 
 - `Avatar`
 - `AvatarFallback`
 - `AvatarImage`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Avatar` | `class` | `HTMLAttributes["class"]` | `<Avatar class="custom-class" />` |
 | `Avatar` | `size` | `AvatarVariants["size"]` | `<Avatar :size="example" />` |
@@ -49,22 +53,22 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-No explicit local events were found in source.
+源码中未发现显式本地事件。
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `Avatar` | `default` | `<Avatar>Content</Avatar>` |
-| `AvatarFallback` | `default` | `<AvatarFallback>Content</AvatarFallback>` |
-| `AvatarImage` | `default` | `<AvatarImage>Content</AvatarImage>` |
+| `Avatar` | `default` | `<Avatar>内容</Avatar>` |
+| `AvatarFallback` | `default` | `<AvatarFallback>内容</AvatarFallback>` |
+| `AvatarImage` | `default` | `<AvatarImage>内容</AvatarImage>` |
 
 ### Exports
 
 - `export const avatarVariant = cva(`
 - `export type AvatarVariants = VariantProps<typeof avatarVariant>`
 
-## API Examples
+## API 示例
 
 ### Avatar.class
 
@@ -99,22 +103,22 @@ No explicit local events were found in source.
 ### Avatar slot: default
 
 ```vue
-<Avatar>Content</Avatar>
+<Avatar>内容</Avatar>
 ```
 
 ### AvatarFallback slot: default
 
 ```vue
-<AvatarFallback>Content</AvatarFallback>
+<AvatarFallback>内容</AvatarFallback>
 ```
 
 ### AvatarImage slot: default
 
 ```vue
-<AvatarImage>Content</AvatarImage>
+<AvatarImage>内容</AvatarImage>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 

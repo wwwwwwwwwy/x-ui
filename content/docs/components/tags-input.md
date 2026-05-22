@@ -1,33 +1,37 @@
 ---
 title: TagsInput
-description: TagsInput component documentation generated from source.
+description: TagsInput 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # TagsInput
 
-TagsInput component documentation generated from local source APIs.
+TagsInput 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+TagsInput 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/tags-input.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { TagsInput, TagsInputInput, TagsInputItem, TagsInputItemDelete, TagsInputItemText } from '@/components/ui/tags-input'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <TagsInput>
-  Example content
+  示例内容
 </TagsInput>
 ```
 
-## Components
+## 组件导出
 
 - `TagsInput`
 - `TagsInputInput`
@@ -35,13 +39,13 @@ import { TagsInput, TagsInputInput, TagsInputItem, TagsInputItemDelete, TagsInpu
 - `TagsInputItemDelete`
 - `TagsInputItemText`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `TagsInput` | `props` | `TagsInputRootProps & { class?: HTMLAttributes["class"] }` | `<TagsInput :example-prop="example" />` |
 | `TagsInputInput` | `props` | `TagsInputInputProps & { class?: HTMLAttributes["class"] }` | `<TagsInputInput :example-prop="example" />` |
@@ -51,23 +55,23 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `TagsInput` | `emits` | `TagsInputRootEmits` | `<TagsInput @emits="emits" />` |
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `TagsInput` | `default` | `<TagsInput>Content</TagsInput>` |
-| `TagsInputItem` | `default` | `<TagsInputItem>Content</TagsInputItem>` |
-| `TagsInputItemDelete` | `default` | `<TagsInputItemDelete>Content</TagsInputItemDelete>` |
+| `TagsInput` | `default` | `<TagsInput>内容</TagsInput>` |
+| `TagsInputItem` | `default` | `<TagsInputItem>内容</TagsInputItem>` |
+| `TagsInputItemDelete` | `default` | `<TagsInputItemDelete>内容</TagsInputItemDelete>` |
 
 ### Exports
 
-No additional local API exports were found.
+源码中未发现额外本地 API 导出。
 
-## API Examples
+## API 示例
 
 ### TagsInput.exampleProp
 
@@ -108,25 +112,26 @@ No additional local API exports were found.
 ### TagsInput slot: default
 
 ```vue
-<TagsInput>Content</TagsInput>
+<TagsInput>内容</TagsInput>
 ```
 
 ### TagsInputItem slot: default
 
 ```vue
-<TagsInputItem>Content</TagsInputItem>
+<TagsInputItem>内容</TagsInputItem>
 ```
 
 ### TagsInputItemDelete slot: default
 
 ```vue
-<TagsInputItemDelete>Content</TagsInputItemDelete>
+<TagsInputItemDelete>内容</TagsInputItemDelete>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

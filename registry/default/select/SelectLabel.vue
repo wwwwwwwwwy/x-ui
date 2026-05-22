@@ -4,14 +4,11 @@ import type { HTMLAttributes } from "vue"
 import { SelectLabel } from "reka-ui"
 import { cn } from "@/lib/utils"
 
-/**
- * SelectLabel 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。
- */
 const props = defineProps<SelectLabelProps & { class?: HTMLAttributes["class"] }>()
 </script>
 
 <template>
-  <SelectLabel :class="cn('py-1.5 pl-8 pr-2 text-m font-semibold text-gray-600', props.class)">
+  <SelectLabel :class="cn('py-1.5 pl-8 pr-2 text-sm font-semibold', props.class)">
     <slot />
   </SelectLabel>
 </template>

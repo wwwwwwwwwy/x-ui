@@ -2,7 +2,7 @@
 import type { RadioGroupItemProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { ActionIcon030 as Circle } from "@meri-design/icon-vue"
+import { Circle } from "lucide-vue-next"
 import {
   RadioGroupIndicator,
   RadioGroupItem,
@@ -10,19 +10,10 @@ import {
 } from "reka-ui"
 import { cn } from "@/lib/utils"
 
-/**
- * RadioGroupItem 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。
- */
 const props = defineProps<RadioGroupItemProps & { class?: HTMLAttributes["class"] }>()
 
-/**
- * 移除仅由 RadioGroupItem 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。
- */
 const delegatedProps = reactiveOmit(props, "class")
 
-/**
- * 转发 RadioGroupItem 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。
- */
 const forwardedProps = useForwardProps(delegatedProps)
 </script>
 
@@ -31,7 +22,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     v-bind="forwardedProps"
     :class="
       cn(
-        'peer aspect-square h-4 w-4 rounded-full border border-gray-500 bg-gray-0 text-blue-500 ring-offset-background hover:border-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:border-gray-200 disabled:text-gray-400 data-[state=checked]:border-blue-500',
+        'peer aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
         props.class,
       )
     "
@@ -39,7 +30,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     <RadioGroupIndicator
       class="flex items-center justify-center"
     >
-      <Circle size="10" class="h-2.5 w-2.5 fill-current text-current" />
+      <Circle class="h-2.5 w-2.5 fill-current text-current" />
     </RadioGroupIndicator>
   </RadioGroupItem>
 </template>

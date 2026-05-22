@@ -1,33 +1,37 @@
 ---
 title: Menubar
-description: Menubar component documentation generated from source.
+description: Menubar 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # Menubar
 
-Menubar component documentation generated from local source APIs.
+Menubar 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+Menubar 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/menubar.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem, MenubarLabel, MenubarMenu, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarShortcut, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger } from '@/components/ui/menubar'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <Menubar>
-  Example content
+  示例内容
 </Menubar>
 ```
 
-## Components
+## 组件导出
 
 - `Menubar`
 - `MenubarCheckboxItem`
@@ -45,13 +49,13 @@ import { Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem
 - `MenubarSubTrigger`
 - `MenubarTrigger`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Menubar` | `props` | `MenubarRootProps & { class?: HTMLAttributes["class"] }` | `<Menubar :example-prop="example" />` |
 | `MenubarCheckboxItem` | `props` | `MenubarCheckboxItemProps & { class?: HTMLAttributes["class"] }` | `<MenubarCheckboxItem :example-prop="example" />` |
@@ -71,7 +75,7 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Menubar` | `emits` | `MenubarRootEmits` | `<Menubar @emits="emits" />` |
 | `MenubarCheckboxItem` | `emits` | `MenubarCheckboxItemEmits` | `<MenubarCheckboxItem @emits="emits" />` |
@@ -83,28 +87,28 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `Menubar` | `default` | `<Menubar>Content</Menubar>` |
-| `MenubarCheckboxItem` | `default` | `<MenubarCheckboxItem>Content</MenubarCheckboxItem>` |
-| `MenubarContent` | `default` | `<MenubarContent>Content</MenubarContent>` |
-| `MenubarGroup` | `default` | `<MenubarGroup>Content</MenubarGroup>` |
-| `MenubarItem` | `default` | `<MenubarItem>Content</MenubarItem>` |
-| `MenubarLabel` | `default` | `<MenubarLabel>Content</MenubarLabel>` |
-| `MenubarMenu` | `default` | `<MenubarMenu>Content</MenubarMenu>` |
-| `MenubarRadioGroup` | `default` | `<MenubarRadioGroup>Content</MenubarRadioGroup>` |
-| `MenubarRadioItem` | `default` | `<MenubarRadioItem>Content</MenubarRadioItem>` |
-| `MenubarShortcut` | `default` | `<MenubarShortcut>Content</MenubarShortcut>` |
-| `MenubarSub` | `default` | `<MenubarSub>Content</MenubarSub>` |
-| `MenubarSubContent` | `default` | `<MenubarSubContent>Content</MenubarSubContent>` |
-| `MenubarSubTrigger` | `default` | `<MenubarSubTrigger>Content</MenubarSubTrigger>` |
-| `MenubarTrigger` | `default` | `<MenubarTrigger>Content</MenubarTrigger>` |
+| `Menubar` | `default` | `<Menubar>内容</Menubar>` |
+| `MenubarCheckboxItem` | `default` | `<MenubarCheckboxItem>内容</MenubarCheckboxItem>` |
+| `MenubarContent` | `default` | `<MenubarContent>内容</MenubarContent>` |
+| `MenubarGroup` | `default` | `<MenubarGroup>内容</MenubarGroup>` |
+| `MenubarItem` | `default` | `<MenubarItem>内容</MenubarItem>` |
+| `MenubarLabel` | `default` | `<MenubarLabel>内容</MenubarLabel>` |
+| `MenubarMenu` | `default` | `<MenubarMenu>内容</MenubarMenu>` |
+| `MenubarRadioGroup` | `default` | `<MenubarRadioGroup>内容</MenubarRadioGroup>` |
+| `MenubarRadioItem` | `default` | `<MenubarRadioItem>内容</MenubarRadioItem>` |
+| `MenubarShortcut` | `default` | `<MenubarShortcut>内容</MenubarShortcut>` |
+| `MenubarSub` | `default` | `<MenubarSub>内容</MenubarSub>` |
+| `MenubarSubContent` | `default` | `<MenubarSubContent>内容</MenubarSubContent>` |
+| `MenubarSubTrigger` | `default` | `<MenubarSubTrigger>内容</MenubarSubTrigger>` |
+| `MenubarTrigger` | `default` | `<MenubarTrigger>内容</MenubarTrigger>` |
 
 ### Exports
 
-No additional local API exports were found.
+源码中未发现额外本地 API 导出。
 
-## API Examples
+## API 示例
 
 ### Menubar.exampleProp
 
@@ -241,91 +245,92 @@ No additional local API exports were found.
 ### Menubar slot: default
 
 ```vue
-<Menubar>Content</Menubar>
+<Menubar>内容</Menubar>
 ```
 
 ### MenubarCheckboxItem slot: default
 
 ```vue
-<MenubarCheckboxItem>Content</MenubarCheckboxItem>
+<MenubarCheckboxItem>内容</MenubarCheckboxItem>
 ```
 
 ### MenubarContent slot: default
 
 ```vue
-<MenubarContent>Content</MenubarContent>
+<MenubarContent>内容</MenubarContent>
 ```
 
 ### MenubarGroup slot: default
 
 ```vue
-<MenubarGroup>Content</MenubarGroup>
+<MenubarGroup>内容</MenubarGroup>
 ```
 
 ### MenubarItem slot: default
 
 ```vue
-<MenubarItem>Content</MenubarItem>
+<MenubarItem>内容</MenubarItem>
 ```
 
 ### MenubarLabel slot: default
 
 ```vue
-<MenubarLabel>Content</MenubarLabel>
+<MenubarLabel>内容</MenubarLabel>
 ```
 
 ### MenubarMenu slot: default
 
 ```vue
-<MenubarMenu>Content</MenubarMenu>
+<MenubarMenu>内容</MenubarMenu>
 ```
 
 ### MenubarRadioGroup slot: default
 
 ```vue
-<MenubarRadioGroup>Content</MenubarRadioGroup>
+<MenubarRadioGroup>内容</MenubarRadioGroup>
 ```
 
 ### MenubarRadioItem slot: default
 
 ```vue
-<MenubarRadioItem>Content</MenubarRadioItem>
+<MenubarRadioItem>内容</MenubarRadioItem>
 ```
 
 ### MenubarShortcut slot: default
 
 ```vue
-<MenubarShortcut>Content</MenubarShortcut>
+<MenubarShortcut>内容</MenubarShortcut>
 ```
 
 ### MenubarSub slot: default
 
 ```vue
-<MenubarSub>Content</MenubarSub>
+<MenubarSub>内容</MenubarSub>
 ```
 
 ### MenubarSubContent slot: default
 
 ```vue
-<MenubarSubContent>Content</MenubarSubContent>
+<MenubarSubContent>内容</MenubarSubContent>
 ```
 
 ### MenubarSubTrigger slot: default
 
 ```vue
-<MenubarSubTrigger>Content</MenubarSubTrigger>
+<MenubarSubTrigger>内容</MenubarSubTrigger>
 ```
 
 ### MenubarTrigger slot: default
 
 ```vue
-<MenubarTrigger>Content</MenubarTrigger>
+<MenubarTrigger>内容</MenubarTrigger>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

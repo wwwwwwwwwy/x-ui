@@ -1,33 +1,37 @@
 ---
 title: DropdownMenu
-description: DropdownMenu component documentation generated from source.
+description: DropdownMenu 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # DropdownMenu
 
-DropdownMenu component documentation generated from local source APIs.
+DropdownMenu 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+DropdownMenu 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/dropdown-menu.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <DropdownMenu>
-  Example content
+  示例内容
 </DropdownMenu>
 ```
 
-## Components
+## 组件导出
 
 - `DropdownMenu`
 - `DropdownMenuCheckboxItem`
@@ -44,13 +48,13 @@ import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMe
 - `DropdownMenuSubTrigger`
 - `DropdownMenuTrigger`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `DropdownMenu` | `props` | `DropdownMenuRootProps` | `<DropdownMenu :example-prop="example" />` |
 | `DropdownMenuCheckboxItem` | `props` | `DropdownMenuCheckboxItemProps & { class?: HTMLAttributes["class"] }` | `<DropdownMenuCheckboxItem :example-prop="example" />` |
@@ -69,7 +73,7 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `DropdownMenu` | `emits` | `DropdownMenuRootEmits` | `<DropdownMenu @emits="emits" />` |
 | `DropdownMenuCheckboxItem` | `emits` | `DropdownMenuCheckboxItemEmits` | `<DropdownMenuCheckboxItem @emits="emits" />` |
@@ -81,27 +85,27 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `DropdownMenu` | `default` | `<DropdownMenu>Content</DropdownMenu>` |
-| `DropdownMenuCheckboxItem` | `default` | `<DropdownMenuCheckboxItem>Content</DropdownMenuCheckboxItem>` |
-| `DropdownMenuContent` | `default` | `<DropdownMenuContent>Content</DropdownMenuContent>` |
-| `DropdownMenuGroup` | `default` | `<DropdownMenuGroup>Content</DropdownMenuGroup>` |
-| `DropdownMenuItem` | `default` | `<DropdownMenuItem>Content</DropdownMenuItem>` |
-| `DropdownMenuLabel` | `default` | `<DropdownMenuLabel>Content</DropdownMenuLabel>` |
-| `DropdownMenuRadioGroup` | `default` | `<DropdownMenuRadioGroup>Content</DropdownMenuRadioGroup>` |
-| `DropdownMenuRadioItem` | `default` | `<DropdownMenuRadioItem>Content</DropdownMenuRadioItem>` |
-| `DropdownMenuShortcut` | `default` | `<DropdownMenuShortcut>Content</DropdownMenuShortcut>` |
-| `DropdownMenuSub` | `default` | `<DropdownMenuSub>Content</DropdownMenuSub>` |
-| `DropdownMenuSubContent` | `default` | `<DropdownMenuSubContent>Content</DropdownMenuSubContent>` |
-| `DropdownMenuSubTrigger` | `default` | `<DropdownMenuSubTrigger>Content</DropdownMenuSubTrigger>` |
-| `DropdownMenuTrigger` | `default` | `<DropdownMenuTrigger>Content</DropdownMenuTrigger>` |
+| `DropdownMenu` | `default` | `<DropdownMenu>内容</DropdownMenu>` |
+| `DropdownMenuCheckboxItem` | `default` | `<DropdownMenuCheckboxItem>内容</DropdownMenuCheckboxItem>` |
+| `DropdownMenuContent` | `default` | `<DropdownMenuContent>内容</DropdownMenuContent>` |
+| `DropdownMenuGroup` | `default` | `<DropdownMenuGroup>内容</DropdownMenuGroup>` |
+| `DropdownMenuItem` | `default` | `<DropdownMenuItem>内容</DropdownMenuItem>` |
+| `DropdownMenuLabel` | `default` | `<DropdownMenuLabel>内容</DropdownMenuLabel>` |
+| `DropdownMenuRadioGroup` | `default` | `<DropdownMenuRadioGroup>内容</DropdownMenuRadioGroup>` |
+| `DropdownMenuRadioItem` | `default` | `<DropdownMenuRadioItem>内容</DropdownMenuRadioItem>` |
+| `DropdownMenuShortcut` | `default` | `<DropdownMenuShortcut>内容</DropdownMenuShortcut>` |
+| `DropdownMenuSub` | `default` | `<DropdownMenuSub>内容</DropdownMenuSub>` |
+| `DropdownMenuSubContent` | `default` | `<DropdownMenuSubContent>内容</DropdownMenuSubContent>` |
+| `DropdownMenuSubTrigger` | `default` | `<DropdownMenuSubTrigger>内容</DropdownMenuSubTrigger>` |
+| `DropdownMenuTrigger` | `default` | `<DropdownMenuTrigger>内容</DropdownMenuTrigger>` |
 
 ### Exports
 
 - `export { DropdownMenuPortal } from "reka-ui"`
 
-## API Examples
+## API 示例
 
 ### DropdownMenu.exampleProp
 
@@ -232,85 +236,86 @@ The API below is extracted from local source files only. Props/events inherited 
 ### DropdownMenu slot: default
 
 ```vue
-<DropdownMenu>Content</DropdownMenu>
+<DropdownMenu>内容</DropdownMenu>
 ```
 
 ### DropdownMenuCheckboxItem slot: default
 
 ```vue
-<DropdownMenuCheckboxItem>Content</DropdownMenuCheckboxItem>
+<DropdownMenuCheckboxItem>内容</DropdownMenuCheckboxItem>
 ```
 
 ### DropdownMenuContent slot: default
 
 ```vue
-<DropdownMenuContent>Content</DropdownMenuContent>
+<DropdownMenuContent>内容</DropdownMenuContent>
 ```
 
 ### DropdownMenuGroup slot: default
 
 ```vue
-<DropdownMenuGroup>Content</DropdownMenuGroup>
+<DropdownMenuGroup>内容</DropdownMenuGroup>
 ```
 
 ### DropdownMenuItem slot: default
 
 ```vue
-<DropdownMenuItem>Content</DropdownMenuItem>
+<DropdownMenuItem>内容</DropdownMenuItem>
 ```
 
 ### DropdownMenuLabel slot: default
 
 ```vue
-<DropdownMenuLabel>Content</DropdownMenuLabel>
+<DropdownMenuLabel>内容</DropdownMenuLabel>
 ```
 
 ### DropdownMenuRadioGroup slot: default
 
 ```vue
-<DropdownMenuRadioGroup>Content</DropdownMenuRadioGroup>
+<DropdownMenuRadioGroup>内容</DropdownMenuRadioGroup>
 ```
 
 ### DropdownMenuRadioItem slot: default
 
 ```vue
-<DropdownMenuRadioItem>Content</DropdownMenuRadioItem>
+<DropdownMenuRadioItem>内容</DropdownMenuRadioItem>
 ```
 
 ### DropdownMenuShortcut slot: default
 
 ```vue
-<DropdownMenuShortcut>Content</DropdownMenuShortcut>
+<DropdownMenuShortcut>内容</DropdownMenuShortcut>
 ```
 
 ### DropdownMenuSub slot: default
 
 ```vue
-<DropdownMenuSub>Content</DropdownMenuSub>
+<DropdownMenuSub>内容</DropdownMenuSub>
 ```
 
 ### DropdownMenuSubContent slot: default
 
 ```vue
-<DropdownMenuSubContent>Content</DropdownMenuSubContent>
+<DropdownMenuSubContent>内容</DropdownMenuSubContent>
 ```
 
 ### DropdownMenuSubTrigger slot: default
 
 ```vue
-<DropdownMenuSubTrigger>Content</DropdownMenuSubTrigger>
+<DropdownMenuSubTrigger>内容</DropdownMenuSubTrigger>
 ```
 
 ### DropdownMenuTrigger slot: default
 
 ```vue
-<DropdownMenuTrigger>Content</DropdownMenuTrigger>
+<DropdownMenuTrigger>内容</DropdownMenuTrigger>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

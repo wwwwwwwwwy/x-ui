@@ -4,16 +4,10 @@ import { cn } from "@/lib/utils"
 import { Sheet, SheetContent } from "@/registry/default/ui/sheet"
 import { SIDEBAR_WIDTH_MOBILE, useSidebar } from "./utils"
 
-/**
- * Sidebar 的组件选项；用于控制 attrs 继承等 Vue 运行时兼容行为。
- */
 defineOptions({
   inheritAttrs: false,
 })
 
-/**
- * Sidebar 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。
- */
 const props = withDefaults(defineProps<SidebarProps>(), {
   side: "left",
   variant: "sidebar",
@@ -55,7 +49,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
     :data-variant="variant"
     :data-side="side"
   >
-    <!-- 桌面端用于占位侧边栏宽度，避免内容区域跳动。 -->
+    <!-- This is what handles the sidebar gap on desktop  -->
     <div
       :class="cn(
         'duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear',
@@ -72,7 +66,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
         side === 'left'
           ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
           : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
-        // 根据 floating 和 inset 变体调整外边距。
+        // Adjust the padding for floating and inset variants.
         variant === 'floating' || variant === 'inset'
           ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+_2px)]'
           : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l',

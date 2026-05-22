@@ -15,9 +15,6 @@ const props = withDefaults(
   },
 )
 
-/**
- * 移除仅由 Progress 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。
- */
 const delegatedProps = reactiveOmit(props, "class")
 </script>
 

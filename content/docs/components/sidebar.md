@@ -1,33 +1,37 @@
 ---
 title: Sidebar
-description: Sidebar component documentation generated from source.
+description: Sidebar 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # Sidebar
 
-Sidebar component documentation generated from local source APIs.
+Sidebar 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+Sidebar 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/sidebar.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger } from '@/components/ui/sidebar'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <Sidebar>
-  Example content
+  示例内容
 </Sidebar>
 ```
 
-## Components
+## 组件导出
 
 - `Sidebar`
 - `SidebarContent`
@@ -53,13 +57,13 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupActio
 - `SidebarSeparator`
 - `SidebarTrigger`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Sidebar` | `props` | `SidebarProps` | `<Sidebar :example-prop="example" />` |
 | `SidebarContent` | `class` | `HTMLAttributes["class"]` | `<SidebarContent class="custom-class" />` |
@@ -90,36 +94,36 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `SidebarProvider` | `update:open` | `[open: boolean]` | `<SidebarProvider @update:open="updateOpen" />` |
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `Sidebar` | `default` | `<Sidebar>Content</Sidebar>` |
-| `SidebarContent` | `default` | `<SidebarContent>Content</SidebarContent>` |
-| `SidebarFooter` | `default` | `<SidebarFooter>Content</SidebarFooter>` |
-| `SidebarGroup` | `default` | `<SidebarGroup>Content</SidebarGroup>` |
-| `SidebarGroupAction` | `default` | `<SidebarGroupAction>Content</SidebarGroupAction>` |
-| `SidebarGroupContent` | `default` | `<SidebarGroupContent>Content</SidebarGroupContent>` |
-| `SidebarGroupLabel` | `default` | `<SidebarGroupLabel>Content</SidebarGroupLabel>` |
-| `SidebarHeader` | `default` | `<SidebarHeader>Content</SidebarHeader>` |
-| `SidebarInput` | `default` | `<SidebarInput>Content</SidebarInput>` |
-| `SidebarInset` | `default` | `<SidebarInset>Content</SidebarInset>` |
-| `SidebarMenu` | `default` | `<SidebarMenu>Content</SidebarMenu>` |
-| `SidebarMenuAction` | `default` | `<SidebarMenuAction>Content</SidebarMenuAction>` |
-| `SidebarMenuBadge` | `default` | `<SidebarMenuBadge>Content</SidebarMenuBadge>` |
-| `SidebarMenuButton` | `default` | `<SidebarMenuButton>Content</SidebarMenuButton>` |
-| `SidebarMenuButtonChild` | `default` | `<SidebarMenuButtonChild>Content</SidebarMenuButtonChild>` |
-| `SidebarMenuItem` | `default` | `<SidebarMenuItem>Content</SidebarMenuItem>` |
-| `SidebarMenuSub` | `default` | `<SidebarMenuSub>Content</SidebarMenuSub>` |
-| `SidebarMenuSubButton` | `default` | `<SidebarMenuSubButton>Content</SidebarMenuSubButton>` |
-| `SidebarMenuSubItem` | `default` | `<SidebarMenuSubItem>Content</SidebarMenuSubItem>` |
-| `SidebarProvider` | `default` | `<SidebarProvider>Content</SidebarProvider>` |
-| `SidebarRail` | `default` | `<SidebarRail>Content</SidebarRail>` |
-| `SidebarSeparator` | `default` | `<SidebarSeparator>Content</SidebarSeparator>` |
+| `Sidebar` | `default` | `<Sidebar>内容</Sidebar>` |
+| `SidebarContent` | `default` | `<SidebarContent>内容</SidebarContent>` |
+| `SidebarFooter` | `default` | `<SidebarFooter>内容</SidebarFooter>` |
+| `SidebarGroup` | `default` | `<SidebarGroup>内容</SidebarGroup>` |
+| `SidebarGroupAction` | `default` | `<SidebarGroupAction>内容</SidebarGroupAction>` |
+| `SidebarGroupContent` | `default` | `<SidebarGroupContent>内容</SidebarGroupContent>` |
+| `SidebarGroupLabel` | `default` | `<SidebarGroupLabel>内容</SidebarGroupLabel>` |
+| `SidebarHeader` | `default` | `<SidebarHeader>内容</SidebarHeader>` |
+| `SidebarInput` | `default` | `<SidebarInput>内容</SidebarInput>` |
+| `SidebarInset` | `default` | `<SidebarInset>内容</SidebarInset>` |
+| `SidebarMenu` | `default` | `<SidebarMenu>内容</SidebarMenu>` |
+| `SidebarMenuAction` | `default` | `<SidebarMenuAction>内容</SidebarMenuAction>` |
+| `SidebarMenuBadge` | `default` | `<SidebarMenuBadge>内容</SidebarMenuBadge>` |
+| `SidebarMenuButton` | `default` | `<SidebarMenuButton>内容</SidebarMenuButton>` |
+| `SidebarMenuButtonChild` | `default` | `<SidebarMenuButtonChild>内容</SidebarMenuButtonChild>` |
+| `SidebarMenuItem` | `default` | `<SidebarMenuItem>内容</SidebarMenuItem>` |
+| `SidebarMenuSub` | `default` | `<SidebarMenuSub>内容</SidebarMenuSub>` |
+| `SidebarMenuSubButton` | `default` | `<SidebarMenuSubButton>内容</SidebarMenuSubButton>` |
+| `SidebarMenuSubItem` | `default` | `<SidebarMenuSubItem>内容</SidebarMenuSubItem>` |
+| `SidebarProvider` | `default` | `<SidebarProvider>内容</SidebarProvider>` |
+| `SidebarRail` | `default` | `<SidebarRail>内容</SidebarRail>` |
+| `SidebarSeparator` | `default` | `<SidebarSeparator>内容</SidebarSeparator>` |
 
 ### Exports
 
@@ -128,7 +132,7 @@ The API below is extracted from local source files only. Props/events inherited 
 - `export const sidebarMenuButtonVariants = cva(`
 - `export type SidebarMenuButtonVariants = VariantProps<typeof sidebarMenuButtonVariants>`
 
-## API Examples
+## API 示例
 
 ### Sidebar.exampleProp
 
@@ -295,139 +299,140 @@ The API below is extracted from local source files only. Props/events inherited 
 ### Sidebar slot: default
 
 ```vue
-<Sidebar>Content</Sidebar>
+<Sidebar>内容</Sidebar>
 ```
 
 ### SidebarContent slot: default
 
 ```vue
-<SidebarContent>Content</SidebarContent>
+<SidebarContent>内容</SidebarContent>
 ```
 
 ### SidebarFooter slot: default
 
 ```vue
-<SidebarFooter>Content</SidebarFooter>
+<SidebarFooter>内容</SidebarFooter>
 ```
 
 ### SidebarGroup slot: default
 
 ```vue
-<SidebarGroup>Content</SidebarGroup>
+<SidebarGroup>内容</SidebarGroup>
 ```
 
 ### SidebarGroupAction slot: default
 
 ```vue
-<SidebarGroupAction>Content</SidebarGroupAction>
+<SidebarGroupAction>内容</SidebarGroupAction>
 ```
 
 ### SidebarGroupContent slot: default
 
 ```vue
-<SidebarGroupContent>Content</SidebarGroupContent>
+<SidebarGroupContent>内容</SidebarGroupContent>
 ```
 
 ### SidebarGroupLabel slot: default
 
 ```vue
-<SidebarGroupLabel>Content</SidebarGroupLabel>
+<SidebarGroupLabel>内容</SidebarGroupLabel>
 ```
 
 ### SidebarHeader slot: default
 
 ```vue
-<SidebarHeader>Content</SidebarHeader>
+<SidebarHeader>内容</SidebarHeader>
 ```
 
 ### SidebarInput slot: default
 
 ```vue
-<SidebarInput>Content</SidebarInput>
+<SidebarInput>内容</SidebarInput>
 ```
 
 ### SidebarInset slot: default
 
 ```vue
-<SidebarInset>Content</SidebarInset>
+<SidebarInset>内容</SidebarInset>
 ```
 
 ### SidebarMenu slot: default
 
 ```vue
-<SidebarMenu>Content</SidebarMenu>
+<SidebarMenu>内容</SidebarMenu>
 ```
 
 ### SidebarMenuAction slot: default
 
 ```vue
-<SidebarMenuAction>Content</SidebarMenuAction>
+<SidebarMenuAction>内容</SidebarMenuAction>
 ```
 
 ### SidebarMenuBadge slot: default
 
 ```vue
-<SidebarMenuBadge>Content</SidebarMenuBadge>
+<SidebarMenuBadge>内容</SidebarMenuBadge>
 ```
 
 ### SidebarMenuButton slot: default
 
 ```vue
-<SidebarMenuButton>Content</SidebarMenuButton>
+<SidebarMenuButton>内容</SidebarMenuButton>
 ```
 
 ### SidebarMenuButtonChild slot: default
 
 ```vue
-<SidebarMenuButtonChild>Content</SidebarMenuButtonChild>
+<SidebarMenuButtonChild>内容</SidebarMenuButtonChild>
 ```
 
 ### SidebarMenuItem slot: default
 
 ```vue
-<SidebarMenuItem>Content</SidebarMenuItem>
+<SidebarMenuItem>内容</SidebarMenuItem>
 ```
 
 ### SidebarMenuSub slot: default
 
 ```vue
-<SidebarMenuSub>Content</SidebarMenuSub>
+<SidebarMenuSub>内容</SidebarMenuSub>
 ```
 
 ### SidebarMenuSubButton slot: default
 
 ```vue
-<SidebarMenuSubButton>Content</SidebarMenuSubButton>
+<SidebarMenuSubButton>内容</SidebarMenuSubButton>
 ```
 
 ### SidebarMenuSubItem slot: default
 
 ```vue
-<SidebarMenuSubItem>Content</SidebarMenuSubItem>
+<SidebarMenuSubItem>内容</SidebarMenuSubItem>
 ```
 
 ### SidebarProvider slot: default
 
 ```vue
-<SidebarProvider>Content</SidebarProvider>
+<SidebarProvider>内容</SidebarProvider>
 ```
 
 ### SidebarRail slot: default
 
 ```vue
-<SidebarRail>Content</SidebarRail>
+<SidebarRail>内容</SidebarRail>
 ```
 
 ### SidebarSeparator slot: default
 
 ```vue
-<SidebarSeparator>Content</SidebarSeparator>
+<SidebarSeparator>内容</SidebarSeparator>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

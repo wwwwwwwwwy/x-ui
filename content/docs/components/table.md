@@ -1,33 +1,37 @@
 ---
 title: Table
-description: Table component documentation generated from source.
+description: Table 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # Table
 
-Table component documentation generated from local source APIs.
+Table 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+Table 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/table.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { Table, TableBody, TableCaption, TableCell, TableEmpty, TableFooter, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <Table>
-  Example content
+  示例内容
 </Table>
 ```
 
-## Components
+## 组件导出
 
 - `Table`
 - `TableBody`
@@ -39,13 +43,13 @@ import { Table, TableBody, TableCaption, TableCell, TableEmpty, TableFooter, Tab
 - `TableHeader`
 - `TableRow`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Table` | `class` | `HTMLAttributes["class"]` | `<Table class="custom-class" />` |
 | `TableBody` | `class` | `HTMLAttributes["class"]` | `<TableBody class="custom-class" />` |
@@ -60,27 +64,27 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-No explicit local events were found in source.
+源码中未发现显式本地事件。
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `Table` | `default` | `<Table>Content</Table>` |
-| `TableBody` | `default` | `<TableBody>Content</TableBody>` |
-| `TableCaption` | `default` | `<TableCaption>Content</TableCaption>` |
-| `TableCell` | `default` | `<TableCell>Content</TableCell>` |
-| `TableEmpty` | `default` | `<TableEmpty>Content</TableEmpty>` |
-| `TableFooter` | `default` | `<TableFooter>Content</TableFooter>` |
-| `TableHead` | `default` | `<TableHead>Content</TableHead>` |
-| `TableHeader` | `default` | `<TableHeader>Content</TableHeader>` |
-| `TableRow` | `default` | `<TableRow>Content</TableRow>` |
+| `Table` | `default` | `<Table>内容</Table>` |
+| `TableBody` | `default` | `<TableBody>内容</TableBody>` |
+| `TableCaption` | `default` | `<TableCaption>内容</TableCaption>` |
+| `TableCell` | `default` | `<TableCell>内容</TableCell>` |
+| `TableEmpty` | `default` | `<TableEmpty>内容</TableEmpty>` |
+| `TableFooter` | `default` | `<TableFooter>内容</TableFooter>` |
+| `TableHead` | `default` | `<TableHead>内容</TableHead>` |
+| `TableHeader` | `default` | `<TableHeader>内容</TableHeader>` |
+| `TableRow` | `default` | `<TableRow>内容</TableRow>` |
 
 ### Exports
 
-No additional local API exports were found.
+源码中未发现额外本地 API 导出。
 
-## API Examples
+## API 示例
 
 ### Table.class
 
@@ -145,58 +149,58 @@ No additional local API exports were found.
 ### Table slot: default
 
 ```vue
-<Table>Content</Table>
+<Table>内容</Table>
 ```
 
 ### TableBody slot: default
 
 ```vue
-<TableBody>Content</TableBody>
+<TableBody>内容</TableBody>
 ```
 
 ### TableCaption slot: default
 
 ```vue
-<TableCaption>Content</TableCaption>
+<TableCaption>内容</TableCaption>
 ```
 
 ### TableCell slot: default
 
 ```vue
-<TableCell>Content</TableCell>
+<TableCell>内容</TableCell>
 ```
 
 ### TableEmpty slot: default
 
 ```vue
-<TableEmpty>Content</TableEmpty>
+<TableEmpty>内容</TableEmpty>
 ```
 
 ### TableFooter slot: default
 
 ```vue
-<TableFooter>Content</TableFooter>
+<TableFooter>内容</TableFooter>
 ```
 
 ### TableHead slot: default
 
 ```vue
-<TableHead>Content</TableHead>
+<TableHead>内容</TableHead>
 ```
 
 ### TableHeader slot: default
 
 ```vue
-<TableHeader>Content</TableHeader>
+<TableHeader>内容</TableHeader>
 ```
 
 ### TableRow slot: default
 
 ```vue
-<TableRow>Content</TableRow>
+<TableRow>内容</TableRow>
 ```
 
-## Dependencies
+## 依赖
 
 - `@vueuse/core`
 

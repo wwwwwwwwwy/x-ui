@@ -1,16 +1,10 @@
 <script lang="ts" setup>
 import type { ToasterProps } from "vue-sonner"
 import { reactiveOmit } from "@vueuse/core"
-import { ActionIcon057 as CircleCheckIcon, ActionIcon051 as InfoIcon, ActionIcon047 as Loader2Icon, ActionIcon016 as OctagonXIcon, ActionIcon083 as TriangleAlertIcon, ActionIcon016 as XIcon } from "@meri-design/icon-vue"
+import { CircleCheckIcon, InfoIcon, Loader2Icon, OctagonXIcon, TriangleAlertIcon, XIcon } from "lucide-vue-next"
 import { Toaster as Sonner } from "vue-sonner"
 
-/**
- * Sonner 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。
- */
 const props = defineProps<ToasterProps>()
-/**
- * 移除仅由 Sonner 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。
- */
 const delegatedProps = reactiveOmit(props, "toastOptions")
 </script>
 
@@ -30,24 +24,24 @@ const delegatedProps = reactiveOmit(props, "toastOptions")
     v-bind="delegatedProps"
   >
     <template #success-icon>
-      <CircleCheckIcon size="16" class="size-4" />
+      <CircleCheckIcon class="size-4" />
     </template>
     <template #info-icon>
-      <InfoIcon size="16" class="size-4" />
+      <InfoIcon class="size-4" />
     </template>
     <template #warning-icon>
-      <TriangleAlertIcon size="16" class="size-4" />
+      <TriangleAlertIcon class="size-4" />
     </template>
     <template #error-icon>
-      <OctagonXIcon size="16" class="size-4" />
+      <OctagonXIcon class="size-4" />
     </template>
     <template #loading-icon>
       <div>
-        <Loader2Icon size="16" class="size-4 animate-spin" />
+        <Loader2Icon class="size-4 animate-spin" />
       </div>
     </template>
     <template #close-icon>
-      <XIcon size="16" class="size-4" />
+      <XIcon class="size-4" />
     </template>
   </Sonner>
 </template>

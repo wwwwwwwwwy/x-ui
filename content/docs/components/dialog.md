@@ -1,33 +1,37 @@
 ---
 title: Dialog
-description: Dialog component documentation generated from source.
+description: Dialog 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # Dialog
 
-Dialog component documentation generated from local source APIs.
+Dialog 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+Dialog 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/dialog.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogScrollContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <Dialog>
-  Example content
+  示例内容
 </Dialog>
 ```
 
-## Components
+## 组件导出
 
 - `Dialog`
 - `DialogClose`
@@ -39,13 +43,13 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 - `DialogTitle`
 - `DialogTrigger`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Dialog` | `props` | `DialogRootProps` | `<Dialog :example-prop="example" />` |
 | `DialogClose` | `props` | `DialogCloseProps` | `<DialogClose :example-prop="example" />` |
@@ -59,7 +63,7 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Dialog` | `emits` | `DialogRootEmits` | `<Dialog @emits="emits" />` |
 | `DialogContent` | `emits` | `DialogContentEmits` | `<DialogContent @emits="emits" />` |
@@ -67,23 +71,23 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `Dialog` | `default` | `<Dialog>Content</Dialog>` |
-| `DialogClose` | `default` | `<DialogClose>Content</DialogClose>` |
-| `DialogContent` | `default` | `<DialogContent>Content</DialogContent>` |
-| `DialogDescription` | `default` | `<DialogDescription>Content</DialogDescription>` |
-| `DialogFooter` | `default` | `<DialogFooter>Content</DialogFooter>` |
-| `DialogHeader` | `default` | `<DialogHeader>Content</DialogHeader>` |
-| `DialogScrollContent` | `default` | `<DialogScrollContent>Content</DialogScrollContent>` |
-| `DialogTitle` | `default` | `<DialogTitle>Content</DialogTitle>` |
-| `DialogTrigger` | `default` | `<DialogTrigger>Content</DialogTrigger>` |
+| `Dialog` | `default` | `<Dialog>内容</Dialog>` |
+| `DialogClose` | `default` | `<DialogClose>内容</DialogClose>` |
+| `DialogContent` | `default` | `<DialogContent>内容</DialogContent>` |
+| `DialogDescription` | `default` | `<DialogDescription>内容</DialogDescription>` |
+| `DialogFooter` | `default` | `<DialogFooter>内容</DialogFooter>` |
+| `DialogHeader` | `default` | `<DialogHeader>内容</DialogHeader>` |
+| `DialogScrollContent` | `default` | `<DialogScrollContent>内容</DialogScrollContent>` |
+| `DialogTitle` | `default` | `<DialogTitle>内容</DialogTitle>` |
+| `DialogTrigger` | `default` | `<DialogTrigger>内容</DialogTrigger>` |
 
 ### Exports
 
-No additional local API exports were found.
+源码中未发现额外本地 API 导出。
 
-## API Examples
+## API 示例
 
 ### Dialog.exampleProp
 
@@ -160,61 +164,62 @@ No additional local API exports were found.
 ### Dialog slot: default
 
 ```vue
-<Dialog>Content</Dialog>
+<Dialog>内容</Dialog>
 ```
 
 ### DialogClose slot: default
 
 ```vue
-<DialogClose>Content</DialogClose>
+<DialogClose>内容</DialogClose>
 ```
 
 ### DialogContent slot: default
 
 ```vue
-<DialogContent>Content</DialogContent>
+<DialogContent>内容</DialogContent>
 ```
 
 ### DialogDescription slot: default
 
 ```vue
-<DialogDescription>Content</DialogDescription>
+<DialogDescription>内容</DialogDescription>
 ```
 
 ### DialogFooter slot: default
 
 ```vue
-<DialogFooter>Content</DialogFooter>
+<DialogFooter>内容</DialogFooter>
 ```
 
 ### DialogHeader slot: default
 
 ```vue
-<DialogHeader>Content</DialogHeader>
+<DialogHeader>内容</DialogHeader>
 ```
 
 ### DialogScrollContent slot: default
 
 ```vue
-<DialogScrollContent>Content</DialogScrollContent>
+<DialogScrollContent>内容</DialogScrollContent>
 ```
 
 ### DialogTitle slot: default
 
 ```vue
-<DialogTitle>Content</DialogTitle>
+<DialogTitle>内容</DialogTitle>
 ```
 
 ### DialogTrigger slot: default
 
 ```vue
-<DialogTrigger>Content</DialogTrigger>
+<DialogTrigger>内容</DialogTrigger>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

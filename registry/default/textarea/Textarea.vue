@@ -3,18 +3,12 @@ import type { HTMLAttributes } from "vue"
 import { useVModel } from "@vueuse/core"
 import { cn } from "@/lib/utils"
 
-/**
- * Textarea 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。
- */
 const props = defineProps<{
   class?: HTMLAttributes["class"]
   defaultValue?: string | number
   modelValue?: string | number
 }>()
 
-/**
- * Textarea 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。
- */
 const emits = defineEmits<{
   (e: "update:modelValue", payload: string | number): void
 }>()

@@ -25,85 +25,85 @@ import {
   RefreshCw
 } from 'lucide-vue-next'
 
-// Mock premium transaction data
+// 模拟交易数据
 const initialTransactions = [
   {
     id: 'TXN-8492',
     user: {
-      name: 'Sarah Connor',
+      name: '林清和',
       email: 'sarah.c@cyberdyne.io',
       avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=60'
     },
-    plan: 'Enterprise',
+    plan: '企业版',
     date: '2026-05-22',
     amount: 1250.00,
-    status: 'Paid',
-    category: 'Subscription'
+    status: '已支付',
+    category: '订阅'
   },
   {
     id: 'TXN-4920',
     user: {
-      name: 'Marcus Wright',
+      name: '周明远',
       email: 'm.wright@projectangel.org',
       avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&auto=format&fit=crop&q=60'
     },
-    plan: 'Startup',
+    plan: '创业版',
     date: '2026-05-21',
     amount: 490.00,
-    status: 'Paid',
-    category: 'API Addon'
+    status: '已支付',
+    category: 'API 增购'
   },
   {
     id: 'TXN-3918',
     user: {
-      name: 'John Connor',
+      name: '陈予安',
       email: 'j.connor@techcom.net',
       avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=80&auto=format&fit=crop&q=60'
     },
-    plan: 'Startup',
+    plan: '创业版',
     date: '2026-05-20',
     amount: 490.00,
-    status: 'Pending',
-    category: 'Subscription'
+    status: '待处理',
+    category: '订阅'
   },
   {
     id: 'TXN-1029',
     user: {
-      name: 'T-800 System',
+      name: '系统账户',
       email: 'model101@cyberdyne.io',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=60'
     },
-    plan: 'Enterprise',
+    plan: '企业版',
     date: '2026-05-18',
     amount: 2400.00,
-    status: 'Failed',
-    category: 'Compute Core'
+    status: '失败',
+    category: '计算核心'
   },
   {
     id: 'TXN-9028',
     user: {
-      name: 'Dr. Silberman',
+      name: '许医生',
       email: 'silberman@ashylum-clinical.com',
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=60'
     },
-    plan: 'Hobbyist',
+    plan: '个人版',
     date: '2026-05-17',
     amount: 49.00,
-    status: 'Paid',
-    category: 'Subscription'
+    status: '已支付',
+    category: '订阅'
   },
   {
     id: 'TXN-7362',
     user: {
-      name: 'Kate Brewster',
+      name: '顾南星',
       email: 'kate.b@emergency-net.gov',
       avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&auto=format&fit=crop&q=60'
     },
-    plan: 'Startup',
+    plan: '创业版',
     date: '2026-05-15',
     amount: 490.00,
-    status: 'Paid',
-    category: 'Subscription'
+    status: '已支付',
+    category: '订阅'
   }
 ]
 
@@ -113,7 +113,7 @@ const sortBy = ref<'amount' | 'date' | null>(null)
 const sortDesc = ref(false)
 const selectedTxns = ref<Set<string>>(new Set())
 
-// Toggle single selection
+// 切换单条选择
 function toggleSelect(id: string) {
   if (selectedTxns.value.has(id)) {
     selectedTxns.value.delete(id)
@@ -123,7 +123,7 @@ function toggleSelect(id: string) {
   selectedTxns.value = new Set(selectedTxns.value)
 }
 
-// Toggle all selection
+// 切换全部选择
 const isAllSelected = computed(() => {
   return filteredTransactions.value.length > 0 && filteredTransactions.value.every(txn => selectedTxns.value.has(txn.id))
 })
@@ -137,7 +137,7 @@ function toggleSelectAll() {
   selectedTxns.value = new Set(selectedTxns.value)
 }
 
-// Toggle sort
+// 切换排序
 function toggleSort(type: 'amount' | 'date') {
   if (sortBy.value === type) {
     sortDesc.value = !sortDesc.value
@@ -147,7 +147,7 @@ function toggleSort(type: 'amount' | 'date') {
   }
 }
 
-// Reset filters
+// 重置 filters
 function resetFilters() {
   searchQuery.value = ''
   statusFilter.value = 'All'
@@ -155,11 +155,11 @@ function resetFilters() {
   selectedTxns.value.clear()
 }
 
-// Filter and sort transactions
+// 筛选并排序交易记录
 const filteredTransactions = computed(() => {
   let result = [...initialTransactions]
 
-  // Search filter
+  // 搜索筛选
   if (searchQuery.value.trim() !== '') {
     const q = searchQuery.value.toLowerCase()
     result = result.filter(txn => 
@@ -170,12 +170,12 @@ const filteredTransactions = computed(() => {
     )
   }
 
-  // Status filter
+  // 状态筛选
   if (statusFilter.value !== 'All') {
     result = result.filter(txn => txn.status === statusFilter.value)
   }
 
-  // Sorting
+  // 排序
   if (sortBy.value === 'amount') {
     result.sort((a, b) => sortDesc.value ? b.amount - a.amount : a.amount - b.amount)
   } else if (sortBy.value === 'date') {
@@ -189,18 +189,18 @@ const filteredTransactions = computed(() => {
   return result
 })
 
-// Calculations for footer
-const totalAmount = computed(() => {
+// 表尾统计
+const total金额 = computed(() => {
   return filteredTransactions.value.reduce((acc, txn) => acc + txn.amount, 0)
 })
 
 const getStatusDot = (status: string) => {
   switch (status) {
-    case 'Paid':
+    case '已支付':
       return 'bg-[#2D5AF2]' // Brand Action Blue
-    case 'Pending':
-      return 'bg-amber-500' // Warning tone
-    case 'Failed':
+    case '待处理':
+      return 'bg-amber-500' // 预警 tone
+    case '失败':
       return 'bg-[#F03030]' // Exact Error Red specified in DESIGN.md
     default:
       return 'bg-[#595f68]'
@@ -219,39 +219,39 @@ const getStatusDot = (status: string) => {
             <Sparkles class="h-3 w-3" />
           </span>
           <h3 class="text-[16px] font-semibold tracking-tight text-[#161c24]">
-            Interactive Transaction Registry
+            交易记录列表
           </h3>
         </div>
         <p class="text-[12px] text-[#434655]">
-          Systematic API telemetry logs and enterprise subscription payments.
+          API 遥测日志与企业订阅付款记录。
         </p>
       </div>
 
-      <!-- Actions & Filters -->
+      <!-- 操作与筛选 -->
       <div class="flex flex-wrap items-center gap-2">
-        <!-- Search bar with exact 4px radius and focus border glow -->
+        <!-- 搜索框 -->
         <div class="relative w-full sm:w-56">
           <Search class="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-[#434655]/50" />
           <input
             v-model="searchQuery"
             type="text"
-            placeholder="Search records..."
+            placeholder="搜索记录..."
             class="h-9 w-full rounded-[4px] border border-[#E2E4E9] bg-white pl-9 pr-3 text-[13px] outline-none transition-all placeholder:text-[#434655]/50 focus:border-[#2D5AF2] focus:ring-2 focus:ring-[#2D5AF2]/10"
           />
         </div>
 
-        <!-- Status filter select with exact 4px radius -->
+        <!-- 状态筛选 -->
         <select
           v-model="statusFilter"
           class="h-9 rounded-[4px] border border-[#E2E4E9] bg-white px-3 text-[13px] text-[#161c24] outline-none transition-all focus:border-[#2D5AF2]"
         >
-          <option value="All">All Statuses</option>
-          <option value="Paid">Paid</option>
-          <option value="Pending">Pending</option>
-          <option value="Failed">Failed</option>
+          <option value="All">全部状态</option>
+          <option value="已支付">已支付</option>
+          <option value="待处理">待处理</option>
+          <option value="失败">失败</option>
         </select>
 
-        <!-- Reset Button with solid secondary background and 4px radius -->
+        <!-- 重置 Button with solid secondary background and 4px radius -->
         <Button 
           variant="outline" 
           size="sm"
@@ -259,15 +259,15 @@ const getStatusDot = (status: string) => {
           @click="resetFilters"
         >
           <RefreshCw class="h-3.5 w-3.5" />
-          <span class="hidden md:inline">Reset</span>
+          <span class="hidden md:inline">重置</span>
         </Button>
       </div>
     </div>
 
-    <!-- Table Container -->
+    <!-- 表格容器 -->
     <div class="w-full overflow-x-auto">
       <Table class="w-full min-w-[700px] border-collapse text-left">
-        <!-- Headers with surface-subtle #F5F6F7 background, border-light and text-on-surface -->
+        <!-- 表头 -->
         <TableHeader class="bg-[#F5F6F7] border-b border-[#E2E4E9]">
           <TableRow>
             <TableHead class="w-[50px] py-3 pl-6">
@@ -279,39 +279,39 @@ const getStatusDot = (status: string) => {
               />
             </TableHead>
             <TableHead class="w-[120px] py-3 text-[12px] font-semibold uppercase tracking-wider text-[#161c24]">
-              Invoice ID
+              账单编号
             </TableHead>
             <TableHead class="py-3 text-[12px] font-semibold uppercase tracking-wider text-[#161c24]">
-              Client
+              客户
             </TableHead>
             <TableHead class="py-3 text-[12px] font-semibold uppercase tracking-wider text-[#161c24]">
-              Plan
+              方案
             </TableHead>
             <TableHead 
               class="py-3 text-[12px] font-semibold uppercase tracking-wider text-[#161c24] cursor-pointer select-none hover:text-[#2D5AF2] transition-colors"
               @click="toggleSort('date')"
             >
               <div class="flex items-center gap-1">
-                Date
+                日期
                 <ArrowUpDown class="h-3 w-3" />
               </div>
             </TableHead>
             <TableHead class="py-3 text-[12px] font-semibold uppercase tracking-wider text-[#161c24]">
-              Status
+              状态
             </TableHead>
             <TableHead 
               class="py-3 pr-6 text-right text-[12px] font-semibold uppercase tracking-wider text-[#161c24] cursor-pointer select-none hover:text-[#2D5AF2] transition-colors"
               @click="toggleSort('amount')"
             >
               <div class="flex items-center justify-end gap-1">
-                Amount
+                金额
                 <ArrowUpDown class="h-3 w-3" />
               </div>
             </TableHead>
           </TableRow>
         </TableHeader>
 
-        <!-- Body with precise 12px vertical padding (py-3) and thin border separators -->
+        <!-- 表格内容 -->
         <TableBody class="divide-y divide-[#E2E4E9]">
           <TableRow 
             v-for="txn in filteredTransactions" 
@@ -331,12 +331,12 @@ const getStatusDot = (status: string) => {
               />
             </TableCell>
 
-            <!-- Invoice ID -->
+            <!-- 账单编号 -->
             <TableCell class="py-3 font-mono text-[12px] font-semibold text-[#161c24]">
               {{ txn.id }}
             </TableCell>
 
-            <!-- Client Info -->
+            <!-- 客户信息 -->
             <TableCell class="py-3">
               <div class="flex items-center gap-3">
                 <img 
@@ -355,7 +355,7 @@ const getStatusDot = (status: string) => {
               </div>
             </TableCell>
 
-            <!-- Plan / Category -->
+            <!-- 方案 / 分类 -->
             <TableCell class="py-3">
               <div class="flex flex-col">
                 <span class="text-[13px] font-medium text-[#161c24]">
@@ -367,12 +367,12 @@ const getStatusDot = (status: string) => {
               </div>
             </TableCell>
 
-            <!-- Date -->
+            <!-- 日期 -->
             <TableCell class="py-3 text-[12px] text-[#434655]">
               {{ txn.date }}
             </TableCell>
 
-            <!-- Status tag: light tertiary background, 4px radius, #1B2129 text and colored micro dot -->
+            <!-- 状态标签 -->
             <TableCell class="py-3">
               <Badge 
                 variant="outline"
@@ -385,7 +385,7 @@ const getStatusDot = (status: string) => {
               </Badge>
             </TableCell>
 
-            <!-- Amount -->
+            <!-- 金额 -->
             <TableCell class="py-3 pr-6 text-right">
               <div class="flex flex-col justify-end">
                 <span class="text-[13px] font-bold text-[#161c24]">
@@ -398,16 +398,16 @@ const getStatusDot = (status: string) => {
             </TableCell>
           </TableRow>
 
-          <!-- Empty State -->
+          <!-- 空状态 -->
           <TableRow v-if="filteredTransactions.length === 0">
             <TableCell colspan="7" class="py-12 text-center">
               <div class="flex flex-col items-center justify-center gap-3">
                 <span class="flex h-12 w-12 items-center justify-center rounded-[8px] bg-[#F5F6F7] text-[#434655]">
                   <XCircle class="h-6 w-6" />
                 </span>
-                <h4 class="text-[14px] font-semibold text-[#161c24]">No transactions found</h4>
+                <h4 class="text-[14px] font-semibold text-[#161c24]">未找到交易记录</h4>
                 <p class="max-w-xs text-xs text-[#434655]">
-                  Try adjusting your search query or filters to find what you are looking for.
+                  请调整搜索关键词或筛选条件后重试。
                 </p>
                 <Button 
                   variant="outline" 
@@ -415,39 +415,39 @@ const getStatusDot = (status: string) => {
                   class="mt-2 h-8 border-[#E2E4E9] bg-[#F5F6F7] hover:bg-[#E2E4E9] text-[12px] text-[#161c24] rounded-[4px]"
                   @click="resetFilters"
                 >
-                  Clear all filters
+                  清空筛选
                 </Button>
               </div>
             </TableCell>
           </TableRow>
         </TableBody>
 
-        <!-- Dynamic Table Footer using surface-subtle #F5F6F7, borders #E2E4E9 and exact text colors -->
+        <!-- 动态表尾 -->
         <TableFooter class="bg-[#F5F6F7]/50 border-t border-[#E2E4E9]">
           <TableRow>
             <TableCell colspan="5" class="py-4 pl-6 text-[12px] text-[#434655]">
               <span v-if="selectedTxns.size > 0" class="font-semibold text-[#2D5AF2]">
-                Selected {{ selectedTxns.size }} record(s)
+                已选择 {{ selectedTxns.size }} 条记录
               </span>
               <span v-else>
-                Showing {{ filteredTransactions.length }} of {{ initialTransactions.length }} transactions
+                正在显示 {{ filteredTransactions.length }} / {{ initialTransactions.length }} 条交易
               </span>
             </TableCell>
             <TableCell class="py-4 text-[12px] font-semibold text-[#161c24] uppercase tracking-wider">
-              Total Sub-amount
+              小计金额
             </TableCell>
             <TableCell class="py-4 pr-6 text-right text-[14px] font-bold text-[#2D5AF2]">
-              ${{ totalAmount.toFixed(2) }}
+              ${{ total金额.toFixed(2) }}
             </TableCell>
           </TableRow>
         </TableFooter>
       </Table>
     </div>
 
-    <!-- Quick Export Bar using ghost button and subtle borders -->
+    <!-- 快速导出栏 -->
     <div class="flex items-center justify-between border-t border-[#E2E4E9] bg-[#F5F6F7]/30 px-6 py-3.5">
       <span class="text-[11px] text-[#434655]">
-        Data updated 2 minutes ago. Powered by shadcn-vue & Systematic Clarity.
+        数据更新于 2 分钟前。由 shadcn-vue 与 Systematic Clarity 驱动。
       </span>
       <Button 
         variant="ghost" 
@@ -456,7 +456,7 @@ const getStatusDot = (status: string) => {
         :disabled="filteredTransactions.length === 0"
       >
         <Download class="h-3.5 w-3.5" />
-        <span>Export CSV</span>
+        <span>导出 CSV</span>
       </Button>
     </div>
   </div>

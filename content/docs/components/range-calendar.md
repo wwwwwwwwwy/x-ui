@@ -1,33 +1,37 @@
 ---
 title: RangeCalendar
-description: RangeCalendar component documentation generated from source.
+description: RangeCalendar 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # RangeCalendar
 
-RangeCalendar component documentation generated from local source APIs.
+RangeCalendar 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+RangeCalendar 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/range-calendar.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { RangeCalendar, RangeCalendarCell, RangeCalendarCellTrigger, RangeCalendarGrid, RangeCalendarGridBody, RangeCalendarGridHead, RangeCalendarGridRow, RangeCalendarHeadCell, RangeCalendarHeader, RangeCalendarHeading, RangeCalendarNextButton, RangeCalendarPrevButton } from '@/components/ui/range-calendar'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <RangeCalendar>
-  Example content
+  示例内容
 </RangeCalendar>
 ```
 
-## Components
+## 组件导出
 
 - `RangeCalendar`
 - `RangeCalendarCell`
@@ -42,13 +46,13 @@ import { RangeCalendar, RangeCalendarCell, RangeCalendarCellTrigger, RangeCalend
 - `RangeCalendarNextButton`
 - `RangeCalendarPrevButton`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `RangeCalendar` | `props` | `RangeCalendarRootProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendar :example-prop="example" />` |
 | `RangeCalendarCell` | `props` | `RangeCalendarCellProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendarCell :example-prop="example" />` |
@@ -65,31 +69,31 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `RangeCalendar` | `emits` | `RangeCalendarRootEmits` | `<RangeCalendar @emits="emits" />` |
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `RangeCalendarCell` | `default` | `<RangeCalendarCell>Content</RangeCalendarCell>` |
-| `RangeCalendarCellTrigger` | `default` | `<RangeCalendarCellTrigger>Content</RangeCalendarCellTrigger>` |
-| `RangeCalendarGrid` | `default` | `<RangeCalendarGrid>Content</RangeCalendarGrid>` |
-| `RangeCalendarGridBody` | `default` | `<RangeCalendarGridBody>Content</RangeCalendarGridBody>` |
-| `RangeCalendarGridHead` | `default` | `<RangeCalendarGridHead>Content</RangeCalendarGridHead>` |
-| `RangeCalendarGridRow` | `default` | `<RangeCalendarGridRow>Content</RangeCalendarGridRow>` |
-| `RangeCalendarHeadCell` | `default` | `<RangeCalendarHeadCell>Content</RangeCalendarHeadCell>` |
-| `RangeCalendarHeader` | `default` | `<RangeCalendarHeader>Content</RangeCalendarHeader>` |
-| `RangeCalendarHeading` | `default` | `<RangeCalendarHeading>Content</RangeCalendarHeading>` |
-| `RangeCalendarNextButton` | `default` | `<RangeCalendarNextButton>Content</RangeCalendarNextButton>` |
-| `RangeCalendarPrevButton` | `default` | `<RangeCalendarPrevButton>Content</RangeCalendarPrevButton>` |
+| `RangeCalendarCell` | `default` | `<RangeCalendarCell>内容</RangeCalendarCell>` |
+| `RangeCalendarCellTrigger` | `default` | `<RangeCalendarCellTrigger>内容</RangeCalendarCellTrigger>` |
+| `RangeCalendarGrid` | `default` | `<RangeCalendarGrid>内容</RangeCalendarGrid>` |
+| `RangeCalendarGridBody` | `default` | `<RangeCalendarGridBody>内容</RangeCalendarGridBody>` |
+| `RangeCalendarGridHead` | `default` | `<RangeCalendarGridHead>内容</RangeCalendarGridHead>` |
+| `RangeCalendarGridRow` | `default` | `<RangeCalendarGridRow>内容</RangeCalendarGridRow>` |
+| `RangeCalendarHeadCell` | `default` | `<RangeCalendarHeadCell>内容</RangeCalendarHeadCell>` |
+| `RangeCalendarHeader` | `default` | `<RangeCalendarHeader>内容</RangeCalendarHeader>` |
+| `RangeCalendarHeading` | `default` | `<RangeCalendarHeading>内容</RangeCalendarHeading>` |
+| `RangeCalendarNextButton` | `default` | `<RangeCalendarNextButton>内容</RangeCalendarNextButton>` |
+| `RangeCalendarPrevButton` | `default` | `<RangeCalendarPrevButton>内容</RangeCalendarPrevButton>` |
 
 ### Exports
 
-No additional local API exports were found.
+源码中未发现额外本地 API 导出。
 
-## API Examples
+## API 示例
 
 ### RangeCalendar.exampleProp
 
@@ -172,73 +176,74 @@ No additional local API exports were found.
 ### RangeCalendarCell slot: default
 
 ```vue
-<RangeCalendarCell>Content</RangeCalendarCell>
+<RangeCalendarCell>内容</RangeCalendarCell>
 ```
 
 ### RangeCalendarCellTrigger slot: default
 
 ```vue
-<RangeCalendarCellTrigger>Content</RangeCalendarCellTrigger>
+<RangeCalendarCellTrigger>内容</RangeCalendarCellTrigger>
 ```
 
 ### RangeCalendarGrid slot: default
 
 ```vue
-<RangeCalendarGrid>Content</RangeCalendarGrid>
+<RangeCalendarGrid>内容</RangeCalendarGrid>
 ```
 
 ### RangeCalendarGridBody slot: default
 
 ```vue
-<RangeCalendarGridBody>Content</RangeCalendarGridBody>
+<RangeCalendarGridBody>内容</RangeCalendarGridBody>
 ```
 
 ### RangeCalendarGridHead slot: default
 
 ```vue
-<RangeCalendarGridHead>Content</RangeCalendarGridHead>
+<RangeCalendarGridHead>内容</RangeCalendarGridHead>
 ```
 
 ### RangeCalendarGridRow slot: default
 
 ```vue
-<RangeCalendarGridRow>Content</RangeCalendarGridRow>
+<RangeCalendarGridRow>内容</RangeCalendarGridRow>
 ```
 
 ### RangeCalendarHeadCell slot: default
 
 ```vue
-<RangeCalendarHeadCell>Content</RangeCalendarHeadCell>
+<RangeCalendarHeadCell>内容</RangeCalendarHeadCell>
 ```
 
 ### RangeCalendarHeader slot: default
 
 ```vue
-<RangeCalendarHeader>Content</RangeCalendarHeader>
+<RangeCalendarHeader>内容</RangeCalendarHeader>
 ```
 
 ### RangeCalendarHeading slot: default
 
 ```vue
-<RangeCalendarHeading>Content</RangeCalendarHeading>
+<RangeCalendarHeading>内容</RangeCalendarHeading>
 ```
 
 ### RangeCalendarNextButton slot: default
 
 ```vue
-<RangeCalendarNextButton>Content</RangeCalendarNextButton>
+<RangeCalendarNextButton>内容</RangeCalendarNextButton>
 ```
 
 ### RangeCalendarPrevButton slot: default
 
 ```vue
-<RangeCalendarPrevButton>Content</RangeCalendarPrevButton>
+<RangeCalendarPrevButton>内容</RangeCalendarPrevButton>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

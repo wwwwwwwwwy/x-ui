@@ -8,25 +8,25 @@
   "files": [
     {
       "path": "registry/default/avatar/Avatar.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport type { AvatarVariants } from \".\"\nimport { AvatarRoot } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\nimport { avatarVariant } from \".\"\n\n/**\n * Avatar 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = withDefaults(defineProps<{\n  class?: HTMLAttributes[\"class\"]\n  size?: AvatarVariants[\"size\"]\n  shape?: AvatarVariants[\"shape\"]\n}>(), {\n  size: \"sm\",\n  shape: \"circle\",\n})\n</script>\n\n<template>\n  <AvatarRoot :class=\"cn(avatarVariant({ size, shape }), props.class)\">\n    <slot />\n  </AvatarRoot>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport type { AvatarVariants } from \".\"\nimport { AvatarRoot } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\nimport { avatarVariant } from \".\"\n\nconst props = withDefaults(defineProps<{\n  class?: HTMLAttributes[\"class\"]\n  size?: AvatarVariants[\"size\"]\n  shape?: AvatarVariants[\"shape\"]\n}>(), {\n  size: \"sm\",\n  shape: \"circle\",\n})\n</script>\n\n<template>\n  <AvatarRoot :class=\"cn(avatarVariant({ size, shape }), props.class)\">\n    <slot />\n  </AvatarRoot>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/avatar/Avatar.vue"
     },
     {
       "path": "registry/default/avatar/AvatarFallback.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { AvatarFallbackProps } from \"reka-ui\"\nimport { AvatarFallback } from \"reka-ui\"\n\n/**\n * AvatarFallback 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<AvatarFallbackProps>()\n</script>\n\n<template>\n  <AvatarFallback v-bind=\"props\">\n    <slot />\n  </AvatarFallback>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { AvatarFallbackProps } from \"reka-ui\"\nimport { AvatarFallback } from \"reka-ui\"\n\nconst props = defineProps<AvatarFallbackProps>()\n</script>\n\n<template>\n  <AvatarFallback v-bind=\"props\">\n    <slot />\n  </AvatarFallback>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/avatar/AvatarFallback.vue"
     },
     {
       "path": "registry/default/avatar/AvatarImage.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { AvatarImageProps } from \"reka-ui\"\nimport { AvatarImage } from \"reka-ui\"\n\n/**\n * AvatarImage 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<AvatarImageProps>()\n</script>\n\n<template>\n  <AvatarImage v-bind=\"props\" class=\"h-full w-full object-cover\">\n    <slot />\n  </AvatarImage>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { AvatarImageProps } from \"reka-ui\"\nimport { AvatarImage } from \"reka-ui\"\n\nconst props = defineProps<AvatarImageProps>()\n</script>\n\n<template>\n  <AvatarImage v-bind=\"props\" class=\"h-full w-full object-cover\">\n    <slot />\n  </AvatarImage>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/avatar/AvatarImage.vue"
     },
     {
       "path": "registry/default/avatar/index.ts",
-      "content": "import type { VariantProps } from \"class-variance-authority\"\nimport { cva } from \"class-variance-authority\"\n\n/**\n * 导出 Avatar 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as Avatar } from \"./Avatar.vue\"\n/**\n * 导出 AvatarFallback 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as AvatarFallback } from \"./AvatarFallback.vue\"\n/**\n * 导出 AvatarImage 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as AvatarImage } from \"./AvatarImage.vue\"\n\n/**\n * avatarVariant 定义组件的样式变体、默认值和视觉语义，供组件 props 复用。\n */\nexport const avatarVariant = cva(\n  \"inline-flex shrink-0 select-none items-center justify-center overflow-hidden bg-gray-100 font-normal text-gray-700\",\n  {\n    variants: {\n      size: {\n        sm: \"h-8 w-8 text-sm\",\n        base: \"h-10 w-10 text-xl\",\n        lg: \"h-16 w-16 text-xxxl\",\n      },\n      shape: {\n        circle: \"rounded-full\",\n        square: \"rounded-md\",\n      },\n    },\n  },\n)\n\n/**\n * 导出 AvatarVariants 类型，供使用方获得与组件 variant 或 API 一致的 TypeScript 约束。\n */\nexport type AvatarVariants = VariantProps<typeof avatarVariant>\n",
+      "content": "import type { VariantProps } from \"class-variance-authority\"\nimport { cva } from \"class-variance-authority\"\n\nexport { default as Avatar } from \"./Avatar.vue\"\nexport { default as AvatarFallback } from \"./AvatarFallback.vue\"\nexport { default as AvatarImage } from \"./AvatarImage.vue\"\n\nexport const avatarVariant = cva(\n  \"inline-flex items-center justify-center font-normal text-foreground select-none shrink-0 bg-secondary overflow-hidden\",\n  {\n    variants: {\n      size: {\n        sm: \"h-10 w-10 text-xs\",\n        base: \"h-16 w-16 text-2xl\",\n        lg: \"h-32 w-32 text-5xl\",\n      },\n      shape: {\n        circle: \"rounded-full\",\n        square: \"rounded-md\",\n      },\n    },\n  },\n)\n\nexport type AvatarVariants = VariantProps<typeof avatarVariant>\n",
       "type": "registry:ui",
       "target": "components/ui/avatar/index.ts"
     }

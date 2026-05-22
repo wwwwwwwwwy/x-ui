@@ -6,43 +6,43 @@
   "files": [
     {
       "path": "registry/default/card/Card.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Card 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    :class=\"\n      cn(\n        'rounded-lg border bg-card text-card-foreground shadow-sm',\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    :class=\"\n      cn(\n        'rounded-lg border bg-card text-card-foreground shadow-sm',\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/card/Card.vue"
     },
     {
       "path": "registry/default/card/CardContent.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * CardContent 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div :class=\"cn('p-6 pt-0', props.class)\">\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div :class=\"cn('p-6 pt-0', props.class)\">\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/card/CardContent.vue"
     },
     {
       "path": "registry/default/card/CardDescription.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * CardDescription 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <p :class=\"cn('text-sm text-muted-foreground', props.class)\">\n    <slot />\n  </p>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <p :class=\"cn('text-sm text-muted-foreground', props.class)\">\n    <slot />\n  </p>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/card/CardDescription.vue"
     },
     {
       "path": "registry/default/card/CardFooter.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * CardFooter 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div :class=\"cn('flex items-center p-6 pt-0', props.class)\">\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div :class=\"cn('flex items-center p-6 pt-0', props.class)\">\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/card/CardFooter.vue"
     },
     {
       "path": "registry/default/card/CardHeader.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * CardHeader 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div :class=\"cn('flex flex-col gap-y-1.5 p-6', props.class)\">\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div :class=\"cn('flex flex-col gap-y-1.5 p-6', props.class)\">\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/card/CardHeader.vue"
     },
     {
       "path": "registry/default/card/CardTitle.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * CardTitle 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <h3\n    :class=\"\n      cn('text-2xl font-semibold leading-none tracking-tight', props.class)\n    \"\n  >\n    <slot />\n  </h3>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <h3\n    :class=\"\n      cn('text-2xl font-semibold leading-none tracking-tight', props.class)\n    \"\n  >\n    <slot />\n  </h3>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/card/CardTitle.vue"
     },
     {
       "path": "registry/default/card/index.ts",
-      "content": "/**\n * 导出 Card 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as Card } from \"./Card.vue\"\n/**\n * 导出 CardContent 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CardContent } from \"./CardContent.vue\"\n/**\n * 导出 CardDescription 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CardDescription } from \"./CardDescription.vue\"\n/**\n * 导出 CardFooter 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CardFooter } from \"./CardFooter.vue\"\n/**\n * 导出 CardHeader 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CardHeader } from \"./CardHeader.vue\"\n/**\n * 导出 CardTitle 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CardTitle } from \"./CardTitle.vue\"\n",
+      "content": "export { default as Card } from \"./Card.vue\"\nexport { default as CardContent } from \"./CardContent.vue\"\nexport { default as CardDescription } from \"./CardDescription.vue\"\nexport { default as CardFooter } from \"./CardFooter.vue\"\nexport { default as CardHeader } from \"./CardHeader.vue\"\nexport { default as CardTitle } from \"./CardTitle.vue\"\n",
       "type": "registry:ui",
       "target": "components/ui/card/index.ts"
     }

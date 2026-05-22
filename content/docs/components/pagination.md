@@ -1,33 +1,37 @@
 ---
 title: Pagination
-description: Pagination component documentation generated from source.
+description: Pagination 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # Pagination
 
-Pagination component documentation generated from local source APIs.
+Pagination 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+Pagination 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/pagination.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationFirst, PaginationItem, PaginationLast, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <Pagination>
-  Example content
+  示例内容
 </Pagination>
 ```
 
-## Components
+## 组件导出
 
 - `Pagination`
 - `PaginationContent`
@@ -38,13 +42,13 @@ import { Pagination, PaginationContent, PaginationEllipsis, PaginationFirst, Pag
 - `PaginationNext`
 - `PaginationPrevious`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Pagination` | `props` | `PaginationRootProps & { class?: HTMLAttributes["class"] }` | `<Pagination :example-prop="example" />` |
 | `PaginationContent` | `props` | `PaginationListProps & { class?: HTMLAttributes["class"] }` | `<PaginationContent :example-prop="example" />` |
@@ -57,28 +61,28 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Pagination` | `emits` | `PaginationRootEmits` | `<Pagination @emits="emits" />` |
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `Pagination` | `default` | `<Pagination>Content</Pagination>` |
-| `PaginationContent` | `default` | `<PaginationContent>Content</PaginationContent>` |
-| `PaginationEllipsis` | `default` | `<PaginationEllipsis>Content</PaginationEllipsis>` |
-| `PaginationFirst` | `default` | `<PaginationFirst>Content</PaginationFirst>` |
-| `PaginationItem` | `default` | `<PaginationItem>Content</PaginationItem>` |
-| `PaginationLast` | `default` | `<PaginationLast>Content</PaginationLast>` |
-| `PaginationNext` | `default` | `<PaginationNext>Content</PaginationNext>` |
-| `PaginationPrevious` | `default` | `<PaginationPrevious>Content</PaginationPrevious>` |
+| `Pagination` | `default` | `<Pagination>内容</Pagination>` |
+| `PaginationContent` | `default` | `<PaginationContent>内容</PaginationContent>` |
+| `PaginationEllipsis` | `default` | `<PaginationEllipsis>内容</PaginationEllipsis>` |
+| `PaginationFirst` | `default` | `<PaginationFirst>内容</PaginationFirst>` |
+| `PaginationItem` | `default` | `<PaginationItem>内容</PaginationItem>` |
+| `PaginationLast` | `default` | `<PaginationLast>内容</PaginationLast>` |
+| `PaginationNext` | `default` | `<PaginationNext>内容</PaginationNext>` |
+| `PaginationPrevious` | `default` | `<PaginationPrevious>内容</PaginationPrevious>` |
 
 ### Exports
 
-No additional local API exports were found.
+源码中未发现额外本地 API 导出。
 
-## API Examples
+## API 示例
 
 ### Pagination.exampleProp
 
@@ -137,55 +141,56 @@ No additional local API exports were found.
 ### Pagination slot: default
 
 ```vue
-<Pagination>Content</Pagination>
+<Pagination>内容</Pagination>
 ```
 
 ### PaginationContent slot: default
 
 ```vue
-<PaginationContent>Content</PaginationContent>
+<PaginationContent>内容</PaginationContent>
 ```
 
 ### PaginationEllipsis slot: default
 
 ```vue
-<PaginationEllipsis>Content</PaginationEllipsis>
+<PaginationEllipsis>内容</PaginationEllipsis>
 ```
 
 ### PaginationFirst slot: default
 
 ```vue
-<PaginationFirst>Content</PaginationFirst>
+<PaginationFirst>内容</PaginationFirst>
 ```
 
 ### PaginationItem slot: default
 
 ```vue
-<PaginationItem>Content</PaginationItem>
+<PaginationItem>内容</PaginationItem>
 ```
 
 ### PaginationLast slot: default
 
 ```vue
-<PaginationLast>Content</PaginationLast>
+<PaginationLast>内容</PaginationLast>
 ```
 
 ### PaginationNext slot: default
 
 ```vue
-<PaginationNext>Content</PaginationNext>
+<PaginationNext>内容</PaginationNext>
 ```
 
 ### PaginationPrevious slot: default
 
 ```vue
-<PaginationPrevious>Content</PaginationPrevious>
+<PaginationPrevious>内容</PaginationPrevious>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `lucide-vue-next`
 
 ## Registry
 

@@ -4,6 +4,7 @@
     "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
+      "@/registry/default/ui/*": ["./registry/default/*"],
       "@/*": ["./app/*", "./*"],
       "~~/*": ["./*"]
     }

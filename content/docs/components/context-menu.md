@@ -1,33 +1,37 @@
 ---
 title: ContextMenu
-description: ContextMenu component documentation generated from source.
+description: ContextMenu 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # ContextMenu
 
-ContextMenu component documentation generated from local source APIs.
+ContextMenu 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+ContextMenu 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/context-menu.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuGroup, ContextMenuItem, ContextMenuLabel, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubContent, ContextMenuSubTrigger, ContextMenuTrigger } from '@/components/ui/context-menu'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <ContextMenu>
-  Example content
+  示例内容
 </ContextMenu>
 ```
 
-## Components
+## 组件导出
 
 - `ContextMenu`
 - `ContextMenuCheckboxItem`
@@ -44,13 +48,13 @@ import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuGr
 - `ContextMenuSubTrigger`
 - `ContextMenuTrigger`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `ContextMenu` | `props` | `ContextMenuRootProps` | `<ContextMenu :example-prop="example" />` |
 | `ContextMenuCheckboxItem` | `props` | `ContextMenuCheckboxItemProps & { class?: HTMLAttributes["class"] }` | `<ContextMenuCheckboxItem :example-prop="example" />` |
@@ -70,7 +74,7 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `ContextMenu` | `emits` | `ContextMenuRootEmits` | `<ContextMenu @emits="emits" />` |
 | `ContextMenuCheckboxItem` | `emits` | `ContextMenuCheckboxItemEmits` | `<ContextMenuCheckboxItem @emits="emits" />` |
@@ -83,28 +87,28 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `ContextMenu` | `default` | `<ContextMenu>Content</ContextMenu>` |
-| `ContextMenuCheckboxItem` | `default` | `<ContextMenuCheckboxItem>Content</ContextMenuCheckboxItem>` |
-| `ContextMenuContent` | `default` | `<ContextMenuContent>Content</ContextMenuContent>` |
-| `ContextMenuGroup` | `default` | `<ContextMenuGroup>Content</ContextMenuGroup>` |
-| `ContextMenuItem` | `default` | `<ContextMenuItem>Content</ContextMenuItem>` |
-| `ContextMenuLabel` | `default` | `<ContextMenuLabel>Content</ContextMenuLabel>` |
-| `ContextMenuPortal` | `default` | `<ContextMenuPortal>Content</ContextMenuPortal>` |
-| `ContextMenuRadioGroup` | `default` | `<ContextMenuRadioGroup>Content</ContextMenuRadioGroup>` |
-| `ContextMenuRadioItem` | `default` | `<ContextMenuRadioItem>Content</ContextMenuRadioItem>` |
-| `ContextMenuShortcut` | `default` | `<ContextMenuShortcut>Content</ContextMenuShortcut>` |
-| `ContextMenuSub` | `default` | `<ContextMenuSub>Content</ContextMenuSub>` |
-| `ContextMenuSubContent` | `default` | `<ContextMenuSubContent>Content</ContextMenuSubContent>` |
-| `ContextMenuSubTrigger` | `default` | `<ContextMenuSubTrigger>Content</ContextMenuSubTrigger>` |
-| `ContextMenuTrigger` | `default` | `<ContextMenuTrigger>Content</ContextMenuTrigger>` |
+| `ContextMenu` | `default` | `<ContextMenu>内容</ContextMenu>` |
+| `ContextMenuCheckboxItem` | `default` | `<ContextMenuCheckboxItem>内容</ContextMenuCheckboxItem>` |
+| `ContextMenuContent` | `default` | `<ContextMenuContent>内容</ContextMenuContent>` |
+| `ContextMenuGroup` | `default` | `<ContextMenuGroup>内容</ContextMenuGroup>` |
+| `ContextMenuItem` | `default` | `<ContextMenuItem>内容</ContextMenuItem>` |
+| `ContextMenuLabel` | `default` | `<ContextMenuLabel>内容</ContextMenuLabel>` |
+| `ContextMenuPortal` | `default` | `<ContextMenuPortal>内容</ContextMenuPortal>` |
+| `ContextMenuRadioGroup` | `default` | `<ContextMenuRadioGroup>内容</ContextMenuRadioGroup>` |
+| `ContextMenuRadioItem` | `default` | `<ContextMenuRadioItem>内容</ContextMenuRadioItem>` |
+| `ContextMenuShortcut` | `default` | `<ContextMenuShortcut>内容</ContextMenuShortcut>` |
+| `ContextMenuSub` | `default` | `<ContextMenuSub>内容</ContextMenuSub>` |
+| `ContextMenuSubContent` | `default` | `<ContextMenuSubContent>内容</ContextMenuSubContent>` |
+| `ContextMenuSubTrigger` | `default` | `<ContextMenuSubTrigger>内容</ContextMenuSubTrigger>` |
+| `ContextMenuTrigger` | `default` | `<ContextMenuTrigger>内容</ContextMenuTrigger>` |
 
 ### Exports
 
-No additional local API exports were found.
+源码中未发现额外本地 API 导出。
 
-## API Examples
+## API 示例
 
 ### ContextMenu.exampleProp
 
@@ -247,91 +251,92 @@ No additional local API exports were found.
 ### ContextMenu slot: default
 
 ```vue
-<ContextMenu>Content</ContextMenu>
+<ContextMenu>内容</ContextMenu>
 ```
 
 ### ContextMenuCheckboxItem slot: default
 
 ```vue
-<ContextMenuCheckboxItem>Content</ContextMenuCheckboxItem>
+<ContextMenuCheckboxItem>内容</ContextMenuCheckboxItem>
 ```
 
 ### ContextMenuContent slot: default
 
 ```vue
-<ContextMenuContent>Content</ContextMenuContent>
+<ContextMenuContent>内容</ContextMenuContent>
 ```
 
 ### ContextMenuGroup slot: default
 
 ```vue
-<ContextMenuGroup>Content</ContextMenuGroup>
+<ContextMenuGroup>内容</ContextMenuGroup>
 ```
 
 ### ContextMenuItem slot: default
 
 ```vue
-<ContextMenuItem>Content</ContextMenuItem>
+<ContextMenuItem>内容</ContextMenuItem>
 ```
 
 ### ContextMenuLabel slot: default
 
 ```vue
-<ContextMenuLabel>Content</ContextMenuLabel>
+<ContextMenuLabel>内容</ContextMenuLabel>
 ```
 
 ### ContextMenuPortal slot: default
 
 ```vue
-<ContextMenuPortal>Content</ContextMenuPortal>
+<ContextMenuPortal>内容</ContextMenuPortal>
 ```
 
 ### ContextMenuRadioGroup slot: default
 
 ```vue
-<ContextMenuRadioGroup>Content</ContextMenuRadioGroup>
+<ContextMenuRadioGroup>内容</ContextMenuRadioGroup>
 ```
 
 ### ContextMenuRadioItem slot: default
 
 ```vue
-<ContextMenuRadioItem>Content</ContextMenuRadioItem>
+<ContextMenuRadioItem>内容</ContextMenuRadioItem>
 ```
 
 ### ContextMenuShortcut slot: default
 
 ```vue
-<ContextMenuShortcut>Content</ContextMenuShortcut>
+<ContextMenuShortcut>内容</ContextMenuShortcut>
 ```
 
 ### ContextMenuSub slot: default
 
 ```vue
-<ContextMenuSub>Content</ContextMenuSub>
+<ContextMenuSub>内容</ContextMenuSub>
 ```
 
 ### ContextMenuSubContent slot: default
 
 ```vue
-<ContextMenuSubContent>Content</ContextMenuSubContent>
+<ContextMenuSubContent>内容</ContextMenuSubContent>
 ```
 
 ### ContextMenuSubTrigger slot: default
 
 ```vue
-<ContextMenuSubTrigger>Content</ContextMenuSubTrigger>
+<ContextMenuSubTrigger>内容</ContextMenuSubTrigger>
 ```
 
 ### ContextMenuTrigger slot: default
 
 ```vue
-<ContextMenuTrigger>Content</ContextMenuTrigger>
+<ContextMenuTrigger>内容</ContextMenuTrigger>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

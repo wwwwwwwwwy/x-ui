@@ -1,46 +1,50 @@
 ---
 title: ChartCrosshair
-description: ChartCrosshair component documentation generated from source.
+description: ChartCrosshair 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # ChartCrosshair
 
-ChartCrosshair component documentation generated from local source APIs.
+ChartCrosshair 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+ChartCrosshair 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/chart.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { ChartCrosshair, ChartLegend, ChartSingleTooltip, ChartTooltip } from '@/components/ui/chart'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <ChartCrosshair>
-  Example content
+  示例内容
 </ChartCrosshair>
 ```
 
-## Components
+## 组件导出
 
 - `ChartCrosshair`
 - `ChartLegend`
 - `ChartSingleTooltip`
 - `ChartTooltip`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `ChartCrosshair` | `colors` | `string[]` | `<ChartCrosshair :colors="example" />` |
 | `ChartCrosshair` | `index` | `string` | `<ChartCrosshair :index="example" />` |
@@ -59,21 +63,21 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `ChartLegend` | `legendItemClick` | `[d: BulletLegendItemInterface` | `<ChartLegend @legendItemClick="legendItemClick" />` |
 | `ChartLegend` | `update:items` | `[payload: BulletLegendItemInterface[]]` | `<ChartLegend @update:items="updateItems" />` |
 
 ### Slots
 
-No explicit local slots were found in source.
+源码中未发现显式本地 slots。
 
 ### Exports
 
 - `export function defaultColors(count: number = 3) {`
 - `export * from "./interface"`
 
-## API Examples
+## API 示例
 
 ### ChartCrosshair.colors
 
@@ -171,7 +175,7 @@ No explicit local slots were found in source.
 <ChartLegend @update:items="updateItems" />
 ```
 
-## Dependencies
+## 依赖
 
 - `@unovis/ts`
 - `@unovis/vue`

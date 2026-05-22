@@ -4,9 +4,6 @@ import type { InputGroupVariants } from "."
 import { cn } from "@/lib/utils"
 import { inputGroupAddonVariants } from "."
 
-/**
- * InputGroupAddon 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。
- */
 const props = withDefaults(defineProps<{
   align?: InputGroupVariants["align"]
   class?: HTMLAttributes["class"]
@@ -14,9 +11,6 @@ const props = withDefaults(defineProps<{
   align: "inline-start",
 })
 
-/**
- * handleInputGroupAddonClick 处理 InputGroupAddon 的本地交互逻辑，并保持对外状态更新语义稳定。
- */
 function handleInputGroupAddonClick(e: MouseEvent) {
   const currentTarget = e.currentTarget as HTMLElement | null
   const target = e.target as HTMLElement | null

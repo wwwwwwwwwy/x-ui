@@ -9,13 +9,13 @@
   "files": [
     {
       "path": "registry/default/separator/Separator.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { SeparatorProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { Separator } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Separator 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = withDefaults(defineProps<\n  SeparatorProps & { class?: HTMLAttributes[\"class\"] }\n>(), {\n  orientation: \"horizontal\",\n  decorative: true,\n})\n\n/**\n * 移除仅由 Separator 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <Separator\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'shrink-0 bg-border',\n        props.orientation === 'horizontal' ? 'h-px w-full' : 'w-px h-full',\n        props.class,\n      )\n    \"\n  />\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { SeparatorProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { Separator } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(defineProps<\n  SeparatorProps & { class?: HTMLAttributes[\"class\"] }\n>(), {\n  orientation: \"horizontal\",\n  decorative: true,\n})\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <Separator\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'shrink-0 bg-border',\n        props.orientation === 'horizontal' ? 'h-px w-full' : 'w-px h-full',\n        props.class,\n      )\n    \"\n  />\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/separator/Separator.vue"
     },
     {
       "path": "registry/default/separator/index.ts",
-      "content": "/**\n * 导出 Separator 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as Separator } from \"./Separator.vue\"\n",
+      "content": "export { default as Separator } from \"./Separator.vue\"\n",
       "type": "registry:ui",
       "target": "components/ui/separator/index.ts"
     }

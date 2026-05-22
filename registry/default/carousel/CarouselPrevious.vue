@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import type { WithClassAsProps } from "./interface"
-import { ActionIcon033 as ArrowLeft } from "@meri-design/icon-vue"
+import { ArrowLeft } from "lucide-vue-next"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/default/ui/button"
 import { useCarousel } from "./useCarousel"
 
-/**
- * CarouselPrevious 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。
- */
 const props = defineProps<WithClassAsProps>()
 
 const { orientation, canScrollPrev, scrollPrev } = useCarousel()
@@ -27,7 +24,7 @@ const { orientation, canScrollPrev, scrollPrev } = useCarousel()
     @click="scrollPrev"
   >
     <slot>
-      <ArrowLeft size="16" class="h-4 w-4 text-current" />
+      <ArrowLeft class="h-4 w-4 text-current" />
       <span class="sr-only">Previous Slide</span>
     </slot>
   </Button>

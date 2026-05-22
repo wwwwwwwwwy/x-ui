@@ -5,9 +5,6 @@ import { cn } from "@/lib/utils"
 import TableCell from "./TableCell.vue"
 import TableRow from "./TableRow.vue"
 
-/**
- * TableEmpty 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。
- */
 const props = withDefaults(defineProps<{
   class?: HTMLAttributes["class"]
   colspan?: number
@@ -15,9 +12,6 @@ const props = withDefaults(defineProps<{
   colspan: 1,
 })
 
-/**
- * 移除仅由 TableEmpty 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。
- */
 const delegatedProps = reactiveOmit(props, "class")
 </script>
 

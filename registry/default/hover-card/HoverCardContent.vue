@@ -16,14 +16,8 @@ const props = withDefaults(
   },
 )
 
-/**
- * 移除仅由 HoverCardContent 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。
- */
 const delegatedProps = reactiveOmit(props, "class")
 
-/**
- * 转发 HoverCardContent 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。
- */
 const forwardedProps = useForwardProps(delegatedProps)
 </script>
 

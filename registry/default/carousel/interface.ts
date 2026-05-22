@@ -9,9 +9,6 @@ type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
 type CarouselOptions = UseCarouselParameters[0]
 type CarouselPlugin = UseCarouselParameters[1]
 
-/**
- * 导出 UnwrapRefCarouselApi 类型，供使用方获得与组件 variant 或 API 一致的 TypeScript 约束。
- */
 export type UnwrapRefCarouselApi = UnwrapRef<CarouselApi>
 
 export interface CarouselProps {

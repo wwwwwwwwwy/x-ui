@@ -1,46 +1,50 @@
 ---
 title: Accordion
-description: Accordion component documentation generated from source.
+description: Accordion 是基于本仓库源码生成的 shadcn-vue 兼容组件文档。
 ---
 
 # Accordion
 
-Accordion component documentation generated from local source APIs.
+Accordion 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可组合的界面。本文档由本仓库源码自动提取，聚焦本地可验证的 props、events、slots、exports 与依赖。
 
-## Install
+## 设计定位
+
+Accordion 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
+
+## 安装
 
 ```bash
 bunx shadcn-vue@latest add http://localhost:3000/r/accordion.json
 ```
 
-## Import
+## 导入
 
 ```ts
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <Accordion>
-  Example content
+  示例内容
 </Accordion>
 ```
 
-## Components
+## 组件导出
 
 - `Accordion`
 - `AccordionContent`
 - `AccordionItem`
 - `AccordionTrigger`
 
-## Source API
+## 源码 API
 
-The API below is extracted from local source files only. Props/events inherited through external primitives are documented as their source type when they are not expanded locally.
+以下 API 只从本仓库源码中提取。来自 `reka-ui`、`vaul-vue`、`vue-sonner` 等外部 primitive 的继承字段，仅记录本地源码中出现的类型引用，不展开或编造第三方完整 API。
 
 ### Props
 
-| Component | Prop | Type / Source | Example |
+| 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Accordion` | `props` | `AccordionRootProps` | `<Accordion :example-prop="example" />` |
 | `AccordionContent` | `props` | `AccordionContentProps & { class?: HTMLAttributes["class"] }` | `<AccordionContent :example-prop="example" />` |
@@ -49,25 +53,25 @@ The API below is extracted from local source files only. Props/events inherited 
 
 ### Events
 
-| Component | Event | Type / Source | Example |
+| 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
 | `Accordion` | `emits` | `AccordionRootEmits` | `<Accordion @emits="emits" />` |
 
 ### Slots
 
-| Component | Slot | Example |
+| 组件 | Slot | 示例 |
 | --- | --- | --- |
-| `Accordion` | `default` | `<Accordion>Content</Accordion>` |
-| `AccordionContent` | `default` | `<AccordionContent>Content</AccordionContent>` |
-| `AccordionItem` | `default` | `<AccordionItem>Content</AccordionItem>` |
-| `AccordionTrigger` | `default` | `<AccordionTrigger>Content</AccordionTrigger>` |
-| `AccordionTrigger` | `icon` | `<AccordionTrigger> <template #icon>Custom icon</template> </AccordionTrigger>` |
+| `Accordion` | `default` | `<Accordion>内容</Accordion>` |
+| `AccordionContent` | `default` | `<AccordionContent>内容</AccordionContent>` |
+| `AccordionItem` | `default` | `<AccordionItem>内容</AccordionItem>` |
+| `AccordionTrigger` | `default` | `<AccordionTrigger>内容</AccordionTrigger>` |
+| `AccordionTrigger` | `icon` | `<AccordionTrigger> <template #icon>自定义 icon</template> </AccordionTrigger>` |
 
 ### Exports
 
-No additional local API exports were found.
+源码中未发现额外本地 API 导出。
 
-## API Examples
+## API 示例
 
 ### Accordion.exampleProp
 
@@ -102,39 +106,40 @@ No additional local API exports were found.
 ### Accordion slot: default
 
 ```vue
-<Accordion>Content</Accordion>
+<Accordion>内容</Accordion>
 ```
 
 ### AccordionContent slot: default
 
 ```vue
-<AccordionContent>Content</AccordionContent>
+<AccordionContent>内容</AccordionContent>
 ```
 
 ### AccordionItem slot: default
 
 ```vue
-<AccordionItem>Content</AccordionItem>
+<AccordionItem>内容</AccordionItem>
 ```
 
 ### AccordionTrigger slot: default
 
 ```vue
-<AccordionTrigger>Content</AccordionTrigger>
+<AccordionTrigger>内容</AccordionTrigger>
 ```
 
 ### AccordionTrigger slot: icon
 
 ```vue
 <AccordionTrigger>
-  <template #icon>Custom icon</template>
+  <template #icon>自定义 icon</template>
 </AccordionTrigger>
 ```
 
-## Dependencies
+## 依赖
 
 - `reka-ui`
 - `@vueuse/core`
+- `@meri-design/icon-vue`
 
 ## Registry
 

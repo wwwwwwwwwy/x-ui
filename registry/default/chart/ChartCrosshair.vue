@@ -6,9 +6,6 @@ import { VisCrosshair, VisTooltip } from "@unovis/vue"
 import { createApp } from "vue"
 import { ChartTooltip } from "."
 
-/**
- * ChartCrosshair 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。
- */
 const props = withDefaults(defineProps<{
   colors: string[]
   index: string
@@ -18,11 +15,8 @@ const props = withDefaults(defineProps<{
   colors: () => [],
 })
 
-// 使用 WeakMap 缓存每个数据点对应的 Tooltip 内容。
+// Use weakmap to store reference to each datapoint for Tooltip
 const wm = new WeakMap()
-/**
- * template 处理 ChartCrosshair 的本地交互逻辑，并保持对外状态更新语义稳定。
- */
 function template(d: any) {
   if (wm.has(d)) {
     return wm.get(d)
@@ -40,9 +34,6 @@ function template(d: any) {
   }
 }
 
-/**
- * color 处理 ChartCrosshair 的本地交互逻辑，并保持对外状态更新语义稳定。
- */
 function color(d: unknown, i: number) {
   return props.colors[i] ?? "transparent"
 }
