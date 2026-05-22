@@ -5,6 +5,7 @@ const root = process.cwd()
 const registry = JSON.parse(readFileSync(path.join(root, 'registry.json'), 'utf8'))
 const docsDir = path.join(root, 'content/docs/components')
 const appDataDir = path.join(root, 'app/data')
+const examplesDir = path.join(root, 'app/components/examples')
 
 const EXTERNAL_PREFIXES = ['@vueuse/', '@unovis/', '@vee-validate/', 'class-variance-authority', 'embla-carousel-vue', '@meri-design/icon-vue', 'lucide-vue-next', 'reka-ui', 'vaul-vue', 'vee-validate', 'vue-sonner', 'zod']
 const CUSTOM_DEMO_COMPONENTS = new Set(['button', 'badge', 'checkbox', 'switch', 'input', 'table'])
@@ -23,13 +24,6 @@ function read(file) {
 
 function codeFence(code, lang = 'vue') {
   return `\`\`\`${lang}\n${code.trim()}\n\`\`\``
-}
-
-function escapeTemplateLiteral(value) {
-  return String(value)
-    .replace(/\\/g, '\\\\')
-    .replace(/`/g, '\\`')
-    .replace(/\$\{/g, '\\${')
 }
 
 function kebabCase(value) {
@@ -220,11 +214,289 @@ function basicUsageExample(primaryComponent) {
   return `<${primaryComponent}>\n  示例内容\n</${primaryComponent}>`
 }
 
-function generatedDemoCode(item, indexExports) {
-  if (item.name === 'form') {
-    return `<script setup lang="ts">
-import { FormDescription, FormField, FormItem, FormLabel } from '@/components/ui/form'
+function importLine(imports, componentName) {
+  return `import { ${imports.join(', ')} } from '@/components/ui/${componentName}'`
+}
+
+function exampleSource(item, indexExports) {
+  const imports = indexExports.componentExports.length > 0 ? indexExports.componentExports : [pascalCase(item.name)]
+  const sourceByName = {
+    'accordion': `${importLine(['Accordion', 'AccordionContent', 'AccordionItem', 'AccordionTrigger'], item.name)}
+
+<template>
+  <Accordion type="single" collapsible class="w-full">
+    <AccordionItem value="setup">
+      <AccordionTrigger>如何安装组件？</AccordionTrigger>
+      <AccordionContent>通过 registry 地址添加组件后，即可在业务页面中按目录导入使用。</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="usage">
+      <AccordionTrigger>是否支持组合使用？</AccordionTrigger>
+      <AccordionContent>支持。组件保持 shadcn-vue 的组合式结构，便于按场景拆分。</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</template>`,
+    'alert': `${importLine(['Alert', 'AlertDescription', 'AlertTitle'], item.name)}
+
+<template>
+  <Alert>
+    <AlertTitle>系统提醒</AlertTitle>
+    <AlertDescription>本次发布包含组件样式和文档示例更新，请在上线前完成预览。</AlertDescription>
+  </Alert>
+</template>`,
+    'alert-dialog': `${importLine(['AlertDialog', 'AlertDialogAction', 'AlertDialogCancel', 'AlertDialogContent', 'AlertDialogDescription', 'AlertDialogFooter', 'AlertDialogHeader', 'AlertDialogTitle', 'AlertDialogTrigger'], item.name)}
+import { Button } from '@/components/ui/button'
+
+<template>
+  <AlertDialog :default-open="true">
+    <AlertDialogTrigger as-child>
+      <Button variant="destructive">删除项目</Button>
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>确认删除这个项目？</AlertDialogTitle>
+        <AlertDialogDescription>该操作会移除当前示例项目，提交后不可撤销。</AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>取消</AlertDialogCancel>
+        <AlertDialogAction>确认删除</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</template>`,
+    'aspect-ratio': `${importLine(['AspectRatio'], item.name)}
+
+<template>
+  <AspectRatio :ratio="16 / 9" class="overflow-hidden rounded-[8px] bg-[#eef4ff]">
+    <div class="flex h-full items-center justify-center text-sm font-semibold text-[#2D5AF2]">16:9 内容预览区域</div>
+  </AspectRatio>
+</template>`,
+    'avatar': `${importLine(['Avatar', 'AvatarFallback', 'AvatarImage'], item.name)}
+
+<template>
+  <div class="flex items-center gap-3">
+    <Avatar>
+      <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=60" alt="林清和" />
+      <AvatarFallback>林</AvatarFallback>
+    </Avatar>
+    <div>
+      <p class="text-sm font-semibold">林清和</p>
+      <p class="text-xs text-[#434655]">产品设计负责人</p>
+    </div>
+  </div>
+</template>`,
+    'breadcrumb': `${importLine(['Breadcrumb', 'BreadcrumbEllipsis', 'BreadcrumbItem', 'BreadcrumbLink', 'BreadcrumbList', 'BreadcrumbPage', 'BreadcrumbSeparator'], item.name)}
+
+<template>
+  <Breadcrumb>
+    <BreadcrumbList>
+      <BreadcrumbItem><BreadcrumbLink href="#">文档</BreadcrumbLink></BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem><BreadcrumbLink href="#">组件</BreadcrumbLink></BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem><BreadcrumbEllipsis /></BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem><BreadcrumbPage>面包屑</BreadcrumbPage></BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>
+</template>`,
+    'button-group': `${importLine(['ButtonGroup', 'ButtonGroupSeparator', 'ButtonGroupText'], item.name)}
+import { Button } from '@/components/ui/button'
+
+<template>
+  <ButtonGroup>
+    <Button>保存</Button>
+    <ButtonGroupSeparator />
+    <Button variant="outline">预览</Button>
+    <ButtonGroupText>已同步</ButtonGroupText>
+  </ButtonGroup>
+</template>`,
+    'calendar': `${importLine(['Calendar'], item.name)}
+
+<template>
+  <Calendar class="rounded-[8px] border border-[#E2E4E9] bg-white" />
+</template>`,
+    'card': `${importLine(['Card', 'CardContent', 'CardDescription', 'CardFooter', 'CardHeader', 'CardTitle'], item.name)}
+import { Button } from '@/components/ui/button'
+
+<template>
+  <Card class="max-w-sm">
+    <CardHeader>
+      <CardTitle>组件发布</CardTitle>
+      <CardDescription>发布前检查 registry、文档和静态构建状态。</CardDescription>
+    </CardHeader>
+    <CardContent class="text-sm text-[#434655]">当前版本已准备进入预览流程。</CardContent>
+    <CardFooter><Button size="sm">查看详情</Button></CardFooter>
+  </Card>
+</template>`,
+    'carousel': `${importLine(['Carousel', 'CarouselContent', 'CarouselItem', 'CarouselNext', 'CarouselPrevious'], item.name)}
+
+<template>
+  <Carousel class="mx-auto w-full max-w-sm">
+    <CarouselContent>
+      <CarouselItem v-for="demo in ['组件预览', '源码示例', '安装说明']" :key="demo">
+        <div class="flex h-28 items-center justify-center rounded-[8px] border border-[#E2E4E9] bg-[#F5F6F7] text-sm font-semibold">{{ demo }}</div>
+      </CarouselItem>
+    </CarouselContent>
+    <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+</template>`,
+    'chart': `<script setup lang="ts">
+import { ref } from 'vue'
+${importLine(['ChartLegend', 'ChartTooltip'], item.name)}
+
+const chartItems = ref([
+  { name: '访问量', color: '#2D5AF2' },
+  { name: '转化率', color: '#19A55B' },
+])
 </script>
+
+<template>
+  <div class="grid gap-4 md:grid-cols-2">
+    <ChartTooltip title="本周数据" :data="[{ name: '访问量', color: '#2D5AF2', value: '12,480' }, { name: '转化率', color: '#19A55B', value: '8.6%' }]" />
+    <ChartLegend v-model:items="chartItems" />
+  </div>
+</template>`,
+    'collapsible': `<script setup lang="ts">
+import { ref } from 'vue'
+${importLine(['Collapsible', 'CollapsibleContent', 'CollapsibleTrigger'], item.name)}
+import { Button } from '@/components/ui/button'
+
+const open = ref(true)
+</script>
+
+<template>
+  <Collapsible v-model:open="open" class="space-y-2">
+    <div class="flex items-center justify-between rounded-[8px] border border-[#E2E4E9] px-4 py-3">
+      <span class="text-sm font-semibold">高级设置</span>
+      <CollapsibleTrigger as-child><Button size="sm" variant="outline">{{ open ? '收起' : '展开' }}</Button></CollapsibleTrigger>
+    </div>
+    <CollapsibleContent class="rounded-[8px] border border-[#E2E4E9] bg-[#F5F6F7] p-4 text-sm text-[#434655]">这里展示可折叠的配置内容。</CollapsibleContent>
+  </Collapsible>
+</template>`,
+    'combobox': `${importLine(['Combobox', 'ComboboxAnchor', 'ComboboxEmpty', 'ComboboxGroup', 'ComboboxInput', 'ComboboxItem', 'ComboboxList'], item.name)}
+
+<template>
+  <Combobox default-open open-on-focus class="w-full max-w-xs">
+    <ComboboxAnchor class="rounded-[8px] border border-[#E2E4E9] bg-white px-3 py-2">
+      <ComboboxInput placeholder="搜索组件..." class="w-full border-0 bg-transparent p-0 shadow-none outline-none focus-visible:ring-0" />
+    </ComboboxAnchor>
+    <ComboboxList class="mt-2 rounded-[8px] border border-[#E2E4E9] bg-white p-1">
+      <ComboboxEmpty>未找到组件</ComboboxEmpty>
+      <ComboboxGroup heading="组件">
+        <ComboboxItem value="button">按钮 Button</ComboboxItem>
+        <ComboboxItem value="input">输入框 Input</ComboboxItem>
+        <ComboboxItem value="select">选择器 Select</ComboboxItem>
+      </ComboboxGroup>
+    </ComboboxList>
+  </Combobox>
+</template>`,
+    'command': `${importLine(['Command', 'CommandEmpty', 'CommandGroup', 'CommandInput', 'CommandItem', 'CommandList', 'CommandSeparator', 'CommandShortcut'], item.name)}
+
+<template>
+  <Command class="rounded-[8px] border border-[#E2E4E9]">
+    <CommandInput placeholder="输入命令或组件名称..." />
+    <CommandList>
+      <CommandEmpty>暂无匹配结果</CommandEmpty>
+      <CommandGroup heading="常用操作">
+        <CommandItem value="创建组件">创建组件<CommandShortcut>⌘N</CommandShortcut></CommandItem>
+        <CommandItem value="生成文档">生成文档<CommandShortcut>⌘G</CommandShortcut></CommandItem>
+      </CommandGroup>
+      <CommandSeparator />
+      <CommandGroup heading="组件">
+        <CommandItem value="按钮">按钮</CommandItem>
+        <CommandItem value="输入框">输入框</CommandItem>
+      </CommandGroup>
+    </CommandList>
+  </Command>
+</template>`,
+    'context-menu': `${importLine(['ContextMenu', 'ContextMenuContent', 'ContextMenuItem', 'ContextMenuLabel', 'ContextMenuSeparator', 'ContextMenuShortcut', 'ContextMenuTrigger'], item.name)}
+
+<template>
+  <ContextMenu>
+    <ContextMenuTrigger class="flex h-28 items-center justify-center rounded-[8px] border border-dashed border-[#C4C5D8] text-sm text-[#434655]">右键打开上下文菜单</ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuLabel>组件操作</ContextMenuLabel>
+      <ContextMenuSeparator />
+      <ContextMenuItem>复制名称<ContextMenuShortcut>⌘C</ContextMenuShortcut></ContextMenuItem>
+      <ContextMenuItem>查看源码</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>
+</template>`,
+    'dialog': `${importLine(['Dialog', 'DialogContent', 'DialogDescription', 'DialogFooter', 'DialogHeader', 'DialogTitle', 'DialogTrigger'], item.name)}
+import { Button } from '@/components/ui/button'
+
+<template>
+  <Dialog :default-open="true">
+    <DialogTrigger as-child><Button>编辑资料</Button></DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>编辑资料</DialogTitle>
+        <DialogDescription>更新团队成员的基础信息。</DialogDescription>
+      </DialogHeader>
+      <div class="rounded-[8px] bg-[#F5F6F7] p-4 text-sm">姓名：林清和</div>
+      <DialogFooter><Button>保存更改</Button></DialogFooter>
+    </DialogContent>
+  </Dialog>
+</template>`,
+    'drawer': `${importLine(['Drawer', 'DrawerContent', 'DrawerDescription', 'DrawerFooter', 'DrawerHeader', 'DrawerTitle'], item.name)}
+import { Button } from '@/components/ui/button'
+
+<template>
+  <Drawer :default-open="true" :modal="false">
+    <DrawerContent class="absolute">
+      <DrawerHeader>
+        <DrawerTitle>任务详情</DrawerTitle>
+        <DrawerDescription>从底部抽屉查看当前任务的执行状态。</DrawerDescription>
+      </DrawerHeader>
+      <DrawerFooter><Button>完成</Button></DrawerFooter>
+    </DrawerContent>
+  </Drawer>
+</template>`,
+    'dropdown-menu': `${importLine(['DropdownMenu', 'DropdownMenuContent', 'DropdownMenuGroup', 'DropdownMenuItem', 'DropdownMenuLabel', 'DropdownMenuSeparator', 'DropdownMenuShortcut', 'DropdownMenuTrigger'], item.name)}
+import { Button } from '@/components/ui/button'
+
+<template>
+  <DropdownMenu :default-open="true">
+    <DropdownMenuTrigger as-child><Button variant="outline">打开菜单</Button></DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuLabel>项目操作</DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuGroup>
+        <DropdownMenuItem>重命名<DropdownMenuShortcut>⌘R</DropdownMenuShortcut></DropdownMenuItem>
+        <DropdownMenuItem>生成文档</DropdownMenuItem>
+      </DropdownMenuGroup>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</template>`,
+    'empty': `${importLine(['Empty', 'EmptyContent', 'EmptyDescription', 'EmptyHeader', 'EmptyMedia', 'EmptyTitle'], item.name)}
+import { Button } from '@/components/ui/button'
+
+<template>
+  <Empty>
+    <EmptyHeader>
+      <EmptyMedia>空</EmptyMedia>
+      <EmptyTitle>暂无组件记录</EmptyTitle>
+      <EmptyDescription>添加第一个组件后，这里会显示最新状态。</EmptyDescription>
+    </EmptyHeader>
+    <EmptyContent><Button size="sm">新增组件</Button></EmptyContent>
+  </Empty>
+</template>`,
+    'field': `${importLine(['Field', 'FieldDescription', 'FieldGroup', 'FieldLabel', 'FieldLegend', 'FieldSet', 'FieldTitle'], item.name)}
+
+<template>
+  <FieldGroup>
+    <FieldSet>
+      <FieldLegend>项目信息</FieldLegend>
+      <Field orientation="vertical">
+        <FieldLabel>项目名称</FieldLabel>
+        <FieldTitle>x-ui registry</FieldTitle>
+        <FieldDescription>用于管理组件文档和静态 registry。</FieldDescription>
+      </Field>
+    </FieldSet>
+  </FieldGroup>
+</template>`,
+    'form': `${importLine(['FormDescription', 'FormField', 'FormItem', 'FormLabel'], item.name)}
 
 <template>
   <FormField name="email">
@@ -234,13 +506,301 @@ import { FormDescription, FormField, FormItem, FormLabel } from '@/components/ui
       <div class="h-9 rounded-[4px] border border-[#E2E4E9] bg-white px-3 py-2 text-sm text-[#434655]">team@example.com</div>
     </FormItem>
   </FormField>
-</template>`
-  }
+</template>`,
+    'hover-card': `${importLine(['HoverCard', 'HoverCardContent', 'HoverCardTrigger'], item.name)}
+import { Button } from '@/components/ui/button'
 
-  if (item.name === 'stepper') {
-    return `<script setup lang="ts">
-import { Stepper, StepperDescription, StepperIndicator, StepperItem, StepperSeparator, StepperTitle, StepperTrigger } from '@/components/ui/stepper'
+<template>
+  <HoverCard :default-open="true">
+    <HoverCardTrigger as-child><Button variant="link">查看维护者</Button></HoverCardTrigger>
+    <HoverCardContent>
+      <div class="space-y-1">
+        <p class="text-sm font-semibold">林清和</p>
+        <p class="text-xs text-[#434655]">负责组件规范、样式迁移和文档体验。</p>
+      </div>
+    </HoverCardContent>
+  </HoverCard>
+</template>`,
+    'input-group': `${importLine(['InputGroup', 'InputGroupAddon', 'InputGroupButton', 'InputGroupInput', 'InputGroupText', 'InputGroupTextarea'], item.name)}
+
+<template>
+  <InputGroup>
+    <InputGroupAddon>https://</InputGroupAddon>
+    <InputGroupInput placeholder="输入 registry 域名" />
+    <InputGroupButton>检查</InputGroupButton>
+    <InputGroupText>可用</InputGroupText>
+    <InputGroupTextarea class="basis-full" placeholder="补充说明..." />
+  </InputGroup>
+</template>`,
+    'item': `${importLine(['Item', 'ItemActions', 'ItemContent', 'ItemDescription', 'ItemFooter', 'ItemGroup', 'ItemHeader', 'ItemMedia', 'ItemSeparator', 'ItemTitle'], item.name)}
+import { Button } from '@/components/ui/button'
+
+<template>
+  <ItemGroup class="gap-3">
+    <Item>
+      <ItemMedia>文</ItemMedia>
+      <ItemContent>
+        <ItemHeader><ItemTitle>组件文档</ItemTitle></ItemHeader>
+        <ItemDescription>每个组件都提供中文示例和源码 API。</ItemDescription>
+        <ItemFooter>刚刚更新</ItemFooter>
+      </ItemContent>
+      <ItemActions><Button size="sm" variant="outline">查看</Button></ItemActions>
+    </Item>
+    <ItemSeparator />
+  </ItemGroup>
+</template>`,
+    'kbd': `${importLine(['Kbd', 'KbdGroup'], item.name)}
+
+<template>
+  <KbdGroup>
+    <Kbd>⌘</Kbd>
+    <Kbd>K</Kbd>
+    <span class="ml-2 text-sm text-[#434655]">打开命令面板</span>
+  </KbdGroup>
+</template>`,
+    'label': `${importLine(['Label'], item.name)}
+
+<template>
+  <div class="grid max-w-sm gap-2">
+    <Label for="demo-label">项目名称</Label>
+    <input id="demo-label" class="h-9 rounded-[4px] border border-[#E2E4E9] px-3 text-sm" value="x-ui registry">
+  </div>
+</template>`,
+    'menubar': `${importLine(['Menubar', 'MenubarContent', 'MenubarItem', 'MenubarMenu', 'MenubarSeparator', 'MenubarShortcut', 'MenubarTrigger'], item.name)}
+
+<template>
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>文件</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>新建组件<MenubarShortcut>⌘N</MenubarShortcut></MenubarItem>
+        <MenubarItem>保存文档</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>导出 registry</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</template>`,
+    'navigation-menu': `${importLine(['NavigationMenu', 'NavigationMenuContent', 'NavigationMenuItem', 'NavigationMenuLink', 'NavigationMenuList', 'NavigationMenuTrigger'], item.name)}
+
+<template>
+  <NavigationMenu>
+    <NavigationMenuList>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>组件</NavigationMenuTrigger>
+        <NavigationMenuContent class="w-64 p-4">
+          <NavigationMenuLink class="block rounded-[4px] p-3 hover:bg-[#F5F6F7]">基础控件</NavigationMenuLink>
+          <NavigationMenuLink class="block rounded-[4px] p-3 hover:bg-[#F5F6F7]">反馈组件</NavigationMenuLink>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>
+</template>`,
+    'number-field': `${importLine(['NumberField', 'NumberFieldContent', 'NumberFieldDecrement', 'NumberFieldIncrement', 'NumberFieldInput'], item.name)}
+
+<template>
+  <NumberField :default-value="3" :min="1" :max="10" class="max-w-36">
+    <NumberFieldContent>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldContent>
+  </NumberField>
+</template>`,
+    'pagination': `${importLine(['Pagination', 'PaginationContent', 'PaginationEllipsis', 'PaginationItem', 'PaginationNext', 'PaginationPrevious'], item.name)}
+
+<template>
+  <Pagination :total="80" :items-per-page="10" :sibling-count="1" show-edges :default-page="2">
+    <PaginationContent v-slot="{ items }">
+      <PaginationPrevious>上一页</PaginationPrevious>
+      <template v-for="(page, index) in items" :key="index">
+        <PaginationItem v-if="page.type === 'page'" :value="page.value" :is-active="page.value === 2">{{ page.value }}</PaginationItem>
+        <PaginationEllipsis v-else />
+      </template>
+      <PaginationNext>下一页</PaginationNext>
+    </PaginationContent>
+  </Pagination>
+</template>`,
+    'pin-input': `<script setup lang="ts">
+import { ref } from 'vue'
+${importLine(['PinInput', 'PinInputGroup', 'PinInputSeparator', 'PinInputSlot'], item.name)}
+
+const value = ref(['2', '4', '6'])
 </script>
+
+<template>
+  <PinInput v-model="value">
+    <PinInputGroup>
+      <PinInputSlot v-for="index in 3" :key="index" :index="index - 1" />
+    </PinInputGroup>
+    <PinInputSeparator />
+    <PinInputGroup>
+      <PinInputSlot v-for="index in 3" :key="index" :index="index + 2" />
+    </PinInputGroup>
+  </PinInput>
+</template>`,
+    'popover': `${importLine(['Popover', 'PopoverContent', 'PopoverTrigger'], item.name)}
+import { Button } from '@/components/ui/button'
+
+<template>
+  <Popover :default-open="true">
+    <PopoverTrigger as-child><Button variant="outline">查看发布信息</Button></PopoverTrigger>
+    <PopoverContent>
+      <p class="text-sm font-semibold">发布窗口</p>
+      <p class="mt-1 text-xs text-[#434655]">建议在验证通过后进行静态部署。</p>
+    </PopoverContent>
+  </Popover>
+</template>`,
+    'progress': `${importLine(['Progress'], item.name)}
+
+<template>
+  <div class="space-y-2">
+    <div class="flex justify-between text-sm"><span>文档生成进度</span><span>72%</span></div>
+    <Progress :model-value="72" />
+  </div>
+</template>`,
+    'radio-group': `<script setup lang="ts">
+import { ref } from 'vue'
+${importLine(['RadioGroup', 'RadioGroupItem'], item.name)}
+
+const value = ref('weekly')
+</script>
+
+<template>
+  <RadioGroup v-model="value" class="grid gap-3">
+    <label class="flex items-center gap-2"><RadioGroupItem value="daily" />每日同步</label>
+    <label class="flex items-center gap-2"><RadioGroupItem value="weekly" />每周同步</label>
+    <label class="flex items-center gap-2"><RadioGroupItem value="manual" />手动同步</label>
+  </RadioGroup>
+</template>`,
+    'range-calendar': `${importLine(['RangeCalendar'], item.name)}
+
+<template>
+  <RangeCalendar class="rounded-[8px] border border-[#E2E4E9] bg-white" />
+</template>`,
+    'resizable': `${importLine(['ResizableHandle', 'ResizablePanel', 'ResizablePanelGroup'], item.name)}
+
+<template>
+  <ResizablePanelGroup direction="horizontal" class="h-32 rounded-[8px] border border-[#E2E4E9]">
+    <ResizablePanel :default-size="45" class="flex items-center justify-center text-sm">导航</ResizablePanel>
+    <ResizableHandle with-handle />
+    <ResizablePanel :default-size="55" class="flex items-center justify-center text-sm">内容</ResizablePanel>
+  </ResizablePanelGroup>
+</template>`,
+    'scroll-area': `${importLine(['ScrollArea'], item.name)}
+
+<template>
+  <ScrollArea class="h-32 rounded-[8px] border border-[#E2E4E9] p-4">
+    <div v-for="demo in ['按钮', '输入框', '选择器', '表格', '弹窗', '提示', '标签', '分页']" :key="demo" class="border-b border-[#E2E4E9] py-2 text-sm">{{ demo }}</div>
+  </ScrollArea>
+</template>`,
+    'select': `${importLine(['Select', 'SelectContent', 'SelectGroup', 'SelectItem', 'SelectLabel', 'SelectTrigger', 'SelectValue'], item.name)}
+
+<template>
+  <Select :default-value="'preview'" :default-open="true">
+    <SelectTrigger class="w-56"><SelectValue placeholder="选择发布环境" /></SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>环境</SelectLabel>
+        <SelectItem value="preview">预览环境</SelectItem>
+        <SelectItem value="production">生产环境</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</template>`,
+    'separator': `${importLine(['Separator'], item.name)}
+
+<template>
+  <div class="space-y-4">
+    <div>
+      <p class="text-sm font-semibold">组件文档</p>
+      <p class="text-xs text-[#434655]">源码 API、示例和 registry 地址。</p>
+    </div>
+    <Separator />
+    <div class="text-sm">下一步：运行静态构建验证。</div>
+  </div>
+</template>`,
+    'sheet': `${importLine(['Sheet', 'SheetContent', 'SheetDescription', 'SheetFooter', 'SheetHeader', 'SheetTitle', 'SheetTrigger'], item.name)}
+import { Button } from '@/components/ui/button'
+
+<template>
+  <Sheet :default-open="true">
+    <SheetTrigger as-child><Button>打开侧边面板</Button></SheetTrigger>
+    <SheetContent>
+      <SheetHeader>
+        <SheetTitle>发布检查</SheetTitle>
+        <SheetDescription>确认文档、registry 和类型检查均已通过。</SheetDescription>
+      </SheetHeader>
+      <SheetFooter><Button>确认</Button></SheetFooter>
+    </SheetContent>
+  </Sheet>
+</template>`,
+    'sidebar': `${importLine(['Sidebar', 'SidebarContent', 'SidebarFooter', 'SidebarGroup', 'SidebarGroupContent', 'SidebarGroupLabel', 'SidebarHeader', 'SidebarInset', 'SidebarMenu', 'SidebarMenuButton', 'SidebarMenuItem', 'SidebarProvider', 'SidebarTrigger'], item.name)}
+
+<template>
+  <SidebarProvider default-open class="min-h-64 rounded-[8px] border border-[#E2E4E9]">
+    <Sidebar collapsible="none" class="w-56 border-r border-[#E2E4E9]">
+      <SidebarHeader class="p-3 font-semibold">X UI</SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>组件</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem><SidebarMenuButton>按钮</SidebarMenuButton></SidebarMenuItem>
+              <SidebarMenuItem><SidebarMenuButton>输入框</SidebarMenuButton></SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+      <SidebarFooter class="p-3 text-xs text-[#434655]">文档预览</SidebarFooter>
+    </Sidebar>
+    <SidebarInset class="min-h-64 p-4">
+      <SidebarTrigger />
+      <p class="mt-4 text-sm text-[#434655]">侧边栏组件用于构建后台和文档导航。</p>
+    </SidebarInset>
+  </SidebarProvider>
+</template>`,
+    'skeleton': `${importLine(['Skeleton'], item.name)}
+
+<template>
+  <div class="space-y-3">
+    <Skeleton class="h-4 w-40" />
+    <Skeleton class="h-4 w-64" />
+    <Skeleton class="h-20 w-full rounded-[8px]" />
+  </div>
+</template>`,
+    'slider': `<script setup lang="ts">
+import { ref } from 'vue'
+${importLine(['Slider'], item.name)}
+import { Label } from '@/components/ui/label'
+
+const value = ref([64])
+</script>
+
+<template>
+  <div class="space-y-3">
+    <Label>音量：{{ value[0] }}%</Label>
+    <Slider v-model="value" :max="100" :step="1" />
+  </div>
+</template>`,
+    'sonner': `${importLine(['Toaster'], item.name)}
+
+<template>
+  <div class="space-y-4">
+    <Toaster />
+    <p class="text-sm font-semibold">通知容器已挂载</p>
+    <p class="text-xs text-[#434655]">业务页面可通过 vue-sonner 的 toast 方法触发中文通知。</p>
+  </div>
+</template>`,
+    'spinner': `${importLine(['Spinner'], item.name)}
+
+<template>
+  <div class="flex items-center gap-3">
+    <Spinner />
+    <span class="text-sm text-[#434655]">正在生成组件文档...</span>
+  </div>
+</template>`,
+    'stepper': `${importLine(['Stepper', 'StepperDescription', 'StepperIndicator', 'StepperItem', 'StepperSeparator', 'StepperTitle', 'StepperTrigger'], item.name)}
 
 <template>
   <Stepper :default-value="2" class="w-full">
@@ -256,32 +816,245 @@ import { Stepper, StepperDescription, StepperIndicator, StepperItem, StepperSepa
       <StepperTrigger><StepperIndicator>3</StepperIndicator><StepperTitle>验证</StepperTitle><StepperDescription>运行检查</StepperDescription></StepperTrigger>
     </StepperItem>
   </Stepper>
-</template>`
-  }
+</template>`,
+    'tabs': `${importLine(['Tabs', 'TabsContent', 'TabsList', 'TabsTrigger'], item.name)}
 
-  const primaryComponent = indexExports.componentExports[0] || pascalCase(item.name)
-  const imports = indexExports.componentExports.length > 0 ? indexExports.componentExports.join(', ') : primaryComponent
-  return `<script setup lang="ts">
-import { ${imports} } from '@/components/ui/${item.name}'
+<template>
+  <Tabs default-value="preview" class="w-full">
+    <TabsList><TabsTrigger value="preview">预览</TabsTrigger><TabsTrigger value="code">源码</TabsTrigger></TabsList>
+    <TabsContent value="preview">这里展示组件交互效果。</TabsContent>
+    <TabsContent value="code">这里展示示例源码。</TabsContent>
+  </Tabs>
+</template>`,
+    'tags-input': `<script setup lang="ts">
+import { ref } from 'vue'
+${importLine(['TagsInput', 'TagsInputInput', 'TagsInputItem', 'TagsInputItemDelete', 'TagsInputItemText'], item.name)}
+
+const tags = ref(['设计系统', '组件库'])
 </script>
 
 <template>
-  <${primaryComponent}>
-    中文示例内容
-  </${primaryComponent}>
+  <TagsInput v-model="tags">
+    <TagsInputItem v-for="tag in tags" :key="tag" :value="tag">
+      <TagsInputItemText />
+      <TagsInputItemDelete />
+    </TagsInputItem>
+    <TagsInputInput placeholder="输入标签..." />
+  </TagsInput>
+</template>`,
+    'textarea': `${importLine(['Textarea'], item.name)}
+
+<template>
+  <Textarea placeholder="请输入组件说明..." class="min-h-28" />
+</template>`,
+    'toggle': `${importLine(['Toggle'], item.name)}
+
+<template>
+  <Toggle>启用预览</Toggle>
+</template>`,
+    'toggle-group': `${importLine(['ToggleGroup', 'ToggleGroupItem'], item.name)}
+
+<template>
+  <ToggleGroup type="multiple">
+    <ToggleGroupItem value="docs">文档</ToggleGroupItem>
+    <ToggleGroupItem value="registry">Registry</ToggleGroupItem>
+    <ToggleGroupItem value="theme">主题</ToggleGroupItem>
+  </ToggleGroup>
+</template>`,
+    'tooltip': `${importLine(['Tooltip', 'TooltipContent', 'TooltipProvider', 'TooltipTrigger'], item.name)}
+import { Button } from '@/components/ui/button'
+
+<template>
+  <TooltipProvider :delay-duration="0">
+    <Tooltip :default-open="true">
+      <TooltipTrigger as-child><Button variant="outline">悬停查看提示</Button></TooltipTrigger>
+      <TooltipContent>这是一个中文 Tooltip 示例。</TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</template>`,
+  }
+
+  if (sourceByName[item.name]) return sourceByName[item.name]
+
+  const primaryComponent = imports[0]
+  return `${importLine(imports, item.name)}
+
+<template>
+  <div class="rounded-[8px] border border-[#E2E4E9] bg-white p-5">
+    <${primaryComponent}>
+      中文示例内容
+    </${primaryComponent}>
+  </div>
 </template>`
 }
 
-function customDemoCode(item) {
+function withScriptSetup(source) {
+  if (source.trimStart().startsWith('<script')) return `${source.trim()}\n`
+  const [scriptPart, ...rest] = source.split('\n\n')
+  return `<script setup lang="ts">\n${scriptPart}\n</script>\n\n${rest.join('\n\n').trim()}\n`
+}
+
+function customDemoSource(item) {
   if (!CUSTOM_DEMO_COMPONENTS.has(item.name)) return ''
   const file = path.join(root, 'app/components', `${pascalCase(item.name)}Demo.vue`)
   try {
     return readFileSync(file, 'utf8')
       .replaceAll('~~/registry/default/', '@/components/ui/')
       .replaceAll("import Input from '@/components/ui/input/Input.vue'", "import { Input } from '@/components/ui/input'")
+      .replaceAll('marketing已接受', 'marketingAccepted')
+      .replaceAll("'Not 已接受'", "'未接受'")
+      .replaceAll('total金额', 'totalAmount')
   } catch {
     return ''
   }
+}
+
+function componentExampleSource(item, indexExports) {
+  return (customDemoSource(item) || withScriptSetup(exampleSource(item, indexExports))).trimEnd() + '\n'
+}
+
+function buttonVariantExampleSource() {
+  return `<script setup lang="ts">
+import { Button } from '@/components/ui/button'
+
+type ButtonVariant = 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
+
+const variants: Array<{ value: ButtonVariant, label: string }> = [
+  { value: 'default', label: '默认按钮' },
+  { value: 'destructive', label: '危险按钮' },
+  { value: 'outline', label: '描边按钮' },
+  { value: 'secondary', label: '次要按钮' },
+  { value: 'ghost', label: '幽灵按钮' },
+  { value: 'link', label: '链接按钮' },
+]
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Button
+      v-for="item in variants"
+      :key="item.value"
+      :variant="item.value"
+    >
+      {{ item.label }}
+    </Button>
+  </div>
+</template>
+`
+}
+
+function buttonSizeExampleSource() {
+  return `<script setup lang="ts">
+import { Button } from '@/components/ui/button'
+
+type ButtonSize = 'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg'
+
+const sizes: Array<{ value: ButtonSize, label: string, icon?: boolean }> = [
+  { value: 'default', label: '默认尺寸' },
+  { value: 'sm', label: '小尺寸' },
+  { value: 'lg', label: '大尺寸' },
+  { value: 'icon', label: '图标尺寸', icon: true },
+  { value: 'icon-sm', label: '小图标尺寸', icon: true },
+  { value: 'icon-lg', label: '大图标尺寸', icon: true },
+]
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Button
+      v-for="item in sizes"
+      :key="item.value"
+      :size="item.value"
+      :aria-label="item.icon ? item.label : undefined"
+    >
+      <span v-if="item.icon" aria-hidden="true">+</span>
+      <span v-else>{{ item.label }}</span>
+    </Button>
+  </div>
+</template>
+`
+}
+
+function buttonDisabledExampleSource() {
+  return `<script setup lang="ts">
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Button disabled>
+      禁用按钮
+    </Button>
+    <Button variant="outline" disabled>
+      禁用描边
+    </Button>
+    <Button variant="secondary" disabled>
+      禁用次要
+    </Button>
+    <Button variant="ghost" disabled>
+      禁用幽灵
+    </Button>
+    <Button variant="link" disabled>
+      禁用链接
+    </Button>
+  </div>
+</template>
+`
+}
+
+function buttonLoadingExampleSource() {
+  return `<script setup lang="ts">
+import { RefreshCw } from 'lucide-vue-next'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Button loading>
+      保存中
+    </Button>
+    <Button loading variant="outline" :loading-icon="RefreshCw">
+      同步数据
+    </Button>
+    <Button loading variant="secondary">
+      <template #loading-icon>
+        <span class="block size-4 rounded-full border-2 border-current border-t-transparent" />
+      </template>
+      自定义图标
+    </Button>
+  </div>
+</template>
+`
+}
+
+function extraExampleSources(item) {
+  if (item.name !== 'button') return []
+  return [
+    {
+      fileName: 'Variants.vue',
+      title: 'Variant 变体',
+      previewName: 'button variant',
+      source: buttonVariantExampleSource(),
+    },
+    {
+      fileName: 'Sizes.vue',
+      title: 'Size 尺寸',
+      previewName: 'button size',
+      source: buttonSizeExampleSource(),
+    },
+    {
+      fileName: 'Disabled.vue',
+      title: 'Disabled 禁用',
+      previewName: 'button disabled',
+      source: buttonDisabledExampleSource(),
+    },
+    {
+      fileName: 'Loading.vue',
+      title: 'Loading 加载中',
+      previewName: 'button loading',
+      source: buttonLoadingExampleSource(),
+    },
+  ]
 }
 
 function generateDoc(item) {
@@ -309,6 +1082,20 @@ function generateDoc(item) {
     '',
     `${primaryComponent} 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。`,
     '',
+    '## 示例预览',
+    '',
+    '### 基础示例',
+    '',
+    `::component-preview{name="${item.name}" src="${item.name}/Basic.vue"}`,
+    '::',
+    '',
+    ...extraExampleSources(item).flatMap((example) => [
+      `### ${example.title}`,
+      '',
+      `::component-preview{name="${example.previewName}" src="${item.name}/${example.fileName}"}`,
+      '::',
+      '',
+    ]),
     '## 安装',
     '',
     codeFence(`bunx shadcn-vue@latest add http://localhost:3000/r/${item.name}.json`, 'bash'),
@@ -400,11 +1187,27 @@ function generateDoc(item) {
 
 mkdirSync(docsDir, { recursive: true })
 mkdirSync(appDataDir, { recursive: true })
+mkdirSync(examplesDir, { recursive: true })
+
 const registryNames = new Set(registry.items.map((item) => `${item.name}.md`))
 for (const file of readdirSync(docsDir)) {
   if (file.endsWith('.md') && !registryNames.has(file)) rmSync(path.join(docsDir, file))
 }
+
+const exampleNames = new Set(registry.items.map((item) => item.name))
+for (const entry of readdirSync(examplesDir, { withFileTypes: true })) {
+  if (entry.isDirectory() && !exampleNames.has(entry.name)) rmSync(path.join(examplesDir, entry.name), { recursive: true, force: true })
+}
+
 for (const item of registry.items) {
+  const indexFile = item.files.find((file) => file.path.endsWith('/index.ts'))
+  const indexExports = indexFile ? extractIndexExports(read(indexFile.path)) : { componentExports: [], apiExports: [] }
+  const itemExampleDir = path.join(examplesDir, item.name)
+  mkdirSync(itemExampleDir, { recursive: true })
+  writeFileSync(path.join(itemExampleDir, 'Basic.vue'), componentExampleSource(item, indexExports))
+  for (const example of extraExampleSources(item)) {
+    writeFileSync(path.join(itemExampleDir, example.fileName), example.source)
+  }
   writeFileSync(path.join(docsDir, `${item.name}.md`), generateDoc(item))
 }
 
@@ -420,18 +1223,11 @@ const componentDocs = registry.items.map((item) => {
     importPath: `@/components/ui/${item.name}`,
     registryPath: `/r/${item.name}.json`,
     componentExports: indexExports.componentExports,
-    hasCustomDemo: CUSTOM_DEMO_COMPONENTS.has(item.name),
+    examplePath: `${item.name}/Basic.vue`,
   }
 })
 
-const demoCodes = Object.fromEntries(registry.items.map((item) => {
-  const indexFile = item.files.find((file) => file.path.endsWith('/index.ts'))
-  const indexExports = indexFile ? extractIndexExports(read(indexFile.path)) : { componentExports: [], apiExports: [] }
-  return [item.name, customDemoCode(item) || generatedDemoCode(item, indexExports)]
-}))
-
 writeFileSync(path.join(root, 'content/docs/components.json'), `${JSON.stringify(componentDocs, null, 2)}\n`)
 writeFileSync(path.join(appDataDir, 'component-docs.ts'), `export const componentDocs = ${JSON.stringify(componentDocs, null, 2)} as const\n`)
-writeFileSync(path.join(appDataDir, 'demo-codes.ts'), `export const demoCodes: Record<string, string> = {\n${Object.entries(demoCodes).map(([slug, code]) => `  ${JSON.stringify(slug)}: \`${escapeTemplateLiteral(code)}\``).join(',\n')}\n}\n`)
 
-console.log(`Generated ${registry.items.length} component docs.`)
+console.log(`Generated ${registry.items.length} component docs and examples.`)

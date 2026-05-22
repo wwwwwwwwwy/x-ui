@@ -4,6 +4,7 @@
     "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
+      "@/components/ui/*": ["./registry/default/*"],
       "@/registry/default/ui/*": ["./registry/default/*"],
       "@/*": ["./app/*", "./*"],
       "~~/*": ["./*"]

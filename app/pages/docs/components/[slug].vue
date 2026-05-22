@@ -90,40 +90,6 @@
               </div>
             </div>
 
-            <!-- Premium Interactive Showcase -->
-            <div class="space-y-4">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                  <span class="h-2 w-2 rounded-full bg-[#2D5AF2] animate-pulse"></span>
-                  <h3 class="text-xs font-bold uppercase tracking-wider text-[#434655]">
-                    Interactive Live Preview
-                  </h3>
-                </div>
-                <span class="rounded-[4px] bg-[#eef4ff] px-2.5 py-0.5 text-[10px] font-bold text-[#2D5AF2]">
-                  Systematic Clarity
-                </span>
-              </div>
-              
-              <!-- Generic Component Preview System -->
-              <ComponentPreview :name="slug" :code="demoCode">
-                <ButtonDemo v-slot v-if="slug === 'button'" />
-                <BadgeDemo v-slot v-if="slug === 'badge'" />
-                <CheckboxDemo v-slot v-if="slug === 'checkbox'" />
-                <SwitchDemo v-slot v-if="slug === 'switch'" />
-                <InputDemo v-slot v-if="slug === 'input'" />
-                <TableDemo v-slot v-if="slug === 'table'" />
-                <ComponentFallbackDemo
-                  v-if="!hasCustomDemo"
-                  :title="currentComponentDoc?.title || slug"
-                  :slug="slug"
-                  :primary-component="currentComponentDoc?.primaryComponent || slug"
-                  :import-path="currentComponentDoc?.importPath || `@/components/ui/${slug}`"
-                  :registry-path="currentComponentDoc?.registryPath || `/r/${slug}.json`"
-                  :component-exports="currentComponentDoc?.componentExports || []"
-                />
-              </ComponentPreview>
-            </div>
-
             <!-- Auto-generated Markdown Documentation -->
             <div class="rounded-[8px] border border-[#E2E4E9] bg-white p-8">
               <div class="flex items-center gap-2 border-b border-[#E2E4E9] pb-4">
@@ -156,17 +122,6 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { componentDocs } from '@/data/component-docs'
-import { demoCodes } from '@/data/demo-codes'
-
-// Import all demo components
-import ButtonDemo from '@/components/ButtonDemo.vue'
-import BadgeDemo from '@/components/BadgeDemo.vue'
-import CheckboxDemo from '@/components/CheckboxDemo.vue'
-import SwitchDemo from '@/components/SwitchDemo.vue'
-import InputDemo from '@/components/InputDemo.vue'
-import TableDemo from '@/components/TableDemo.vue'
-import ComponentFallbackDemo from '@/components/ComponentFallbackDemo.vue'
-import ComponentPreview from '@/components/ComponentPreview.vue'
 
 const route = useRoute()
 const slug = computed(() => String(route.params.slug))
@@ -177,16 +132,6 @@ const { data: page } = await useAsyncData(`component-${slug.value}`, () =>
 
 const currentComponentDoc = computed(() => {
   return componentDocs.find((item) => item.slug === slug.value)
-})
-
-// Check if current component has a pre-built demo
-const hasCustomDemo = computed(() => {
-  return ['button', 'badge', 'checkbox', 'switch', 'input', 'table'].includes(slug.value)
-})
-
-// Retrieve demo source code string
-const demoCode = computed(() => {
-  return demoCodes[slug.value] || ''
 })
 
 // Set page meta for title and description dynamically

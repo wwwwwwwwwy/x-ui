@@ -28,6 +28,7 @@
     "class-variance-authority": "latest",
     "clsx": "latest",
     "embla-carousel-vue": "^8.6.0",
+    "lucide-vue-next": "^1.0.0",
     "nuxt": "latest",
     "reka-ui": "latest",
     "tailwind-merge": "latest",

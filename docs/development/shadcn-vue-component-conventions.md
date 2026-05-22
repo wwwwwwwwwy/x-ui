@@ -15,6 +15,7 @@
 - `public/r`：静态 registry JSON 输出目录。
 - `content/docs/components`：组件文档目录。
 - `app/data/component-docs.ts`：组件文档索引数据。
+- `app/components/examples/<component>/<ExampleName>.vue`：组件文档示例源码目录，示例必须参与 Nuxt/Vite 编译。
 
 ## registry 强约束
 
@@ -29,6 +30,7 @@
   - `public/r/<component>.json`
   - `content/docs/components/<component>.md`
   - `app/data/component-docs.ts`
+  - `app/components/examples/<component>/Basic.vue`
 - 删除或禁用组件时必须同步清理 registry manifest、静态 registry JSON、组件文档和文档索引。
 - `toast` 不作为组件恢复；需要通知能力时使用 `sonner`。
 
@@ -44,6 +46,9 @@
 - 外部运行时依赖必须写入 registry item 的 `dependencies`。
 - 组件之间的依赖必须写入 registry item 的 `registryDependencies`。
 - 禁止编造未在源码、依赖类型或 registry 中出现的 API。
+- 所有可点击组件必须显式维护鼠标状态：可点击状态使用 `cursor-pointer`，对应 CSS 为 `cursor: pointer;`；禁用状态使用 `disabled:cursor-not-allowed` 或等价 class，确保整个组件显示 `cursor: not-allowed;`。
+- 禁用状态不得使用会让鼠标命中穿透组件本体的 `disabled:pointer-events-none`；若底层 primitive 必须阻止交互，必须由禁用属性、事件守卫或内部子元素处理，不能破坏组件本体的 `not-allowed` 光标表现。
+- 支持 disabled 的交互组件，禁用态不得响应 hover、active、focus 等交互视觉反馈。hover、active、focus 相关 class 必须使用 `enabled:*`、`data-[disabled=false]:*`、`aria-disabled:false` 等等价条件限制，确保 disabled 视觉状态不会被交互态覆盖。
 
 ## JSDoc 注释规范
 
@@ -95,6 +100,23 @@
 - props、emits、slots、exports 示例。
 - registry URL。
 - 源码可提取 API 的边界说明。
+
+## 文档示例规范
+
+- 所有组件文档示例 Vue 文件统一放在 `app/components/examples/<component>/<ExampleName>.vue`。
+- 示例文件名使用 PascalCase，例如 `Basic.vue`、`Variants.vue`、`WithIcon.vue`。
+- Markdown 中通过 Nuxt Content MDC 语法引用预览组件：
+
+```md
+::component-preview{src="button/Basic.vue"}
+::
+```
+
+- `src` 必须使用相对 `app/components/examples` 根目录的路径，禁止使用绝对路径。
+- `ComponentPreview` 必须以示例 Vue 文件作为单一真实来源：同一个 `src` 同时用于渲染预览和读取源码复制内容。
+- 示例源码中的组件导入必须使用最终安装路径 `@/components/ui/<component>`，禁止使用 `~~/registry/default/<component>`。
+- 示例中出现的可见文案必须使用中文，代码标识符、API 名称和第三方专有名词可以保留英文。
+- 新增或修改组件文档时，必须同步新增或更新对应的示例 Vue 文件，禁止让预览内容和 Source Code 分别维护两份不一致内容。
 
 ## API 文档边界
 

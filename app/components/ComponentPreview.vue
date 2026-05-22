@@ -5,15 +5,41 @@ import { Copy, Check, Eye, Code, Layers, FileCode, Play, Terminal } from 'lucide
 
 const props = defineProps<{
   name: string
-  code: string
+  code?: string
+  src?: string
 }>()
 
 const activeTab = ref<'preview' | 'code'>('preview')
 const isCopied = ref(false)
 
+const demoModules = import.meta.glob('@/components/examples/**/*.vue', {
+  eager: true,
+  import: 'default',
+})
+const rawDemoModules = import.meta.glob('@/components/examples/**/*.vue', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+})
+
+const normalizedSrc = computed(() => props.src?.replace(/^\/+/, '') ?? '')
+const demoModuleKey = computed(() => {
+  if (!normalizedSrc.value) return ''
+  return Object.keys(demoModules).find((key) => key.endsWith(`/examples/${normalizedSrc.value}`)) ?? ''
+})
+const demoComponent = computed(() => {
+  if (!demoModuleKey.value) return undefined
+  return demoModules[demoModuleKey.value]
+})
+const sourceCode = computed(() => {
+  if (props.code) return props.code
+  if (!demoModuleKey.value) return ''
+  return String(rawDemoModules[demoModuleKey.value] ?? '')
+})
+
 async function handleCopy() {
   try {
-    await navigator.clipboard.writeText(props.code)
+    await navigator.clipboard.writeText(sourceCode.value)
     isCopied.value = true
     toast.success('Code copied to clipboard!', {
       description: `Copied successfully for ${props.name} component.`,
@@ -36,7 +62,7 @@ const capitalizedName = computed(() => {
 
 // Line count computed property
 const codeLines = computed(() => {
-  return props.code.split('\n')
+  return sourceCode.value.split('\n')
 })
 
 // Custom regex-based VSCode syntax highlighter with robust token isolation
@@ -50,7 +76,7 @@ const highlightedHtml = computed(() => {
   }
 
   // Escape basic HTML characters first
-  let escaped = props.code
+  let escaped = sourceCode.value
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -164,7 +190,8 @@ const highlightedHtml = computed(() => {
       >
         <!-- Dynamic Slot Renders interactive component demo -->
         <div class="w-full max-w-2xl rounded-[8px] border border-[#E2E4E9] bg-white p-6 md:p-8 outline-glow">
-          <slot />
+          <component :is="demoComponent" v-if="demoComponent" />
+          <slot v-else />
         </div>
       </div>
 

@@ -11,6 +11,33 @@ Button 用于在 Systematic Clarity 设计体系下构建清晰、稳定、可�
 
 Button 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
 
+## 示例预览
+
+### 基础示例
+
+::component-preview{name="button" src="button/Basic.vue"}
+::
+
+### Variant 变体
+
+::component-preview{name="button variant" src="button/Variants.vue"}
+::
+
+### Size 尺寸
+
+::component-preview{name="button size" src="button/Sizes.vue"}
+::
+
+### Disabled 禁用
+
+::component-preview{name="button disabled" src="button/Disabled.vue"}
+::
+
+### Loading 加载中
+
+::component-preview{name="button loading" src="button/Loading.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -53,6 +80,7 @@ import { Button } from '@/components/ui/button'
 
 | 组件 | Slot | 示例 |
 | --- | --- | --- |
+| `Button` | `loading-icon` | `<Button> <template #loading-icon>自定义 loading-icon</template> </Button>` |
 | `Button` | `default` | `<Button>内容</Button>` |
 
 ### Exports
@@ -68,6 +96,14 @@ import { Button } from '@/components/ui/button'
 <Button :example-prop="example" />
 ```
 
+### Button slot: loading-icon
+
+```vue
+<Button>
+  <template #loading-icon>自定义 loading-icon</template>
+</Button>
+```
+
 ### Button slot: default
 
 ```vue
@@ -77,6 +113,7 @@ import { Button } from '@/components/ui/button'
 ## 依赖
 
 - `reka-ui`
+- `lucide-vue-next`
 
 ## Registry
 
