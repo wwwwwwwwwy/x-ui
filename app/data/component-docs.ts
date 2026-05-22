@@ -12,7 +12,7 @@ export const componentDocs = [
       "AccordionItem",
       "AccordionTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "accordion/Basic.vue"
   },
   {
     "slug": "alert",
@@ -26,7 +26,7 @@ export const componentDocs = [
       "AlertDescription",
       "AlertTitle"
     ],
-    "hasCustomDemo": false
+    "examplePath": "alert/Basic.vue"
   },
   {
     "slug": "alert-dialog",
@@ -46,7 +46,7 @@ export const componentDocs = [
       "AlertDialogTitle",
       "AlertDialogTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "alert-dialog/Basic.vue"
   },
   {
     "slug": "aspect-ratio",
@@ -58,7 +58,7 @@ export const componentDocs = [
     "componentExports": [
       "AspectRatio"
     ],
-    "hasCustomDemo": false
+    "examplePath": "aspect-ratio/Basic.vue"
   },
   {
     "slug": "avatar",
@@ -72,7 +72,7 @@ export const componentDocs = [
       "AvatarFallback",
       "AvatarImage"
     ],
-    "hasCustomDemo": false
+    "examplePath": "avatar/Basic.vue"
   },
   {
     "slug": "badge",
@@ -84,7 +84,7 @@ export const componentDocs = [
     "componentExports": [
       "Badge"
     ],
-    "hasCustomDemo": true
+    "examplePath": "badge/Basic.vue"
   },
   {
     "slug": "breadcrumb",
@@ -102,7 +102,7 @@ export const componentDocs = [
       "BreadcrumbPage",
       "BreadcrumbSeparator"
     ],
-    "hasCustomDemo": false
+    "examplePath": "breadcrumb/Basic.vue"
   },
   {
     "slug": "button",
@@ -114,7 +114,7 @@ export const componentDocs = [
     "componentExports": [
       "Button"
     ],
-    "hasCustomDemo": true
+    "examplePath": "button/Basic.vue"
   },
   {
     "slug": "button-group",
@@ -128,7 +128,7 @@ export const componentDocs = [
       "ButtonGroupSeparator",
       "ButtonGroupText"
     ],
-    "hasCustomDemo": false
+    "examplePath": "button-group/Basic.vue"
   },
   {
     "slug": "calendar",
@@ -151,7 +151,7 @@ export const componentDocs = [
       "CalendarNextButton",
       "CalendarPrevButton"
     ],
-    "hasCustomDemo": false
+    "examplePath": "calendar/Basic.vue"
   },
   {
     "slug": "card",
@@ -168,7 +168,7 @@ export const componentDocs = [
       "CardHeader",
       "CardTitle"
     ],
-    "hasCustomDemo": false
+    "examplePath": "card/Basic.vue"
   },
   {
     "slug": "carousel",
@@ -184,7 +184,7 @@ export const componentDocs = [
       "CarouselNext",
       "CarouselPrevious"
     ],
-    "hasCustomDemo": false
+    "examplePath": "carousel/Basic.vue"
   },
   {
     "slug": "chart",
@@ -199,7 +199,7 @@ export const componentDocs = [
       "ChartSingleTooltip",
       "ChartTooltip"
     ],
-    "hasCustomDemo": false
+    "examplePath": "chart/Basic.vue"
   },
   {
     "slug": "checkbox",
@@ -211,7 +211,7 @@ export const componentDocs = [
     "componentExports": [
       "Checkbox"
     ],
-    "hasCustomDemo": true
+    "examplePath": "checkbox/Basic.vue"
   },
   {
     "slug": "collapsible",
@@ -225,7 +225,7 @@ export const componentDocs = [
       "CollapsibleContent",
       "CollapsibleTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "collapsible/Basic.vue"
   },
   {
     "slug": "combobox",
@@ -244,7 +244,7 @@ export const componentDocs = [
       "ComboboxList",
       "ComboboxSeparator"
     ],
-    "hasCustomDemo": false
+    "examplePath": "combobox/Basic.vue"
   },
   {
     "slug": "command",
@@ -264,7 +264,7 @@ export const componentDocs = [
       "CommandSeparator",
       "CommandShortcut"
     ],
-    "hasCustomDemo": false
+    "examplePath": "command/Basic.vue"
   },
   {
     "slug": "context-menu",
@@ -289,7 +289,7 @@ export const componentDocs = [
       "ContextMenuSubTrigger",
       "ContextMenuTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "context-menu/Basic.vue"
   },
   {
     "slug": "dialog",
@@ -309,7 +309,7 @@ export const componentDocs = [
       "DialogTitle",
       "DialogTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "dialog/Basic.vue"
   },
   {
     "slug": "drawer",
@@ -327,7 +327,7 @@ export const componentDocs = [
       "DrawerOverlay",
       "DrawerTitle"
     ],
-    "hasCustomDemo": false
+    "examplePath": "drawer/Basic.vue"
   },
   {
     "slug": "dropdown-menu",
@@ -352,7 +352,7 @@ export const componentDocs = [
       "DropdownMenuSubTrigger",
       "DropdownMenuTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "dropdown-menu/Basic.vue"
   },
   {
     "slug": "empty",
@@ -369,7 +369,7 @@ export const componentDocs = [
       "EmptyMedia",
       "EmptyTitle"
     ],
-    "hasCustomDemo": false
+    "examplePath": "empty/Basic.vue"
   },
   {
     "slug": "field",
@@ -390,7 +390,7 @@ export const componentDocs = [
       "FieldSet",
       "FieldTitle"
     ],
-    "hasCustomDemo": false
+    "examplePath": "field/Basic.vue"
   },
   {
     "slug": "form",
@@ -406,7 +406,7 @@ export const componentDocs = [
       "FormLabel",
       "FormMessage"
     ],
-    "hasCustomDemo": false
+    "examplePath": "form/Basic.vue"
   },
   {
     "slug": "hover-card",
@@ -420,7 +420,7 @@ export const componentDocs = [
       "HoverCardContent",
       "HoverCardTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "hover-card/Basic.vue"
   },
   {
     "slug": "input",
@@ -432,7 +432,7 @@ export const componentDocs = [
     "componentExports": [
       "Input"
     ],
-    "hasCustomDemo": true
+    "examplePath": "input/Basic.vue"
   },
   {
     "slug": "input-group",
@@ -449,7 +449,7 @@ export const componentDocs = [
       "InputGroupText",
       "InputGroupTextarea"
     ],
-    "hasCustomDemo": false
+    "examplePath": "input-group/Basic.vue"
   },
   {
     "slug": "item",
@@ -470,7 +470,7 @@ export const componentDocs = [
       "ItemSeparator",
       "ItemTitle"
     ],
-    "hasCustomDemo": false
+    "examplePath": "item/Basic.vue"
   },
   {
     "slug": "kbd",
@@ -483,7 +483,7 @@ export const componentDocs = [
       "Kbd",
       "KbdGroup"
     ],
-    "hasCustomDemo": false
+    "examplePath": "kbd/Basic.vue"
   },
   {
     "slug": "label",
@@ -495,7 +495,7 @@ export const componentDocs = [
     "componentExports": [
       "Label"
     ],
-    "hasCustomDemo": false
+    "examplePath": "label/Basic.vue"
   },
   {
     "slug": "menubar",
@@ -521,7 +521,7 @@ export const componentDocs = [
       "MenubarSubTrigger",
       "MenubarTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "menubar/Basic.vue"
   },
   {
     "slug": "navigation-menu",
@@ -540,7 +540,7 @@ export const componentDocs = [
       "NavigationMenuTrigger",
       "NavigationMenuViewport"
     ],
-    "hasCustomDemo": false
+    "examplePath": "navigation-menu/Basic.vue"
   },
   {
     "slug": "number-field",
@@ -556,7 +556,7 @@ export const componentDocs = [
       "NumberFieldIncrement",
       "NumberFieldInput"
     ],
-    "hasCustomDemo": false
+    "examplePath": "number-field/Basic.vue"
   },
   {
     "slug": "pagination",
@@ -575,7 +575,7 @@ export const componentDocs = [
       "PaginationNext",
       "PaginationPrevious"
     ],
-    "hasCustomDemo": false
+    "examplePath": "pagination/Basic.vue"
   },
   {
     "slug": "pin-input",
@@ -590,7 +590,7 @@ export const componentDocs = [
       "PinInputSeparator",
       "PinInputSlot"
     ],
-    "hasCustomDemo": false
+    "examplePath": "pin-input/Basic.vue"
   },
   {
     "slug": "popover",
@@ -604,7 +604,7 @@ export const componentDocs = [
       "PopoverContent",
       "PopoverTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "popover/Basic.vue"
   },
   {
     "slug": "progress",
@@ -616,7 +616,7 @@ export const componentDocs = [
     "componentExports": [
       "Progress"
     ],
-    "hasCustomDemo": false
+    "examplePath": "progress/Basic.vue"
   },
   {
     "slug": "radio-group",
@@ -629,7 +629,7 @@ export const componentDocs = [
       "RadioGroup",
       "RadioGroupItem"
     ],
-    "hasCustomDemo": false
+    "examplePath": "radio-group/Basic.vue"
   },
   {
     "slug": "range-calendar",
@@ -652,7 +652,7 @@ export const componentDocs = [
       "RangeCalendarNextButton",
       "RangeCalendarPrevButton"
     ],
-    "hasCustomDemo": false
+    "examplePath": "range-calendar/Basic.vue"
   },
   {
     "slug": "resizable",
@@ -665,7 +665,7 @@ export const componentDocs = [
       "ResizableHandle",
       "ResizablePanelGroup"
     ],
-    "hasCustomDemo": false
+    "examplePath": "resizable/Basic.vue"
   },
   {
     "slug": "scroll-area",
@@ -678,7 +678,7 @@ export const componentDocs = [
       "ScrollArea",
       "ScrollBar"
     ],
-    "hasCustomDemo": false
+    "examplePath": "scroll-area/Basic.vue"
   },
   {
     "slug": "select",
@@ -700,7 +700,7 @@ export const componentDocs = [
       "SelectTrigger",
       "SelectValue"
     ],
-    "hasCustomDemo": false
+    "examplePath": "select/Basic.vue"
   },
   {
     "slug": "separator",
@@ -712,7 +712,7 @@ export const componentDocs = [
     "componentExports": [
       "Separator"
     ],
-    "hasCustomDemo": false
+    "examplePath": "separator/Basic.vue"
   },
   {
     "slug": "sheet",
@@ -731,7 +731,7 @@ export const componentDocs = [
       "SheetTitle",
       "SheetTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "sheet/Basic.vue"
   },
   {
     "slug": "sidebar",
@@ -765,7 +765,7 @@ export const componentDocs = [
       "SidebarSeparator",
       "SidebarTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "sidebar/Basic.vue"
   },
   {
     "slug": "skeleton",
@@ -777,7 +777,7 @@ export const componentDocs = [
     "componentExports": [
       "Skeleton"
     ],
-    "hasCustomDemo": false
+    "examplePath": "skeleton/Basic.vue"
   },
   {
     "slug": "slider",
@@ -789,7 +789,7 @@ export const componentDocs = [
     "componentExports": [
       "Slider"
     ],
-    "hasCustomDemo": false
+    "examplePath": "slider/Basic.vue"
   },
   {
     "slug": "sonner",
@@ -801,7 +801,7 @@ export const componentDocs = [
     "componentExports": [
       "Toaster"
     ],
-    "hasCustomDemo": false
+    "examplePath": "sonner/Basic.vue"
   },
   {
     "slug": "spinner",
@@ -813,7 +813,7 @@ export const componentDocs = [
     "componentExports": [
       "Spinner"
     ],
-    "hasCustomDemo": false
+    "examplePath": "spinner/Basic.vue"
   },
   {
     "slug": "stepper",
@@ -831,7 +831,7 @@ export const componentDocs = [
       "StepperTitle",
       "StepperTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "stepper/Basic.vue"
   },
   {
     "slug": "switch",
@@ -843,7 +843,7 @@ export const componentDocs = [
     "componentExports": [
       "Switch"
     ],
-    "hasCustomDemo": true
+    "examplePath": "switch/Basic.vue"
   },
   {
     "slug": "table",
@@ -863,7 +863,7 @@ export const componentDocs = [
       "TableHeader",
       "TableRow"
     ],
-    "hasCustomDemo": true
+    "examplePath": "table/Basic.vue"
   },
   {
     "slug": "tabs",
@@ -878,7 +878,7 @@ export const componentDocs = [
       "TabsList",
       "TabsTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "tabs/Basic.vue"
   },
   {
     "slug": "tags-input",
@@ -894,7 +894,7 @@ export const componentDocs = [
       "TagsInputItemDelete",
       "TagsInputItemText"
     ],
-    "hasCustomDemo": false
+    "examplePath": "tags-input/Basic.vue"
   },
   {
     "slug": "textarea",
@@ -906,7 +906,7 @@ export const componentDocs = [
     "componentExports": [
       "Textarea"
     ],
-    "hasCustomDemo": false
+    "examplePath": "textarea/Basic.vue"
   },
   {
     "slug": "toggle",
@@ -918,7 +918,7 @@ export const componentDocs = [
     "componentExports": [
       "Toggle"
     ],
-    "hasCustomDemo": false
+    "examplePath": "toggle/Basic.vue"
   },
   {
     "slug": "toggle-group",
@@ -931,7 +931,7 @@ export const componentDocs = [
       "ToggleGroup",
       "ToggleGroupItem"
     ],
-    "hasCustomDemo": false
+    "examplePath": "toggle-group/Basic.vue"
   },
   {
     "slug": "tooltip",
@@ -946,6 +946,6 @@ export const componentDocs = [
       "TooltipProvider",
       "TooltipTrigger"
     ],
-    "hasCustomDemo": false
+    "examplePath": "tooltip/Basic.vue"
   }
 ] as const

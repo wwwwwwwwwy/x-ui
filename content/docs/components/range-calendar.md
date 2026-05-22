@@ -11,6 +11,11 @@ RangeCalendar 用于在 Systematic Clarity 设计体系下构建清晰、稳定�
 
 RangeCalendar 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。
 
+## 示例预览
+
+::component-preview{name="range-calendar" src="range-calendar/Basic.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -243,7 +248,7 @@ import { RangeCalendar, RangeCalendarCell, RangeCalendarCellTrigger, RangeCalend
 
 - `reka-ui`
 - `@vueuse/core`
-- `@meri-design/icon-vue`
+- `lucide-vue-next`
 
 ## Registry
 
