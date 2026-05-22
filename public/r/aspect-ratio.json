@@ -1,0 +1,23 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "dependencies": [
+    "reka-ui"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/aspect-ratio/AspectRatio.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { AspectRatioProps } from \"reka-ui\"\nimport { AspectRatio } from \"reka-ui\"\n\n/**\n * AspectRatio 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<AspectRatioProps>()\n</script>\n\n<template>\n  <AspectRatio v-bind=\"props\">\n    <slot />\n  </AspectRatio>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/aspect-ratio/AspectRatio.vue"
+    },
+    {
+      "path": "registry/default/aspect-ratio/index.ts",
+      "content": "/**\n * 导出 AspectRatio 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as AspectRatio } from \"./AspectRatio.vue\"\n",
+      "type": "registry:ui",
+      "target": "components/ui/aspect-ratio/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

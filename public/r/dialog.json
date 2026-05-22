@@ -1,0 +1,72 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "dialog",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/dialog/Dialog.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogRootEmits, DialogRootProps } from \"reka-ui\"\nimport { DialogRoot, useForwardPropsEmits } from \"reka-ui\"\n\n/**\n * Dialog 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogRootProps>()\n/**\n * Dialog 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<DialogRootEmits>()\n\n/**\n * 转发 Dialog 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DialogRoot v-bind=\"forwarded\">\n    <slot />\n  </DialogRoot>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog/Dialog.vue"
+    },
+    {
+      "path": "registry/default/dialog/DialogClose.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogCloseProps } from \"reka-ui\"\nimport { DialogClose } from \"reka-ui\"\n\n/**\n * DialogClose 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogCloseProps>()\n</script>\n\n<template>\n  <DialogClose v-bind=\"props\">\n    <slot />\n  </DialogClose>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog/DialogClose.vue"
+    },
+    {
+      "path": "registry/default/dialog/DialogContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogContentEmits, DialogContentProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { X } from \"lucide-vue-next\"\nimport {\n  DialogClose,\n  DialogContent,\n  DialogOverlay,\n  DialogPortal,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * DialogContent 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogContentProps & { class?: HTMLAttributes[\"class\"] }>()\n/**\n * DialogContent 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<DialogContentEmits>()\n\n/**\n * 移除仅由 DialogContent 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 DialogContent 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <DialogPortal>\n    <DialogOverlay\n      class=\"fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\"\n    />\n    <DialogContent\n      v-bind=\"forwarded\"\n      :class=\"\n        cn(\n          'fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg',\n          props.class,\n        )\"\n    >\n      <slot />\n\n      <DialogClose\n        class=\"absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground\"\n      >\n        <X class=\"w-4 h-4\" />\n        <span class=\"sr-only\">Close</span>\n      </DialogClose>\n    </DialogContent>\n  </DialogPortal>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog/DialogContent.vue"
+    },
+    {
+      "path": "registry/default/dialog/DialogDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogDescriptionProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { DialogDescription, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * DialogDescription 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogDescriptionProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 DialogDescription 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 DialogDescription 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <DialogDescription\n    v-bind=\"forwardedProps\"\n    :class=\"cn('text-sm text-muted-foreground', props.class)\"\n  >\n    <slot />\n  </DialogDescription>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog/DialogDescription.vue"
+    },
+    {
+      "path": "registry/default/dialog/DialogFooter.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * DialogFooter 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{ class?: HTMLAttributes[\"class\"] }>()\n</script>\n\n<template>\n  <div\n    :class=\"\n      cn(\n        'flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-x-2',\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog/DialogFooter.vue"
+    },
+    {
+      "path": "registry/default/dialog/DialogHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * DialogHeader 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    :class=\"cn('flex flex-col gap-y-1.5 text-center sm:text-left', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog/DialogHeader.vue"
+    },
+    {
+      "path": "registry/default/dialog/DialogScrollContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogContentEmits, DialogContentProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { X } from \"lucide-vue-next\"\nimport {\n  DialogClose,\n  DialogContent,\n  DialogOverlay,\n  DialogPortal,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * DialogScrollContent 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogContentProps & { class?: HTMLAttributes[\"class\"] }>()\n/**\n * DialogScrollContent 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<DialogContentEmits>()\n\n/**\n * 移除仅由 DialogScrollContent 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 DialogScrollContent 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <DialogPortal>\n    <DialogOverlay\n      class=\"fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\"\n    >\n      <DialogContent\n        :class=\"\n          cn(\n            'relative z-50 grid w-full max-w-lg my-8 gap-4 border border-border bg-background p-6 shadow-lg duration-200 sm:rounded-lg md:w-full',\n            props.class,\n          )\n        \"\n        v-bind=\"forwarded\"\n        @pointer-down-outside=\"(event) => {\n          const originalEvent = event.detail.originalEvent;\n          const target = originalEvent.target as HTMLElement;\n          if (originalEvent.offsetX > target.clientWidth || originalEvent.offsetY > target.clientHeight) {\n            event.preventDefault();\n          }\n        }\"\n      >\n        <slot />\n\n        <DialogClose\n          class=\"absolute top-3 right-3 p-0.5 transition-colors rounded-md hover:bg-secondary\"\n        >\n          <X class=\"w-4 h-4\" />\n          <span class=\"sr-only\">Close</span>\n        </DialogClose>\n      </DialogContent>\n    </DialogOverlay>\n  </DialogPortal>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog/DialogScrollContent.vue"
+    },
+    {
+      "path": "registry/default/dialog/DialogTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogTitleProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { DialogTitle, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * DialogTitle 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogTitleProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 DialogTitle 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 DialogTitle 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <DialogTitle\n    v-bind=\"forwardedProps\"\n    :class=\"\n      cn(\n        'text-lg font-semibold leading-none tracking-tight',\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </DialogTitle>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog/DialogTitle.vue"
+    },
+    {
+      "path": "registry/default/dialog/DialogTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogTriggerProps } from \"reka-ui\"\nimport { DialogTrigger } from \"reka-ui\"\n\n/**\n * DialogTrigger 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogTriggerProps>()\n</script>\n\n<template>\n  <DialogTrigger v-bind=\"props\">\n    <slot />\n  </DialogTrigger>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog/DialogTrigger.vue"
+    },
+    {
+      "path": "registry/default/dialog/index.ts",
+      "content": "/**\n * 导出 Dialog 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as Dialog } from \"./Dialog.vue\"\n/**\n * 导出 DialogClose 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as DialogClose } from \"./DialogClose.vue\"\n/**\n * 导出 DialogContent 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as DialogContent } from \"./DialogContent.vue\"\n/**\n * 导出 DialogDescription 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as DialogDescription } from \"./DialogDescription.vue\"\n/**\n * 导出 DialogFooter 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as DialogFooter } from \"./DialogFooter.vue\"\n/**\n * 导出 DialogHeader 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as DialogHeader } from \"./DialogHeader.vue\"\n/**\n * 导出 DialogScrollContent 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as DialogScrollContent } from \"./DialogScrollContent.vue\"\n/**\n * 导出 DialogTitle 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as DialogTitle } from \"./DialogTitle.vue\"\n/**\n * 导出 DialogTrigger 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as DialogTrigger } from \"./DialogTrigger.vue\"\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

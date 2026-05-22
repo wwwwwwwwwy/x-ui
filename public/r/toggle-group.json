@@ -1,0 +1,32 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "toggle-group",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/default/toggle-group/ToggleGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { VariantProps } from \"class-variance-authority\"\nimport type { ToggleGroupRootEmits, ToggleGroupRootProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport type { toggleVariants } from \"@/registry/default/ui/toggle\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { ToggleGroupRoot, useForwardPropsEmits } from \"reka-ui\"\nimport { provide } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * ToggleGroupVariants 定义 ToggleGroup 使用的本地类型，供 props、事件或插槽复用。\n */\ntype ToggleGroupVariants = VariantProps<typeof toggleVariants>\n\n/**\n * ToggleGroup 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<ToggleGroupRootProps & {\n  class?: HTMLAttributes[\"class\"]\n  variant?: ToggleGroupVariants[\"variant\"]\n  size?: ToggleGroupVariants[\"size\"]\n}>()\n/**\n * ToggleGroup 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<ToggleGroupRootEmits>()\n\nprovide(\"toggleGroup\", {\n  variant: props.variant,\n  size: props.size,\n})\n\n/**\n * 移除仅由 ToggleGroup 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 ToggleGroup 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <ToggleGroupRoot v-slot=\"slotProps\" v-bind=\"forwarded\" :class=\"cn('flex items-center justify-center gap-1', props.class)\">\n    <slot v-bind=\"slotProps\" />\n  </ToggleGroupRoot>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/toggle-group/ToggleGroup.vue"
+    },
+    {
+      "path": "registry/default/toggle-group/ToggleGroupItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { VariantProps } from \"class-variance-authority\"\nimport type { ToggleGroupItemProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { ToggleGroupItem, useForwardProps } from \"reka-ui\"\nimport { inject } from \"vue\"\nimport { cn } from \"@/lib/utils\"\nimport { toggleVariants } from \"@/registry/default/ui/toggle\"\n\n/**\n * ToggleGroupVariants 定义 ToggleGroupItem 使用的本地类型，供 props、事件或插槽复用。\n */\ntype ToggleGroupVariants = VariantProps<typeof toggleVariants>\n\n/**\n * ToggleGroupItem 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<ToggleGroupItemProps & {\n  class?: HTMLAttributes[\"class\"]\n  variant?: ToggleGroupVariants[\"variant\"]\n  size?: ToggleGroupVariants[\"size\"]\n}>()\n\nconst context = inject<ToggleGroupVariants>(\"toggleGroup\")\n\n/**\n * 移除仅由 ToggleGroupItem 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\", \"variant\")\n\n/**\n * 转发 ToggleGroupItem 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <ToggleGroupItem\n    v-slot=\"slotProps\"\n    v-bind=\"forwardedProps\" :class=\"cn(toggleVariants({\n      variant: context?.variant || variant,\n      size: context?.size || size,\n    }), props.class)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </ToggleGroupItem>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/toggle-group/ToggleGroupItem.vue"
+    },
+    {
+      "path": "registry/default/toggle-group/index.ts",
+      "content": "/**\n * 导出 ToggleGroup 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as ToggleGroup } from \"./ToggleGroup.vue\"\n/**\n * 导出 ToggleGroupItem 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as ToggleGroupItem } from \"./ToggleGroupItem.vue\"\n",
+      "type": "registry:ui",
+      "target": "components/ui/toggle-group/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

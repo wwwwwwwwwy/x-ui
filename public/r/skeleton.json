@@ -1,0 +1,21 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "skeleton",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/skeleton/Skeleton.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * SkeletonProps 定义 Skeleton 的公开 props，保持与 shadcn-vue 安装后的类型入口兼容。\n */\ninterface SkeletonProps {\n  class?: HTMLAttributes[\"class\"]\n}\n\n/**\n * Skeleton 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<SkeletonProps>()\n</script>\n\n<template>\n  <div :class=\"cn('animate-pulse rounded-md bg-muted', props.class)\" />\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/skeleton/Skeleton.vue"
+    },
+    {
+      "path": "registry/default/skeleton/index.ts",
+      "content": "/**\n * 导出 Skeleton 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as Skeleton } from \"./Skeleton.vue\"\n",
+      "type": "registry:ui",
+      "target": "components/ui/skeleton/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

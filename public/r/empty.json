@@ -1,0 +1,51 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "empty",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/empty/Empty.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Empty 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"empty\"\n    :class=\"cn(\n      'flex min-w-0 flex-1 flex-col items-center justify-center gap-6 text-balance rounded-lg border-dashed p-6 text-center md:p-12',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/empty/Empty.vue"
+    },
+    {
+      "path": "registry/default/empty/EmptyContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * EmptyContent 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"empty-content\"\n    :class=\"cn(\n      'flex w-full min-w-0 max-w-sm flex-col items-center gap-4 text-balance text-sm',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/empty/EmptyContent.vue"
+    },
+    {
+      "path": "registry/default/empty/EmptyDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * EmptyDescription 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <p\n    data-slot=\"empty-description\"\n    :class=\"cn(\n      'text-muted-foreground [&>a:hover]:text-primary text-sm/relaxed [&>a]:underline [&>a]:underline-offset-4',\n      props.class,\n    )\"\n  >\n    <slot />\n  </p>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/empty/EmptyDescription.vue"
+    },
+    {
+      "path": "registry/default/empty/EmptyHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * EmptyHeader 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"empty-header\"\n    :class=\"cn(\n      'flex max-w-sm flex-col items-center gap-2 text-center',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/empty/EmptyHeader.vue"
+    },
+    {
+      "path": "registry/default/empty/EmptyMedia.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport type { EmptyMediaVariants } from \".\"\nimport { cn } from \"@/lib/utils\"\nimport { emptyMediaVariants } from \".\"\n\n/**\n * EmptyMedia 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n  variant?: EmptyMediaVariants[\"variant\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"empty-icon\"\n    :data-variant=\"variant\"\n    :class=\"cn(emptyMediaVariants({ variant }), props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/empty/EmptyMedia.vue"
+    },
+    {
+      "path": "registry/default/empty/EmptyTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * EmptyTitle 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"empty-title\"\n    :class=\"cn('text-lg font-medium tracking-tight', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/empty/EmptyTitle.vue"
+    },
+    {
+      "path": "registry/default/empty/index.ts",
+      "content": "import type { VariantProps } from \"class-variance-authority\"\nimport { cva } from \"class-variance-authority\"\n\n/**\n * 导出 Empty 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as Empty } from \"./Empty.vue\"\n/**\n * 导出 EmptyContent 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as EmptyContent } from \"./EmptyContent.vue\"\n/**\n * 导出 EmptyDescription 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as EmptyDescription } from \"./EmptyDescription.vue\"\n/**\n * 导出 EmptyHeader 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as EmptyHeader } from \"./EmptyHeader.vue\"\n/**\n * 导出 EmptyMedia 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as EmptyMedia } from \"./EmptyMedia.vue\"\n/**\n * 导出 EmptyTitle 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as EmptyTitle } from \"./EmptyTitle.vue\"\n\n/**\n * emptyMediaVariants 定义组件的样式变体、默认值和视觉语义，供组件 props 复用。\n */\nexport const emptyMediaVariants = cva(\n  \"mb-2 flex shrink-0 items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-transparent\",\n        icon: \"bg-muted text-foreground flex size-10 shrink-0 items-center justify-center rounded-lg [&_svg:not([class*='size-'])]:size-6\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  },\n)\n\n/**\n * 导出 EmptyMediaVariants 类型，供使用方获得与组件 variant 或 API 一致的 TypeScript 约束。\n */\nexport type EmptyMediaVariants = VariantProps<typeof emptyMediaVariants>\n",
+      "type": "registry:ui",
+      "target": "components/ui/empty/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

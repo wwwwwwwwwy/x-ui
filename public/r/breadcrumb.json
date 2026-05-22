@@ -1,0 +1,59 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "dependencies": [
+    "reka-ui"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/breadcrumb/Breadcrumb.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\n/**\n * Breadcrumb 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <nav aria-label=\"breadcrumb\" :class=\"props.class\">\n    <slot />\n  </nav>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/breadcrumb/Breadcrumb.vue"
+    },
+    {
+      "path": "registry/default/breadcrumb/BreadcrumbEllipsis.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\nimport { MoreHorizontal } from \"lucide-vue-next\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * BreadcrumbEllipsis 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <span\n    role=\"presentation\"\n    aria-hidden=\"true\"\n    :class=\"cn('flex h-9 w-9 items-center justify-center', props.class)\"\n  >\n    <slot>\n      <MoreHorizontal class=\"h-4 w-4\" />\n    </slot>\n    <span class=\"sr-only\">More</span>\n  </span>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/breadcrumb/BreadcrumbEllipsis.vue"
+    },
+    {
+      "path": "registry/default/breadcrumb/BreadcrumbItem.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * BreadcrumbItem 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <li\n    :class=\"cn('inline-flex items-center gap-1.5', props.class)\"\n  >\n    <slot />\n  </li>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/breadcrumb/BreadcrumbItem.vue"
+    },
+    {
+      "path": "registry/default/breadcrumb/BreadcrumbLink.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { PrimitiveProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { Primitive } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * BreadcrumbLink 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = withDefaults(defineProps<PrimitiveProps & { class?: HTMLAttributes[\"class\"] }>(), {\n  as: \"a\",\n})\n</script>\n\n<template>\n  <Primitive\n    :as=\"as\"\n    :as-child=\"asChild\"\n    :class=\"cn('transition-colors hover:text-foreground', props.class)\"\n  >\n    <slot />\n  </Primitive>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/breadcrumb/BreadcrumbLink.vue"
+    },
+    {
+      "path": "registry/default/breadcrumb/BreadcrumbList.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * BreadcrumbList 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <ol\n    :class=\"cn('flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5', props.class)\"\n  >\n    <slot />\n  </ol>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/breadcrumb/BreadcrumbList.vue"
+    },
+    {
+      "path": "registry/default/breadcrumb/BreadcrumbPage.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * BreadcrumbPage 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <span\n    role=\"link\"\n    aria-disabled=\"true\"\n    aria-current=\"page\"\n    :class=\"cn('font-normal text-foreground', props.class)\"\n  >\n    <slot />\n  </span>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/breadcrumb/BreadcrumbPage.vue"
+    },
+    {
+      "path": "registry/default/breadcrumb/BreadcrumbSeparator.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\nimport { ChevronRight } from \"lucide-vue-next\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * BreadcrumbSeparator 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <li\n    role=\"presentation\"\n    aria-hidden=\"true\"\n    :class=\"cn('[&>svg]:w-3.5 [&>svg]:h-3.5', props.class)\"\n  >\n    <slot>\n      <ChevronRight />\n    </slot>\n  </li>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/breadcrumb/BreadcrumbSeparator.vue"
+    },
+    {
+      "path": "registry/default/breadcrumb/index.ts",
+      "content": "/**\n * 导出 Breadcrumb 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as Breadcrumb } from \"./Breadcrumb.vue\"\n/**\n * 导出 BreadcrumbEllipsis 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as BreadcrumbEllipsis } from \"./BreadcrumbEllipsis.vue\"\n/**\n * 导出 BreadcrumbItem 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as BreadcrumbItem } from \"./BreadcrumbItem.vue\"\n/**\n * 导出 BreadcrumbLink 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as BreadcrumbLink } from \"./BreadcrumbLink.vue\"\n/**\n * 导出 BreadcrumbList 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as BreadcrumbList } from \"./BreadcrumbList.vue\"\n/**\n * 导出 BreadcrumbPage 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as BreadcrumbPage } from \"./BreadcrumbPage.vue\"\n/**\n * 导出 BreadcrumbSeparator 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as BreadcrumbSeparator } from \"./BreadcrumbSeparator.vue\"\n",
+      "type": "registry:ui",
+      "target": "components/ui/breadcrumb/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

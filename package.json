@@ -1,0 +1,47 @@
+{
+  "name": "x-ui",
+  "type": "module",
+  "private": true,
+  "packageManager": "bun@1.3.4",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "generate": "nuxi generate",
+    "preview": "nuxi preview",
+    "registry:build": "shadcn-vue build --output ./public/r",
+    "registry:build:shadcn": "shadcn-vue build registry.shadcn.json --output ./public/r/shadcn",
+    "registry:sync:shadcn": "node scripts/sync-shadcn-registry.mjs",
+    "registry:build:all": "shadcn-vue build --output ./public/r && shadcn-vue build registry.shadcn.json --output ./public/r/shadcn",
+    "docs:generate": "node scripts/generate-component-docs.mjs",
+    "check": "vue-tsc --noEmit",
+    "release:static": "bun run registry:build:all && bun run generate"
+  },
+  "dependencies": {
+    "@nuxt/content": "latest",
+    "@tailwindcss/vite": "latest",
+    "better-sqlite3": "latest",
+    "class-variance-authority": "latest",
+    "clsx": "latest",
+    "lucide-vue-next": "latest",
+    "nuxt": "latest",
+    "reka-ui": "latest",
+    "tailwind-merge": "latest",
+    "tailwindcss": "latest",
+    "vue": "latest",
+    "vue-router": "latest",
+    "@unovis/ts": "^1.6.5",
+    "@unovis/vue": "^1.6.5",
+    "@vee-validate/zod": "^4.15.1",
+    "@vueuse/core": "^14.3.0",
+    "embla-carousel-vue": "^8.6.0",
+    "vaul-vue": "^0.4.1",
+    "vee-validate": "^4.15.1",
+    "vue-sonner": "^2.0.9",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "shadcn-vue": "latest",
+    "typescript": "latest",
+    "vue-tsc": "latest"
+  }
+}

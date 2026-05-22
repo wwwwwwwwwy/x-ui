@@ -1,0 +1,21 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "spinner",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/spinner/Spinner.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { Loader2Icon } from \"lucide-vue-next\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Spinner 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <Loader2Icon\n    role=\"status\"\n    aria-label=\"Loading\"\n    :class=\"cn('size-4 animate-spin', props.class)\"\n  />\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/spinner/Spinner.vue"
+    },
+    {
+      "path": "registry/default/spinner/index.ts",
+      "content": "/**\n * 导出 Spinner 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as Spinner } from \"./Spinner.vue\"\n",
+      "type": "registry:ui",
+      "target": "components/ui/spinner/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "sheet",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/sheet/Sheet.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogRootEmits, DialogRootProps } from \"reka-ui\"\nimport { DialogRoot, useForwardPropsEmits } from \"reka-ui\"\n\n/**\n * Sheet 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogRootProps>()\n/**\n * Sheet 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<DialogRootEmits>()\n\n/**\n * 转发 Sheet 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DialogRoot v-bind=\"forwarded\">\n    <slot />\n  </DialogRoot>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/sheet/Sheet.vue"
+    },
+    {
+      "path": "registry/default/sheet/SheetClose.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogCloseProps } from \"reka-ui\"\nimport { DialogClose } from \"reka-ui\"\n\n/**\n * SheetClose 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogCloseProps>()\n</script>\n\n<template>\n  <DialogClose v-bind=\"props\">\n    <slot />\n  </DialogClose>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/sheet/SheetClose.vue"
+    },
+    {
+      "path": "registry/default/sheet/SheetContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogContentEmits, DialogContentProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport type { SheetVariants } from \".\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { X } from \"lucide-vue-next\"\nimport {\n  DialogClose,\n  DialogContent,\n  DialogOverlay,\n  DialogPortal,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\nimport { sheetVariants } from \".\"\n\n/**\n * SheetContentProps 定义 SheetContent 的公开 props，保持与 shadcn-vue 安装后的类型入口兼容。\n */\ninterface SheetContentProps extends DialogContentProps {\n  class?: HTMLAttributes[\"class\"]\n  side?: SheetVariants[\"side\"]\n}\n\n/**\n * SheetContent 的组件选项；用于控制 attrs 继承等 Vue 运行时兼容行为。\n */\ndefineOptions({\n  inheritAttrs: false,\n})\n\n/**\n * SheetContent 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<SheetContentProps>()\n\n/**\n * SheetContent 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<DialogContentEmits>()\n\n/**\n * 移除仅由 SheetContent 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\", \"side\")\n\n/**\n * 转发 SheetContent 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <DialogPortal>\n    <DialogOverlay\n      class=\"fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\"\n    />\n    <DialogContent\n      :class=\"cn(sheetVariants({ side }), props.class)\"\n      v-bind=\"{ ...forwarded, ...$attrs }\"\n    >\n      <slot />\n\n      <DialogClose\n        class=\"absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary\"\n      >\n        <X class=\"w-4 h-4 text-muted-foreground\" />\n      </DialogClose>\n    </DialogContent>\n  </DialogPortal>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/sheet/SheetContent.vue"
+    },
+    {
+      "path": "registry/default/sheet/SheetDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogDescriptionProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { DialogDescription } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * SheetDescription 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogDescriptionProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 SheetDescription 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DialogDescription\n    :class=\"cn('text-sm text-muted-foreground', props.class)\"\n    v-bind=\"delegatedProps\"\n  >\n    <slot />\n  </DialogDescription>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/sheet/SheetDescription.vue"
+    },
+    {
+      "path": "registry/default/sheet/SheetFooter.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * SheetFooter 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{ class?: HTMLAttributes[\"class\"] }>()\n</script>\n\n<template>\n  <div\n    :class=\"\n      cn(\n        'flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-x-2',\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/sheet/SheetFooter.vue"
+    },
+    {
+      "path": "registry/default/sheet/SheetHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * SheetHeader 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{ class?: HTMLAttributes[\"class\"] }>()\n</script>\n\n<template>\n  <div\n    :class=\"\n      cn('flex flex-col gap-y-2 text-center sm:text-left', props.class)\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/sheet/SheetHeader.vue"
+    },
+    {
+      "path": "registry/default/sheet/SheetTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogTitleProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { DialogTitle } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * SheetTitle 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogTitleProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 SheetTitle 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DialogTitle\n    :class=\"cn('text-lg font-semibold text-foreground', props.class)\"\n    v-bind=\"delegatedProps\"\n  >\n    <slot />\n  </DialogTitle>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/sheet/SheetTitle.vue"
+    },
+    {
+      "path": "registry/default/sheet/SheetTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogTriggerProps } from \"reka-ui\"\nimport { DialogTrigger } from \"reka-ui\"\n\n/**\n * SheetTrigger 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<DialogTriggerProps>()\n</script>\n\n<template>\n  <DialogTrigger v-bind=\"props\">\n    <slot />\n  </DialogTrigger>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/sheet/SheetTrigger.vue"
+    },
+    {
+      "path": "registry/default/sheet/index.ts",
+      "content": "import type { VariantProps } from \"class-variance-authority\"\nimport { cva } from \"class-variance-authority\"\n\n/**\n * 导出 Sheet 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as Sheet } from \"./Sheet.vue\"\n/**\n * 导出 SheetClose 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as SheetClose } from \"./SheetClose.vue\"\n/**\n * 导出 SheetContent 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as SheetContent } from \"./SheetContent.vue\"\n/**\n * 导出 SheetDescription 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as SheetDescription } from \"./SheetDescription.vue\"\n/**\n * 导出 SheetFooter 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as SheetFooter } from \"./SheetFooter.vue\"\n/**\n * 导出 SheetHeader 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as SheetHeader } from \"./SheetHeader.vue\"\n/**\n * 导出 SheetTitle 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as SheetTitle } from \"./SheetTitle.vue\"\n/**\n * 导出 SheetTrigger 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as SheetTrigger } from \"./SheetTrigger.vue\"\n\n/**\n * sheetVariants 定义组件的样式变体、默认值和视觉语义，供组件 props 复用。\n */\nexport const sheetVariants = cva(\n  \"fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500\",\n  {\n    variants: {\n      side: {\n        top: \"inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top\",\n        bottom:\n            \"inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom\",\n        left: \"inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm\",\n        right:\n            \"inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm\",\n      },\n    },\n    defaultVariants: {\n      side: \"right\",\n    },\n  },\n)\n\n/**\n * 导出 SheetVariants 类型，供使用方获得与组件 variant 或 API 一致的 TypeScript 约束。\n */\nexport type SheetVariants = VariantProps<typeof sheetVariants>\n",
+      "type": "registry:ui",
+      "target": "components/ui/sheet/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

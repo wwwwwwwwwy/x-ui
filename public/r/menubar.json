@@ -1,0 +1,108 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "menubar",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/menubar/Menubar.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarRootEmits, MenubarRootProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport {\n  MenubarRoot,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Menubar 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarRootProps & { class?: HTMLAttributes[\"class\"] }>()\n/**\n * Menubar 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<MenubarRootEmits>()\n\n/**\n * 移除仅由 Menubar 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 Menubar 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <MenubarRoot\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'flex h-10 items-center gap-x-1 rounded-md border bg-background p-1',\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </MenubarRoot>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/Menubar.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarCheckboxItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarCheckboxItemEmits, MenubarCheckboxItemProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { Check } from \"lucide-vue-next\"\nimport {\n  MenubarCheckboxItem,\n  MenubarItemIndicator,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * MenubarCheckboxItem 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarCheckboxItemProps & { class?: HTMLAttributes[\"class\"] }>()\n/**\n * MenubarCheckboxItem 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<MenubarCheckboxItemEmits>()\n\n/**\n * 移除仅由 MenubarCheckboxItem 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 MenubarCheckboxItem 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <MenubarCheckboxItem\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',\n      props.class,\n    )\"\n  >\n    <span class=\"absolute left-2 flex h-3.5 w-3.5 items-center justify-center\">\n      <MenubarItemIndicator>\n        <Check class=\"w-4 h-4\" />\n      </MenubarItemIndicator>\n    </span>\n    <slot />\n  </MenubarCheckboxItem>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarCheckboxItem.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarContentProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport {\n  MenubarContent,\n  MenubarPortal,\n  useForwardProps,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<MenubarContentProps & { class?: HTMLAttributes[\"class\"] }>(),\n  {\n    align: \"start\",\n    alignOffset: -4,\n    sideOffset: 8,\n  },\n)\n\n/**\n * 移除仅由 MenubarContent 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 MenubarContent 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <MenubarPortal>\n    <MenubarContent\n      v-bind=\"forwardedProps\"\n      :class=\"\n        cn(\n          'z-50 min-w-48 overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',\n          props.class,\n        )\n      \"\n    >\n      <slot />\n    </MenubarContent>\n  </MenubarPortal>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarContent.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarGroupProps } from \"reka-ui\"\nimport { MenubarGroup } from \"reka-ui\"\n\n/**\n * MenubarGroup 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarGroupProps>()\n</script>\n\n<template>\n  <MenubarGroup v-bind=\"props\">\n    <slot />\n  </MenubarGroup>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarGroup.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarItemEmits, MenubarItemProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport {\n  MenubarItem,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * MenubarItem 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarItemProps & { class?: HTMLAttributes[\"class\"], inset?: boolean }>()\n\n/**\n * MenubarItem 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<MenubarItemEmits>()\n\n/**\n * 移除仅由 MenubarItem 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 MenubarItem 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <MenubarItem\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      'relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',\n      inset && 'pl-8',\n      props.class,\n    )\"\n  >\n    <slot />\n  </MenubarItem>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarItem.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarLabelProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { MenubarLabel } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * MenubarLabel 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarLabelProps & { class?: HTMLAttributes[\"class\"], inset?: boolean }>()\n</script>\n\n<template>\n  <MenubarLabel :class=\"cn('px-2 py-1.5 text-sm font-semibold', inset && 'pl-8', props.class)\">\n    <slot />\n  </MenubarLabel>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarLabel.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarMenu.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarMenuProps } from \"reka-ui\"\nimport { MenubarMenu } from \"reka-ui\"\n\n/**\n * MenubarMenu 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarMenuProps>()\n</script>\n\n<template>\n  <MenubarMenu v-bind=\"props\">\n    <slot />\n  </MenubarMenu>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarMenu.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarRadioGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarRadioGroupEmits, MenubarRadioGroupProps } from \"reka-ui\"\nimport {\n  MenubarRadioGroup,\n  useForwardPropsEmits,\n} from \"reka-ui\"\n\n/**\n * MenubarRadioGroup 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarRadioGroupProps>()\n\n/**\n * MenubarRadioGroup 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<MenubarRadioGroupEmits>()\n\n/**\n * 转发 MenubarRadioGroup 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <MenubarRadioGroup v-bind=\"forwarded\">\n    <slot />\n  </MenubarRadioGroup>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarRadioGroup.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarRadioItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarRadioItemEmits, MenubarRadioItemProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { Circle } from \"lucide-vue-next\"\nimport {\n  MenubarItemIndicator,\n  MenubarRadioItem,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * MenubarRadioItem 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarRadioItemProps & { class?: HTMLAttributes[\"class\"] }>()\n/**\n * MenubarRadioItem 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<MenubarRadioItemEmits>()\n\n/**\n * 移除仅由 MenubarRadioItem 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 MenubarRadioItem 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <MenubarRadioItem\n    v-bind=\"forwarded\"\n    :class=\"cn(\n      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',\n      props.class,\n    )\"\n  >\n    <span class=\"absolute left-2 flex h-3.5 w-3.5 items-center justify-center\">\n      <MenubarItemIndicator>\n        <Circle class=\"h-2 w-2 fill-current\" />\n      </MenubarItemIndicator>\n    </span>\n    <slot />\n  </MenubarRadioItem>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarRadioItem.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarSeparatorProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { MenubarSeparator, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * MenubarSeparator 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarSeparatorProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 MenubarSeparator 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 MenubarSeparator 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <MenubarSeparator :class=\" cn('-mx-1 my-1 h-px bg-muted', props.class)\" v-bind=\"forwardedProps\" />\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarSeparator.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarShortcut.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * MenubarShortcut 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <span :class=\"cn('ml-auto text-xs tracking-widest text-muted-foreground', props.class)\">\n    <slot />\n  </span>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarShortcut.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarSub.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarSubEmits } from \"reka-ui\"\nimport { MenubarSub, useForwardPropsEmits } from \"reka-ui\"\n\n/**\n * MenubarSubRootProps 定义 MenubarSub 的公开 props，保持与 shadcn-vue 安装后的类型入口兼容。\n */\ninterface MenubarSubRootProps {\n  defaultOpen?: boolean\n  open?: boolean\n}\n\n/**\n * MenubarSub 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarSubRootProps>()\n/**\n * MenubarSub 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<MenubarSubEmits>()\n\n/**\n * 转发 MenubarSub 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <MenubarSub v-bind=\"forwarded\">\n    <slot />\n  </MenubarSub>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarSub.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarSubContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarSubContentEmits, MenubarSubContentProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport {\n  MenubarPortal,\n  MenubarSubContent,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * MenubarSubContent 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarSubContentProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * MenubarSubContent 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<MenubarSubContentEmits>()\n\n/**\n * 移除仅由 MenubarSubContent 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 MenubarSubContent 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <MenubarPortal>\n    <MenubarSubContent\n      v-bind=\"forwarded\"\n      :class=\"\n        cn(\n          'z-50 min-w-32 overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',\n          props.class,\n        )\n      \"\n    >\n      <slot />\n    </MenubarSubContent>\n  </MenubarPortal>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarSubContent.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarSubTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarSubTriggerProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { ChevronRight } from \"lucide-vue-next\"\nimport { MenubarSubTrigger, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * MenubarSubTrigger 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarSubTriggerProps & { class?: HTMLAttributes[\"class\"], inset?: boolean }>()\n\n/**\n * 移除仅由 MenubarSubTrigger 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 MenubarSubTrigger 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <MenubarSubTrigger\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',\n      inset && 'pl-8',\n      props.class,\n    )\"\n  >\n    <slot />\n    <ChevronRight class=\"ml-auto h-4 w-4\" />\n  </MenubarSubTrigger>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarSubTrigger.vue"
+    },
+    {
+      "path": "registry/default/menubar/MenubarTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { MenubarTriggerProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { MenubarTrigger, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * MenubarTrigger 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<MenubarTriggerProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 MenubarTrigger 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 MenubarTrigger 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <MenubarTrigger\n    v-bind=\"forwardedProps\"\n    :class=\"\n      cn(\n        'flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </MenubarTrigger>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/MenubarTrigger.vue"
+    },
+    {
+      "path": "registry/default/menubar/index.ts",
+      "content": "/**\n * 导出 Menubar 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as Menubar } from \"./Menubar.vue\"\n/**\n * 导出 MenubarCheckboxItem 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarCheckboxItem } from \"./MenubarCheckboxItem.vue\"\n/**\n * 导出 MenubarContent 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarContent } from \"./MenubarContent.vue\"\n/**\n * 导出 MenubarGroup 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarGroup } from \"./MenubarGroup.vue\"\n/**\n * 导出 MenubarItem 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarItem } from \"./MenubarItem.vue\"\n/**\n * 导出 MenubarLabel 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarLabel } from \"./MenubarLabel.vue\"\n/**\n * 导出 MenubarMenu 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarMenu } from \"./MenubarMenu.vue\"\n/**\n * 导出 MenubarRadioGroup 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarRadioGroup } from \"./MenubarRadioGroup.vue\"\n/**\n * 导出 MenubarRadioItem 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarRadioItem } from \"./MenubarRadioItem.vue\"\n/**\n * 导出 MenubarSeparator 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarSeparator } from \"./MenubarSeparator.vue\"\n/**\n * 导出 MenubarShortcut 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarShortcut } from \"./MenubarShortcut.vue\"\n/**\n * 导出 MenubarSub 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarSub } from \"./MenubarSub.vue\"\n/**\n * 导出 MenubarSubContent 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarSubContent } from \"./MenubarSubContent.vue\"\n/**\n * 导出 MenubarSubTrigger 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarSubTrigger } from \"./MenubarSubTrigger.vue\"\n/**\n * 导出 MenubarTrigger 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as MenubarTrigger } from \"./MenubarTrigger.vue\"\n",
+      "type": "registry:ui",
+      "target": "components/ui/menubar/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

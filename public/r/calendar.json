@@ -1,0 +1,92 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry-item.json",
+  "name": "calendar",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/calendar/Calendar.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarRootEmits, CalendarRootProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { CalendarRoot, useForwardPropsEmits } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\nimport { CalendarCell, CalendarCellTrigger, CalendarGrid, CalendarGridBody, CalendarGridHead, CalendarGridRow, CalendarHeadCell, CalendarHeader, CalendarHeading, CalendarNextButton, CalendarPrevButton } from \".\"\n\n/**\n * Calendar 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarRootProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * Calendar 的事件声明；事件名称和载荷保持与底层 primitive 或本地交互状态一致。\n */\nconst emits = defineEmits<CalendarRootEmits>()\n\n/**\n * 移除仅由 Calendar 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 Calendar 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <CalendarRoot\n    v-slot=\"{ grid, weekDays }\"\n    :class=\"cn('p-3', props.class)\"\n    v-bind=\"forwarded\"\n  >\n    <CalendarHeader>\n      <CalendarPrevButton />\n      <CalendarHeading />\n      <CalendarNextButton />\n    </CalendarHeader>\n\n    <div class=\"flex flex-col gap-y-4 mt-4 sm:flex-row sm:gap-x-4 sm:gap-y-0\">\n      <CalendarGrid v-for=\"month in grid\" :key=\"month.value.toString()\">\n        <CalendarGridHead>\n          <CalendarGridRow>\n            <CalendarHeadCell\n              v-for=\"day in weekDays\" :key=\"day\"\n            >\n              {{ day }}\n            </CalendarHeadCell>\n          </CalendarGridRow>\n        </CalendarGridHead>\n        <CalendarGridBody>\n          <CalendarGridRow v-for=\"(weekDates, index) in month.rows\" :key=\"`weekDate-${index}`\" class=\"mt-2 w-full\">\n            <CalendarCell\n              v-for=\"weekDate in weekDates\"\n              :key=\"weekDate.toString()\"\n              :date=\"weekDate\"\n            >\n              <CalendarCellTrigger\n                :day=\"weekDate\"\n                :month=\"month.value\"\n              />\n            </CalendarCell>\n          </CalendarGridRow>\n        </CalendarGridBody>\n      </CalendarGrid>\n    </div>\n  </CalendarRoot>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/Calendar.vue"
+    },
+    {
+      "path": "registry/default/calendar/CalendarCell.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarCellProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { CalendarCell, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * CalendarCell 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarCellProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 CalendarCell 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 CalendarCell 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <CalendarCell\n    :class=\"cn('relative h-9 w-9 p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([data-selected])]:rounded-md [&:has([data-selected])]:bg-accent [&:has([data-selected][data-outside-view])]:bg-accent/50', props.class)\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </CalendarCell>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/CalendarCell.vue"
+    },
+    {
+      "path": "registry/default/calendar/CalendarCellTrigger.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarCellTriggerProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { CalendarCellTrigger, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\nimport { buttonVariants } from \"@/registry/default/ui/button\"\n\n/**\n * CalendarCellTrigger 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarCellTriggerProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 CalendarCellTrigger 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 CalendarCellTrigger 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <CalendarCellTrigger\n    :class=\"cn(\n      buttonVariants({ variant: 'ghost' }),\n      'h-9 w-9 p-0 font-normal',\n      '[&[data-today]:not([data-selected])]:bg-accent [&[data-today]:not([data-selected])]:text-accent-foreground',\n      // 选中状态。\n      'data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:opacity-100 data-[selected]:hover:bg-primary data-[selected]:hover:text-primary-foreground data-[selected]:focus:bg-primary data-[selected]:focus:text-primary-foreground',\n      // 禁用状态。\n      'data-[disabled]:text-muted-foreground data-[disabled]:opacity-50',\n      // 不可用日期状态。\n      'data-[unavailable]:text-destructive-foreground data-[unavailable]:line-through',\n      // 当前月份外日期状态。\n      'data-[outside-view]:text-muted-foreground data-[outside-view]:opacity-50 [&[data-outside-view][data-selected]]:bg-accent/50 [&[data-outside-view][data-selected]]:text-muted-foreground [&[data-outside-view][data-selected]]:opacity-30',\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </CalendarCellTrigger>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/CalendarCellTrigger.vue"
+    },
+    {
+      "path": "registry/default/calendar/CalendarGrid.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarGridProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { CalendarGrid, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * CalendarGrid 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarGridProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 CalendarGrid 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 CalendarGrid 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <CalendarGrid\n    :class=\"cn('w-full border-collapse space-y-1', props.class)\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </CalendarGrid>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/CalendarGrid.vue"
+    },
+    {
+      "path": "registry/default/calendar/CalendarGridBody.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarGridBodyProps } from \"reka-ui\"\nimport { CalendarGridBody } from \"reka-ui\"\n\n/**\n * CalendarGridBody 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarGridBodyProps>()\n</script>\n\n<template>\n  <CalendarGridBody v-bind=\"props\">\n    <slot />\n  </CalendarGridBody>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/CalendarGridBody.vue"
+    },
+    {
+      "path": "registry/default/calendar/CalendarGridHead.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarGridHeadProps } from \"reka-ui\"\nimport { CalendarGridHead } from \"reka-ui\"\n\n/**\n * CalendarGridHead 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarGridHeadProps>()\n</script>\n\n<template>\n  <CalendarGridHead v-bind=\"props\">\n    <slot />\n  </CalendarGridHead>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/CalendarGridHead.vue"
+    },
+    {
+      "path": "registry/default/calendar/CalendarGridRow.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarGridRowProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { CalendarGridRow, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * CalendarGridRow 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarGridRowProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 CalendarGridRow 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 CalendarGridRow 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <CalendarGridRow :class=\"cn('flex', props.class)\" v-bind=\"forwardedProps\">\n    <slot />\n  </CalendarGridRow>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/CalendarGridRow.vue"
+    },
+    {
+      "path": "registry/default/calendar/CalendarHeadCell.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarHeadCellProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { CalendarHeadCell, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * CalendarHeadCell 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarHeadCellProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 CalendarHeadCell 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 CalendarHeadCell 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <CalendarHeadCell :class=\"cn('w-9 rounded-md text-[0.8rem] font-normal text-muted-foreground', props.class)\" v-bind=\"forwardedProps\">\n    <slot />\n  </CalendarHeadCell>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/CalendarHeadCell.vue"
+    },
+    {
+      "path": "registry/default/calendar/CalendarHeader.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarHeaderProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { CalendarHeader, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * CalendarHeader 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarHeaderProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 CalendarHeader 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 CalendarHeader 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <CalendarHeader :class=\"cn('relative flex w-full items-center justify-between pt-1', props.class)\" v-bind=\"forwardedProps\">\n    <slot />\n  </CalendarHeader>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/CalendarHeader.vue"
+    },
+    {
+      "path": "registry/default/calendar/CalendarHeading.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarHeadingProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { CalendarHeading, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * CalendarHeading 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarHeadingProps & { class?: HTMLAttributes[\"class\"] }>()\n\ndefineSlots<{\n  default: (props: { headingValue: string }) => any\n}>()\n\n/**\n * 移除仅由 CalendarHeading 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 CalendarHeading 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <CalendarHeading\n    v-slot=\"{ headingValue }\"\n    :class=\"cn('text-sm font-medium', props.class)\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot :heading-value>\n      {{ headingValue }}\n    </slot>\n  </CalendarHeading>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/CalendarHeading.vue"
+    },
+    {
+      "path": "registry/default/calendar/CalendarNextButton.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarNextProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { ChevronRight } from \"lucide-vue-next\"\nimport { CalendarNext, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\nimport { buttonVariants } from \"@/registry/default/ui/button\"\n\n/**\n * CalendarNextButton 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarNextProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 CalendarNextButton 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 CalendarNextButton 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <CalendarNext\n    :class=\"cn(\n      buttonVariants({ variant: 'outline' }),\n      'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100',\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot>\n      <ChevronRight class=\"h-4 w-4\" />\n    </slot>\n  </CalendarNext>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/CalendarNextButton.vue"
+    },
+    {
+      "path": "registry/default/calendar/CalendarPrevButton.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { CalendarPrevProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { ChevronLeft } from \"lucide-vue-next\"\nimport { CalendarPrev, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\nimport { buttonVariants } from \"@/registry/default/ui/button\"\n\n/**\n * CalendarPrevButton 的 props 声明；透传第三方 primitive 的字段时只在本地补充 class、variant 或默认值约束。\n */\nconst props = defineProps<CalendarPrevProps & { class?: HTMLAttributes[\"class\"] }>()\n\n/**\n * 移除仅由 CalendarPrevButton 本地消费的字段，避免 class、variant 等样式字段透传到底层 DOM 或 primitive。\n */\nconst delegatedProps = reactiveOmit(props, \"class\")\n\n/**\n * 转发 CalendarPrevButton 的 props 和事件，确保包装组件继续兼容 reka-ui 的受控与非受控行为。\n */\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <CalendarPrev\n    :class=\"cn(\n      buttonVariants({ variant: 'outline' }),\n      'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100',\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot>\n      <ChevronLeft class=\"h-4 w-4\" />\n    </slot>\n  </CalendarPrev>\n</template>\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/CalendarPrevButton.vue"
+    },
+    {
+      "path": "registry/default/calendar/index.ts",
+      "content": "/**\n * 导出 Calendar 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as Calendar } from \"./Calendar.vue\"\n/**\n * 导出 CalendarCell 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CalendarCell } from \"./CalendarCell.vue\"\n/**\n * 导出 CalendarCellTrigger 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CalendarCellTrigger } from \"./CalendarCellTrigger.vue\"\n/**\n * 导出 CalendarGrid 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CalendarGrid } from \"./CalendarGrid.vue\"\n/**\n * 导出 CalendarGridBody 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CalendarGridBody } from \"./CalendarGridBody.vue\"\n/**\n * 导出 CalendarGridHead 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CalendarGridHead } from \"./CalendarGridHead.vue\"\n/**\n * 导出 CalendarGridRow 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CalendarGridRow } from \"./CalendarGridRow.vue\"\n/**\n * 导出 CalendarHeadCell 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CalendarHeadCell } from \"./CalendarHeadCell.vue\"\n/**\n * 导出 CalendarHeader 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CalendarHeader } from \"./CalendarHeader.vue\"\n/**\n * 导出 CalendarHeading 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CalendarHeading } from \"./CalendarHeading.vue\"\n/**\n * 导出 CalendarNextButton 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CalendarNextButton } from \"./CalendarNextButton.vue\"\n/**\n * 导出 CalendarPrevButton 组件，保持 shadcn-vue 的按目录导入约定。\n */\nexport { default as CalendarPrevButton } from \"./CalendarPrevButton.vue\"\n",
+      "type": "registry:ui",
+      "target": "components/ui/calendar/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}
