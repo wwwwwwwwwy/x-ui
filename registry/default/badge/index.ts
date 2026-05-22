@@ -10,17 +10,17 @@ export { default as Badge } from "./Badge.vue"
  * badgeVariants 定义组件的样式变体、默认值和视觉语义，供组件 props 复用。
  */
 export const badgeVariants = cva(
-  "inline-flex gap-1 items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex h-5 items-center gap-1 rounded-sm border px-2 text-sm font-medium leading-none transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
   {
     variants: {
       variant: {
         default:
-          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+          "border-transparent bg-blue-50 text-blue-500 hover:bg-blue-100",
         secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "border-transparent bg-gray-100 text-gray-700 hover:bg-gray-200",
         destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-        outline: "text-foreground",
+          "border-transparent bg-red-50 text-red-500 hover:bg-red-100",
+        outline: "border-gray-400 bg-gray-0 text-gray-900",
       },
     },
     defaultVariants: {

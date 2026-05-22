@@ -15,7 +15,7 @@ const props = defineProps<{
   <Input
     data-slot="input-group-control"
     :class="cn(
-      'flex-1 rounded-none border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-transparent ring-offset-transparent dark:bg-transparent',
+      'h-8 flex-1 rounded-none border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-transparent ring-offset-transparent',
       props.class,
     )"
   />

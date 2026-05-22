@@ -2,7 +2,7 @@
 import type { CheckboxRootEmits, CheckboxRootProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { Check } from "lucide-vue-next"
+import { ActionIcon057 as Check } from "@meri-design/icon-vue"
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from "reka-ui"
 import { cn } from "@/lib/utils"
 
@@ -30,12 +30,12 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
   <CheckboxRoot
     v-bind="forwarded"
     :class="
-      cn('grid place-content-center peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
+      cn('grid place-content-center peer h-4 w-4 shrink-0 rounded-sm border border-gray-500 bg-gray-0 text-gray-0 ring-offset-background hover:border-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-200 disabled:text-gray-400 data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-500 data-[state=checked]:text-gray-0',
          props.class)"
   >
     <CheckboxIndicator class="grid place-content-center text-current">
       <slot>
-        <Check class="h-4 w-4" />
+        <Check size="16" class="h-4 w-4" />
       </slot>
     </CheckboxIndicator>
   </CheckboxRoot>

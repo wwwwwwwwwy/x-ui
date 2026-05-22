@@ -32,7 +32,7 @@ export { default as InputGroupTextarea } from "./InputGroupTextarea.vue"
  * inputGroupAddonVariants 定义组件的样式变体、默认值和视觉语义，供组件 props 复用。
  */
 export const inputGroupAddonVariants = cva(
-  "text-muted-foreground flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium select-none [&>svg:not([class*='size-'])]:size-4 [&>kbd]:rounded-[calc(var(--radius)-5px)] group-data-[disabled=true]/input-group:opacity-50",
+  "flex h-auto cursor-text select-none items-center justify-center gap-2 py-1 text-m font-medium text-gray-500 [&>svg:not([class*='size-'])]:size-4 [&>kbd]:rounded-sm group-data-[disabled=true]/input-group:text-gray-400",
   {
     variants: {
       align: {
@@ -61,14 +61,14 @@ export type InputGroupVariants = VariantProps<typeof inputGroupAddonVariants>
  * inputGroupButtonVariants 定义组件的样式变体、默认值和视觉语义，供组件 props 复用。
  */
 export const inputGroupButtonVariants = cva(
-  "text-sm shadow-none flex gap-2 items-center",
+  "flex items-center gap-2 text-m shadow-none",
   {
     variants: {
       size: {
-        "xs": "h-6 gap-1 px-2 rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-3.5 has-[>svg]:px-2",
-        "sm": "h-8 px-2.5 gap-1.5 rounded-md has-[>svg]:px-2.5",
-        "icon-xs": "size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
-        "icon-sm": "size-8 p-0 has-[>svg]:p-0",
+        "xs": "h-6 gap-1 rounded-sm px-2 [&>svg:not([class*='size-'])]:size-3.5 has-[>svg]:px-2",
+        "sm": "h-7 gap-1.5 rounded-md px-2.5 has-[>svg]:px-2.5",
+        "icon-xs": "size-6 rounded-sm p-0 has-[>svg]:p-0",
+        "icon-sm": "size-7 p-0 has-[>svg]:p-0",
       },
     },
     defaultVariants: {
