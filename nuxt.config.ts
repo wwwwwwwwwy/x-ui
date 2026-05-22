@@ -5,9 +5,6 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   compatibilityDate: '2026-05-21',
   devtools: { enabled: true },
-  devServer: {
-    port: 4001
-  },
   vite: {
     plugins: [tailwindcss()],
   },
