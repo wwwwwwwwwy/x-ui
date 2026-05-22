@@ -56,27 +56,27 @@ const highlightedHtml = computed(() => {
     .replace(/>/g, '&gt;')
 
   // 1. Comments: HTML comments and JS comments
-  escaped = escaped.replace(/(&lt;!--[\s\S]*?--&gt;)/g, (match) => {
+  escaped = escaped.replace(/(&lt;!--[\s\S]*?--&gt;)/g, (match: string) => {
     return addToken(`<span class="vsc-comment">${match}</span>`)
   })
-  escaped = escaped.replace(/(\/\/.*)/g, (match) => {
+  escaped = escaped.replace(/(\/\/.*)/g, (match: string) => {
     return addToken(`<span class="vsc-comment">${match}</span>`)
   })
 
   // 2. Strings (Single & Double Quotes)
-  escaped = escaped.replace(/(["'])(.*?)\1/g, (match) => {
+  escaped = escaped.replace(/(["'])(.*?)\1/g, (match: string) => {
     return addToken(`<span class="vsc-string">${match}</span>`)
   })
 
   // 3. HTML Tags and their attributes: Match everything between &lt; and &gt;
-  escaped = escaped.replace(/(&lt;\/?[a-zA-Z0-9:@\-.]+)([\s\S]*?)(&gt;)/g, (match, tagStart, tagBody, tagEnd) => {
+  escaped = escaped.replace(/(&lt;\/?[a-zA-Z0-9:@\-.]+)([\s\S]*?)(&gt;)/g, (match: string, tagStart: string, tagBody: string, tagEnd: string) => {
     // Highlight the tag name part
-    const highlightedTagStart = tagStart.replace(/(&lt;\/?)([a-zA-Z0-9:\-.]+)/, (m, p1, p2) => {
+    const highlightedTagStart = tagStart.replace(/(&lt;\/?)([a-zA-Z0-9:\-.]+)/, (m: string, p1: string, p2: string) => {
       return `${p1}<span class="vsc-tag">${p2}</span>`
     })
     
     // Highlight attributes in tag body, skipping already replaced string token placeholders
-    const highlightedTagBody = tagBody.replace(/([\w:@\-.]+)(?=\s|=)/g, (m) => {
+    const highlightedTagBody = tagBody.replace(/([\w:@\-.]+)(?=\s|=)/g, (m: string) => {
       if (m.startsWith('___VSC_TOKEN')) return m
       return `<span class="vsc-attr">${m}</span>`
     })
@@ -93,8 +93,8 @@ const highlightedHtml = computed(() => {
   escaped = escaped.replace(coreApis, '<span class="vsc-api">$1</span>')
 
   // 6. Restore all placeholders in a single pass to prevent nested token corruption
-  const finalHtml = escaped.replace(/___VSC_TOKEN_(\d+)___/g, (_, index) => {
-    return tokens[parseInt(index, 10)]
+  const finalHtml = escaped.replace(/___VSC_TOKEN_(\d+)___/g, (_: string, index: string) => {
+    return tokens[parseInt(index, 10)] || ''
   })
 
   return finalHtml
