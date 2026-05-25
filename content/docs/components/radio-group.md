@@ -51,14 +51,14 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `RadioGroup` | `props` | `RadioGroupRootProps & { class?: HTMLAttributes["class"] }` | `<RadioGroup :example-prop="example" />` |
-| `RadioGroupItem` | `props` | `RadioGroupItemProps & { class?: HTMLAttributes["class"] }` | `<RadioGroupItem :example-prop="example" />` |
+| `RadioGroup` | `class` | `HTMLAttributes["class"]` | `<RadioGroup class="border-primary" />` |
+| `RadioGroupItem` | `class` | `HTMLAttributes["class"]` | `<RadioGroupItem class="border-primary" />` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `RadioGroup` | `emits` | `RadioGroupRootEmits` | `<RadioGroup @emits="emits" />` |
+| `RadioGroup` | 类型引用 | `RadioGroupRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -72,22 +72,16 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 
 ## API 示例
 
-### RadioGroup.exampleProp
+### RadioGroup.class
 
 ```vue
-<RadioGroup :example-prop="example" />
+<RadioGroup class="border-primary" />
 ```
 
-### RadioGroupItem.exampleProp
+### RadioGroupItem.class
 
 ```vue
-<RadioGroupItem :example-prop="example" />
-```
-
-### RadioGroup.emits
-
-```vue
-<RadioGroup @emits="emits" />
+<RadioGroupItem class="border-primary" />
 ```
 
 ### RadioGroup slot: default

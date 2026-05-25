@@ -18,6 +18,26 @@ Avatar 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确�
 ::component-preview{name="avatar" src="avatar/Basic.vue"}
 ::
 
+### Avatar.class
+
+::component-preview{name="avatar Avatar class" src="avatar/AvatarClass.vue"}
+::
+
+### Avatar.size
+
+::component-preview{name="avatar Avatar size" src="avatar/AvatarSize.vue"}
+::
+
+### Avatar.shape
+
+::component-preview{name="avatar Avatar shape" src="avatar/AvatarShape.vue"}
+::
+
+### Avatar slot: default
+
+::component-preview{name="avatar Avatar default slot" src="avatar/AvatarDefaultSlot.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -52,11 +72,11 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Avatar` | `class` | `HTMLAttributes["class"]` | `<Avatar class="custom-class" />` |
-| `Avatar` | `size` | `AvatarVariants["size"]` | `<Avatar :size="example" />` |
+| `Avatar` | `class` | `HTMLAttributes["class"]` | `<Avatar class="border-primary" />` |
+| `Avatar` | `size` | `AvatarVariants["size"]` | `<Avatar size="sm">示例内容</Avatar>` |
 | `Avatar` | `shape` | `AvatarVariants["shape"]` | `<Avatar :shape="example" />` |
-| `AvatarFallback` | `props` | `AvatarFallbackProps` | `<AvatarFallback :example-prop="example" />` |
-| `AvatarImage` | `props` | `AvatarImageProps` | `<AvatarImage :example-prop="example" />` |
+| `AvatarFallback` | 类型引用 | `AvatarFallbackProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `AvatarImage` | 类型引用 | `AvatarImageProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
@@ -80,31 +100,19 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 ### Avatar.class
 
 ```vue
-<Avatar class="custom-class" />
+<Avatar class="border-primary" />
 ```
 
 ### Avatar.size
 
 ```vue
-<Avatar :size="example" />
+<Avatar size="sm">示例内容</Avatar>
 ```
 
 ### Avatar.shape
 
 ```vue
 <Avatar :shape="example" />
-```
-
-### AvatarFallback.exampleProp
-
-```vue
-<AvatarFallback :example-prop="example" />
-```
-
-### AvatarImage.exampleProp
-
-```vue
-<AvatarImage :example-prop="example" />
 ```
 
 ### Avatar slot: default

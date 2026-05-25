@@ -18,6 +18,16 @@ Checkbox 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确
 ::component-preview{name="checkbox" src="checkbox/Basic.vue"}
 ::
 
+### Checkbox.class
+
+::component-preview{name="checkbox Checkbox class" src="checkbox/CheckboxClass.vue"}
+::
+
+### Checkbox slot: default
+
+::component-preview{name="checkbox Checkbox default slot" src="checkbox/CheckboxDefaultSlot.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -50,13 +60,13 @@ import { Checkbox } from '@/components/ui/checkbox'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Checkbox` | `props` | `CheckboxRootProps & { class?: HTMLAttributes["class"] }` | `<Checkbox :example-prop="example" />` |
+| `Checkbox` | `class` | `HTMLAttributes["class"]` | `<Checkbox class="border-primary" />` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Checkbox` | `emits` | `CheckboxRootEmits` | `<Checkbox @emits="emits" />` |
+| `Checkbox` | 类型引用 | `CheckboxRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -70,16 +80,10 @@ import { Checkbox } from '@/components/ui/checkbox'
 
 ## API 示例
 
-### Checkbox.exampleProp
+### Checkbox.class
 
 ```vue
-<Checkbox :example-prop="example" />
-```
-
-### Checkbox.emits
-
-```vue
-<Checkbox @emits="emits" />
+<Checkbox class="border-primary" />
 ```
 
 ### Checkbox slot: default

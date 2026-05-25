@@ -61,24 +61,24 @@ import { RangeCalendar, RangeCalendarCell, RangeCalendarCellTrigger, RangeCalend
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `RangeCalendar` | `props` | `RangeCalendarRootProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendar :example-prop="example" />` |
-| `RangeCalendarCell` | `props` | `RangeCalendarCellProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendarCell :example-prop="example" />` |
-| `RangeCalendarCellTrigger` | `props` | `RangeCalendarCellTriggerProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendarCellTrigger :example-prop="example" />` |
-| `RangeCalendarGrid` | `props` | `RangeCalendarGridProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendarGrid :example-prop="example" />` |
-| `RangeCalendarGridBody` | `props` | `RangeCalendarGridBodyProps` | `<RangeCalendarGridBody :example-prop="example" />` |
-| `RangeCalendarGridHead` | `props` | `RangeCalendarGridHeadProps` | `<RangeCalendarGridHead :example-prop="example" />` |
-| `RangeCalendarGridRow` | `props` | `RangeCalendarGridRowProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendarGridRow :example-prop="example" />` |
-| `RangeCalendarHeadCell` | `props` | `RangeCalendarHeadCellProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendarHeadCell :example-prop="example" />` |
-| `RangeCalendarHeader` | `props` | `RangeCalendarHeaderProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendarHeader :example-prop="example" />` |
-| `RangeCalendarHeading` | `props` | `RangeCalendarHeadingProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendarHeading :example-prop="example" />` |
-| `RangeCalendarNextButton` | `props` | `RangeCalendarNextProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendarNextButton :example-prop="example" />` |
-| `RangeCalendarPrevButton` | `props` | `RangeCalendarPrevProps & { class?: HTMLAttributes["class"] }` | `<RangeCalendarPrevButton :example-prop="example" />` |
+| `RangeCalendar` | `class` | `HTMLAttributes["class"]` | `<RangeCalendar class="border-primary" />` |
+| `RangeCalendarCell` | `class` | `HTMLAttributes["class"]` | `<RangeCalendarCell class="border-primary" />` |
+| `RangeCalendarCellTrigger` | `class` | `HTMLAttributes["class"]` | `<RangeCalendarCellTrigger class="border-primary" />` |
+| `RangeCalendarGrid` | `class` | `HTMLAttributes["class"]` | `<RangeCalendarGrid class="border-primary" />` |
+| `RangeCalendarGridRow` | `class` | `HTMLAttributes["class"]` | `<RangeCalendarGridRow class="border-primary" />` |
+| `RangeCalendarHeadCell` | `class` | `HTMLAttributes["class"]` | `<RangeCalendarHeadCell class="border-primary" />` |
+| `RangeCalendarHeader` | `class` | `HTMLAttributes["class"]` | `<RangeCalendarHeader class="border-primary" />` |
+| `RangeCalendarHeading` | `class` | `HTMLAttributes["class"]` | `<RangeCalendarHeading class="border-primary" />` |
+| `RangeCalendarNextButton` | `class` | `HTMLAttributes["class"]` | `<RangeCalendarNextButton class="border-primary" />` |
+| `RangeCalendarPrevButton` | `class` | `HTMLAttributes["class"]` | `<RangeCalendarPrevButton class="border-primary" />` |
+| `RangeCalendarGridBody` | 类型引用 | `RangeCalendarGridBodyProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `RangeCalendarGridHead` | 类型引用 | `RangeCalendarGridHeadProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `RangeCalendar` | `emits` | `RangeCalendarRootEmits` | `<RangeCalendar @emits="emits" />` |
+| `RangeCalendar` | 类型引用 | `RangeCalendarRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -102,82 +102,64 @@ import { RangeCalendar, RangeCalendarCell, RangeCalendarCellTrigger, RangeCalend
 
 ## API 示例
 
-### RangeCalendar.exampleProp
+### RangeCalendar.class
 
 ```vue
-<RangeCalendar :example-prop="example" />
+<RangeCalendar class="border-primary" />
 ```
 
-### RangeCalendarCell.exampleProp
+### RangeCalendarCell.class
 
 ```vue
-<RangeCalendarCell :example-prop="example" />
+<RangeCalendarCell class="border-primary" />
 ```
 
-### RangeCalendarCellTrigger.exampleProp
+### RangeCalendarCellTrigger.class
 
 ```vue
-<RangeCalendarCellTrigger :example-prop="example" />
+<RangeCalendarCellTrigger class="border-primary" />
 ```
 
-### RangeCalendarGrid.exampleProp
+### RangeCalendarGrid.class
 
 ```vue
-<RangeCalendarGrid :example-prop="example" />
+<RangeCalendarGrid class="border-primary" />
 ```
 
-### RangeCalendarGridBody.exampleProp
+### RangeCalendarGridRow.class
 
 ```vue
-<RangeCalendarGridBody :example-prop="example" />
+<RangeCalendarGridRow class="border-primary" />
 ```
 
-### RangeCalendarGridHead.exampleProp
+### RangeCalendarHeadCell.class
 
 ```vue
-<RangeCalendarGridHead :example-prop="example" />
+<RangeCalendarHeadCell class="border-primary" />
 ```
 
-### RangeCalendarGridRow.exampleProp
+### RangeCalendarHeader.class
 
 ```vue
-<RangeCalendarGridRow :example-prop="example" />
+<RangeCalendarHeader class="border-primary" />
 ```
 
-### RangeCalendarHeadCell.exampleProp
+### RangeCalendarHeading.class
 
 ```vue
-<RangeCalendarHeadCell :example-prop="example" />
+<RangeCalendarHeading class="border-primary" />
 ```
 
-### RangeCalendarHeader.exampleProp
+### RangeCalendarNextButton.class
 
 ```vue
-<RangeCalendarHeader :example-prop="example" />
+<RangeCalendarNextButton class="border-primary" />
 ```
 
-### RangeCalendarHeading.exampleProp
+### RangeCalendarPrevButton.class
 
 ```vue
-<RangeCalendarHeading :example-prop="example" />
-```
-
-### RangeCalendarNextButton.exampleProp
-
-```vue
-<RangeCalendarNextButton :example-prop="example" />
-```
-
-### RangeCalendarPrevButton.exampleProp
-
-```vue
-<RangeCalendarPrevButton :example-prop="example" />
-```
-
-### RangeCalendar.emits
-
-```vue
-<RangeCalendar @emits="emits" />
+<RangeCalendarPrevButton class="border-primary" />
 ```
 
 ### RangeCalendarCell slot: default

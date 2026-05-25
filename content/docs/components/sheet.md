@@ -57,21 +57,21 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHe
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Sheet` | `props` | `DialogRootProps` | `<Sheet :example-prop="example" />` |
-| `SheetClose` | `props` | `DialogCloseProps` | `<SheetClose :example-prop="example" />` |
-| `SheetContent` | `props` | `SheetContentProps` | `<SheetContent :example-prop="example" />` |
-| `SheetDescription` | `props` | `DialogDescriptionProps & { class?: HTMLAttributes["class"] }` | `<SheetDescription :example-prop="example" />` |
-| `SheetFooter` | `class` | `HTMLAttributes["class"]` | `<SheetFooter class="custom-class" />` |
-| `SheetHeader` | `class` | `HTMLAttributes["class"]` | `<SheetHeader class="custom-class" />` |
-| `SheetTitle` | `props` | `DialogTitleProps & { class?: HTMLAttributes["class"] }` | `<SheetTitle :example-prop="example" />` |
-| `SheetTrigger` | `props` | `DialogTriggerProps` | `<SheetTrigger :example-prop="example" />` |
+| `SheetDescription` | `class` | `HTMLAttributes["class"]` | `<SheetDescription class="border-primary" />` |
+| `SheetFooter` | `class` | `HTMLAttributes["class"]` | `<SheetFooter class="border-primary" />` |
+| `SheetHeader` | `class` | `HTMLAttributes["class"]` | `<SheetHeader class="border-primary" />` |
+| `SheetTitle` | `class` | `HTMLAttributes["class"]` | `<SheetTitle class="border-primary" />` |
+| `Sheet` | 类型引用 | `DialogRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `SheetClose` | 类型引用 | `DialogCloseProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `SheetContent` | 类型引用 | `SheetContentProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `SheetTrigger` | 类型引用 | `DialogTriggerProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Sheet` | `emits` | `DialogRootEmits` | `<Sheet @emits="emits" />` |
-| `SheetContent` | `emits` | `DialogContentEmits` | `<SheetContent @emits="emits" />` |
+| `Sheet` | 类型引用 | `DialogRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `SheetContent` | 类型引用 | `DialogContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -93,64 +93,28 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHe
 
 ## API 示例
 
-### Sheet.exampleProp
+### SheetDescription.class
 
 ```vue
-<Sheet :example-prop="example" />
-```
-
-### SheetClose.exampleProp
-
-```vue
-<SheetClose :example-prop="example" />
-```
-
-### SheetContent.exampleProp
-
-```vue
-<SheetContent :example-prop="example" />
-```
-
-### SheetDescription.exampleProp
-
-```vue
-<SheetDescription :example-prop="example" />
+<SheetDescription class="border-primary" />
 ```
 
 ### SheetFooter.class
 
 ```vue
-<SheetFooter class="custom-class" />
+<SheetFooter class="border-primary" />
 ```
 
 ### SheetHeader.class
 
 ```vue
-<SheetHeader class="custom-class" />
+<SheetHeader class="border-primary" />
 ```
 
-### SheetTitle.exampleProp
+### SheetTitle.class
 
 ```vue
-<SheetTitle :example-prop="example" />
-```
-
-### SheetTrigger.exampleProp
-
-```vue
-<SheetTrigger :example-prop="example" />
-```
-
-### Sheet.emits
-
-```vue
-<Sheet @emits="emits" />
-```
-
-### SheetContent.emits
-
-```vue
-<SheetContent @emits="emits" />
+<SheetTitle class="border-primary" />
 ```
 
 ### Sheet slot: default

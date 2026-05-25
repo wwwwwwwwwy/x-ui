@@ -58,23 +58,24 @@ import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, Comma
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Command` | `props` | `ListboxRootProps & { class?: HTMLAttributes["class"] }` | `<Command :example-prop="example" />` |
-| `CommandDialog` | `props` | `DialogRootProps` | `<CommandDialog :example-prop="example" />` |
-| `CommandEmpty` | `props` | `PrimitiveProps & { class?: HTMLAttributes["class"] }` | `<CommandEmpty :example-prop="example" />` |
-| `CommandGroup` | `props` | `ListboxGroupProps & { class?: HTMLAttributes["class"] heading?: string }` | `<CommandGroup :example-prop="example" />` |
-| `CommandInput` | `props` | `ListboxFilterProps & { class?: HTMLAttributes["class"] }` | `<CommandInput :example-prop="example" />` |
-| `CommandItem` | `props` | `ListboxItemProps & { class?: HTMLAttributes["class"] }` | `<CommandItem :example-prop="example" />` |
-| `CommandList` | `props` | `ListboxContentProps & { class?: HTMLAttributes["class"] }` | `<CommandList :example-prop="example" />` |
-| `CommandSeparator` | `props` | `SeparatorProps & { class?: HTMLAttributes["class"] }` | `<CommandSeparator :example-prop="example" />` |
-| `CommandShortcut` | `class` | `HTMLAttributes["class"]` | `<CommandShortcut class="custom-class" />` |
+| `Command` | `class` | `HTMLAttributes["class"]` | `<Command class="border-primary" />` |
+| `CommandEmpty` | `class` | `HTMLAttributes["class"]` | `<CommandEmpty class="border-primary" />` |
+| `CommandGroup` | `class` | `HTMLAttributes["class"]` | `<CommandGroup class="border-primary" />` |
+| `CommandGroup` | `heading` | `string` | `<CommandGroup :heading="example" />` |
+| `CommandInput` | `class` | `HTMLAttributes["class"]` | `<CommandInput class="border-primary" />` |
+| `CommandItem` | `class` | `HTMLAttributes["class"]` | `<CommandItem class="border-primary" />` |
+| `CommandList` | `class` | `HTMLAttributes["class"]` | `<CommandList class="border-primary" />` |
+| `CommandSeparator` | `class` | `HTMLAttributes["class"]` | `<CommandSeparator class="border-primary" />` |
+| `CommandShortcut` | `class` | `HTMLAttributes["class"]` | `<CommandShortcut class="border-primary" />` |
+| `CommandDialog` | 类型引用 | `DialogRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Command` | `emits` | `ListboxRootEmits` | `<Command @emits="emits" />` |
-| `CommandDialog` | `emits` | `DialogRootEmits` | `<CommandDialog @emits="emits" />` |
-| `CommandItem` | `emits` | `ListboxItemEmits` | `<CommandItem @emits="emits" />` |
+| `Command` | 类型引用 | `ListboxRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `CommandDialog` | 类型引用 | `DialogRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `CommandItem` | 类型引用 | `ListboxItemEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -96,76 +97,58 @@ import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, Comma
 
 ## API 示例
 
-### Command.exampleProp
+### Command.class
 
 ```vue
-<Command :example-prop="example" />
+<Command class="border-primary" />
 ```
 
-### CommandDialog.exampleProp
+### CommandEmpty.class
 
 ```vue
-<CommandDialog :example-prop="example" />
+<CommandEmpty class="border-primary" />
 ```
 
-### CommandEmpty.exampleProp
+### CommandGroup.class
 
 ```vue
-<CommandEmpty :example-prop="example" />
+<CommandGroup class="border-primary" />
 ```
 
-### CommandGroup.exampleProp
+### CommandGroup.heading
 
 ```vue
-<CommandGroup :example-prop="example" />
+<CommandGroup :heading="example" />
 ```
 
-### CommandInput.exampleProp
+### CommandInput.class
 
 ```vue
-<CommandInput :example-prop="example" />
+<CommandInput class="border-primary" />
 ```
 
-### CommandItem.exampleProp
+### CommandItem.class
 
 ```vue
-<CommandItem :example-prop="example" />
+<CommandItem class="border-primary" />
 ```
 
-### CommandList.exampleProp
+### CommandList.class
 
 ```vue
-<CommandList :example-prop="example" />
+<CommandList class="border-primary" />
 ```
 
-### CommandSeparator.exampleProp
+### CommandSeparator.class
 
 ```vue
-<CommandSeparator :example-prop="example" />
+<CommandSeparator class="border-primary" />
 ```
 
 ### CommandShortcut.class
 
 ```vue
-<CommandShortcut class="custom-class" />
-```
-
-### Command.emits
-
-```vue
-<Command @emits="emits" />
-```
-
-### CommandDialog.emits
-
-```vue
-<CommandDialog @emits="emits" />
-```
-
-### CommandItem.emits
-
-```vue
-<CommandItem @emits="emits" />
+<CommandShortcut class="border-primary" />
 ```
 
 ### Command slot: default

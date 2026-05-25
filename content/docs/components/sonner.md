@@ -50,7 +50,7 @@ import { Toaster } from '@/components/ui/sonner'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Sonner` | `props` | `ToasterProps` | `<Sonner :example-prop="example" />` |
+| `Sonner` | 类型引用 | `ToasterProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
@@ -67,12 +67,6 @@ import { Toaster } from '@/components/ui/sonner'
 源码中未发现额外本地 API 导出。
 
 ## API 示例
-
-### Sonner.exampleProp
-
-```vue
-<Sonner :example-prop="example" />
-```
 
 ### Sonner slot: success-icon
 

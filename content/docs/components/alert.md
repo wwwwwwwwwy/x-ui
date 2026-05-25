@@ -18,6 +18,41 @@ Alert 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层
 ::component-preview{name="alert" src="alert/Basic.vue"}
 ::
 
+### Alert.class
+
+::component-preview{name="alert Alert class" src="alert/AlertClass.vue"}
+::
+
+### Alert.variant
+
+::component-preview{name="alert Alert variant" src="alert/AlertVariant.vue"}
+::
+
+### AlertDescription.class
+
+::component-preview{name="alert AlertDescription class" src="alert/AlertDescriptionClass.vue"}
+::
+
+### AlertTitle.class
+
+::component-preview{name="alert AlertTitle class" src="alert/AlertTitleClass.vue"}
+::
+
+### Alert slot: default
+
+::component-preview{name="alert Alert default slot" src="alert/AlertDefaultSlot.vue"}
+::
+
+### AlertDescription slot: default
+
+::component-preview{name="alert AlertDescription default slot" src="alert/AlertDescriptionDefaultSlot.vue"}
+::
+
+### AlertTitle slot: default
+
+::component-preview{name="alert AlertTitle default slot" src="alert/AlertTitleDefaultSlot.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -52,10 +87,10 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Alert` | `class` | `HTMLAttributes["class"]` | `<Alert class="custom-class" />` |
-| `Alert` | `variant` | `AlertVariants["variant"]` | `<Alert :variant="example" />` |
-| `AlertDescription` | `class` | `HTMLAttributes["class"]` | `<AlertDescription class="custom-class" />` |
-| `AlertTitle` | `class` | `HTMLAttributes["class"]` | `<AlertTitle class="custom-class" />` |
+| `Alert` | `class` | `HTMLAttributes["class"]` | `<Alert class="border-primary" />` |
+| `Alert` | `variant` | `AlertVariants["variant"]` | `<Alert variant="outline">示例内容</Alert>` |
+| `AlertDescription` | `class` | `HTMLAttributes["class"]` | `<AlertDescription class="border-primary" />` |
+| `AlertTitle` | `class` | `HTMLAttributes["class"]` | `<AlertTitle class="border-primary" />` |
 
 ### Events
 
@@ -79,25 +114,25 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 ### Alert.class
 
 ```vue
-<Alert class="custom-class" />
+<Alert class="border-primary" />
 ```
 
 ### Alert.variant
 
 ```vue
-<Alert :variant="example" />
+<Alert variant="outline">示例内容</Alert>
 ```
 
 ### AlertDescription.class
 
 ```vue
-<AlertDescription class="custom-class" />
+<AlertDescription class="border-primary" />
 ```
 
 ### AlertTitle.class
 
 ```vue
-<AlertTitle class="custom-class" />
+<AlertTitle class="border-primary" />
 ```
 
 ### Alert slot: default

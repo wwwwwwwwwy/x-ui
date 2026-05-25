@@ -18,6 +18,101 @@ Table 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层
 ::component-preview{name="table" src="table/Basic.vue"}
 ::
 
+### Table.class
+
+::component-preview{name="table Table class" src="table/TableClass.vue"}
+::
+
+### TableBody.class
+
+::component-preview{name="table TableBody class" src="table/TableBodyClass.vue"}
+::
+
+### TableCaption.class
+
+::component-preview{name="table TableCaption class" src="table/TableCaptionClass.vue"}
+::
+
+### TableCell.class
+
+::component-preview{name="table TableCell class" src="table/TableCellClass.vue"}
+::
+
+### TableEmpty.class
+
+::component-preview{name="table TableEmpty class" src="table/TableEmptyClass.vue"}
+::
+
+### TableEmpty.colspan
+
+::component-preview{name="table TableEmpty colspan" src="table/TableEmptyColspan.vue"}
+::
+
+### TableFooter.class
+
+::component-preview{name="table TableFooter class" src="table/TableFooterClass.vue"}
+::
+
+### TableHead.class
+
+::component-preview{name="table TableHead class" src="table/TableHeadClass.vue"}
+::
+
+### TableHeader.class
+
+::component-preview{name="table TableHeader class" src="table/TableHeaderClass.vue"}
+::
+
+### TableRow.class
+
+::component-preview{name="table TableRow class" src="table/TableRowClass.vue"}
+::
+
+### Table slot: default
+
+::component-preview{name="table Table default slot" src="table/TableDefaultSlot.vue"}
+::
+
+### TableBody slot: default
+
+::component-preview{name="table TableBody default slot" src="table/TableBodyDefaultSlot.vue"}
+::
+
+### TableCaption slot: default
+
+::component-preview{name="table TableCaption default slot" src="table/TableCaptionDefaultSlot.vue"}
+::
+
+### TableCell slot: default
+
+::component-preview{name="table TableCell default slot" src="table/TableCellDefaultSlot.vue"}
+::
+
+### TableEmpty slot: default
+
+::component-preview{name="table TableEmpty default slot" src="table/TableEmptyDefaultSlot.vue"}
+::
+
+### TableFooter slot: default
+
+::component-preview{name="table TableFooter default slot" src="table/TableFooterDefaultSlot.vue"}
+::
+
+### TableHead slot: default
+
+::component-preview{name="table TableHead default slot" src="table/TableHeadDefaultSlot.vue"}
+::
+
+### TableHeader slot: default
+
+::component-preview{name="table TableHeader default slot" src="table/TableHeaderDefaultSlot.vue"}
+::
+
+### TableRow slot: default
+
+::component-preview{name="table TableRow default slot" src="table/TableRowDefaultSlot.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -58,16 +153,16 @@ import { Table, TableBody, TableCaption, TableCell, TableEmpty, TableFooter, Tab
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Table` | `class` | `HTMLAttributes["class"]` | `<Table class="custom-class" />` |
-| `TableBody` | `class` | `HTMLAttributes["class"]` | `<TableBody class="custom-class" />` |
-| `TableCaption` | `class` | `HTMLAttributes["class"]` | `<TableCaption class="custom-class" />` |
-| `TableCell` | `class` | `HTMLAttributes["class"]` | `<TableCell class="custom-class" />` |
-| `TableEmpty` | `class` | `HTMLAttributes["class"]` | `<TableEmpty class="custom-class" />` |
+| `Table` | `class` | `HTMLAttributes["class"]` | `<Table class="border-primary" />` |
+| `TableBody` | `class` | `HTMLAttributes["class"]` | `<TableBody class="border-primary" />` |
+| `TableCaption` | `class` | `HTMLAttributes["class"]` | `<TableCaption class="border-primary" />` |
+| `TableCell` | `class` | `HTMLAttributes["class"]` | `<TableCell class="border-primary" />` |
+| `TableEmpty` | `class` | `HTMLAttributes["class"]` | `<TableEmpty class="border-primary" />` |
 | `TableEmpty` | `colspan` | `number` | `<TableEmpty :colspan="1" />` |
-| `TableFooter` | `class` | `HTMLAttributes["class"]` | `<TableFooter class="custom-class" />` |
-| `TableHead` | `class` | `HTMLAttributes["class"]` | `<TableHead class="custom-class" />` |
-| `TableHeader` | `class` | `HTMLAttributes["class"]` | `<TableHeader class="custom-class" />` |
-| `TableRow` | `class` | `HTMLAttributes["class"]` | `<TableRow class="custom-class" />` |
+| `TableFooter` | `class` | `HTMLAttributes["class"]` | `<TableFooter class="border-primary" />` |
+| `TableHead` | `class` | `HTMLAttributes["class"]` | `<TableHead class="border-primary" />` |
+| `TableHeader` | `class` | `HTMLAttributes["class"]` | `<TableHeader class="border-primary" />` |
+| `TableRow` | `class` | `HTMLAttributes["class"]` | `<TableRow class="border-primary" />` |
 
 ### Events
 
@@ -96,31 +191,31 @@ import { Table, TableBody, TableCaption, TableCell, TableEmpty, TableFooter, Tab
 ### Table.class
 
 ```vue
-<Table class="custom-class" />
+<Table class="border-primary" />
 ```
 
 ### TableBody.class
 
 ```vue
-<TableBody class="custom-class" />
+<TableBody class="border-primary" />
 ```
 
 ### TableCaption.class
 
 ```vue
-<TableCaption class="custom-class" />
+<TableCaption class="border-primary" />
 ```
 
 ### TableCell.class
 
 ```vue
-<TableCell class="custom-class" />
+<TableCell class="border-primary" />
 ```
 
 ### TableEmpty.class
 
 ```vue
-<TableEmpty class="custom-class" />
+<TableEmpty class="border-primary" />
 ```
 
 ### TableEmpty.colspan
@@ -132,25 +227,25 @@ import { Table, TableBody, TableCaption, TableCell, TableEmpty, TableFooter, Tab
 ### TableFooter.class
 
 ```vue
-<TableFooter class="custom-class" />
+<TableFooter class="border-primary" />
 ```
 
 ### TableHead.class
 
 ```vue
-<TableHead class="custom-class" />
+<TableHead class="border-primary" />
 ```
 
 ### TableHeader.class
 
 ```vue
-<TableHeader class="custom-class" />
+<TableHeader class="border-primary" />
 ```
 
 ### TableRow.class
 
 ```vue
-<TableRow class="custom-class" />
+<TableRow class="border-primary" />
 ```
 
 ### Table slot: default

@@ -18,6 +18,11 @@ Spinner 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确�
 ::component-preview{name="spinner" src="spinner/Basic.vue"}
 ::
 
+### Spinner.class
+
+::component-preview{name="spinner Spinner class" src="spinner/SpinnerClass.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -50,7 +55,7 @@ import { Spinner } from '@/components/ui/spinner'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Spinner` | `class` | `HTMLAttributes["class"]` | `<Spinner class="custom-class" />` |
+| `Spinner` | `class` | `HTMLAttributes["class"]` | `<Spinner class="border-primary" />` |
 
 ### Events
 
@@ -69,7 +74,7 @@ import { Spinner } from '@/components/ui/spinner'
 ### Spinner.class
 
 ```vue
-<Spinner class="custom-class" />
+<Spinner class="border-primary" />
 ```
 
 ## 依赖

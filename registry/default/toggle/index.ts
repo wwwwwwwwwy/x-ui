@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority"
 export { default as Toggle } from "./Toggle.vue"
 
 export const toggleVariants = cva(
-  "inline-flex cursor-pointer items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors enabled:hover:bg-muted enabled:hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 gap-2",
+  "inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-sm font-normal leading-[initial] ring-offset-background transition-colors enabled:hover:bg-muted enabled:hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -13,9 +13,9 @@ export const toggleVariants = cva(
           "border border-input bg-transparent enabled:hover:bg-accent enabled:hover:text-accent-foreground",
       },
       size: {
-        default: "h-10 px-3 min-w-10",
-        sm: "h-9 px-2.5 min-w-9",
-        lg: "h-11 px-5 min-w-11",
+        default: "h-8 px-4 min-w-8 text-[14px]",
+        sm: "h-7 px-3 min-w-7 text-[14px]",
+        lg: "h-10 px-4 min-w-10 text-[16px]",
       },
     },
     defaultVariants: {

@@ -56,13 +56,13 @@ import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, Breadcr
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Breadcrumb` | `class` | `HTMLAttributes["class"]` | `<Breadcrumb class="custom-class" />` |
-| `BreadcrumbEllipsis` | `class` | `HTMLAttributes["class"]` | `<BreadcrumbEllipsis class="custom-class" />` |
-| `BreadcrumbItem` | `class` | `HTMLAttributes["class"]` | `<BreadcrumbItem class="custom-class" />` |
-| `BreadcrumbLink` | `props` | `PrimitiveProps & { class?: HTMLAttributes["class"] }` | `<BreadcrumbLink :example-prop="example" />` |
-| `BreadcrumbList` | `class` | `HTMLAttributes["class"]` | `<BreadcrumbList class="custom-class" />` |
-| `BreadcrumbPage` | `class` | `HTMLAttributes["class"]` | `<BreadcrumbPage class="custom-class" />` |
-| `BreadcrumbSeparator` | `class` | `HTMLAttributes["class"]` | `<BreadcrumbSeparator class="custom-class" />` |
+| `Breadcrumb` | `class` | `HTMLAttributes["class"]` | `<Breadcrumb class="border-primary" />` |
+| `BreadcrumbEllipsis` | `class` | `HTMLAttributes["class"]` | `<BreadcrumbEllipsis class="border-primary" />` |
+| `BreadcrumbItem` | `class` | `HTMLAttributes["class"]` | `<BreadcrumbItem class="border-primary" />` |
+| `BreadcrumbLink` | `class` | `HTMLAttributes["class"]` | `<BreadcrumbLink class="border-primary" />` |
+| `BreadcrumbList` | `class` | `HTMLAttributes["class"]` | `<BreadcrumbList class="border-primary" />` |
+| `BreadcrumbPage` | `class` | `HTMLAttributes["class"]` | `<BreadcrumbPage class="border-primary" />` |
+| `BreadcrumbSeparator` | `class` | `HTMLAttributes["class"]` | `<BreadcrumbSeparator class="border-primary" />` |
 
 ### Events
 
@@ -89,43 +89,43 @@ import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, Breadcr
 ### Breadcrumb.class
 
 ```vue
-<Breadcrumb class="custom-class" />
+<Breadcrumb class="border-primary" />
 ```
 
 ### BreadcrumbEllipsis.class
 
 ```vue
-<BreadcrumbEllipsis class="custom-class" />
+<BreadcrumbEllipsis class="border-primary" />
 ```
 
 ### BreadcrumbItem.class
 
 ```vue
-<BreadcrumbItem class="custom-class" />
+<BreadcrumbItem class="border-primary" />
 ```
 
-### BreadcrumbLink.exampleProp
+### BreadcrumbLink.class
 
 ```vue
-<BreadcrumbLink :example-prop="example" />
+<BreadcrumbLink class="border-primary" />
 ```
 
 ### BreadcrumbList.class
 
 ```vue
-<BreadcrumbList class="custom-class" />
+<BreadcrumbList class="border-primary" />
 ```
 
 ### BreadcrumbPage.class
 
 ```vue
-<BreadcrumbPage class="custom-class" />
+<BreadcrumbPage class="border-primary" />
 ```
 
 ### BreadcrumbSeparator.class
 
 ```vue
-<BreadcrumbSeparator class="custom-class" />
+<BreadcrumbSeparator class="border-primary" />
 ```
 
 ### Breadcrumb slot: default

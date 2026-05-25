@@ -54,17 +54,17 @@ import { NumberField, NumberFieldContent, NumberFieldDecrement, NumberFieldIncre
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `NumberField` | `props` | `NumberFieldRootProps & { class?: HTMLAttributes["class"] }` | `<NumberField :example-prop="example" />` |
-| `NumberFieldContent` | `class` | `HTMLAttributes["class"]` | `<NumberFieldContent class="custom-class" />` |
-| `NumberFieldDecrement` | `props` | `NumberFieldDecrementProps & { class?: HTMLAttributes["class"] }` | `<NumberFieldDecrement :example-prop="example" />` |
-| `NumberFieldIncrement` | `props` | `NumberFieldIncrementProps & { class?: HTMLAttributes["class"] }` | `<NumberFieldIncrement :example-prop="example" />` |
-| `NumberFieldInput` | `class` | `HTMLAttributes["class"]` | `<NumberFieldInput class="custom-class" />` |
+| `NumberField` | `class` | `HTMLAttributes["class"]` | `<NumberField class="border-primary" />` |
+| `NumberFieldContent` | `class` | `HTMLAttributes["class"]` | `<NumberFieldContent class="border-primary" />` |
+| `NumberFieldDecrement` | `class` | `HTMLAttributes["class"]` | `<NumberFieldDecrement class="border-primary" />` |
+| `NumberFieldIncrement` | `class` | `HTMLAttributes["class"]` | `<NumberFieldIncrement class="border-primary" />` |
+| `NumberFieldInput` | `class` | `HTMLAttributes["class"]` | `<NumberFieldInput class="border-primary" />` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `NumberField` | `emits` | `NumberFieldRootEmits` | `<NumberField @emits="emits" />` |
+| `NumberField` | 类型引用 | `NumberFieldRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -81,40 +81,34 @@ import { NumberField, NumberFieldContent, NumberFieldDecrement, NumberFieldIncre
 
 ## API 示例
 
-### NumberField.exampleProp
+### NumberField.class
 
 ```vue
-<NumberField :example-prop="example" />
+<NumberField class="border-primary" />
 ```
 
 ### NumberFieldContent.class
 
 ```vue
-<NumberFieldContent class="custom-class" />
+<NumberFieldContent class="border-primary" />
 ```
 
-### NumberFieldDecrement.exampleProp
+### NumberFieldDecrement.class
 
 ```vue
-<NumberFieldDecrement :example-prop="example" />
+<NumberFieldDecrement class="border-primary" />
 ```
 
-### NumberFieldIncrement.exampleProp
+### NumberFieldIncrement.class
 
 ```vue
-<NumberFieldIncrement :example-prop="example" />
+<NumberFieldIncrement class="border-primary" />
 ```
 
 ### NumberFieldInput.class
 
 ```vue
-<NumberFieldInput class="custom-class" />
-```
-
-### NumberField.emits
-
-```vue
-<NumberField @emits="emits" />
+<NumberFieldInput class="border-primary" />
 ```
 
 ### NumberField slot: default

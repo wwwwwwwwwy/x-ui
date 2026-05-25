@@ -50,13 +50,13 @@ import { Slider } from '@/components/ui/slider'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Slider` | `props` | `SliderRootProps & { class?: HTMLAttributes["class"] }` | `<Slider :example-prop="example" />` |
+| `Slider` | `class` | `HTMLAttributes["class"]` | `<Slider class="border-primary" />` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Slider` | `emits` | `SliderRootEmits` | `<Slider @emits="emits" />` |
+| `Slider` | 类型引用 | `SliderRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -68,16 +68,10 @@ import { Slider } from '@/components/ui/slider'
 
 ## API 示例
 
-### Slider.exampleProp
+### Slider.class
 
 ```vue
-<Slider :example-prop="example" />
-```
-
-### Slider.emits
-
-```vue
-<Slider @emits="emits" />
+<Slider class="border-primary" />
 ```
 
 ## 依赖

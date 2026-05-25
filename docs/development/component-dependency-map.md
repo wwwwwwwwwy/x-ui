@@ -23,7 +23,7 @@
 | 4 | 已完成 | 基础枢纽 | `separator` | 无 | `button-group`, `field`, `item`, `sidebar` |
 | 5 | 已完成 | 基础枢纽 | `label` | 无 | `field`, `form` |
 | 6 | 已完成 | 基础枢纽 | `card` | 无 | `chart` |
-| 7 | 待处理 | 基础枢纽 | `toggle` | 无 | `toggle-group` |
+| 7 | 已完成 | 基础枢纽 | `toggle` | 无 | `toggle-group` |
 | 8 | 待处理 | 基础枢纽 | `tooltip` | 无 | `sidebar` |
 | 9 | 待处理 | 基础枢纽 | `sheet` | 无 | `sidebar` |
 | 10 | 待处理 | 基础枢纽 | `skeleton` | 无 | `sidebar` |

@@ -51,15 +51,15 @@ import { ResizableHandle, ResizablePanelGroup } from '@/components/ui/resizable'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `ResizableHandle` | `props` | `SplitterResizeHandleProps & { class?: HTMLAttributes["class"], withHandle?: boolean }` | `<ResizableHandle :example-prop="true" />` |
-| `ResizablePanelGroup` | `props` | `SplitterGroupProps & { class?: HTMLAttributes["class"] }` | `<ResizablePanelGroup :example-prop="example" />` |
+| `ResizableHandle` | `class` | `HTMLAttributes["class"]` | `<ResizableHandle class="border-primary" />` |
+| `ResizablePanelGroup` | `class` | `HTMLAttributes["class"]` | `<ResizablePanelGroup class="border-primary" />` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `ResizableHandle` | `emits` | `SplitterResizeHandleEmits` | `<ResizableHandle @emits="emits" />` |
-| `ResizablePanelGroup` | `emits` | `SplitterGroupEmits` | `<ResizablePanelGroup @emits="emits" />` |
+| `ResizableHandle` | 类型引用 | `SplitterResizeHandleEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `ResizablePanelGroup` | 类型引用 | `SplitterGroupEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -73,28 +73,16 @@ import { ResizableHandle, ResizablePanelGroup } from '@/components/ui/resizable'
 
 ## API 示例
 
-### ResizableHandle.exampleProp
+### ResizableHandle.class
 
 ```vue
-<ResizableHandle :example-prop="true" />
+<ResizableHandle class="border-primary" />
 ```
 
-### ResizablePanelGroup.exampleProp
+### ResizablePanelGroup.class
 
 ```vue
-<ResizablePanelGroup :example-prop="example" />
-```
-
-### ResizableHandle.emits
-
-```vue
-<ResizableHandle @emits="emits" />
-```
-
-### ResizablePanelGroup.emits
-
-```vue
-<ResizablePanelGroup @emits="emits" />
+<ResizablePanelGroup class="border-primary" />
 ```
 
 ### ResizablePanelGroup slot: default

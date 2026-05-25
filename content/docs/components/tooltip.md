@@ -53,17 +53,17 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Tooltip` | `props` | `TooltipRootProps` | `<Tooltip :example-prop="example" />` |
-| `TooltipContent` | `props` | `TooltipContentProps & { class?: HTMLAttributes["class"] }` | `<TooltipContent :example-prop="example" />` |
-| `TooltipProvider` | `props` | `TooltipProviderProps` | `<TooltipProvider :example-prop="example" />` |
-| `TooltipTrigger` | `props` | `TooltipTriggerProps` | `<TooltipTrigger :example-prop="example" />` |
+| `TooltipContent` | `class` | `HTMLAttributes["class"]` | `<TooltipContent class="border-primary" />` |
+| `Tooltip` | 类型引用 | `TooltipRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `TooltipProvider` | 类型引用 | `TooltipProviderProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `TooltipTrigger` | 类型引用 | `TooltipTriggerProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Tooltip` | `emits` | `TooltipRootEmits` | `<Tooltip @emits="emits" />` |
-| `TooltipContent` | `emits` | `TooltipContentEmits` | `<TooltipContent @emits="emits" />` |
+| `Tooltip` | 类型引用 | `TooltipRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `TooltipContent` | 类型引用 | `TooltipContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -80,40 +80,10 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 
 ## API 示例
 
-### Tooltip.exampleProp
+### TooltipContent.class
 
 ```vue
-<Tooltip :example-prop="example" />
-```
-
-### TooltipContent.exampleProp
-
-```vue
-<TooltipContent :example-prop="example" />
-```
-
-### TooltipProvider.exampleProp
-
-```vue
-<TooltipProvider :example-prop="example" />
-```
-
-### TooltipTrigger.exampleProp
-
-```vue
-<TooltipTrigger :example-prop="example" />
-```
-
-### Tooltip.emits
-
-```vue
-<Tooltip @emits="emits" />
-```
-
-### TooltipContent.emits
-
-```vue
-<TooltipContent @emits="emits" />
+<TooltipContent class="border-primary" />
 ```
 
 ### Tooltip slot: default

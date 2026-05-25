@@ -18,6 +18,16 @@ Switch 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确�
 ::component-preview{name="switch" src="switch/Basic.vue"}
 ::
 
+### Switch.class
+
+::component-preview{name="switch Switch class" src="switch/SwitchClass.vue"}
+::
+
+### Switch slot: thumb
+
+::component-preview{name="switch Switch thumb slot" src="switch/SwitchThumbSlot.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -50,13 +60,13 @@ import { Switch } from '@/components/ui/switch'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Switch` | `props` | `SwitchRootProps & { class?: HTMLAttributes["class"] }` | `<Switch :example-prop="example" />` |
+| `Switch` | `class` | `HTMLAttributes["class"]` | `<Switch class="border-primary" />` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Switch` | `emits` | `SwitchRootEmits` | `<Switch @emits="emits" />` |
+| `Switch` | 类型引用 | `SwitchRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -70,16 +80,10 @@ import { Switch } from '@/components/ui/switch'
 
 ## API 示例
 
-### Switch.exampleProp
+### Switch.class
 
 ```vue
-<Switch :example-prop="example" />
-```
-
-### Switch.emits
-
-```vue
-<Switch @emits="emits" />
+<Switch class="border-primary" />
 ```
 
 ### Switch slot: thumb

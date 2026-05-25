@@ -59,19 +59,19 @@ import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLab
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Field` | `class` | `HTMLAttributes["class"]` | `<Field class="custom-class" />` |
+| `Field` | `class` | `HTMLAttributes["class"]` | `<Field class="border-primary" />` |
 | `Field` | `orientation` | `FieldVariants["orientation"]` | `<Field :orientation="example" />` |
-| `FieldContent` | `class` | `HTMLAttributes["class"]` | `<FieldContent class="custom-class" />` |
-| `FieldDescription` | `class` | `HTMLAttributes["class"]` | `<FieldDescription class="custom-class" />` |
-| `FieldError` | `class` | `HTMLAttributes["class"]` | `<FieldError class="custom-class" />` |
+| `FieldContent` | `class` | `HTMLAttributes["class"]` | `<FieldContent class="border-primary" />` |
+| `FieldDescription` | `class` | `HTMLAttributes["class"]` | `<FieldDescription class="border-primary" />` |
+| `FieldError` | `class` | `HTMLAttributes["class"]` | `<FieldError class="border-primary" />` |
 | `FieldError` | `errors` | `Array<{ message?: string } \| undefined>` | `<FieldError :errors="example" />` |
-| `FieldGroup` | `class` | `HTMLAttributes["class"]` | `<FieldGroup class="custom-class" />` |
-| `FieldLabel` | `class` | `HTMLAttributes["class"]` | `<FieldLabel class="custom-class" />` |
-| `FieldLegend` | `class` | `HTMLAttributes["class"]` | `<FieldLegend class="custom-class" />` |
-| `FieldLegend` | `variant` | `"legend" \| "label"` | `<FieldLegend :variant="example" />` |
-| `FieldSeparator` | `class` | `HTMLAttributes["class"]` | `<FieldSeparator class="custom-class" />` |
-| `FieldSet` | `class` | `HTMLAttributes["class"]` | `<FieldSet class="custom-class" />` |
-| `FieldTitle` | `class` | `HTMLAttributes["class"]` | `<FieldTitle class="custom-class" />` |
+| `FieldGroup` | `class` | `HTMLAttributes["class"]` | `<FieldGroup class="border-primary" />` |
+| `FieldLabel` | `class` | `HTMLAttributes["class"]` | `<FieldLabel class="border-primary" />` |
+| `FieldLegend` | `class` | `HTMLAttributes["class"]` | `<FieldLegend class="border-primary" />` |
+| `FieldLegend` | `variant` | `"legend" \| "label"` | `<FieldLegend variant="outline">示例内容</FieldLegend>` |
+| `FieldSeparator` | `class` | `HTMLAttributes["class"]` | `<FieldSeparator class="border-primary" />` |
+| `FieldSet` | `class` | `HTMLAttributes["class"]` | `<FieldSet class="border-primary" />` |
+| `FieldTitle` | `class` | `HTMLAttributes["class"]` | `<FieldTitle class="border-primary" />` |
 
 ### Events
 
@@ -102,7 +102,7 @@ import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLab
 ### Field.class
 
 ```vue
-<Field class="custom-class" />
+<Field class="border-primary" />
 ```
 
 ### Field.orientation
@@ -114,19 +114,19 @@ import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLab
 ### FieldContent.class
 
 ```vue
-<FieldContent class="custom-class" />
+<FieldContent class="border-primary" />
 ```
 
 ### FieldDescription.class
 
 ```vue
-<FieldDescription class="custom-class" />
+<FieldDescription class="border-primary" />
 ```
 
 ### FieldError.class
 
 ```vue
-<FieldError class="custom-class" />
+<FieldError class="border-primary" />
 ```
 
 ### FieldError.errors
@@ -138,43 +138,43 @@ import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLab
 ### FieldGroup.class
 
 ```vue
-<FieldGroup class="custom-class" />
+<FieldGroup class="border-primary" />
 ```
 
 ### FieldLabel.class
 
 ```vue
-<FieldLabel class="custom-class" />
+<FieldLabel class="border-primary" />
 ```
 
 ### FieldLegend.class
 
 ```vue
-<FieldLegend class="custom-class" />
+<FieldLegend class="border-primary" />
 ```
 
 ### FieldLegend.variant
 
 ```vue
-<FieldLegend :variant="example" />
+<FieldLegend variant="outline">示例内容</FieldLegend>
 ```
 
 ### FieldSeparator.class
 
 ```vue
-<FieldSeparator class="custom-class" />
+<FieldSeparator class="border-primary" />
 ```
 
 ### FieldSet.class
 
 ```vue
-<FieldSet class="custom-class" />
+<FieldSet class="border-primary" />
 ```
 
 ### FieldTitle.class
 
 ```vue
-<FieldTitle class="custom-class" />
+<FieldTitle class="border-primary" />
 ```
 
 ### Field slot: default

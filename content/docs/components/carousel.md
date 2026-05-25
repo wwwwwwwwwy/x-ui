@@ -54,17 +54,17 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Carousel` | `props` | `CarouselProps & WithClassAsProps` | `<Carousel :example-prop="example" />` |
-| `CarouselContent` | `props` | `WithClassAsProps` | `<CarouselContent :example-prop="example" />` |
-| `CarouselItem` | `props` | `WithClassAsProps` | `<CarouselItem :example-prop="example" />` |
-| `CarouselNext` | `props` | `WithClassAsProps` | `<CarouselNext :example-prop="example" />` |
-| `CarouselPrevious` | `props` | `WithClassAsProps` | `<CarouselPrevious :example-prop="example" />` |
+| `Carousel` | 类型引用 | `CarouselProps & WithClassAsProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `CarouselContent` | 类型引用 | `WithClassAsProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `CarouselItem` | 类型引用 | `WithClassAsProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `CarouselNext` | 类型引用 | `WithClassAsProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `CarouselPrevious` | 类型引用 | `WithClassAsProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Carousel` | `emits` | `CarouselEmits` | `<Carousel @emits="emits" />` |
+| `Carousel` | 类型引用 | `CarouselEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -82,42 +82,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 - `export { useCarousel } from "./useCarousel"`
 
 ## API 示例
-
-### Carousel.exampleProp
-
-```vue
-<Carousel :example-prop="example" />
-```
-
-### CarouselContent.exampleProp
-
-```vue
-<CarouselContent :example-prop="example" />
-```
-
-### CarouselItem.exampleProp
-
-```vue
-<CarouselItem :example-prop="example" />
-```
-
-### CarouselNext.exampleProp
-
-```vue
-<CarouselNext :example-prop="example" />
-```
-
-### CarouselPrevious.exampleProp
-
-```vue
-<CarouselPrevious :example-prop="example" />
-```
-
-### Carousel.emits
-
-```vue
-<Carousel @emits="emits" />
-```
 
 ### Carousel slot: default
 

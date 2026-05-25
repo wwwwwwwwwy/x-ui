@@ -63,34 +63,34 @@ import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuGr
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `ContextMenu` | `props` | `ContextMenuRootProps` | `<ContextMenu :example-prop="example" />` |
-| `ContextMenuCheckboxItem` | `props` | `ContextMenuCheckboxItemProps & { class?: HTMLAttributes["class"] }` | `<ContextMenuCheckboxItem :example-prop="example" />` |
-| `ContextMenuContent` | `props` | `ContextMenuContentProps & { class?: HTMLAttributes["class"] }` | `<ContextMenuContent :example-prop="example" />` |
-| `ContextMenuGroup` | `props` | `ContextMenuGroupProps` | `<ContextMenuGroup :example-prop="example" />` |
-| `ContextMenuItem` | `props` | `ContextMenuItemProps & { class?: HTMLAttributes["class"], inset?: boolean }` | `<ContextMenuItem :example-prop="true" />` |
-| `ContextMenuLabel` | `props` | `ContextMenuLabelProps & { class?: HTMLAttributes["class"], inset?: boolean }` | `<ContextMenuLabel :example-prop="true" />` |
-| `ContextMenuPortal` | `props` | `ContextMenuPortalProps` | `<ContextMenuPortal :example-prop="example" />` |
-| `ContextMenuRadioGroup` | `props` | `ContextMenuRadioGroupProps` | `<ContextMenuRadioGroup :example-prop="example" />` |
-| `ContextMenuRadioItem` | `props` | `ContextMenuRadioItemProps & { class?: HTMLAttributes["class"] }` | `<ContextMenuRadioItem :example-prop="example" />` |
-| `ContextMenuSeparator` | `props` | `ContextMenuSeparatorProps & { class?: HTMLAttributes["class"] }` | `<ContextMenuSeparator :example-prop="example" />` |
-| `ContextMenuShortcut` | `class` | `HTMLAttributes["class"]` | `<ContextMenuShortcut class="custom-class" />` |
-| `ContextMenuSub` | `props` | `ContextMenuSubProps` | `<ContextMenuSub :example-prop="example" />` |
-| `ContextMenuSubContent` | `props` | `DropdownMenuSubContentProps & { class?: HTMLAttributes["class"] }` | `<ContextMenuSubContent :example-prop="example" />` |
-| `ContextMenuSubTrigger` | `props` | `ContextMenuSubTriggerProps & { class?: HTMLAttributes["class"], inset?: boolean }` | `<ContextMenuSubTrigger :example-prop="true" />` |
-| `ContextMenuTrigger` | `props` | `ContextMenuTriggerProps` | `<ContextMenuTrigger :example-prop="example" />` |
+| `ContextMenuCheckboxItem` | `class` | `HTMLAttributes["class"]` | `<ContextMenuCheckboxItem class="border-primary" />` |
+| `ContextMenuContent` | `class` | `HTMLAttributes["class"]` | `<ContextMenuContent class="border-primary" />` |
+| `ContextMenuItem` | `class` | `HTMLAttributes["class"]` | `<ContextMenuItem class="border-primary" />` |
+| `ContextMenuLabel` | `class` | `HTMLAttributes["class"]` | `<ContextMenuLabel class="border-primary" />` |
+| `ContextMenuRadioItem` | `class` | `HTMLAttributes["class"]` | `<ContextMenuRadioItem class="border-primary" />` |
+| `ContextMenuSeparator` | `class` | `HTMLAttributes["class"]` | `<ContextMenuSeparator class="border-primary" />` |
+| `ContextMenuShortcut` | `class` | `HTMLAttributes["class"]` | `<ContextMenuShortcut class="border-primary" />` |
+| `ContextMenuSubContent` | `class` | `HTMLAttributes["class"]` | `<ContextMenuSubContent class="border-primary" />` |
+| `ContextMenuSubTrigger` | `class` | `HTMLAttributes["class"]` | `<ContextMenuSubTrigger class="border-primary" />` |
+| `ContextMenu` | 类型引用 | `ContextMenuRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `ContextMenuGroup` | 类型引用 | `ContextMenuGroupProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `ContextMenuPortal` | 类型引用 | `ContextMenuPortalProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `ContextMenuRadioGroup` | 类型引用 | `ContextMenuRadioGroupProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `ContextMenuSub` | 类型引用 | `ContextMenuSubProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `ContextMenuTrigger` | 类型引用 | `ContextMenuTriggerProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `ContextMenu` | `emits` | `ContextMenuRootEmits` | `<ContextMenu @emits="emits" />` |
-| `ContextMenuCheckboxItem` | `emits` | `ContextMenuCheckboxItemEmits` | `<ContextMenuCheckboxItem @emits="emits" />` |
-| `ContextMenuContent` | `emits` | `ContextMenuContentEmits` | `<ContextMenuContent @emits="emits" />` |
-| `ContextMenuItem` | `emits` | `ContextMenuItemEmits` | `<ContextMenuItem @emits="emits" />` |
-| `ContextMenuRadioGroup` | `emits` | `ContextMenuRadioGroupEmits` | `<ContextMenuRadioGroup @emits="emits" />` |
-| `ContextMenuRadioItem` | `emits` | `ContextMenuRadioItemEmits` | `<ContextMenuRadioItem @emits="emits" />` |
-| `ContextMenuSub` | `emits` | `ContextMenuSubEmits` | `<ContextMenuSub @emits="emits" />` |
-| `ContextMenuSubContent` | `emits` | `DropdownMenuSubContentEmits` | `<ContextMenuSubContent @emits="emits" />` |
+| `ContextMenu` | 类型引用 | `ContextMenuRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `ContextMenuCheckboxItem` | 类型引用 | `ContextMenuCheckboxItemEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `ContextMenuContent` | 类型引用 | `ContextMenuContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `ContextMenuItem` | 类型引用 | `ContextMenuItemEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `ContextMenuRadioGroup` | 类型引用 | `ContextMenuRadioGroupEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `ContextMenuRadioItem` | 类型引用 | `ContextMenuRadioItemEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `ContextMenuSub` | 类型引用 | `ContextMenuSubEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `ContextMenuSubContent` | 类型引用 | `DropdownMenuSubContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -117,142 +117,58 @@ import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuGr
 
 ## API 示例
 
-### ContextMenu.exampleProp
+### ContextMenuCheckboxItem.class
 
 ```vue
-<ContextMenu :example-prop="example" />
+<ContextMenuCheckboxItem class="border-primary" />
 ```
 
-### ContextMenuCheckboxItem.exampleProp
+### ContextMenuContent.class
 
 ```vue
-<ContextMenuCheckboxItem :example-prop="example" />
+<ContextMenuContent class="border-primary" />
 ```
 
-### ContextMenuContent.exampleProp
+### ContextMenuItem.class
 
 ```vue
-<ContextMenuContent :example-prop="example" />
+<ContextMenuItem class="border-primary" />
 ```
 
-### ContextMenuGroup.exampleProp
+### ContextMenuLabel.class
 
 ```vue
-<ContextMenuGroup :example-prop="example" />
+<ContextMenuLabel class="border-primary" />
 ```
 
-### ContextMenuItem.exampleProp
+### ContextMenuRadioItem.class
 
 ```vue
-<ContextMenuItem :example-prop="true" />
+<ContextMenuRadioItem class="border-primary" />
 ```
 
-### ContextMenuLabel.exampleProp
+### ContextMenuSeparator.class
 
 ```vue
-<ContextMenuLabel :example-prop="true" />
-```
-
-### ContextMenuPortal.exampleProp
-
-```vue
-<ContextMenuPortal :example-prop="example" />
-```
-
-### ContextMenuRadioGroup.exampleProp
-
-```vue
-<ContextMenuRadioGroup :example-prop="example" />
-```
-
-### ContextMenuRadioItem.exampleProp
-
-```vue
-<ContextMenuRadioItem :example-prop="example" />
-```
-
-### ContextMenuSeparator.exampleProp
-
-```vue
-<ContextMenuSeparator :example-prop="example" />
+<ContextMenuSeparator class="border-primary" />
 ```
 
 ### ContextMenuShortcut.class
 
 ```vue
-<ContextMenuShortcut class="custom-class" />
+<ContextMenuShortcut class="border-primary" />
 ```
 
-### ContextMenuSub.exampleProp
+### ContextMenuSubContent.class
 
 ```vue
-<ContextMenuSub :example-prop="example" />
+<ContextMenuSubContent class="border-primary" />
 ```
 
-### ContextMenuSubContent.exampleProp
+### ContextMenuSubTrigger.class
 
 ```vue
-<ContextMenuSubContent :example-prop="example" />
-```
-
-### ContextMenuSubTrigger.exampleProp
-
-```vue
-<ContextMenuSubTrigger :example-prop="true" />
-```
-
-### ContextMenuTrigger.exampleProp
-
-```vue
-<ContextMenuTrigger :example-prop="example" />
-```
-
-### ContextMenu.emits
-
-```vue
-<ContextMenu @emits="emits" />
-```
-
-### ContextMenuCheckboxItem.emits
-
-```vue
-<ContextMenuCheckboxItem @emits="emits" />
-```
-
-### ContextMenuContent.emits
-
-```vue
-<ContextMenuContent @emits="emits" />
-```
-
-### ContextMenuItem.emits
-
-```vue
-<ContextMenuItem @emits="emits" />
-```
-
-### ContextMenuRadioGroup.emits
-
-```vue
-<ContextMenuRadioGroup @emits="emits" />
-```
-
-### ContextMenuRadioItem.emits
-
-```vue
-<ContextMenuRadioItem @emits="emits" />
-```
-
-### ContextMenuSub.emits
-
-```vue
-<ContextMenuSub @emits="emits" />
-```
-
-### ContextMenuSubContent.emits
-
-```vue
-<ContextMenuSubContent @emits="emits" />
+<ContextMenuSubTrigger class="border-primary" />
 ```
 
 ### ContextMenu slot: default

@@ -72,38 +72,42 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupActio
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Sidebar` | `props` | `SidebarProps` | `<Sidebar :example-prop="example" />` |
-| `SidebarContent` | `class` | `HTMLAttributes["class"]` | `<SidebarContent class="custom-class" />` |
-| `SidebarFooter` | `class` | `HTMLAttributes["class"]` | `<SidebarFooter class="custom-class" />` |
-| `SidebarGroup` | `class` | `HTMLAttributes["class"]` | `<SidebarGroup class="custom-class" />` |
-| `SidebarGroupAction` | `props` | `PrimitiveProps & { class?: HTMLAttributes["class"] }` | `<SidebarGroupAction :example-prop="example" />` |
-| `SidebarGroupContent` | `class` | `HTMLAttributes["class"]` | `<SidebarGroupContent class="custom-class" />` |
-| `SidebarGroupLabel` | `props` | `PrimitiveProps & { class?: HTMLAttributes["class"] }` | `<SidebarGroupLabel :example-prop="example" />` |
-| `SidebarHeader` | `class` | `HTMLAttributes["class"]` | `<SidebarHeader class="custom-class" />` |
-| `SidebarInput` | `class` | `HTMLAttributes["class"]` | `<SidebarInput class="custom-class" />` |
-| `SidebarInset` | `class` | `HTMLAttributes["class"]` | `<SidebarInset class="custom-class" />` |
-| `SidebarMenu` | `class` | `HTMLAttributes["class"]` | `<SidebarMenu class="custom-class" />` |
-| `SidebarMenuAction` | `props` | `PrimitiveProps & { showOnHover?: boolean class?: HTMLAttributes["class"] }` | `<SidebarMenuAction :example-prop="true" />` |
-| `SidebarMenuBadge` | `class` | `HTMLAttributes["class"]` | `<SidebarMenuBadge class="custom-class" />` |
-| `SidebarMenuButton` | `props` | `SidebarMenuButtonProps & { tooltip?: string \| Component }` | `<SidebarMenuButton :example-prop="example" />` |
-| `SidebarMenuButtonChild` | `props` | `SidebarMenuButtonProps` | `<SidebarMenuButtonChild :example-prop="example" />` |
-| `SidebarMenuItem` | `class` | `HTMLAttributes["class"]` | `<SidebarMenuItem class="custom-class" />` |
+| `SidebarContent` | `class` | `HTMLAttributes["class"]` | `<SidebarContent class="border-primary" />` |
+| `SidebarFooter` | `class` | `HTMLAttributes["class"]` | `<SidebarFooter class="border-primary" />` |
+| `SidebarGroup` | `class` | `HTMLAttributes["class"]` | `<SidebarGroup class="border-primary" />` |
+| `SidebarGroupAction` | `class` | `HTMLAttributes["class"]` | `<SidebarGroupAction class="border-primary" />` |
+| `SidebarGroupContent` | `class` | `HTMLAttributes["class"]` | `<SidebarGroupContent class="border-primary" />` |
+| `SidebarGroupLabel` | `class` | `HTMLAttributes["class"]` | `<SidebarGroupLabel class="border-primary" />` |
+| `SidebarHeader` | `class` | `HTMLAttributes["class"]` | `<SidebarHeader class="border-primary" />` |
+| `SidebarInput` | `class` | `HTMLAttributes["class"]` | `<SidebarInput class="border-primary" />` |
+| `SidebarInset` | `class` | `HTMLAttributes["class"]` | `<SidebarInset class="border-primary" />` |
+| `SidebarMenu` | `class` | `HTMLAttributes["class"]` | `<SidebarMenu class="border-primary" />` |
+| `SidebarMenuAction` | `showOnHover` | `boolean` | `<SidebarMenuAction :show-on-hover="true" />` |
+| `SidebarMenuAction` | `class` | `HTMLAttributes["class"]` | `<SidebarMenuAction class="border-primary" />` |
+| `SidebarMenuBadge` | `class` | `HTMLAttributes["class"]` | `<SidebarMenuBadge class="border-primary" />` |
+| `SidebarMenuButton` | `tooltip` | `string \| Component` | `<SidebarMenuButton :tooltip="example" />` |
+| `SidebarMenuItem` | `class` | `HTMLAttributes["class"]` | `<SidebarMenuItem class="border-primary" />` |
 | `SidebarMenuSkeleton` | `showIcon` | `boolean` | `<SidebarMenuSkeleton :show-icon="true" />` |
-| `SidebarMenuSkeleton` | `class` | `HTMLAttributes["class"]` | `<SidebarMenuSkeleton class="custom-class" />` |
-| `SidebarMenuSub` | `class` | `HTMLAttributes["class"]` | `<SidebarMenuSub class="custom-class" />` |
-| `SidebarMenuSubButton` | `props` | `PrimitiveProps & { size?: "sm" \| "md" isActive?: boolean class?: HTMLAttributes["class"] }` | `<SidebarMenuSubButton :example-prop="true" />` |
-| `SidebarProvider` | `defaultOpen` | `boolean` | `<SidebarProvider :default-open="true" />` |
-| `SidebarProvider` | `open` | `boolean` | `<SidebarProvider :open="true" />` |
-| `SidebarProvider` | `class` | `HTMLAttributes["class"]` | `<SidebarProvider class="custom-class" />` |
-| `SidebarRail` | `class` | `HTMLAttributes["class"]` | `<SidebarRail class="custom-class" />` |
-| `SidebarSeparator` | `class` | `HTMLAttributes["class"]` | `<SidebarSeparator class="custom-class" />` |
-| `SidebarTrigger` | `class` | `HTMLAttributes["class"]` | `<SidebarTrigger class="custom-class" />` |
+| `SidebarMenuSkeleton` | `class` | `HTMLAttributes["class"]` | `<SidebarMenuSkeleton class="border-primary" />` |
+| `SidebarMenuSub` | `class` | `HTMLAttributes["class"]` | `<SidebarMenuSub class="border-primary" />` |
+| `SidebarMenuSubButton` | `size` | `"sm" \| "md"` | `<SidebarMenuSubButton size="sm">示例内容</SidebarMenuSubButton>` |
+| `SidebarMenuSubButton` | `isActive` | `boolean` | `<SidebarMenuSubButton :is-active="true" />` |
+| `SidebarMenuSubButton` | `class` | `HTMLAttributes["class"]` | `<SidebarMenuSubButton class="border-primary" />` |
+| `SidebarProvider` | `defaultOpen` | `boolean` | `<SidebarProvider default-open>示例内容</SidebarProvider>` |
+| `SidebarProvider` | `open` | `boolean` | `<SidebarProvider v-model:open="open">示例内容</SidebarProvider>` |
+| `SidebarProvider` | `class` | `HTMLAttributes["class"]` | `<SidebarProvider class="border-primary" />` |
+| `SidebarRail` | `class` | `HTMLAttributes["class"]` | `<SidebarRail class="border-primary" />` |
+| `SidebarSeparator` | `class` | `HTMLAttributes["class"]` | `<SidebarSeparator class="border-primary" />` |
+| `SidebarTrigger` | `class` | `HTMLAttributes["class"]` | `<SidebarTrigger class="border-primary" />` |
+| `Sidebar` | 类型引用 | `SidebarProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `SidebarMenuButtonChild` | 类型引用 | `SidebarMenuButtonProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `SidebarProvider` | `update:open` | `[open: boolean]` | `<SidebarProvider @update:open="updateOpen" />` |
+| `SidebarProvider` | `update:open` | `typed event` | `<SidebarProvider v-model:open="value" />` |
+| `SidebarProvider` | `update:open` | `[open: boolean]` | `<SidebarProvider v-model:open="value" />` |
 
 ### Slots
 
@@ -141,100 +145,94 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupActio
 
 ## API 示例
 
-### Sidebar.exampleProp
-
-```vue
-<Sidebar :example-prop="example" />
-```
-
 ### SidebarContent.class
 
 ```vue
-<SidebarContent class="custom-class" />
+<SidebarContent class="border-primary" />
 ```
 
 ### SidebarFooter.class
 
 ```vue
-<SidebarFooter class="custom-class" />
+<SidebarFooter class="border-primary" />
 ```
 
 ### SidebarGroup.class
 
 ```vue
-<SidebarGroup class="custom-class" />
+<SidebarGroup class="border-primary" />
 ```
 
-### SidebarGroupAction.exampleProp
+### SidebarGroupAction.class
 
 ```vue
-<SidebarGroupAction :example-prop="example" />
+<SidebarGroupAction class="border-primary" />
 ```
 
 ### SidebarGroupContent.class
 
 ```vue
-<SidebarGroupContent class="custom-class" />
+<SidebarGroupContent class="border-primary" />
 ```
 
-### SidebarGroupLabel.exampleProp
+### SidebarGroupLabel.class
 
 ```vue
-<SidebarGroupLabel :example-prop="example" />
+<SidebarGroupLabel class="border-primary" />
 ```
 
 ### SidebarHeader.class
 
 ```vue
-<SidebarHeader class="custom-class" />
+<SidebarHeader class="border-primary" />
 ```
 
 ### SidebarInput.class
 
 ```vue
-<SidebarInput class="custom-class" />
+<SidebarInput class="border-primary" />
 ```
 
 ### SidebarInset.class
 
 ```vue
-<SidebarInset class="custom-class" />
+<SidebarInset class="border-primary" />
 ```
 
 ### SidebarMenu.class
 
 ```vue
-<SidebarMenu class="custom-class" />
+<SidebarMenu class="border-primary" />
 ```
 
-### SidebarMenuAction.exampleProp
+### SidebarMenuAction.showOnHover
 
 ```vue
-<SidebarMenuAction :example-prop="true" />
+<SidebarMenuAction :show-on-hover="true" />
+```
+
+### SidebarMenuAction.class
+
+```vue
+<SidebarMenuAction class="border-primary" />
 ```
 
 ### SidebarMenuBadge.class
 
 ```vue
-<SidebarMenuBadge class="custom-class" />
+<SidebarMenuBadge class="border-primary" />
 ```
 
-### SidebarMenuButton.exampleProp
+### SidebarMenuButton.tooltip
 
 ```vue
-<SidebarMenuButton :example-prop="example" />
-```
-
-### SidebarMenuButtonChild.exampleProp
-
-```vue
-<SidebarMenuButtonChild :example-prop="example" />
+<SidebarMenuButton :tooltip="example" />
 ```
 
 ### SidebarMenuItem.class
 
 ```vue
-<SidebarMenuItem class="custom-class" />
+<SidebarMenuItem class="border-primary" />
 ```
 
 ### SidebarMenuSkeleton.showIcon
@@ -246,61 +244,79 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupActio
 ### SidebarMenuSkeleton.class
 
 ```vue
-<SidebarMenuSkeleton class="custom-class" />
+<SidebarMenuSkeleton class="border-primary" />
 ```
 
 ### SidebarMenuSub.class
 
 ```vue
-<SidebarMenuSub class="custom-class" />
+<SidebarMenuSub class="border-primary" />
 ```
 
-### SidebarMenuSubButton.exampleProp
+### SidebarMenuSubButton.size
 
 ```vue
-<SidebarMenuSubButton :example-prop="true" />
+<SidebarMenuSubButton size="sm">示例内容</SidebarMenuSubButton>
+```
+
+### SidebarMenuSubButton.isActive
+
+```vue
+<SidebarMenuSubButton :is-active="true" />
+```
+
+### SidebarMenuSubButton.class
+
+```vue
+<SidebarMenuSubButton class="border-primary" />
 ```
 
 ### SidebarProvider.defaultOpen
 
 ```vue
-<SidebarProvider :default-open="true" />
+<SidebarProvider default-open>示例内容</SidebarProvider>
 ```
 
 ### SidebarProvider.open
 
 ```vue
-<SidebarProvider :open="true" />
+<SidebarProvider v-model:open="open">示例内容</SidebarProvider>
 ```
 
 ### SidebarProvider.class
 
 ```vue
-<SidebarProvider class="custom-class" />
+<SidebarProvider class="border-primary" />
 ```
 
 ### SidebarRail.class
 
 ```vue
-<SidebarRail class="custom-class" />
+<SidebarRail class="border-primary" />
 ```
 
 ### SidebarSeparator.class
 
 ```vue
-<SidebarSeparator class="custom-class" />
+<SidebarSeparator class="border-primary" />
 ```
 
 ### SidebarTrigger.class
 
 ```vue
-<SidebarTrigger class="custom-class" />
+<SidebarTrigger class="border-primary" />
 ```
 
 ### SidebarProvider.update:open
 
 ```vue
-<SidebarProvider @update:open="updateOpen" />
+<SidebarProvider v-model:open="value" />
+```
+
+### SidebarProvider.update:open
+
+```vue
+<SidebarProvider v-model:open="value" />
 ```
 
 ### Sidebar slot: default

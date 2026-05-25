@@ -18,6 +18,71 @@ Empty 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层
 ::component-preview{name="empty" src="empty/Basic.vue"}
 ::
 
+### Empty.class
+
+::component-preview{name="empty Empty class" src="empty/EmptyClass.vue"}
+::
+
+### EmptyContent.class
+
+::component-preview{name="empty EmptyContent class" src="empty/EmptyContentClass.vue"}
+::
+
+### EmptyDescription.class
+
+::component-preview{name="empty EmptyDescription class" src="empty/EmptyDescriptionClass.vue"}
+::
+
+### EmptyHeader.class
+
+::component-preview{name="empty EmptyHeader class" src="empty/EmptyHeaderClass.vue"}
+::
+
+### EmptyMedia.class
+
+::component-preview{name="empty EmptyMedia class" src="empty/EmptyMediaClass.vue"}
+::
+
+### EmptyMedia.variant
+
+::component-preview{name="empty EmptyMedia variant" src="empty/EmptyMediaVariant.vue"}
+::
+
+### EmptyTitle.class
+
+::component-preview{name="empty EmptyTitle class" src="empty/EmptyTitleClass.vue"}
+::
+
+### Empty slot: default
+
+::component-preview{name="empty Empty default slot" src="empty/EmptyDefaultSlot.vue"}
+::
+
+### EmptyContent slot: default
+
+::component-preview{name="empty EmptyContent default slot" src="empty/EmptyContentDefaultSlot.vue"}
+::
+
+### EmptyDescription slot: default
+
+::component-preview{name="empty EmptyDescription default slot" src="empty/EmptyDescriptionDefaultSlot.vue"}
+::
+
+### EmptyHeader slot: default
+
+::component-preview{name="empty EmptyHeader default slot" src="empty/EmptyHeaderDefaultSlot.vue"}
+::
+
+### EmptyMedia slot: default
+
+::component-preview{name="empty EmptyMedia default slot" src="empty/EmptyMediaDefaultSlot.vue"}
+::
+
+### EmptyTitle slot: default
+
+::component-preview{name="empty EmptyTitle default slot" src="empty/EmptyTitleDefaultSlot.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -55,13 +120,13 @@ import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTi
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Empty` | `class` | `HTMLAttributes["class"]` | `<Empty class="custom-class" />` |
-| `EmptyContent` | `class` | `HTMLAttributes["class"]` | `<EmptyContent class="custom-class" />` |
-| `EmptyDescription` | `class` | `HTMLAttributes["class"]` | `<EmptyDescription class="custom-class" />` |
-| `EmptyHeader` | `class` | `HTMLAttributes["class"]` | `<EmptyHeader class="custom-class" />` |
-| `EmptyMedia` | `class` | `HTMLAttributes["class"]` | `<EmptyMedia class="custom-class" />` |
-| `EmptyMedia` | `variant` | `EmptyMediaVariants["variant"]` | `<EmptyMedia :variant="example" />` |
-| `EmptyTitle` | `class` | `HTMLAttributes["class"]` | `<EmptyTitle class="custom-class" />` |
+| `Empty` | `class` | `HTMLAttributes["class"]` | `<Empty class="border-primary" />` |
+| `EmptyContent` | `class` | `HTMLAttributes["class"]` | `<EmptyContent class="border-primary" />` |
+| `EmptyDescription` | `class` | `HTMLAttributes["class"]` | `<EmptyDescription class="border-primary" />` |
+| `EmptyHeader` | `class` | `HTMLAttributes["class"]` | `<EmptyHeader class="border-primary" />` |
+| `EmptyMedia` | `class` | `HTMLAttributes["class"]` | `<EmptyMedia class="border-primary" />` |
+| `EmptyMedia` | `variant` | `EmptyMediaVariants["variant"]` | `<EmptyMedia variant="outline">示例内容</EmptyMedia>` |
+| `EmptyTitle` | `class` | `HTMLAttributes["class"]` | `<EmptyTitle class="border-primary" />` |
 
 ### Events
 
@@ -88,43 +153,43 @@ import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTi
 ### Empty.class
 
 ```vue
-<Empty class="custom-class" />
+<Empty class="border-primary" />
 ```
 
 ### EmptyContent.class
 
 ```vue
-<EmptyContent class="custom-class" />
+<EmptyContent class="border-primary" />
 ```
 
 ### EmptyDescription.class
 
 ```vue
-<EmptyDescription class="custom-class" />
+<EmptyDescription class="border-primary" />
 ```
 
 ### EmptyHeader.class
 
 ```vue
-<EmptyHeader class="custom-class" />
+<EmptyHeader class="border-primary" />
 ```
 
 ### EmptyMedia.class
 
 ```vue
-<EmptyMedia class="custom-class" />
+<EmptyMedia class="border-primary" />
 ```
 
 ### EmptyMedia.variant
 
 ```vue
-<EmptyMedia :variant="example" />
+<EmptyMedia variant="outline">示例内容</EmptyMedia>
 ```
 
 ### EmptyTitle.class
 
 ```vue
-<EmptyTitle class="custom-class" />
+<EmptyTitle class="border-primary" />
 ```
 
 ### Empty slot: default

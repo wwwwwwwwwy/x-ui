@@ -18,6 +18,11 @@ Progress 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确
 ::component-preview{name="progress" src="progress/Basic.vue"}
 ::
 
+### Progress.class
+
+::component-preview{name="progress Progress class" src="progress/ProgressClass.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -50,7 +55,7 @@ import { Progress } from '@/components/ui/progress'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Progress` | `props` | `ProgressRootProps & { class?: HTMLAttributes["class"] }` | `<Progress :example-prop="example" />` |
+| `Progress` | `class` | `HTMLAttributes["class"]` | `<Progress class="border-primary" />` |
 
 ### Events
 
@@ -66,10 +71,10 @@ import { Progress } from '@/components/ui/progress'
 
 ## API 示例
 
-### Progress.exampleProp
+### Progress.class
 
 ```vue
-<Progress :example-prop="example" />
+<Progress class="border-primary" />
 ```
 
 ## 依赖

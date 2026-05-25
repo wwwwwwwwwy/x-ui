@@ -51,14 +51,18 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `ToggleGroup` | `props` | `ToggleGroupRootProps & { class?: HTMLAttributes["class"] variant?: ToggleGroupVariants["variant"] size?: ToggleGroupVariants["size"] }` | `<ToggleGroup :example-prop="example" />` |
-| `ToggleGroupItem` | `props` | `ToggleGroupItemProps & { class?: HTMLAttributes["class"] variant?: ToggleGroupVariants["variant"] size?: ToggleGroupVariants["size"] }` | `<ToggleGroupItem :example-prop="example" />` |
+| `ToggleGroup` | `class` | `HTMLAttributes["class"]` | `<ToggleGroup class="border-primary" />` |
+| `ToggleGroup` | `variant` | `ToggleGroupVariants["variant"]` | `<ToggleGroup variant="outline">示例内容</ToggleGroup>` |
+| `ToggleGroup` | `size` | `ToggleGroupVariants["size"]` | `<ToggleGroup size="sm">示例内容</ToggleGroup>` |
+| `ToggleGroupItem` | `class` | `HTMLAttributes["class"]` | `<ToggleGroupItem class="border-primary" />` |
+| `ToggleGroupItem` | `variant` | `ToggleGroupVariants["variant"]` | `<ToggleGroupItem variant="outline">示例内容</ToggleGroupItem>` |
+| `ToggleGroupItem` | `size` | `ToggleGroupVariants["size"]` | `<ToggleGroupItem size="sm">示例内容</ToggleGroupItem>` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `ToggleGroup` | `emits` | `ToggleGroupRootEmits` | `<ToggleGroup @emits="emits" />` |
+| `ToggleGroup` | 类型引用 | `ToggleGroupRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -73,22 +77,40 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 ## API 示例
 
-### ToggleGroup.exampleProp
+### ToggleGroup.class
 
 ```vue
-<ToggleGroup :example-prop="example" />
+<ToggleGroup class="border-primary" />
 ```
 
-### ToggleGroupItem.exampleProp
+### ToggleGroup.variant
 
 ```vue
-<ToggleGroupItem :example-prop="example" />
+<ToggleGroup variant="outline">示例内容</ToggleGroup>
 ```
 
-### ToggleGroup.emits
+### ToggleGroup.size
 
 ```vue
-<ToggleGroup @emits="emits" />
+<ToggleGroup size="sm">示例内容</ToggleGroup>
+```
+
+### ToggleGroupItem.class
+
+```vue
+<ToggleGroupItem class="border-primary" />
+```
+
+### ToggleGroupItem.variant
+
+```vue
+<ToggleGroupItem variant="outline">示例内容</ToggleGroupItem>
+```
+
+### ToggleGroupItem.size
+
+```vue
+<ToggleGroupItem size="sm">示例内容</ToggleGroupItem>
 ```
 
 ### ToggleGroup slot: default

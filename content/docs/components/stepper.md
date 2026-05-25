@@ -56,19 +56,19 @@ import { Stepper, StepperDescription, StepperIndicator, StepperItem, StepperSepa
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Stepper` | `props` | `StepperRootProps & { class?: HTMLAttributes["class"] }` | `<Stepper :example-prop="example" />` |
-| `StepperDescription` | `props` | `StepperDescriptionProps & { class?: HTMLAttributes["class"] }` | `<StepperDescription :example-prop="example" />` |
-| `StepperIndicator` | `props` | `StepperIndicatorProps & { class?: HTMLAttributes["class"] }` | `<StepperIndicator :example-prop="example" />` |
-| `StepperItem` | `props` | `StepperItemProps & { class?: HTMLAttributes["class"] }` | `<StepperItem :example-prop="example" />` |
-| `StepperSeparator` | `props` | `StepperSeparatorProps & { class?: HTMLAttributes["class"] }` | `<StepperSeparator :example-prop="example" />` |
-| `StepperTitle` | `props` | `StepperTitleProps & { class?: HTMLAttributes["class"] }` | `<StepperTitle :example-prop="example" />` |
-| `StepperTrigger` | `props` | `StepperTriggerProps & { class?: HTMLAttributes["class"] }` | `<StepperTrigger :example-prop="example" />` |
+| `Stepper` | `class` | `HTMLAttributes["class"]` | `<Stepper class="border-primary" />` |
+| `StepperDescription` | `class` | `HTMLAttributes["class"]` | `<StepperDescription class="border-primary" />` |
+| `StepperIndicator` | `class` | `HTMLAttributes["class"]` | `<StepperIndicator class="border-primary" />` |
+| `StepperItem` | `class` | `HTMLAttributes["class"]` | `<StepperItem class="border-primary" />` |
+| `StepperSeparator` | `class` | `HTMLAttributes["class"]` | `<StepperSeparator class="border-primary" />` |
+| `StepperTitle` | `class` | `HTMLAttributes["class"]` | `<StepperTitle class="border-primary" />` |
+| `StepperTrigger` | `class` | `HTMLAttributes["class"]` | `<StepperTrigger class="border-primary" />` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Stepper` | `emits` | `StepperRootEmits` | `<Stepper @emits="emits" />` |
+| `Stepper` | 类型引用 | `StepperRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -87,52 +87,46 @@ import { Stepper, StepperDescription, StepperIndicator, StepperItem, StepperSepa
 
 ## API 示例
 
-### Stepper.exampleProp
+### Stepper.class
 
 ```vue
-<Stepper :example-prop="example" />
+<Stepper class="border-primary" />
 ```
 
-### StepperDescription.exampleProp
+### StepperDescription.class
 
 ```vue
-<StepperDescription :example-prop="example" />
+<StepperDescription class="border-primary" />
 ```
 
-### StepperIndicator.exampleProp
+### StepperIndicator.class
 
 ```vue
-<StepperIndicator :example-prop="example" />
+<StepperIndicator class="border-primary" />
 ```
 
-### StepperItem.exampleProp
+### StepperItem.class
 
 ```vue
-<StepperItem :example-prop="example" />
+<StepperItem class="border-primary" />
 ```
 
-### StepperSeparator.exampleProp
+### StepperSeparator.class
 
 ```vue
-<StepperSeparator :example-prop="example" />
+<StepperSeparator class="border-primary" />
 ```
 
-### StepperTitle.exampleProp
+### StepperTitle.class
 
 ```vue
-<StepperTitle :example-prop="example" />
+<StepperTitle class="border-primary" />
 ```
 
-### StepperTrigger.exampleProp
+### StepperTrigger.class
 
 ```vue
-<StepperTrigger :example-prop="example" />
-```
-
-### Stepper.emits
-
-```vue
-<Stepper @emits="emits" />
+<StepperTrigger class="border-primary" />
 ```
 
 ### Stepper slot: default

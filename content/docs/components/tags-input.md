@@ -54,17 +54,17 @@ import { TagsInput, TagsInputInput, TagsInputItem, TagsInputItemDelete, TagsInpu
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `TagsInput` | `props` | `TagsInputRootProps & { class?: HTMLAttributes["class"] }` | `<TagsInput :example-prop="example" />` |
-| `TagsInputInput` | `props` | `TagsInputInputProps & { class?: HTMLAttributes["class"] }` | `<TagsInputInput :example-prop="example" />` |
-| `TagsInputItem` | `props` | `TagsInputItemProps & { class?: HTMLAttributes["class"] }` | `<TagsInputItem :example-prop="example" />` |
-| `TagsInputItemDelete` | `props` | `TagsInputItemDeleteProps & { class?: HTMLAttributes["class"] }` | `<TagsInputItemDelete :example-prop="example" />` |
-| `TagsInputItemText` | `props` | `TagsInputItemTextProps & { class?: HTMLAttributes["class"] }` | `<TagsInputItemText :example-prop="example" />` |
+| `TagsInput` | `class` | `HTMLAttributes["class"]` | `<TagsInput class="border-primary" />` |
+| `TagsInputInput` | `class` | `HTMLAttributes["class"]` | `<TagsInputInput class="border-primary" />` |
+| `TagsInputItem` | `class` | `HTMLAttributes["class"]` | `<TagsInputItem class="border-primary" />` |
+| `TagsInputItemDelete` | `class` | `HTMLAttributes["class"]` | `<TagsInputItemDelete class="border-primary" />` |
+| `TagsInputItemText` | `class` | `HTMLAttributes["class"]` | `<TagsInputItemText class="border-primary" />` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `TagsInput` | `emits` | `TagsInputRootEmits` | `<TagsInput @emits="emits" />` |
+| `TagsInput` | 类型引用 | `TagsInputRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -80,40 +80,34 @@ import { TagsInput, TagsInputInput, TagsInputItem, TagsInputItemDelete, TagsInpu
 
 ## API 示例
 
-### TagsInput.exampleProp
+### TagsInput.class
 
 ```vue
-<TagsInput :example-prop="example" />
+<TagsInput class="border-primary" />
 ```
 
-### TagsInputInput.exampleProp
+### TagsInputInput.class
 
 ```vue
-<TagsInputInput :example-prop="example" />
+<TagsInputInput class="border-primary" />
 ```
 
-### TagsInputItem.exampleProp
+### TagsInputItem.class
 
 ```vue
-<TagsInputItem :example-prop="example" />
+<TagsInputItem class="border-primary" />
 ```
 
-### TagsInputItemDelete.exampleProp
+### TagsInputItemDelete.class
 
 ```vue
-<TagsInputItemDelete :example-prop="example" />
+<TagsInputItemDelete class="border-primary" />
 ```
 
-### TagsInputItemText.exampleProp
+### TagsInputItemText.class
 
 ```vue
-<TagsInputItemText :example-prop="example" />
-```
-
-### TagsInput.emits
-
-```vue
-<TagsInput @emits="emits" />
+<TagsInputItemText class="border-primary" />
 ```
 
 ### TagsInput slot: default

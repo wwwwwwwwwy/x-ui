@@ -57,22 +57,22 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, Navigat
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `NavigationMenu` | `props` | `NavigationMenuRootProps & { class?: HTMLAttributes["class"] }` | `<NavigationMenu :example-prop="example" />` |
-| `NavigationMenuContent` | `props` | `NavigationMenuContentProps & { class?: HTMLAttributes["class"] }` | `<NavigationMenuContent :example-prop="example" />` |
-| `NavigationMenuIndicator` | `props` | `NavigationMenuIndicatorProps & { class?: HTMLAttributes["class"] }` | `<NavigationMenuIndicator :example-prop="example" />` |
-| `NavigationMenuItem` | `props` | `NavigationMenuItemProps` | `<NavigationMenuItem :example-prop="example" />` |
-| `NavigationMenuLink` | `props` | `NavigationMenuLinkProps` | `<NavigationMenuLink :example-prop="example" />` |
-| `NavigationMenuList` | `props` | `NavigationMenuListProps & { class?: HTMLAttributes["class"] }` | `<NavigationMenuList :example-prop="example" />` |
-| `NavigationMenuTrigger` | `props` | `NavigationMenuTriggerProps & { class?: HTMLAttributes["class"] }` | `<NavigationMenuTrigger :example-prop="example" />` |
-| `NavigationMenuViewport` | `props` | `NavigationMenuViewportProps & { class?: HTMLAttributes["class"] }` | `<NavigationMenuViewport :example-prop="example" />` |
+| `NavigationMenu` | `class` | `HTMLAttributes["class"]` | `<NavigationMenu class="border-primary" />` |
+| `NavigationMenuContent` | `class` | `HTMLAttributes["class"]` | `<NavigationMenuContent class="border-primary" />` |
+| `NavigationMenuIndicator` | `class` | `HTMLAttributes["class"]` | `<NavigationMenuIndicator class="border-primary" />` |
+| `NavigationMenuList` | `class` | `HTMLAttributes["class"]` | `<NavigationMenuList class="border-primary" />` |
+| `NavigationMenuTrigger` | `class` | `HTMLAttributes["class"]` | `<NavigationMenuTrigger class="border-primary" />` |
+| `NavigationMenuViewport` | `class` | `HTMLAttributes["class"]` | `<NavigationMenuViewport class="border-primary" />` |
+| `NavigationMenuItem` | 类型引用 | `NavigationMenuItemProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `NavigationMenuLink` | 类型引用 | `NavigationMenuLinkProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `NavigationMenu` | `emits` | `NavigationMenuRootEmits` | `<NavigationMenu @emits="emits" />` |
-| `NavigationMenuContent` | `emits` | `NavigationMenuContentEmits` | `<NavigationMenuContent @emits="emits" />` |
-| `NavigationMenuLink` | `emits` | `NavigationMenuLinkEmits` | `<NavigationMenuLink @emits="emits" />` |
+| `NavigationMenu` | 类型引用 | `NavigationMenuRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `NavigationMenuContent` | 类型引用 | `NavigationMenuContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `NavigationMenuLink` | 类型引用 | `NavigationMenuLinkEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -91,70 +91,40 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, Navigat
 
 ## API 示例
 
-### NavigationMenu.exampleProp
+### NavigationMenu.class
 
 ```vue
-<NavigationMenu :example-prop="example" />
+<NavigationMenu class="border-primary" />
 ```
 
-### NavigationMenuContent.exampleProp
+### NavigationMenuContent.class
 
 ```vue
-<NavigationMenuContent :example-prop="example" />
+<NavigationMenuContent class="border-primary" />
 ```
 
-### NavigationMenuIndicator.exampleProp
+### NavigationMenuIndicator.class
 
 ```vue
-<NavigationMenuIndicator :example-prop="example" />
+<NavigationMenuIndicator class="border-primary" />
 ```
 
-### NavigationMenuItem.exampleProp
+### NavigationMenuList.class
 
 ```vue
-<NavigationMenuItem :example-prop="example" />
+<NavigationMenuList class="border-primary" />
 ```
 
-### NavigationMenuLink.exampleProp
+### NavigationMenuTrigger.class
 
 ```vue
-<NavigationMenuLink :example-prop="example" />
+<NavigationMenuTrigger class="border-primary" />
 ```
 
-### NavigationMenuList.exampleProp
+### NavigationMenuViewport.class
 
 ```vue
-<NavigationMenuList :example-prop="example" />
-```
-
-### NavigationMenuTrigger.exampleProp
-
-```vue
-<NavigationMenuTrigger :example-prop="example" />
-```
-
-### NavigationMenuViewport.exampleProp
-
-```vue
-<NavigationMenuViewport :example-prop="example" />
-```
-
-### NavigationMenu.emits
-
-```vue
-<NavigationMenu @emits="emits" />
-```
-
-### NavigationMenuContent.emits
-
-```vue
-<NavigationMenuContent @emits="emits" />
-```
-
-### NavigationMenuLink.emits
-
-```vue
-<NavigationMenuLink @emits="emits" />
+<NavigationMenuViewport class="border-primary" />
 ```
 
 ### NavigationMenu slot: default

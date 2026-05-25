@@ -57,20 +57,26 @@ import { Pagination, PaginationContent, PaginationEllipsis, PaginationFirst, Pag
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Pagination` | `props` | `PaginationRootProps & { class?: HTMLAttributes["class"] }` | `<Pagination :example-prop="example" />` |
-| `PaginationContent` | `props` | `PaginationListProps & { class?: HTMLAttributes["class"] }` | `<PaginationContent :example-prop="example" />` |
-| `PaginationEllipsis` | `props` | `PaginationEllipsisProps & { class?: HTMLAttributes["class"] }` | `<PaginationEllipsis :example-prop="example" />` |
-| `PaginationFirst` | `props` | `PaginationFirstProps & { size?: ButtonVariants["size"] class?: HTMLAttributes["class"] }` | `<PaginationFirst :example-prop="example" />` |
-| `PaginationItem` | `props` | `PaginationListItemProps & { size?: ButtonVariants["size"] class?: HTMLAttributes["class"] isActive?: boolean }` | `<PaginationItem :example-prop="true" />` |
-| `PaginationLast` | `props` | `PaginationLastProps & { size?: ButtonVariants["size"] class?: HTMLAttributes["class"] }` | `<PaginationLast :example-prop="example" />` |
-| `PaginationNext` | `props` | `PaginationNextProps & { size?: ButtonVariants["size"] class?: HTMLAttributes["class"] }` | `<PaginationNext :example-prop="example" />` |
-| `PaginationPrevious` | `props` | `PaginationPrevProps & { size?: ButtonVariants["size"] class?: HTMLAttributes["class"] }` | `<PaginationPrevious :example-prop="example" />` |
+| `Pagination` | `class` | `HTMLAttributes["class"]` | `<Pagination class="border-primary" />` |
+| `PaginationContent` | `class` | `HTMLAttributes["class"]` | `<PaginationContent class="border-primary" />` |
+| `PaginationEllipsis` | `class` | `HTMLAttributes["class"]` | `<PaginationEllipsis class="border-primary" />` |
+| `PaginationFirst` | `size` | `ButtonVariants["size"]` | `<PaginationFirst size="sm">示例内容</PaginationFirst>` |
+| `PaginationFirst` | `class` | `HTMLAttributes["class"]` | `<PaginationFirst class="border-primary" />` |
+| `PaginationItem` | `size` | `ButtonVariants["size"]` | `<PaginationItem size="sm">示例内容</PaginationItem>` |
+| `PaginationItem` | `class` | `HTMLAttributes["class"]` | `<PaginationItem class="border-primary" />` |
+| `PaginationItem` | `isActive` | `boolean` | `<PaginationItem :is-active="true" />` |
+| `PaginationLast` | `size` | `ButtonVariants["size"]` | `<PaginationLast size="sm">示例内容</PaginationLast>` |
+| `PaginationLast` | `class` | `HTMLAttributes["class"]` | `<PaginationLast class="border-primary" />` |
+| `PaginationNext` | `size` | `ButtonVariants["size"]` | `<PaginationNext size="sm">示例内容</PaginationNext>` |
+| `PaginationNext` | `class` | `HTMLAttributes["class"]` | `<PaginationNext class="border-primary" />` |
+| `PaginationPrevious` | `size` | `ButtonVariants["size"]` | `<PaginationPrevious size="sm">示例内容</PaginationPrevious>` |
+| `PaginationPrevious` | `class` | `HTMLAttributes["class"]` | `<PaginationPrevious class="border-primary" />` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Pagination` | `emits` | `PaginationRootEmits` | `<Pagination @emits="emits" />` |
+| `Pagination` | 类型引用 | `PaginationRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -91,58 +97,88 @@ import { Pagination, PaginationContent, PaginationEllipsis, PaginationFirst, Pag
 
 ## API 示例
 
-### Pagination.exampleProp
+### Pagination.class
 
 ```vue
-<Pagination :example-prop="example" />
+<Pagination class="border-primary" />
 ```
 
-### PaginationContent.exampleProp
+### PaginationContent.class
 
 ```vue
-<PaginationContent :example-prop="example" />
+<PaginationContent class="border-primary" />
 ```
 
-### PaginationEllipsis.exampleProp
+### PaginationEllipsis.class
 
 ```vue
-<PaginationEllipsis :example-prop="example" />
+<PaginationEllipsis class="border-primary" />
 ```
 
-### PaginationFirst.exampleProp
+### PaginationFirst.size
 
 ```vue
-<PaginationFirst :example-prop="example" />
+<PaginationFirst size="sm">示例内容</PaginationFirst>
 ```
 
-### PaginationItem.exampleProp
+### PaginationFirst.class
 
 ```vue
-<PaginationItem :example-prop="true" />
+<PaginationFirst class="border-primary" />
 ```
 
-### PaginationLast.exampleProp
+### PaginationItem.size
 
 ```vue
-<PaginationLast :example-prop="example" />
+<PaginationItem size="sm">示例内容</PaginationItem>
 ```
 
-### PaginationNext.exampleProp
+### PaginationItem.class
 
 ```vue
-<PaginationNext :example-prop="example" />
+<PaginationItem class="border-primary" />
 ```
 
-### PaginationPrevious.exampleProp
+### PaginationItem.isActive
 
 ```vue
-<PaginationPrevious :example-prop="example" />
+<PaginationItem :is-active="true" />
 ```
 
-### Pagination.emits
+### PaginationLast.size
 
 ```vue
-<Pagination @emits="emits" />
+<PaginationLast size="sm">示例内容</PaginationLast>
+```
+
+### PaginationLast.class
+
+```vue
+<PaginationLast class="border-primary" />
+```
+
+### PaginationNext.size
+
+```vue
+<PaginationNext size="sm">示例内容</PaginationNext>
+```
+
+### PaginationNext.class
+
+```vue
+<PaginationNext class="border-primary" />
+```
+
+### PaginationPrevious.size
+
+```vue
+<PaginationPrevious size="sm">示例内容</PaginationPrevious>
+```
+
+### PaginationPrevious.class
+
+```vue
+<PaginationPrevious class="border-primary" />
 ```
 
 ### Pagination slot: default

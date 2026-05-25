@@ -41,6 +41,16 @@ function unique(values) {
   return [...new Set(values.filter(Boolean))]
 }
 
+function safeFileName(value) {
+  return pascalCase(String(value).replace(/:/g, '-')) || 'Example'
+}
+
+function shortType(value) {
+  return inline(value)
+    .replace(/\s*&\s*/g, ' & ')
+    .replace(/\s+/g, ' ')
+}
+
 function extractBlock(source, startIndex) {
   const start = source.indexOf('{', startIndex)
   if (start === -1) return ''
@@ -102,7 +112,15 @@ function extractProps(source) {
         if (match) props.push({ name: match[1], type: match[2].trim(), source: line.trim() })
       }
     } else {
-      props.push({ name: 'props', type: generic, source: generic })
+      const localObjectFields = [...generic.matchAll(/\{([\s\S]*?)\}/g)]
+        .flatMap((match) => match[1].split('\n'))
+        .map((line) => line.trim())
+        .map((line) => line.match(/^["']?([\w:-]+)["']?\??:\s*([^,]+)/))
+        .filter(Boolean)
+        .map((match) => ({ name: match[1], type: match[2].trim(), source: match[0] }))
+
+      if (localObjectFields.length > 0) props.push(...localObjectFields)
+      else props.push({ name: 'props', type: generic, source: generic, opaque: true })
     }
   } else if (runtime) {
     for (const match of runtime.matchAll(/([\w-]+)\s*:/g)) {
@@ -119,11 +137,14 @@ function extractEmits(source) {
   const runtime = extractRuntimeCall(source, 'defineEmits')
 
   if (generic) {
+    for (const match of generic.matchAll(/["']([\w:-]+)["']/g)) {
+      emits.push({ name: match[1], type: 'typed event', source: generic })
+    }
     for (const line of generic.split('\n')) {
       const match = line.trim().match(/^["']?([\w:-]+)["']?\??:\s*([^,]+)/)
       if (match) emits.push({ name: match[1], type: match[2].trim(), source: line.trim() })
     }
-    if (emits.length === 0) emits.push({ name: 'emits', type: generic, source: generic })
+    if (emits.length === 0) emits.push({ name: 'emits', type: generic, source: generic, opaque: true })
   } else if (runtime) {
     for (const match of runtime.matchAll(/["']([\w:-]+)["']/g)) {
       emits.push({ name: match[1], type: 'runtime event', source: runtime })
@@ -224,6 +245,21 @@ function propExample(component, prop) {
     if (example) return example
   }
 
+  const genericExamples = {
+    class: `<${component} class="border-primary" />`,
+    variant: `<${component} variant="outline">示例内容</${component}>`,
+    size: `<${component} size="sm">示例内容</${component}>`,
+    defaultValue: `<${component} default-value="default" />`,
+    modelValue: `<${component} v-model="value" />`,
+    value: `<${component} value="item-1">示例内容</${component}>`,
+    open: `<${component} v-model:open="open">示例内容</${component}>`,
+    defaultOpen: `<${component} default-open>示例内容</${component}>`,
+    disabled: `<${component} disabled>禁用状态</${component}>`,
+    asChild: `<${component} as-child><button>自定义触发元素</button></${component}>`,
+    as: `<${component} as="section">示例内容</${component}>`,
+  }
+  if (genericExamples[prop.name]) return genericExamples[prop.name]
+
   const name = kebabCase(prop.name)
   if (prop.name === 'class') return `<${component} class="custom-class" />`
 
@@ -238,6 +274,10 @@ function propExample(component, prop) {
 function eventExample(component, eventName) {
   if (component === 'Input' && eventName === 'update:modelValue') {
     return '<Input v-model="value" />'
+  }
+
+  if (eventName.startsWith('update:')) {
+    return `<${component} v-model:${kebabCase(eventName.replace('update:', ''))}="value" />`
   }
 
   const handler = eventName.replace(/[:-](\w)/g, (_, char) => char.toUpperCase()).replace(/[^\w]/g, '')
@@ -1554,6 +1594,39 @@ import { InputGroup, InputGroupAddon, InputGroupButton } from '@/components/ui/i
 `
 }
 
+function apiPreviewExampleSource(item, api) {
+  const component = api.component
+  const example = api.kind === 'prop'
+    ? propExample(component, api)
+    : api.kind === 'event'
+      ? eventExample(component, api.name)
+      : slotExample(component, api.name)
+
+  const imports = api.indexExports.componentExports.length > 0 ? api.indexExports.componentExports : [pascalCase(item.name)]
+  const literalExample = {
+    class: example.replace(/ class="[^"]*"/, ' class="border-primary text-primary"').replace(' />', `>自定义样式</${component}>`),
+    variant: (() => {
+      if (component === 'Alert') return '<Alert variant="destructive">危险提示</Alert>'
+      if (component === 'EmptyMedia') return '<EmptyMedia variant="icon">空</EmptyMedia>'
+      return example.replace('示例内容', '变体示例')
+    })(),
+    size: example.replace('示例内容', '尺寸示例'),
+    shape: example.replace(':shape="example"', 'shape="square"'),
+    default: example.replace('内容', '默认插槽内容'),
+  }[api.name] ?? example
+
+  return `<script setup lang="ts">
+${importLine(imports, item.name)}
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    ${literalExample.replaceAll('\n', '\n    ')}
+  </div>
+</template>
+`
+}
+
 function extraExampleSources(item) {
   if (item.name === 'button') return [
     {
@@ -1679,7 +1752,59 @@ function hasBasicExample(item) {
   return item.name !== 'input-group'
 }
 
-function generateDoc(item) {
+function isCompletedComponent(item) {
+  return new Set([
+    'button',
+    'input',
+    'textarea',
+    'separator',
+    'label',
+    'card',
+    'scroll-area',
+    'button-group',
+    'input-group',
+  ]).has(item.name)
+}
+
+function isPreviewSafeApi(item, api) {
+  const safeComponents = new Set([
+    'Alert',
+    'AlertDescription',
+    'AlertTitle',
+    'AspectRatio',
+    'Avatar',
+    'Badge',
+    'Checkbox',
+    'Empty',
+    'EmptyContent',
+    'EmptyDescription',
+    'EmptyHeader',
+    'EmptyMedia',
+    'EmptyTitle',
+    'Kbd',
+    'KbdGroup',
+    'Progress',
+    'Skeleton',
+    'Spinner',
+    'Switch',
+    'Table',
+    'TableBody',
+    'TableCaption',
+    'TableCell',
+    'TableEmpty',
+    'TableFooter',
+    'TableHead',
+    'TableHeader',
+    'TableRow',
+    'Toggle',
+  ])
+
+  if (api.kind === 'event') return false
+  if (item.name === 'toggle') return true
+  return safeComponents.has(api.component)
+}
+
+function buildDocModel(item) {
   const files = item.files.filter((file) => file.path.endsWith('.vue'))
   const indexFile = item.files.find((file) => file.path.endsWith('/index.ts'))
   const indexExports = indexFile ? extractIndexExports(read(indexFile.path)) : { componentExports: [], apiExports: [] }
@@ -1709,7 +1834,38 @@ function generateDoc(item) {
         { component: 'Input', name: 'update:modelValue', type: 'payload: string | number', source: 'defineEmits' },
       ]
     : extractedEmits
+  const exampleProps = allProps.filter((prop) => !prop.opaque)
+  const referencedProps = allProps.filter((prop) => prop.opaque)
+  const exampleEmits = allEmits.filter((emit) => !emit.opaque)
+  const referencedEmits = allEmits.filter((emit) => emit.opaque)
   const allSlots = components.flatMap((component) => component.slots.map((slot) => ({ ...slot, component: component.component })))
+  const apiExamples = isCompletedComponent(item)
+    ? []
+    : [
+        ...exampleProps.map((api) => ({ ...api, kind: 'prop', fileName: `${api.component}${safeFileName(api.name)}.vue`, title: `${api.component}.${api.name}`, previewName: `${item.name} ${api.component} ${api.name}`, indexExports })),
+        ...exampleEmits.map((api) => ({ ...api, kind: 'event', fileName: `${api.component}${safeFileName(api.name)}Event.vue`, title: `${api.component}.${api.name}`, previewName: `${item.name} ${api.component} ${api.name}`, indexExports })),
+        ...allSlots.map((api) => ({ ...api, kind: 'slot', fileName: `${api.component}${safeFileName(api.name)}Slot.vue`, title: `${api.component} slot: ${api.name}`, previewName: `${item.name} ${api.component} ${api.name} slot`, indexExports })),
+      ].filter((api) => isPreviewSafeApi(item, api))
+
+  return {
+    files,
+    indexExports,
+    components,
+    primaryComponent,
+    dependencies,
+    allProps,
+    allEmits,
+    exampleProps,
+    referencedProps,
+    exampleEmits,
+    referencedEmits,
+    allSlots,
+    apiExamples,
+  }
+}
+
+function generateDoc(item, model = buildDocModel(item)) {
+  const { indexExports, primaryComponent, dependencies, allProps, allEmits, exampleProps, referencedProps, exampleEmits, referencedEmits, allSlots, apiExamples } = model
 
   const examplePreviewLines = [
     '## 示例预览',
@@ -1728,6 +1884,16 @@ function generateDoc(item) {
 
   examplePreviewLines.push(
     ...extraExampleSources(item).flatMap((example) => [
+      `### ${example.title}`,
+      '',
+      `::component-preview{name="${example.previewName}" src="${item.name}/${example.fileName}"}`,
+      '::',
+      '',
+    ]),
+  )
+
+  examplePreviewLines.push(
+    ...apiExamples.flatMap((example) => [
       `### ${example.title}`,
       '',
       `::component-preview{name="${example.previewName}" src="${item.name}/${example.fileName}"}`,
@@ -1779,8 +1945,11 @@ function generateDoc(item) {
     lines.push('源码中未发现显式本地 props。', '')
   } else {
     lines.push('| 组件 | Prop | 类型 / 来源 | 示例 |', '| --- | --- | --- | --- |')
-    for (const prop of allProps) {
-      lines.push(`| \`${prop.component}\` | \`${prop.name}\` | \`${inline(prop.type)}\` | \`${inline(propExample(prop.component, prop.name === 'props' ? { ...prop, name: 'exampleProp' } : prop))}\` |`)
+    for (const prop of exampleProps) {
+      lines.push(`| \`${prop.component}\` | \`${prop.name}\` | \`${shortType(prop.type)}\` | \`${inline(propExample(prop.component, prop.name === 'props' ? { ...prop, name: 'exampleProp' } : prop))}\` |`)
+    }
+    for (const prop of referencedProps) {
+      lines.push(`| \`${prop.component}\` | 类型引用 | \`${shortType(prop.type)}\` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |`)
     }
     lines.push('')
   }
@@ -1790,8 +1959,11 @@ function generateDoc(item) {
     lines.push('源码中未发现显式本地事件。', '')
   } else {
     lines.push('| 组件 | 事件 | 类型 / 来源 | 示例 |', '| --- | --- | --- | --- |')
-    for (const emit of allEmits) {
+    for (const emit of exampleEmits) {
       lines.push(`| \`${emit.component}\` | \`${emit.name}\` | \`${inline(emit.type)}\` | \`${inline(eventExample(emit.component, emit.name))}\` |`)
+    }
+    for (const emit of referencedEmits) {
+      lines.push(`| \`${emit.component}\` | 类型引用 | \`${shortType(emit.type)}\` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |`)
     }
     lines.push('')
   }
@@ -1816,11 +1988,11 @@ function generateDoc(item) {
   }
 
   lines.push('## API 示例', '')
-  for (const prop of allProps) {
+  for (const prop of exampleProps) {
     const safeProp = prop.name === 'props' ? { ...prop, name: 'exampleProp' } : prop
     lines.push(`### ${prop.component}.${safeProp.name}`, '', codeFence(propExample(prop.component, safeProp)), '')
   }
-  for (const emit of allEmits) {
+  for (const emit of exampleEmits) {
     lines.push(`### ${emit.component}.${emit.name}`, '', codeFence(eventExample(emit.component, emit.name)), '')
   }
   for (const slot of allSlots) {
@@ -1854,14 +2026,21 @@ for (const entry of readdirSync(examplesDir, { withFileTypes: true })) {
   if (entry.isDirectory() && !exampleNames.has(entry.name)) rmSync(path.join(examplesDir, entry.name), { recursive: true, force: true })
 }
 
+let generatedItemCount = 0
+
 for (const item of registry.items) {
+  if (isCompletedComponent(item)) continue
+
+  generatedItemCount += 1
   const indexFile = item.files.find((file) => file.path.endsWith('/index.ts'))
   const indexExports = indexFile ? extractIndexExports(read(indexFile.path)) : { componentExports: [], apiExports: [] }
+  const docModel = buildDocModel(item)
   const itemExampleDir = path.join(examplesDir, item.name)
   mkdirSync(itemExampleDir, { recursive: true })
   const expectedExampleFiles = new Set([
     ...(hasBasicExample(item) ? ['Basic.vue'] : []),
     ...extraExampleSources(item).map((example) => example.fileName),
+    ...docModel.apiExamples.map((example) => example.fileName),
   ])
   for (const file of readdirSync(itemExampleDir)) {
     if (file.endsWith('.vue') && !expectedExampleFiles.has(file)) rmSync(path.join(itemExampleDir, file))
@@ -1872,7 +2051,10 @@ for (const item of registry.items) {
   for (const example of extraExampleSources(item)) {
     writeFileSync(path.join(itemExampleDir, example.fileName), example.source)
   }
-  writeFileSync(path.join(docsDir, `${item.name}.md`), generateDoc(item))
+  for (const example of docModel.apiExamples) {
+    writeFileSync(path.join(itemExampleDir, example.fileName), apiPreviewExampleSource(item, example))
+  }
+  writeFileSync(path.join(docsDir, `${item.name}.md`), generateDoc(item, docModel))
 }
 
 const componentDocs = registry.items.map((item) => {
@@ -1894,4 +2076,4 @@ const componentDocs = registry.items.map((item) => {
 writeFileSync(path.join(root, 'content/docs/components.json'), `${JSON.stringify(componentDocs, null, 2)}\n`)
 writeFileSync(path.join(appDataDir, 'component-docs.ts'), `export const componentDocs = ${JSON.stringify(componentDocs, null, 2)} as const\n`)
 
-console.log(`Generated ${registry.items.length} component docs and examples.`)
+console.log(`Generated ${generatedItemCount} pending component docs and examples.`)

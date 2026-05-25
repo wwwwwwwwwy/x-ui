@@ -58,23 +58,23 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Dialog` | `props` | `DialogRootProps` | `<Dialog :example-prop="example" />` |
-| `DialogClose` | `props` | `DialogCloseProps` | `<DialogClose :example-prop="example" />` |
-| `DialogContent` | `props` | `DialogContentProps & { class?: HTMLAttributes["class"] }` | `<DialogContent :example-prop="example" />` |
-| `DialogDescription` | `props` | `DialogDescriptionProps & { class?: HTMLAttributes["class"] }` | `<DialogDescription :example-prop="example" />` |
-| `DialogFooter` | `class` | `HTMLAttributes["class"]` | `<DialogFooter class="custom-class" />` |
-| `DialogHeader` | `class` | `HTMLAttributes["class"]` | `<DialogHeader class="custom-class" />` |
-| `DialogScrollContent` | `props` | `DialogContentProps & { class?: HTMLAttributes["class"] }` | `<DialogScrollContent :example-prop="example" />` |
-| `DialogTitle` | `props` | `DialogTitleProps & { class?: HTMLAttributes["class"] }` | `<DialogTitle :example-prop="example" />` |
-| `DialogTrigger` | `props` | `DialogTriggerProps` | `<DialogTrigger :example-prop="example" />` |
+| `DialogContent` | `class` | `HTMLAttributes["class"]` | `<DialogContent class="border-primary" />` |
+| `DialogDescription` | `class` | `HTMLAttributes["class"]` | `<DialogDescription class="border-primary" />` |
+| `DialogFooter` | `class` | `HTMLAttributes["class"]` | `<DialogFooter class="border-primary" />` |
+| `DialogHeader` | `class` | `HTMLAttributes["class"]` | `<DialogHeader class="border-primary" />` |
+| `DialogScrollContent` | `class` | `HTMLAttributes["class"]` | `<DialogScrollContent class="border-primary" />` |
+| `DialogTitle` | `class` | `HTMLAttributes["class"]` | `<DialogTitle class="border-primary" />` |
+| `Dialog` | 类型引用 | `DialogRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `DialogClose` | 类型引用 | `DialogCloseProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `DialogTrigger` | 类型引用 | `DialogTriggerProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Dialog` | `emits` | `DialogRootEmits` | `<Dialog @emits="emits" />` |
-| `DialogContent` | `emits` | `DialogContentEmits` | `<DialogContent @emits="emits" />` |
-| `DialogScrollContent` | `emits` | `DialogContentEmits` | `<DialogScrollContent @emits="emits" />` |
+| `Dialog` | 类型引用 | `DialogRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `DialogContent` | 类型引用 | `DialogContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `DialogScrollContent` | 类型引用 | `DialogContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -96,76 +96,40 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 
 ## API 示例
 
-### Dialog.exampleProp
+### DialogContent.class
 
 ```vue
-<Dialog :example-prop="example" />
+<DialogContent class="border-primary" />
 ```
 
-### DialogClose.exampleProp
+### DialogDescription.class
 
 ```vue
-<DialogClose :example-prop="example" />
-```
-
-### DialogContent.exampleProp
-
-```vue
-<DialogContent :example-prop="example" />
-```
-
-### DialogDescription.exampleProp
-
-```vue
-<DialogDescription :example-prop="example" />
+<DialogDescription class="border-primary" />
 ```
 
 ### DialogFooter.class
 
 ```vue
-<DialogFooter class="custom-class" />
+<DialogFooter class="border-primary" />
 ```
 
 ### DialogHeader.class
 
 ```vue
-<DialogHeader class="custom-class" />
+<DialogHeader class="border-primary" />
 ```
 
-### DialogScrollContent.exampleProp
+### DialogScrollContent.class
 
 ```vue
-<DialogScrollContent :example-prop="example" />
+<DialogScrollContent class="border-primary" />
 ```
 
-### DialogTitle.exampleProp
+### DialogTitle.class
 
 ```vue
-<DialogTitle :example-prop="example" />
-```
-
-### DialogTrigger.exampleProp
-
-```vue
-<DialogTrigger :example-prop="example" />
-```
-
-### Dialog.emits
-
-```vue
-<Dialog @emits="emits" />
-```
-
-### DialogContent.emits
-
-```vue
-<DialogContent @emits="emits" />
-```
-
-### DialogScrollContent.emits
-
-```vue
-<DialogScrollContent @emits="emits" />
+<DialogTitle class="border-primary" />
 ```
 
 ### Dialog slot: default

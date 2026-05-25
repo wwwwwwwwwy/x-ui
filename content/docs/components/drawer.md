@@ -56,20 +56,20 @@ import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, D
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Drawer` | `props` | `DrawerRootProps` | `<Drawer :example-prop="example" />` |
-| `DrawerContent` | `props` | `DialogContentProps & { class?: HTMLAttributes["class"] }` | `<DrawerContent :example-prop="example" />` |
-| `DrawerDescription` | `props` | `DrawerDescriptionProps & { class?: HTMLAttributes["class"] }` | `<DrawerDescription :example-prop="example" />` |
-| `DrawerFooter` | `class` | `HTMLAttributes["class"]` | `<DrawerFooter class="custom-class" />` |
-| `DrawerHeader` | `class` | `HTMLAttributes["class"]` | `<DrawerHeader class="custom-class" />` |
-| `DrawerOverlay` | `props` | `DialogOverlayProps & { class?: HTMLAttributes["class"] }` | `<DrawerOverlay :example-prop="example" />` |
-| `DrawerTitle` | `props` | `DrawerTitleProps & { class?: HTMLAttributes["class"] }` | `<DrawerTitle :example-prop="example" />` |
+| `DrawerContent` | `class` | `HTMLAttributes["class"]` | `<DrawerContent class="border-primary" />` |
+| `DrawerDescription` | `class` | `HTMLAttributes["class"]` | `<DrawerDescription class="border-primary" />` |
+| `DrawerFooter` | `class` | `HTMLAttributes["class"]` | `<DrawerFooter class="border-primary" />` |
+| `DrawerHeader` | `class` | `HTMLAttributes["class"]` | `<DrawerHeader class="border-primary" />` |
+| `DrawerOverlay` | `class` | `HTMLAttributes["class"]` | `<DrawerOverlay class="border-primary" />` |
+| `DrawerTitle` | `class` | `HTMLAttributes["class"]` | `<DrawerTitle class="border-primary" />` |
+| `Drawer` | 类型引用 | `DrawerRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Drawer` | `emits` | `DrawerRootEmits` | `<Drawer @emits="emits" />` |
-| `DrawerContent` | `emits` | `DialogContentEmits` | `<DrawerContent @emits="emits" />` |
+| `Drawer` | 类型引用 | `DrawerRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `DrawerContent` | 类型引用 | `DialogContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -88,58 +88,40 @@ import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, D
 
 ## API 示例
 
-### Drawer.exampleProp
+### DrawerContent.class
 
 ```vue
-<Drawer :example-prop="example" />
+<DrawerContent class="border-primary" />
 ```
 
-### DrawerContent.exampleProp
+### DrawerDescription.class
 
 ```vue
-<DrawerContent :example-prop="example" />
-```
-
-### DrawerDescription.exampleProp
-
-```vue
-<DrawerDescription :example-prop="example" />
+<DrawerDescription class="border-primary" />
 ```
 
 ### DrawerFooter.class
 
 ```vue
-<DrawerFooter class="custom-class" />
+<DrawerFooter class="border-primary" />
 ```
 
 ### DrawerHeader.class
 
 ```vue
-<DrawerHeader class="custom-class" />
+<DrawerHeader class="border-primary" />
 ```
 
-### DrawerOverlay.exampleProp
+### DrawerOverlay.class
 
 ```vue
-<DrawerOverlay :example-prop="example" />
+<DrawerOverlay class="border-primary" />
 ```
 
-### DrawerTitle.exampleProp
+### DrawerTitle.class
 
 ```vue
-<DrawerTitle :example-prop="example" />
-```
-
-### Drawer.emits
-
-```vue
-<Drawer @emits="emits" />
-```
-
-### DrawerContent.emits
-
-```vue
-<DrawerContent @emits="emits" />
+<DrawerTitle class="border-primary" />
 ```
 
 ### Drawer slot: default

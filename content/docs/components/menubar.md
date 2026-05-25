@@ -64,33 +64,33 @@ import { Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Menubar` | `props` | `MenubarRootProps & { class?: HTMLAttributes["class"] }` | `<Menubar :example-prop="example" />` |
-| `MenubarCheckboxItem` | `props` | `MenubarCheckboxItemProps & { class?: HTMLAttributes["class"] }` | `<MenubarCheckboxItem :example-prop="example" />` |
-| `MenubarContent` | `props` | `MenubarContentProps & { class?: HTMLAttributes["class"] }` | `<MenubarContent :example-prop="example" />` |
-| `MenubarGroup` | `props` | `MenubarGroupProps` | `<MenubarGroup :example-prop="example" />` |
-| `MenubarItem` | `props` | `MenubarItemProps & { class?: HTMLAttributes["class"], inset?: boolean }` | `<MenubarItem :example-prop="true" />` |
-| `MenubarLabel` | `props` | `MenubarLabelProps & { class?: HTMLAttributes["class"], inset?: boolean }` | `<MenubarLabel :example-prop="true" />` |
-| `MenubarMenu` | `props` | `MenubarMenuProps` | `<MenubarMenu :example-prop="example" />` |
-| `MenubarRadioGroup` | `props` | `MenubarRadioGroupProps` | `<MenubarRadioGroup :example-prop="example" />` |
-| `MenubarRadioItem` | `props` | `MenubarRadioItemProps & { class?: HTMLAttributes["class"] }` | `<MenubarRadioItem :example-prop="example" />` |
-| `MenubarSeparator` | `props` | `MenubarSeparatorProps & { class?: HTMLAttributes["class"] }` | `<MenubarSeparator :example-prop="example" />` |
-| `MenubarShortcut` | `class` | `HTMLAttributes["class"]` | `<MenubarShortcut class="custom-class" />` |
-| `MenubarSub` | `props` | `MenubarSubRootProps` | `<MenubarSub :example-prop="example" />` |
-| `MenubarSubContent` | `props` | `MenubarSubContentProps & { class?: HTMLAttributes["class"] }` | `<MenubarSubContent :example-prop="example" />` |
-| `MenubarSubTrigger` | `props` | `MenubarSubTriggerProps & { class?: HTMLAttributes["class"], inset?: boolean }` | `<MenubarSubTrigger :example-prop="true" />` |
-| `MenubarTrigger` | `props` | `MenubarTriggerProps & { class?: HTMLAttributes["class"] }` | `<MenubarTrigger :example-prop="example" />` |
+| `Menubar` | `class` | `HTMLAttributes["class"]` | `<Menubar class="border-primary" />` |
+| `MenubarCheckboxItem` | `class` | `HTMLAttributes["class"]` | `<MenubarCheckboxItem class="border-primary" />` |
+| `MenubarContent` | `class` | `HTMLAttributes["class"]` | `<MenubarContent class="border-primary" />` |
+| `MenubarItem` | `class` | `HTMLAttributes["class"]` | `<MenubarItem class="border-primary" />` |
+| `MenubarLabel` | `class` | `HTMLAttributes["class"]` | `<MenubarLabel class="border-primary" />` |
+| `MenubarRadioItem` | `class` | `HTMLAttributes["class"]` | `<MenubarRadioItem class="border-primary" />` |
+| `MenubarSeparator` | `class` | `HTMLAttributes["class"]` | `<MenubarSeparator class="border-primary" />` |
+| `MenubarShortcut` | `class` | `HTMLAttributes["class"]` | `<MenubarShortcut class="border-primary" />` |
+| `MenubarSubContent` | `class` | `HTMLAttributes["class"]` | `<MenubarSubContent class="border-primary" />` |
+| `MenubarSubTrigger` | `class` | `HTMLAttributes["class"]` | `<MenubarSubTrigger class="border-primary" />` |
+| `MenubarTrigger` | `class` | `HTMLAttributes["class"]` | `<MenubarTrigger class="border-primary" />` |
+| `MenubarGroup` | 类型引用 | `MenubarGroupProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `MenubarMenu` | 类型引用 | `MenubarMenuProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `MenubarRadioGroup` | 类型引用 | `MenubarRadioGroupProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `MenubarSub` | 类型引用 | `MenubarSubRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Menubar` | `emits` | `MenubarRootEmits` | `<Menubar @emits="emits" />` |
-| `MenubarCheckboxItem` | `emits` | `MenubarCheckboxItemEmits` | `<MenubarCheckboxItem @emits="emits" />` |
-| `MenubarItem` | `emits` | `MenubarItemEmits` | `<MenubarItem @emits="emits" />` |
-| `MenubarRadioGroup` | `emits` | `MenubarRadioGroupEmits` | `<MenubarRadioGroup @emits="emits" />` |
-| `MenubarRadioItem` | `emits` | `MenubarRadioItemEmits` | `<MenubarRadioItem @emits="emits" />` |
-| `MenubarSub` | `emits` | `MenubarSubEmits` | `<MenubarSub @emits="emits" />` |
-| `MenubarSubContent` | `emits` | `MenubarSubContentEmits` | `<MenubarSubContent @emits="emits" />` |
+| `Menubar` | 类型引用 | `MenubarRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `MenubarCheckboxItem` | 类型引用 | `MenubarCheckboxItemEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `MenubarItem` | 类型引用 | `MenubarItemEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `MenubarRadioGroup` | 类型引用 | `MenubarRadioGroupEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `MenubarRadioItem` | 类型引用 | `MenubarRadioItemEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `MenubarSub` | 类型引用 | `MenubarSubEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `MenubarSubContent` | 类型引用 | `MenubarSubContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -117,136 +117,70 @@ import { Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem
 
 ## API 示例
 
-### Menubar.exampleProp
+### Menubar.class
 
 ```vue
-<Menubar :example-prop="example" />
+<Menubar class="border-primary" />
 ```
 
-### MenubarCheckboxItem.exampleProp
+### MenubarCheckboxItem.class
 
 ```vue
-<MenubarCheckboxItem :example-prop="example" />
+<MenubarCheckboxItem class="border-primary" />
 ```
 
-### MenubarContent.exampleProp
+### MenubarContent.class
 
 ```vue
-<MenubarContent :example-prop="example" />
+<MenubarContent class="border-primary" />
 ```
 
-### MenubarGroup.exampleProp
+### MenubarItem.class
 
 ```vue
-<MenubarGroup :example-prop="example" />
+<MenubarItem class="border-primary" />
 ```
 
-### MenubarItem.exampleProp
+### MenubarLabel.class
 
 ```vue
-<MenubarItem :example-prop="true" />
+<MenubarLabel class="border-primary" />
 ```
 
-### MenubarLabel.exampleProp
+### MenubarRadioItem.class
 
 ```vue
-<MenubarLabel :example-prop="true" />
+<MenubarRadioItem class="border-primary" />
 ```
 
-### MenubarMenu.exampleProp
+### MenubarSeparator.class
 
 ```vue
-<MenubarMenu :example-prop="example" />
-```
-
-### MenubarRadioGroup.exampleProp
-
-```vue
-<MenubarRadioGroup :example-prop="example" />
-```
-
-### MenubarRadioItem.exampleProp
-
-```vue
-<MenubarRadioItem :example-prop="example" />
-```
-
-### MenubarSeparator.exampleProp
-
-```vue
-<MenubarSeparator :example-prop="example" />
+<MenubarSeparator class="border-primary" />
 ```
 
 ### MenubarShortcut.class
 
 ```vue
-<MenubarShortcut class="custom-class" />
+<MenubarShortcut class="border-primary" />
 ```
 
-### MenubarSub.exampleProp
+### MenubarSubContent.class
 
 ```vue
-<MenubarSub :example-prop="example" />
+<MenubarSubContent class="border-primary" />
 ```
 
-### MenubarSubContent.exampleProp
+### MenubarSubTrigger.class
 
 ```vue
-<MenubarSubContent :example-prop="example" />
+<MenubarSubTrigger class="border-primary" />
 ```
 
-### MenubarSubTrigger.exampleProp
+### MenubarTrigger.class
 
 ```vue
-<MenubarSubTrigger :example-prop="true" />
-```
-
-### MenubarTrigger.exampleProp
-
-```vue
-<MenubarTrigger :example-prop="example" />
-```
-
-### Menubar.emits
-
-```vue
-<Menubar @emits="emits" />
-```
-
-### MenubarCheckboxItem.emits
-
-```vue
-<MenubarCheckboxItem @emits="emits" />
-```
-
-### MenubarItem.emits
-
-```vue
-<MenubarItem @emits="emits" />
-```
-
-### MenubarRadioGroup.emits
-
-```vue
-<MenubarRadioGroup @emits="emits" />
-```
-
-### MenubarRadioItem.emits
-
-```vue
-<MenubarRadioItem @emits="emits" />
-```
-
-### MenubarSub.emits
-
-```vue
-<MenubarSub @emits="emits" />
-```
-
-### MenubarSubContent.emits
-
-```vue
-<MenubarSubContent @emits="emits" />
+<MenubarTrigger class="border-primary" />
 ```
 
 ### Menubar slot: default

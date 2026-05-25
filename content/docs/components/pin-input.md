@@ -53,16 +53,16 @@ import { PinInput, PinInputGroup, PinInputSeparator, PinInputSlot } from '@/comp
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `PinInput` | `props` | `PinInputRootProps<Type> & { class?: HTMLAttributes["class"] }` | `<PinInput :example-prop="example" />` |
-| `PinInputGroup` | `props` | `PrimitiveProps & { class?: HTMLAttributes["class"] }` | `<PinInputGroup :example-prop="example" />` |
-| `PinInputSeparator` | `props` | `PrimitiveProps` | `<PinInputSeparator :example-prop="example" />` |
-| `PinInputSlot` | `props` | `PinInputInputProps & { class?: HTMLAttributes["class"] }` | `<PinInputSlot :example-prop="example" />` |
+| `PinInput` | `class` | `HTMLAttributes["class"]` | `<PinInput class="border-primary" />` |
+| `PinInputGroup` | `class` | `HTMLAttributes["class"]` | `<PinInputGroup class="border-primary" />` |
+| `PinInputSlot` | `class` | `HTMLAttributes["class"]` | `<PinInputSlot class="border-primary" />` |
+| `PinInputSeparator` | 类型引用 | `PrimitiveProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `PinInput` | `emits` | `PinInputRootEmits<Type>` | `<PinInput @emits="emits" />` |
+| `PinInput` | 类型引用 | `PinInputRootEmits<Type>` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -78,34 +78,22 @@ import { PinInput, PinInputGroup, PinInputSeparator, PinInputSlot } from '@/comp
 
 ## API 示例
 
-### PinInput.exampleProp
+### PinInput.class
 
 ```vue
-<PinInput :example-prop="example" />
+<PinInput class="border-primary" />
 ```
 
-### PinInputGroup.exampleProp
+### PinInputGroup.class
 
 ```vue
-<PinInputGroup :example-prop="example" />
+<PinInputGroup class="border-primary" />
 ```
 
-### PinInputSeparator.exampleProp
+### PinInputSlot.class
 
 ```vue
-<PinInputSeparator :example-prop="example" />
-```
-
-### PinInputSlot.exampleProp
-
-```vue
-<PinInputSlot :example-prop="example" />
-```
-
-### PinInput.emits
-
-```vue
-<PinInput @emits="emits" />
+<PinInputSlot class="border-primary" />
 ```
 
 ### PinInput slot: default

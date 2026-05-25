@@ -61,24 +61,24 @@ import { Calendar, CalendarCell, CalendarCellTrigger, CalendarGrid, CalendarGrid
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Calendar` | `props` | `CalendarRootProps & { class?: HTMLAttributes["class"] }` | `<Calendar :example-prop="example" />` |
-| `CalendarCell` | `props` | `CalendarCellProps & { class?: HTMLAttributes["class"] }` | `<CalendarCell :example-prop="example" />` |
-| `CalendarCellTrigger` | `props` | `CalendarCellTriggerProps & { class?: HTMLAttributes["class"] }` | `<CalendarCellTrigger :example-prop="example" />` |
-| `CalendarGrid` | `props` | `CalendarGridProps & { class?: HTMLAttributes["class"] }` | `<CalendarGrid :example-prop="example" />` |
-| `CalendarGridBody` | `props` | `CalendarGridBodyProps` | `<CalendarGridBody :example-prop="example" />` |
-| `CalendarGridHead` | `props` | `CalendarGridHeadProps` | `<CalendarGridHead :example-prop="example" />` |
-| `CalendarGridRow` | `props` | `CalendarGridRowProps & { class?: HTMLAttributes["class"] }` | `<CalendarGridRow :example-prop="example" />` |
-| `CalendarHeadCell` | `props` | `CalendarHeadCellProps & { class?: HTMLAttributes["class"] }` | `<CalendarHeadCell :example-prop="example" />` |
-| `CalendarHeader` | `props` | `CalendarHeaderProps & { class?: HTMLAttributes["class"] }` | `<CalendarHeader :example-prop="example" />` |
-| `CalendarHeading` | `props` | `CalendarHeadingProps & { class?: HTMLAttributes["class"] }` | `<CalendarHeading :example-prop="example" />` |
-| `CalendarNextButton` | `props` | `CalendarNextProps & { class?: HTMLAttributes["class"] }` | `<CalendarNextButton :example-prop="example" />` |
-| `CalendarPrevButton` | `props` | `CalendarPrevProps & { class?: HTMLAttributes["class"] }` | `<CalendarPrevButton :example-prop="example" />` |
+| `Calendar` | `class` | `HTMLAttributes["class"]` | `<Calendar class="border-primary" />` |
+| `CalendarCell` | `class` | `HTMLAttributes["class"]` | `<CalendarCell class="border-primary" />` |
+| `CalendarCellTrigger` | `class` | `HTMLAttributes["class"]` | `<CalendarCellTrigger class="border-primary" />` |
+| `CalendarGrid` | `class` | `HTMLAttributes["class"]` | `<CalendarGrid class="border-primary" />` |
+| `CalendarGridRow` | `class` | `HTMLAttributes["class"]` | `<CalendarGridRow class="border-primary" />` |
+| `CalendarHeadCell` | `class` | `HTMLAttributes["class"]` | `<CalendarHeadCell class="border-primary" />` |
+| `CalendarHeader` | `class` | `HTMLAttributes["class"]` | `<CalendarHeader class="border-primary" />` |
+| `CalendarHeading` | `class` | `HTMLAttributes["class"]` | `<CalendarHeading class="border-primary" />` |
+| `CalendarNextButton` | `class` | `HTMLAttributes["class"]` | `<CalendarNextButton class="border-primary" />` |
+| `CalendarPrevButton` | `class` | `HTMLAttributes["class"]` | `<CalendarPrevButton class="border-primary" />` |
+| `CalendarGridBody` | 类型引用 | `CalendarGridBodyProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `CalendarGridHead` | 类型引用 | `CalendarGridHeadProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Calendar` | `emits` | `CalendarRootEmits` | `<Calendar @emits="emits" />` |
+| `Calendar` | 类型引用 | `CalendarRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -102,82 +102,64 @@ import { Calendar, CalendarCell, CalendarCellTrigger, CalendarGrid, CalendarGrid
 
 ## API 示例
 
-### Calendar.exampleProp
+### Calendar.class
 
 ```vue
-<Calendar :example-prop="example" />
+<Calendar class="border-primary" />
 ```
 
-### CalendarCell.exampleProp
+### CalendarCell.class
 
 ```vue
-<CalendarCell :example-prop="example" />
+<CalendarCell class="border-primary" />
 ```
 
-### CalendarCellTrigger.exampleProp
+### CalendarCellTrigger.class
 
 ```vue
-<CalendarCellTrigger :example-prop="example" />
+<CalendarCellTrigger class="border-primary" />
 ```
 
-### CalendarGrid.exampleProp
+### CalendarGrid.class
 
 ```vue
-<CalendarGrid :example-prop="example" />
+<CalendarGrid class="border-primary" />
 ```
 
-### CalendarGridBody.exampleProp
+### CalendarGridRow.class
 
 ```vue
-<CalendarGridBody :example-prop="example" />
+<CalendarGridRow class="border-primary" />
 ```
 
-### CalendarGridHead.exampleProp
+### CalendarHeadCell.class
 
 ```vue
-<CalendarGridHead :example-prop="example" />
+<CalendarHeadCell class="border-primary" />
 ```
 
-### CalendarGridRow.exampleProp
+### CalendarHeader.class
 
 ```vue
-<CalendarGridRow :example-prop="example" />
+<CalendarHeader class="border-primary" />
 ```
 
-### CalendarHeadCell.exampleProp
+### CalendarHeading.class
 
 ```vue
-<CalendarHeadCell :example-prop="example" />
+<CalendarHeading class="border-primary" />
 ```
 
-### CalendarHeader.exampleProp
+### CalendarNextButton.class
 
 ```vue
-<CalendarHeader :example-prop="example" />
+<CalendarNextButton class="border-primary" />
 ```
 
-### CalendarHeading.exampleProp
+### CalendarPrevButton.class
 
 ```vue
-<CalendarHeading :example-prop="example" />
-```
-
-### CalendarNextButton.exampleProp
-
-```vue
-<CalendarNextButton :example-prop="example" />
-```
-
-### CalendarPrevButton.exampleProp
-
-```vue
-<CalendarPrevButton :example-prop="example" />
-```
-
-### Calendar.emits
-
-```vue
-<Calendar @emits="emits" />
+<CalendarPrevButton class="border-primary" />
 ```
 
 ### CalendarCell slot: default

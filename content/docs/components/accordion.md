@@ -53,16 +53,16 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Accordion` | `props` | `AccordionRootProps` | `<Accordion :example-prop="example" />` |
-| `AccordionContent` | `props` | `AccordionContentProps & { class?: HTMLAttributes["class"] }` | `<AccordionContent :example-prop="example" />` |
-| `AccordionItem` | `props` | `AccordionItemProps & { class?: HTMLAttributes["class"] }` | `<AccordionItem :example-prop="example" />` |
-| `AccordionTrigger` | `props` | `AccordionTriggerProps & { class?: HTMLAttributes["class"] }` | `<AccordionTrigger :example-prop="example" />` |
+| `AccordionContent` | `class` | `HTMLAttributes["class"]` | `<AccordionContent class="border-primary" />` |
+| `AccordionItem` | `class` | `HTMLAttributes["class"]` | `<AccordionItem class="border-primary" />` |
+| `AccordionTrigger` | `class` | `HTMLAttributes["class"]` | `<AccordionTrigger class="border-primary" />` |
+| `Accordion` | 类型引用 | `AccordionRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Accordion` | `emits` | `AccordionRootEmits` | `<Accordion @emits="emits" />` |
+| `Accordion` | 类型引用 | `AccordionRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -80,34 +80,22 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 ## API 示例
 
-### Accordion.exampleProp
+### AccordionContent.class
 
 ```vue
-<Accordion :example-prop="example" />
+<AccordionContent class="border-primary" />
 ```
 
-### AccordionContent.exampleProp
+### AccordionItem.class
 
 ```vue
-<AccordionContent :example-prop="example" />
+<AccordionItem class="border-primary" />
 ```
 
-### AccordionItem.exampleProp
+### AccordionTrigger.class
 
 ```vue
-<AccordionItem :example-prop="example" />
-```
-
-### AccordionTrigger.exampleProp
-
-```vue
-<AccordionTrigger :example-prop="example" />
-```
-
-### Accordion.emits
-
-```vue
-<Accordion @emits="emits" />
+<AccordionTrigger class="border-primary" />
 ```
 
 ### Accordion slot: default

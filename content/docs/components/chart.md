@@ -66,14 +66,16 @@ import { ChartCrosshair, ChartLegend, ChartSingleTooltip, ChartTooltip } from '@
 | `ChartTooltip` | `data` | `{` | `<ChartTooltip :data="example" />` |
 | `ChartTooltip` | `name` | `string` | `<ChartTooltip :name="example" />` |
 | `ChartTooltip` | `color` | `string` | `<ChartTooltip :color="example" />` |
-| `ChartTooltip` | `value` | `any` | `<ChartTooltip :value="example" />` |
+| `ChartTooltip` | `value` | `any` | `<ChartTooltip value="item-1">示例内容</ChartTooltip>` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
+| `ChartLegend` | `legendItemClick` | `typed event` | `<ChartLegend @legendItemClick="legendItemClick" />` |
+| `ChartLegend` | `update:items` | `typed event` | `<ChartLegend v-model:items="value" />` |
 | `ChartLegend` | `legendItemClick` | `[d: BulletLegendItemInterface` | `<ChartLegend @legendItemClick="legendItemClick" />` |
-| `ChartLegend` | `update:items` | `[payload: BulletLegendItemInterface[]]` | `<ChartLegend @update:items="updateItems" />` |
+| `ChartLegend` | `update:items` | `[payload: BulletLegendItemInterface[]]` | `<ChartLegend v-model:items="value" />` |
 
 ### Slots
 
@@ -167,7 +169,7 @@ import { ChartCrosshair, ChartLegend, ChartSingleTooltip, ChartTooltip } from '@
 ### ChartTooltip.value
 
 ```vue
-<ChartTooltip :value="example" />
+<ChartTooltip value="item-1">示例内容</ChartTooltip>
 ```
 
 ### ChartLegend.legendItemClick
@@ -179,7 +181,19 @@ import { ChartCrosshair, ChartLegend, ChartSingleTooltip, ChartTooltip } from '@
 ### ChartLegend.update:items
 
 ```vue
-<ChartLegend @update:items="updateItems" />
+<ChartLegend v-model:items="value" />
+```
+
+### ChartLegend.legendItemClick
+
+```vue
+<ChartLegend @legendItemClick="legendItemClick" />
+```
+
+### ChartLegend.update:items
+
+```vue
+<ChartLegend v-model:items="value" />
 ```
 
 ## 依赖

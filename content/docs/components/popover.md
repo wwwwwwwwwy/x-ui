@@ -52,16 +52,16 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Popover` | `props` | `PopoverRootProps` | `<Popover :example-prop="example" />` |
-| `PopoverContent` | `props` | `PopoverContentProps & { class?: HTMLAttributes["class"] }` | `<PopoverContent :example-prop="example" />` |
-| `PopoverTrigger` | `props` | `PopoverTriggerProps` | `<PopoverTrigger :example-prop="example" />` |
+| `PopoverContent` | `class` | `HTMLAttributes["class"]` | `<PopoverContent class="border-primary" />` |
+| `Popover` | 类型引用 | `PopoverRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `PopoverTrigger` | 类型引用 | `PopoverTriggerProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Popover` | `emits` | `PopoverRootEmits` | `<Popover @emits="emits" />` |
-| `PopoverContent` | `emits` | `PopoverContentEmits` | `<PopoverContent @emits="emits" />` |
+| `Popover` | 类型引用 | `PopoverRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `PopoverContent` | 类型引用 | `PopoverContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -77,34 +77,10 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 
 ## API 示例
 
-### Popover.exampleProp
+### PopoverContent.class
 
 ```vue
-<Popover :example-prop="example" />
-```
-
-### PopoverContent.exampleProp
-
-```vue
-<PopoverContent :example-prop="example" />
-```
-
-### PopoverTrigger.exampleProp
-
-```vue
-<PopoverTrigger :example-prop="example" />
-```
-
-### Popover.emits
-
-```vue
-<Popover @emits="emits" />
-```
-
-### PopoverContent.emits
-
-```vue
-<PopoverContent @emits="emits" />
+<PopoverContent class="border-primary" />
 ```
 
 ### Popover slot: default

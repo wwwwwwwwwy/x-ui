@@ -59,17 +59,19 @@ import { Item, ItemActions, ItemContent, ItemDescription, ItemFooter, ItemGroup,
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Item` | `props` | `PrimitiveProps & { class?: HTMLAttributes["class"] variant?: ItemVariants["variant"] size?: ItemVariants["size"] }` | `<Item :example-prop="example" />` |
-| `ItemActions` | `class` | `HTMLAttributes["class"]` | `<ItemActions class="custom-class" />` |
-| `ItemContent` | `class` | `HTMLAttributes["class"]` | `<ItemContent class="custom-class" />` |
-| `ItemDescription` | `class` | `HTMLAttributes["class"]` | `<ItemDescription class="custom-class" />` |
-| `ItemFooter` | `class` | `HTMLAttributes["class"]` | `<ItemFooter class="custom-class" />` |
-| `ItemGroup` | `class` | `HTMLAttributes["class"]` | `<ItemGroup class="custom-class" />` |
-| `ItemHeader` | `class` | `HTMLAttributes["class"]` | `<ItemHeader class="custom-class" />` |
-| `ItemMedia` | `class` | `HTMLAttributes["class"]` | `<ItemMedia class="custom-class" />` |
-| `ItemMedia` | `variant` | `ItemMediaVariants["variant"]` | `<ItemMedia :variant="example" />` |
-| `ItemSeparator` | `props` | `SeparatorProps & { class?: HTMLAttributes["class"] }` | `<ItemSeparator :example-prop="example" />` |
-| `ItemTitle` | `class` | `HTMLAttributes["class"]` | `<ItemTitle class="custom-class" />` |
+| `Item` | `class` | `HTMLAttributes["class"]` | `<Item class="border-primary" />` |
+| `Item` | `variant` | `ItemVariants["variant"]` | `<Item variant="outline">示例内容</Item>` |
+| `Item` | `size` | `ItemVariants["size"]` | `<Item size="sm">示例内容</Item>` |
+| `ItemActions` | `class` | `HTMLAttributes["class"]` | `<ItemActions class="border-primary" />` |
+| `ItemContent` | `class` | `HTMLAttributes["class"]` | `<ItemContent class="border-primary" />` |
+| `ItemDescription` | `class` | `HTMLAttributes["class"]` | `<ItemDescription class="border-primary" />` |
+| `ItemFooter` | `class` | `HTMLAttributes["class"]` | `<ItemFooter class="border-primary" />` |
+| `ItemGroup` | `class` | `HTMLAttributes["class"]` | `<ItemGroup class="border-primary" />` |
+| `ItemHeader` | `class` | `HTMLAttributes["class"]` | `<ItemHeader class="border-primary" />` |
+| `ItemMedia` | `class` | `HTMLAttributes["class"]` | `<ItemMedia class="border-primary" />` |
+| `ItemMedia` | `variant` | `ItemMediaVariants["variant"]` | `<ItemMedia variant="outline">示例内容</ItemMedia>` |
+| `ItemSeparator` | `class` | `HTMLAttributes["class"]` | `<ItemSeparator class="border-primary" />` |
+| `ItemTitle` | `class` | `HTMLAttributes["class"]` | `<ItemTitle class="border-primary" />` |
 
 ### Events
 
@@ -98,70 +100,82 @@ import { Item, ItemActions, ItemContent, ItemDescription, ItemFooter, ItemGroup,
 
 ## API 示例
 
-### Item.exampleProp
+### Item.class
 
 ```vue
-<Item :example-prop="example" />
+<Item class="border-primary" />
+```
+
+### Item.variant
+
+```vue
+<Item variant="outline">示例内容</Item>
+```
+
+### Item.size
+
+```vue
+<Item size="sm">示例内容</Item>
 ```
 
 ### ItemActions.class
 
 ```vue
-<ItemActions class="custom-class" />
+<ItemActions class="border-primary" />
 ```
 
 ### ItemContent.class
 
 ```vue
-<ItemContent class="custom-class" />
+<ItemContent class="border-primary" />
 ```
 
 ### ItemDescription.class
 
 ```vue
-<ItemDescription class="custom-class" />
+<ItemDescription class="border-primary" />
 ```
 
 ### ItemFooter.class
 
 ```vue
-<ItemFooter class="custom-class" />
+<ItemFooter class="border-primary" />
 ```
 
 ### ItemGroup.class
 
 ```vue
-<ItemGroup class="custom-class" />
+<ItemGroup class="border-primary" />
 ```
 
 ### ItemHeader.class
 
 ```vue
-<ItemHeader class="custom-class" />
+<ItemHeader class="border-primary" />
 ```
 
 ### ItemMedia.class
 
 ```vue
-<ItemMedia class="custom-class" />
+<ItemMedia class="border-primary" />
 ```
 
 ### ItemMedia.variant
 
 ```vue
-<ItemMedia :variant="example" />
+<ItemMedia variant="outline">示例内容</ItemMedia>
 ```
 
-### ItemSeparator.exampleProp
+### ItemSeparator.class
 
 ```vue
-<ItemSeparator :example-prop="example" />
+<ItemSeparator class="border-primary" />
 ```
 
 ### ItemTitle.class
 
 ```vue
-<ItemTitle class="custom-class" />
+<ItemTitle class="border-primary" />
 ```
 
 ### Item slot: default

@@ -52,15 +52,15 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Collapsible` | `props` | `CollapsibleRootProps` | `<Collapsible :example-prop="example" />` |
-| `CollapsibleContent` | `props` | `CollapsibleContentProps` | `<CollapsibleContent :example-prop="example" />` |
-| `CollapsibleTrigger` | `props` | `CollapsibleTriggerProps` | `<CollapsibleTrigger :example-prop="example" />` |
+| `Collapsible` | 类型引用 | `CollapsibleRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `CollapsibleContent` | 类型引用 | `CollapsibleContentProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `CollapsibleTrigger` | 类型引用 | `CollapsibleTriggerProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Collapsible` | `emits` | `CollapsibleRootEmits` | `<Collapsible @emits="emits" />` |
+| `Collapsible` | 类型引用 | `CollapsibleRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -75,30 +75,6 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 源码中未发现额外本地 API 导出。
 
 ## API 示例
-
-### Collapsible.exampleProp
-
-```vue
-<Collapsible :example-prop="example" />
-```
-
-### CollapsibleContent.exampleProp
-
-```vue
-<CollapsibleContent :example-prop="example" />
-```
-
-### CollapsibleTrigger.exampleProp
-
-```vue
-<CollapsibleTrigger :example-prop="example" />
-```
-
-### Collapsible.emits
-
-```vue
-<Collapsible @emits="emits" />
-```
 
 ### Collapsible slot: default
 

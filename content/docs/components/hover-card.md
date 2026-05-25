@@ -52,15 +52,15 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/h
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `HoverCard` | `props` | `HoverCardRootProps` | `<HoverCard :example-prop="example" />` |
-| `HoverCardContent` | `props` | `HoverCardContentProps & { class?: HTMLAttributes["class"] }` | `<HoverCardContent :example-prop="example" />` |
-| `HoverCardTrigger` | `props` | `HoverCardTriggerProps` | `<HoverCardTrigger :example-prop="example" />` |
+| `HoverCardContent` | `class` | `HTMLAttributes["class"]` | `<HoverCardContent class="border-primary" />` |
+| `HoverCard` | 类型引用 | `HoverCardRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `HoverCardTrigger` | 类型引用 | `HoverCardTriggerProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `HoverCard` | `emits` | `HoverCardRootEmits` | `<HoverCard @emits="emits" />` |
+| `HoverCard` | 类型引用 | `HoverCardRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -76,28 +76,10 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/h
 
 ## API 示例
 
-### HoverCard.exampleProp
+### HoverCardContent.class
 
 ```vue
-<HoverCard :example-prop="example" />
-```
-
-### HoverCardContent.exampleProp
-
-```vue
-<HoverCardContent :example-prop="example" />
-```
-
-### HoverCardTrigger.exampleProp
-
-```vue
-<HoverCardTrigger :example-prop="example" />
-```
-
-### HoverCard.emits
-
-```vue
-<HoverCard @emits="emits" />
+<HoverCardContent class="border-primary" />
 ```
 
 ### HoverCard slot: default

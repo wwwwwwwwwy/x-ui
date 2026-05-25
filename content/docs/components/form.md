@@ -54,9 +54,9 @@ import { FormControl, FormDescription, FormItem, FormLabel, FormMessage } from '
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `FormDescription` | `class` | `HTMLAttributes["class"]` | `<FormDescription class="custom-class" />` |
-| `FormItem` | `class` | `HTMLAttributes["class"]` | `<FormItem class="custom-class" />` |
-| `FormLabel` | `props` | `LabelProps & { class?: HTMLAttributes["class"] }` | `<FormLabel :example-prop="example" />` |
+| `FormDescription` | `class` | `HTMLAttributes["class"]` | `<FormDescription class="border-primary" />` |
+| `FormItem` | `class` | `HTMLAttributes["class"]` | `<FormItem class="border-primary" />` |
+| `FormLabel` | `class` | `HTMLAttributes["class"]` | `<FormLabel class="border-primary" />` |
 
 ### Events
 
@@ -81,19 +81,19 @@ import { FormControl, FormDescription, FormItem, FormLabel, FormMessage } from '
 ### FormDescription.class
 
 ```vue
-<FormDescription class="custom-class" />
+<FormDescription class="border-primary" />
 ```
 
 ### FormItem.class
 
 ```vue
-<FormItem class="custom-class" />
+<FormItem class="border-primary" />
 ```
 
-### FormLabel.exampleProp
+### FormLabel.class
 
 ```vue
-<FormLabel :example-prop="example" />
+<FormLabel class="border-primary" />
 ```
 
 ### FormControl slot: default

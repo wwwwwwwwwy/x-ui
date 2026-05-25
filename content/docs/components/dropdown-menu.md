@@ -63,32 +63,32 @@ import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMe
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `DropdownMenu` | `props` | `DropdownMenuRootProps` | `<DropdownMenu :example-prop="example" />` |
-| `DropdownMenuCheckboxItem` | `props` | `DropdownMenuCheckboxItemProps & { class?: HTMLAttributes["class"] }` | `<DropdownMenuCheckboxItem :example-prop="example" />` |
-| `DropdownMenuContent` | `props` | `DropdownMenuContentProps & { class?: HTMLAttributes["class"] }` | `<DropdownMenuContent :example-prop="example" />` |
-| `DropdownMenuGroup` | `props` | `DropdownMenuGroupProps` | `<DropdownMenuGroup :example-prop="example" />` |
-| `DropdownMenuItem` | `props` | `DropdownMenuItemProps & { class?: HTMLAttributes["class"], inset?: boolean }` | `<DropdownMenuItem :example-prop="true" />` |
-| `DropdownMenuLabel` | `props` | `DropdownMenuLabelProps & { class?: HTMLAttributes["class"], inset?: boolean }` | `<DropdownMenuLabel :example-prop="true" />` |
-| `DropdownMenuRadioGroup` | `props` | `DropdownMenuRadioGroupProps` | `<DropdownMenuRadioGroup :example-prop="example" />` |
-| `DropdownMenuRadioItem` | `props` | `DropdownMenuRadioItemProps & { class?: HTMLAttributes["class"] }` | `<DropdownMenuRadioItem :example-prop="example" />` |
-| `DropdownMenuSeparator` | `props` | `DropdownMenuSeparatorProps & { class?: HTMLAttributes["class"] }` | `<DropdownMenuSeparator :example-prop="example" />` |
-| `DropdownMenuShortcut` | `class` | `HTMLAttributes["class"]` | `<DropdownMenuShortcut class="custom-class" />` |
-| `DropdownMenuSub` | `props` | `DropdownMenuSubProps` | `<DropdownMenuSub :example-prop="example" />` |
-| `DropdownMenuSubContent` | `props` | `DropdownMenuSubContentProps & { class?: HTMLAttributes["class"] }` | `<DropdownMenuSubContent :example-prop="example" />` |
-| `DropdownMenuSubTrigger` | `props` | `DropdownMenuSubTriggerProps & { class?: HTMLAttributes["class"] }` | `<DropdownMenuSubTrigger :example-prop="example" />` |
-| `DropdownMenuTrigger` | `props` | `DropdownMenuTriggerProps` | `<DropdownMenuTrigger :example-prop="example" />` |
+| `DropdownMenuCheckboxItem` | `class` | `HTMLAttributes["class"]` | `<DropdownMenuCheckboxItem class="border-primary" />` |
+| `DropdownMenuContent` | `class` | `HTMLAttributes["class"]` | `<DropdownMenuContent class="border-primary" />` |
+| `DropdownMenuItem` | `class` | `HTMLAttributes["class"]` | `<DropdownMenuItem class="border-primary" />` |
+| `DropdownMenuLabel` | `class` | `HTMLAttributes["class"]` | `<DropdownMenuLabel class="border-primary" />` |
+| `DropdownMenuRadioItem` | `class` | `HTMLAttributes["class"]` | `<DropdownMenuRadioItem class="border-primary" />` |
+| `DropdownMenuSeparator` | `class` | `HTMLAttributes["class"]` | `<DropdownMenuSeparator class="border-primary" />` |
+| `DropdownMenuShortcut` | `class` | `HTMLAttributes["class"]` | `<DropdownMenuShortcut class="border-primary" />` |
+| `DropdownMenuSubContent` | `class` | `HTMLAttributes["class"]` | `<DropdownMenuSubContent class="border-primary" />` |
+| `DropdownMenuSubTrigger` | `class` | `HTMLAttributes["class"]` | `<DropdownMenuSubTrigger class="border-primary" />` |
+| `DropdownMenu` | 类型引用 | `DropdownMenuRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `DropdownMenuGroup` | 类型引用 | `DropdownMenuGroupProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `DropdownMenuRadioGroup` | 类型引用 | `DropdownMenuRadioGroupProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `DropdownMenuSub` | 类型引用 | `DropdownMenuSubProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `DropdownMenuTrigger` | 类型引用 | `DropdownMenuTriggerProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `DropdownMenu` | `emits` | `DropdownMenuRootEmits` | `<DropdownMenu @emits="emits" />` |
-| `DropdownMenuCheckboxItem` | `emits` | `DropdownMenuCheckboxItemEmits` | `<DropdownMenuCheckboxItem @emits="emits" />` |
-| `DropdownMenuContent` | `emits` | `DropdownMenuContentEmits` | `<DropdownMenuContent @emits="emits" />` |
-| `DropdownMenuRadioGroup` | `emits` | `DropdownMenuRadioGroupEmits` | `<DropdownMenuRadioGroup @emits="emits" />` |
-| `DropdownMenuRadioItem` | `emits` | `DropdownMenuRadioItemEmits` | `<DropdownMenuRadioItem @emits="emits" />` |
-| `DropdownMenuSub` | `emits` | `DropdownMenuSubEmits` | `<DropdownMenuSub @emits="emits" />` |
-| `DropdownMenuSubContent` | `emits` | `DropdownMenuSubContentEmits` | `<DropdownMenuSubContent @emits="emits" />` |
+| `DropdownMenu` | 类型引用 | `DropdownMenuRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `DropdownMenuCheckboxItem` | 类型引用 | `DropdownMenuCheckboxItemEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `DropdownMenuContent` | 类型引用 | `DropdownMenuContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `DropdownMenuRadioGroup` | 类型引用 | `DropdownMenuRadioGroupEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `DropdownMenuRadioItem` | 类型引用 | `DropdownMenuRadioItemEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `DropdownMenuSub` | 类型引用 | `DropdownMenuSubEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `DropdownMenuSubContent` | 类型引用 | `DropdownMenuSubContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -114,130 +114,58 @@ import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMe
 
 ## API 示例
 
-### DropdownMenu.exampleProp
+### DropdownMenuCheckboxItem.class
 
 ```vue
-<DropdownMenu :example-prop="example" />
+<DropdownMenuCheckboxItem class="border-primary" />
 ```
 
-### DropdownMenuCheckboxItem.exampleProp
+### DropdownMenuContent.class
 
 ```vue
-<DropdownMenuCheckboxItem :example-prop="example" />
+<DropdownMenuContent class="border-primary" />
 ```
 
-### DropdownMenuContent.exampleProp
+### DropdownMenuItem.class
 
 ```vue
-<DropdownMenuContent :example-prop="example" />
+<DropdownMenuItem class="border-primary" />
 ```
 
-### DropdownMenuGroup.exampleProp
+### DropdownMenuLabel.class
 
 ```vue
-<DropdownMenuGroup :example-prop="example" />
+<DropdownMenuLabel class="border-primary" />
 ```
 
-### DropdownMenuItem.exampleProp
+### DropdownMenuRadioItem.class
 
 ```vue
-<DropdownMenuItem :example-prop="true" />
+<DropdownMenuRadioItem class="border-primary" />
 ```
 
-### DropdownMenuLabel.exampleProp
+### DropdownMenuSeparator.class
 
 ```vue
-<DropdownMenuLabel :example-prop="true" />
-```
-
-### DropdownMenuRadioGroup.exampleProp
-
-```vue
-<DropdownMenuRadioGroup :example-prop="example" />
-```
-
-### DropdownMenuRadioItem.exampleProp
-
-```vue
-<DropdownMenuRadioItem :example-prop="example" />
-```
-
-### DropdownMenuSeparator.exampleProp
-
-```vue
-<DropdownMenuSeparator :example-prop="example" />
+<DropdownMenuSeparator class="border-primary" />
 ```
 
 ### DropdownMenuShortcut.class
 
 ```vue
-<DropdownMenuShortcut class="custom-class" />
+<DropdownMenuShortcut class="border-primary" />
 ```
 
-### DropdownMenuSub.exampleProp
+### DropdownMenuSubContent.class
 
 ```vue
-<DropdownMenuSub :example-prop="example" />
+<DropdownMenuSubContent class="border-primary" />
 ```
 
-### DropdownMenuSubContent.exampleProp
+### DropdownMenuSubTrigger.class
 
 ```vue
-<DropdownMenuSubContent :example-prop="example" />
-```
-
-### DropdownMenuSubTrigger.exampleProp
-
-```vue
-<DropdownMenuSubTrigger :example-prop="example" />
-```
-
-### DropdownMenuTrigger.exampleProp
-
-```vue
-<DropdownMenuTrigger :example-prop="example" />
-```
-
-### DropdownMenu.emits
-
-```vue
-<DropdownMenu @emits="emits" />
-```
-
-### DropdownMenuCheckboxItem.emits
-
-```vue
-<DropdownMenuCheckboxItem @emits="emits" />
-```
-
-### DropdownMenuContent.emits
-
-```vue
-<DropdownMenuContent @emits="emits" />
-```
-
-### DropdownMenuRadioGroup.emits
-
-```vue
-<DropdownMenuRadioGroup @emits="emits" />
-```
-
-### DropdownMenuRadioItem.emits
-
-```vue
-<DropdownMenuRadioItem @emits="emits" />
-```
-
-### DropdownMenuSub.emits
-
-```vue
-<DropdownMenuSub @emits="emits" />
-```
-
-### DropdownMenuSubContent.emits
-
-```vue
-<DropdownMenuSubContent @emits="emits" />
+<DropdownMenuSubTrigger class="border-primary" />
 ```
 
 ### DropdownMenu slot: default

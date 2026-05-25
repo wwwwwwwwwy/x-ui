@@ -57,24 +57,25 @@ import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, 
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Combobox` | `props` | `ComboboxRootProps` | `<Combobox :example-prop="example" />` |
-| `ComboboxAnchor` | `props` | `ComboboxAnchorProps & { class?: HTMLAttributes["class"] }` | `<ComboboxAnchor :example-prop="example" />` |
-| `ComboboxEmpty` | `props` | `ComboboxEmptyProps & { class?: HTMLAttributes["class"] }` | `<ComboboxEmpty :example-prop="example" />` |
-| `ComboboxGroup` | `props` | `ComboboxGroupProps & { class?: HTMLAttributes["class"] heading?: string }` | `<ComboboxGroup :example-prop="example" />` |
-| `ComboboxInput` | `props` | `ComboboxInputProps & { class?: HTMLAttributes["class"] }` | `<ComboboxInput :example-prop="example" />` |
-| `ComboboxItem` | `props` | `ComboboxItemProps & { class?: HTMLAttributes["class"] }` | `<ComboboxItem :example-prop="example" />` |
-| `ComboboxList` | `props` | `ComboboxContentProps & { class?: HTMLAttributes["class"] }` | `<ComboboxList :example-prop="example" />` |
-| `ComboboxSeparator` | `props` | `ComboboxSeparatorProps & { class?: HTMLAttributes["class"] }` | `<ComboboxSeparator :example-prop="example" />` |
-| `ComboboxTrigger` | `props` | `ComboboxTriggerProps & { class?: HTMLAttributes["class"] }` | `<ComboboxTrigger :example-prop="example" />` |
+| `ComboboxAnchor` | `class` | `HTMLAttributes["class"]` | `<ComboboxAnchor class="border-primary" />` |
+| `ComboboxEmpty` | `class` | `HTMLAttributes["class"]` | `<ComboboxEmpty class="border-primary" />` |
+| `ComboboxGroup` | `class` | `HTMLAttributes["class"]` | `<ComboboxGroup class="border-primary" />` |
+| `ComboboxGroup` | `heading` | `string` | `<ComboboxGroup :heading="example" />` |
+| `ComboboxInput` | `class` | `HTMLAttributes["class"]` | `<ComboboxInput class="border-primary" />` |
+| `ComboboxItem` | `class` | `HTMLAttributes["class"]` | `<ComboboxItem class="border-primary" />` |
+| `ComboboxList` | `class` | `HTMLAttributes["class"]` | `<ComboboxList class="border-primary" />` |
+| `ComboboxSeparator` | `class` | `HTMLAttributes["class"]` | `<ComboboxSeparator class="border-primary" />` |
+| `ComboboxTrigger` | `class` | `HTMLAttributes["class"]` | `<ComboboxTrigger class="border-primary" />` |
+| `Combobox` | 类型引用 | `ComboboxRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Combobox` | `emits` | `ComboboxRootEmits` | `<Combobox @emits="emits" />` |
-| `ComboboxInput` | `emits` | `ComboboxInputEmits` | `<ComboboxInput @emits="emits" />` |
-| `ComboboxItem` | `emits` | `ComboboxItemEmits` | `<ComboboxItem @emits="emits" />` |
-| `ComboboxList` | `emits` | `ComboboxContentEmits` | `<ComboboxList @emits="emits" />` |
+| `Combobox` | 类型引用 | `ComboboxRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `ComboboxInput` | 类型引用 | `ComboboxInputEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `ComboboxItem` | 类型引用 | `ComboboxItemEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `ComboboxList` | 类型引用 | `ComboboxContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -96,82 +97,58 @@ import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, 
 
 ## API 示例
 
-### Combobox.exampleProp
+### ComboboxAnchor.class
 
 ```vue
-<Combobox :example-prop="example" />
+<ComboboxAnchor class="border-primary" />
 ```
 
-### ComboboxAnchor.exampleProp
+### ComboboxEmpty.class
 
 ```vue
-<ComboboxAnchor :example-prop="example" />
+<ComboboxEmpty class="border-primary" />
 ```
 
-### ComboboxEmpty.exampleProp
+### ComboboxGroup.class
 
 ```vue
-<ComboboxEmpty :example-prop="example" />
+<ComboboxGroup class="border-primary" />
 ```
 
-### ComboboxGroup.exampleProp
+### ComboboxGroup.heading
 
 ```vue
-<ComboboxGroup :example-prop="example" />
+<ComboboxGroup :heading="example" />
 ```
 
-### ComboboxInput.exampleProp
+### ComboboxInput.class
 
 ```vue
-<ComboboxInput :example-prop="example" />
+<ComboboxInput class="border-primary" />
 ```
 
-### ComboboxItem.exampleProp
+### ComboboxItem.class
 
 ```vue
-<ComboboxItem :example-prop="example" />
+<ComboboxItem class="border-primary" />
 ```
 
-### ComboboxList.exampleProp
+### ComboboxList.class
 
 ```vue
-<ComboboxList :example-prop="example" />
+<ComboboxList class="border-primary" />
 ```
 
-### ComboboxSeparator.exampleProp
+### ComboboxSeparator.class
 
 ```vue
-<ComboboxSeparator :example-prop="example" />
+<ComboboxSeparator class="border-primary" />
 ```
 
-### ComboboxTrigger.exampleProp
+### ComboboxTrigger.class
 
 ```vue
-<ComboboxTrigger :example-prop="example" />
-```
-
-### Combobox.emits
-
-```vue
-<Combobox @emits="emits" />
-```
-
-### ComboboxInput.emits
-
-```vue
-<ComboboxInput @emits="emits" />
-```
-
-### ComboboxItem.emits
-
-```vue
-<ComboboxItem @emits="emits" />
-```
-
-### ComboboxList.emits
-
-```vue
-<ComboboxList @emits="emits" />
+<ComboboxTrigger class="border-primary" />
 ```
 
 ### Combobox slot: default

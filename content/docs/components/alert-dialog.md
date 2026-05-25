@@ -58,22 +58,22 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `AlertDialog` | `props` | `AlertDialogProps` | `<AlertDialog :example-prop="example" />` |
-| `AlertDialogAction` | `props` | `AlertDialogActionProps & { class?: HTMLAttributes["class"] }` | `<AlertDialogAction :example-prop="example" />` |
-| `AlertDialogCancel` | `props` | `AlertDialogCancelProps & { class?: HTMLAttributes["class"] }` | `<AlertDialogCancel :example-prop="example" />` |
-| `AlertDialogContent` | `props` | `AlertDialogContentProps & { class?: HTMLAttributes["class"] }` | `<AlertDialogContent :example-prop="example" />` |
-| `AlertDialogDescription` | `props` | `AlertDialogDescriptionProps & { class?: HTMLAttributes["class"] }` | `<AlertDialogDescription :example-prop="example" />` |
-| `AlertDialogFooter` | `class` | `HTMLAttributes["class"]` | `<AlertDialogFooter class="custom-class" />` |
-| `AlertDialogHeader` | `class` | `HTMLAttributes["class"]` | `<AlertDialogHeader class="custom-class" />` |
-| `AlertDialogTitle` | `props` | `AlertDialogTitleProps & { class?: HTMLAttributes["class"] }` | `<AlertDialogTitle :example-prop="example" />` |
-| `AlertDialogTrigger` | `props` | `AlertDialogTriggerProps` | `<AlertDialogTrigger :example-prop="example" />` |
+| `AlertDialogAction` | `class` | `HTMLAttributes["class"]` | `<AlertDialogAction class="border-primary" />` |
+| `AlertDialogCancel` | `class` | `HTMLAttributes["class"]` | `<AlertDialogCancel class="border-primary" />` |
+| `AlertDialogContent` | `class` | `HTMLAttributes["class"]` | `<AlertDialogContent class="border-primary" />` |
+| `AlertDialogDescription` | `class` | `HTMLAttributes["class"]` | `<AlertDialogDescription class="border-primary" />` |
+| `AlertDialogFooter` | `class` | `HTMLAttributes["class"]` | `<AlertDialogFooter class="border-primary" />` |
+| `AlertDialogHeader` | `class` | `HTMLAttributes["class"]` | `<AlertDialogHeader class="border-primary" />` |
+| `AlertDialogTitle` | `class` | `HTMLAttributes["class"]` | `<AlertDialogTitle class="border-primary" />` |
+| `AlertDialog` | 类型引用 | `AlertDialogProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `AlertDialogTrigger` | 类型引用 | `AlertDialogTriggerProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `AlertDialog` | `emits` | `AlertDialogEmits` | `<AlertDialog @emits="emits" />` |
-| `AlertDialogContent` | `emits` | `AlertDialogContentEmits` | `<AlertDialogContent @emits="emits" />` |
+| `AlertDialog` | 类型引用 | `AlertDialogEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `AlertDialogContent` | 类型引用 | `AlertDialogContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -95,70 +95,46 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 
 ## API 示例
 
-### AlertDialog.exampleProp
+### AlertDialogAction.class
 
 ```vue
-<AlertDialog :example-prop="example" />
+<AlertDialogAction class="border-primary" />
 ```
 
-### AlertDialogAction.exampleProp
+### AlertDialogCancel.class
 
 ```vue
-<AlertDialogAction :example-prop="example" />
+<AlertDialogCancel class="border-primary" />
 ```
 
-### AlertDialogCancel.exampleProp
+### AlertDialogContent.class
 
 ```vue
-<AlertDialogCancel :example-prop="example" />
+<AlertDialogContent class="border-primary" />
 ```
 
-### AlertDialogContent.exampleProp
+### AlertDialogDescription.class
 
 ```vue
-<AlertDialogContent :example-prop="example" />
-```
-
-### AlertDialogDescription.exampleProp
-
-```vue
-<AlertDialogDescription :example-prop="example" />
+<AlertDialogDescription class="border-primary" />
 ```
 
 ### AlertDialogFooter.class
 
 ```vue
-<AlertDialogFooter class="custom-class" />
+<AlertDialogFooter class="border-primary" />
 ```
 
 ### AlertDialogHeader.class
 
 ```vue
-<AlertDialogHeader class="custom-class" />
+<AlertDialogHeader class="border-primary" />
 ```
 
-### AlertDialogTitle.exampleProp
+### AlertDialogTitle.class
 
 ```vue
-<AlertDialogTitle :example-prop="example" />
-```
-
-### AlertDialogTrigger.exampleProp
-
-```vue
-<AlertDialogTrigger :example-prop="example" />
-```
-
-### AlertDialog.emits
-
-```vue
-<AlertDialog @emits="emits" />
-```
-
-### AlertDialogContent.emits
-
-```vue
-<AlertDialogContent @emits="emits" />
+<AlertDialogTitle class="border-primary" />
 ```
 
 ### AlertDialog slot: default

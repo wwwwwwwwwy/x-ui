@@ -18,6 +18,11 @@ AspectRatio 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明
 ::component-preview{name="aspect-ratio" src="aspect-ratio/Basic.vue"}
 ::
 
+### AspectRatio slot: default
+
+::component-preview{name="aspect-ratio AspectRatio default slot" src="aspect-ratio/AspectRatioDefaultSlot.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -50,7 +55,7 @@ import { AspectRatio } from '@/components/ui/aspect-ratio'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `AspectRatio` | `props` | `AspectRatioProps` | `<AspectRatio :example-prop="example" />` |
+| `AspectRatio` | 类型引用 | `AspectRatioProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
@@ -67,12 +72,6 @@ import { AspectRatio } from '@/components/ui/aspect-ratio'
 源码中未发现额外本地 API 导出。
 
 ## API 示例
-
-### AspectRatio.exampleProp
-
-```vue
-<AspectRatio :example-prop="example" />
-```
 
 ### AspectRatio slot: default
 

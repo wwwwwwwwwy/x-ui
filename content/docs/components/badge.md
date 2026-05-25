@@ -18,6 +18,21 @@ Badge 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层
 ::component-preview{name="badge" src="badge/Basic.vue"}
 ::
 
+### Badge.variant
+
+::component-preview{name="badge Badge variant" src="badge/BadgeVariant.vue"}
+::
+
+### Badge.class
+
+::component-preview{name="badge Badge class" src="badge/BadgeClass.vue"}
+::
+
+### Badge slot: default
+
+::component-preview{name="badge Badge default slot" src="badge/BadgeDefaultSlot.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -50,8 +65,8 @@ import { Badge } from '@/components/ui/badge'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Badge` | `variant` | `BadgeVariants["variant"]` | `<Badge :variant="example" />` |
-| `Badge` | `class` | `HTMLAttributes["class"]` | `<Badge class="custom-class" />` |
+| `Badge` | `variant` | `BadgeVariants["variant"]` | `<Badge variant="outline">示例内容</Badge>` |
+| `Badge` | `class` | `HTMLAttributes["class"]` | `<Badge class="border-primary" />` |
 
 ### Events
 
@@ -73,13 +88,13 @@ import { Badge } from '@/components/ui/badge'
 ### Badge.variant
 
 ```vue
-<Badge :variant="example" />
+<Badge variant="outline">示例内容</Badge>
 ```
 
 ### Badge.class
 
 ```vue
-<Badge class="custom-class" />
+<Badge class="border-primary" />
 ```
 
 ### Badge slot: default

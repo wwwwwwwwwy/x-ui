@@ -60,24 +60,24 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectItemText, SelectL
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Select` | `props` | `SelectRootProps` | `<Select :example-prop="example" />` |
-| `SelectContent` | `props` | `SelectContentProps & { class?: HTMLAttributes["class"] }` | `<SelectContent :example-prop="example" />` |
-| `SelectGroup` | `props` | `SelectGroupProps & { class?: HTMLAttributes["class"] }` | `<SelectGroup :example-prop="example" />` |
-| `SelectItem` | `props` | `SelectItemProps & { class?: HTMLAttributes["class"] }` | `<SelectItem :example-prop="example" />` |
-| `SelectItemText` | `props` | `SelectItemTextProps` | `<SelectItemText :example-prop="example" />` |
-| `SelectLabel` | `props` | `SelectLabelProps & { class?: HTMLAttributes["class"] }` | `<SelectLabel :example-prop="example" />` |
-| `SelectScrollDownButton` | `props` | `SelectScrollDownButtonProps & { class?: HTMLAttributes["class"] }` | `<SelectScrollDownButton :example-prop="example" />` |
-| `SelectScrollUpButton` | `props` | `SelectScrollUpButtonProps & { class?: HTMLAttributes["class"] }` | `<SelectScrollUpButton :example-prop="example" />` |
-| `SelectSeparator` | `props` | `SelectSeparatorProps & { class?: HTMLAttributes["class"] }` | `<SelectSeparator :example-prop="example" />` |
-| `SelectTrigger` | `props` | `SelectTriggerProps & { class?: HTMLAttributes["class"] }` | `<SelectTrigger :example-prop="example" />` |
-| `SelectValue` | `props` | `SelectValueProps` | `<SelectValue :example-prop="example" />` |
+| `SelectContent` | `class` | `HTMLAttributes["class"]` | `<SelectContent class="border-primary" />` |
+| `SelectGroup` | `class` | `HTMLAttributes["class"]` | `<SelectGroup class="border-primary" />` |
+| `SelectItem` | `class` | `HTMLAttributes["class"]` | `<SelectItem class="border-primary" />` |
+| `SelectLabel` | `class` | `HTMLAttributes["class"]` | `<SelectLabel class="border-primary" />` |
+| `SelectScrollDownButton` | `class` | `HTMLAttributes["class"]` | `<SelectScrollDownButton class="border-primary" />` |
+| `SelectScrollUpButton` | `class` | `HTMLAttributes["class"]` | `<SelectScrollUpButton class="border-primary" />` |
+| `SelectSeparator` | `class` | `HTMLAttributes["class"]` | `<SelectSeparator class="border-primary" />` |
+| `SelectTrigger` | `class` | `HTMLAttributes["class"]` | `<SelectTrigger class="border-primary" />` |
+| `Select` | 类型引用 | `SelectRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `SelectItemText` | 类型引用 | `SelectItemTextProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
+| `SelectValue` | 类型引用 | `SelectValueProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Select` | `emits` | `SelectRootEmits` | `<Select @emits="emits" />` |
-| `SelectContent` | `emits` | `SelectContentEmits` | `<SelectContent @emits="emits" />` |
+| `Select` | 类型引用 | `SelectRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
+| `SelectContent` | 类型引用 | `SelectContentEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -100,82 +100,52 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectItemText, SelectL
 
 ## API 示例
 
-### Select.exampleProp
+### SelectContent.class
 
 ```vue
-<Select :example-prop="example" />
+<SelectContent class="border-primary" />
 ```
 
-### SelectContent.exampleProp
+### SelectGroup.class
 
 ```vue
-<SelectContent :example-prop="example" />
+<SelectGroup class="border-primary" />
 ```
 
-### SelectGroup.exampleProp
+### SelectItem.class
 
 ```vue
-<SelectGroup :example-prop="example" />
+<SelectItem class="border-primary" />
 ```
 
-### SelectItem.exampleProp
+### SelectLabel.class
 
 ```vue
-<SelectItem :example-prop="example" />
+<SelectLabel class="border-primary" />
 ```
 
-### SelectItemText.exampleProp
+### SelectScrollDownButton.class
 
 ```vue
-<SelectItemText :example-prop="example" />
+<SelectScrollDownButton class="border-primary" />
 ```
 
-### SelectLabel.exampleProp
+### SelectScrollUpButton.class
 
 ```vue
-<SelectLabel :example-prop="example" />
+<SelectScrollUpButton class="border-primary" />
 ```
 
-### SelectScrollDownButton.exampleProp
+### SelectSeparator.class
 
 ```vue
-<SelectScrollDownButton :example-prop="example" />
+<SelectSeparator class="border-primary" />
 ```
 
-### SelectScrollUpButton.exampleProp
+### SelectTrigger.class
 
 ```vue
-<SelectScrollUpButton :example-prop="example" />
-```
-
-### SelectSeparator.exampleProp
-
-```vue
-<SelectSeparator :example-prop="example" />
-```
-
-### SelectTrigger.exampleProp
-
-```vue
-<SelectTrigger :example-prop="example" />
-```
-
-### SelectValue.exampleProp
-
-```vue
-<SelectValue :example-prop="example" />
-```
-
-### Select.emits
-
-```vue
-<Select @emits="emits" />
-```
-
-### SelectContent.emits
-
-```vue
-<SelectContent @emits="emits" />
+<SelectTrigger class="border-primary" />
 ```
 
 ### Select slot: default

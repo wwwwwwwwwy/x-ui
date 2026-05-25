@@ -50,7 +50,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Skeleton` | `props` | `SkeletonProps` | `<Skeleton :example-prop="example" />` |
+| `Skeleton` | 类型引用 | `SkeletonProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
@@ -65,12 +65,6 @@ import { Skeleton } from '@/components/ui/skeleton'
 源码中未发现额外本地 API 导出。
 
 ## API 示例
-
-### Skeleton.exampleProp
-
-```vue
-<Skeleton :example-prop="example" />
-```
 
 ## 依赖
 

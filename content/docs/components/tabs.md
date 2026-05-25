@@ -53,16 +53,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Tabs` | `props` | `TabsRootProps` | `<Tabs :example-prop="example" />` |
-| `TabsContent` | `props` | `TabsContentProps & { class?: HTMLAttributes["class"] }` | `<TabsContent :example-prop="example" />` |
-| `TabsList` | `props` | `TabsListProps & { class?: HTMLAttributes["class"] }` | `<TabsList :example-prop="example" />` |
-| `TabsTrigger` | `props` | `TabsTriggerProps & { class?: HTMLAttributes["class"] }` | `<TabsTrigger :example-prop="example" />` |
+| `TabsContent` | `class` | `HTMLAttributes["class"]` | `<TabsContent class="border-primary" />` |
+| `TabsList` | `class` | `HTMLAttributes["class"]` | `<TabsList class="border-primary" />` |
+| `TabsTrigger` | `class` | `HTMLAttributes["class"]` | `<TabsTrigger class="border-primary" />` |
+| `Tabs` | 类型引用 | `TabsRootProps` | 本地源码仅引用该外部 props 类型，未展开具体字段。 |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Tabs` | `emits` | `TabsRootEmits` | `<Tabs @emits="emits" />` |
+| `Tabs` | 类型引用 | `TabsRootEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -79,34 +79,22 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 ## API 示例
 
-### Tabs.exampleProp
+### TabsContent.class
 
 ```vue
-<Tabs :example-prop="example" />
+<TabsContent class="border-primary" />
 ```
 
-### TabsContent.exampleProp
+### TabsList.class
 
 ```vue
-<TabsContent :example-prop="example" />
+<TabsList class="border-primary" />
 ```
 
-### TabsList.exampleProp
+### TabsTrigger.class
 
 ```vue
-<TabsList :example-prop="example" />
-```
-
-### TabsTrigger.exampleProp
-
-```vue
-<TabsTrigger :example-prop="example" />
-```
-
-### Tabs.emits
-
-```vue
-<Tabs @emits="emits" />
+<TabsTrigger class="border-primary" />
 ```
 
 ### Tabs slot: default

@@ -18,6 +18,26 @@ Kbd 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层�
 ::component-preview{name="kbd" src="kbd/Basic.vue"}
 ::
 
+### Kbd.class
+
+::component-preview{name="kbd Kbd class" src="kbd/KbdClass.vue"}
+::
+
+### KbdGroup.class
+
+::component-preview{name="kbd KbdGroup class" src="kbd/KbdGroupClass.vue"}
+::
+
+### Kbd slot: default
+
+::component-preview{name="kbd Kbd default slot" src="kbd/KbdDefaultSlot.vue"}
+::
+
+### KbdGroup slot: default
+
+::component-preview{name="kbd KbdGroup default slot" src="kbd/KbdGroupDefaultSlot.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -51,8 +71,8 @@ import { Kbd, KbdGroup } from '@/components/ui/kbd'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Kbd` | `class` | `HTMLAttributes["class"]` | `<Kbd class="custom-class" />` |
-| `KbdGroup` | `class` | `HTMLAttributes["class"]` | `<KbdGroup class="custom-class" />` |
+| `Kbd` | `class` | `HTMLAttributes["class"]` | `<Kbd class="border-primary" />` |
+| `KbdGroup` | `class` | `HTMLAttributes["class"]` | `<KbdGroup class="border-primary" />` |
 
 ### Events
 
@@ -74,13 +94,13 @@ import { Kbd, KbdGroup } from '@/components/ui/kbd'
 ### Kbd.class
 
 ```vue
-<Kbd class="custom-class" />
+<Kbd class="border-primary" />
 ```
 
 ### KbdGroup.class
 
 ```vue
-<KbdGroup class="custom-class" />
+<KbdGroup class="border-primary" />
 ```
 
 ### Kbd slot: default

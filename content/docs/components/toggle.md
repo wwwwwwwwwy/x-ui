@@ -18,6 +18,26 @@ Toggle 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确�
 ::component-preview{name="toggle" src="toggle/Basic.vue"}
 ::
 
+### Toggle.class
+
+::component-preview{name="toggle Toggle class" src="toggle/ToggleClass.vue"}
+::
+
+### Toggle.variant
+
+::component-preview{name="toggle Toggle variant" src="toggle/ToggleVariant.vue"}
+::
+
+### Toggle.size
+
+::component-preview{name="toggle Toggle size" src="toggle/ToggleSize.vue"}
+::
+
+### Toggle slot: default
+
+::component-preview{name="toggle Toggle default slot" src="toggle/ToggleDefaultSlot.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -50,13 +70,15 @@ import { Toggle } from '@/components/ui/toggle'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Toggle` | `props` | `ToggleProps & { class?: HTMLAttributes["class"] variant?: ToggleVariants["variant"] size?: ToggleVariants["size"] }` | `<Toggle :example-prop="example" />` |
+| `Toggle` | `class` | `HTMLAttributes["class"]` | `<Toggle class="border-primary" />` |
+| `Toggle` | `variant` | `ToggleVariants["variant"]` | `<Toggle variant="outline">示例内容</Toggle>` |
+| `Toggle` | `size` | `ToggleVariants["size"]` | `<Toggle size="sm">示例内容</Toggle>` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Toggle` | `emits` | `ToggleEmits` | `<Toggle @emits="emits" />` |
+| `Toggle` | 类型引用 | `ToggleEmits` | 本地源码仅引用该外部 emits 类型，未展开具体事件。 |
 
 ### Slots
 
@@ -71,16 +93,22 @@ import { Toggle } from '@/components/ui/toggle'
 
 ## API 示例
 
-### Toggle.exampleProp
+### Toggle.class
 
 ```vue
-<Toggle :example-prop="example" />
+<Toggle class="border-primary" />
 ```
 
-### Toggle.emits
+### Toggle.variant
 
 ```vue
-<Toggle @emits="emits" />
+<Toggle variant="outline">示例内容</Toggle>
+```
+
+### Toggle.size
+
+```vue
+<Toggle size="sm">示例内容</Toggle>
 ```
 
 ### Toggle slot: default
