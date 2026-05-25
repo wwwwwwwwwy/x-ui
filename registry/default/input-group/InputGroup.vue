@@ -2,9 +2,19 @@
 import type { HTMLAttributes } from "vue"
 import { cn } from "@/lib/utils"
 
-const props = defineProps<{
+/**
+ * InputGroup 的根容器属性。
+ *
+ * 仅提供组合布局与边框状态，背景色由页面或外部 class 控制。
+ */
+interface Props {
+  /**
+   * 透传到根容器的 class。
+   */
   class?: HTMLAttributes["class"]
-}>()
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
@@ -12,8 +22,8 @@ const props = defineProps<{
     data-slot="input-group"
     role="group"
     :class="cn(
-      'group/input-group border-input dark:bg-input/30 relative flex w-full items-center rounded-md border outline-none',
-      'h-10 min-w-0 has-[>textarea]:h-auto',
+      'group/input-group border-input relative flex w-full items-center rounded-[4px] border outline-none',
+      'h-8 min-w-0 has-[>textarea]:h-auto',
 
       // Variants based on alignment.
       'has-[>[data-align=inline-start]]:[&>input]:pl-2',
@@ -21,9 +31,8 @@ const props = defineProps<{
       'has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3',
       'has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3',
 
-      // Focus state.
-      'has-[[data-slot=input-group-control]:focus-visible]:ring-ring has-[[data-slot=input-group-control]:focus-visible]:ring-2 has-[[data-slot=input-group-control]:focus-visible]:ring-offset-2 has-[[data-slot=input-group-control]:focus-visible]:ring-offset-background',
-
+      // Border state follows Input hover and focus tokens.
+      'hover:z-10 focus-within:z-10 hover:border-primary focus-within:border-primary',
       props.class,
     )"
   >

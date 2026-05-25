@@ -448,8 +448,7 @@ export const componentDocs = [
       "InputGroupInput",
       "InputGroupText",
       "InputGroupTextarea"
-    ],
-    "examplePath": "input-group/Basic.vue"
+    ]
   },
   {
     "slug": "item",

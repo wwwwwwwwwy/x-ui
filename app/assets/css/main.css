@@ -30,6 +30,11 @@
   --sidebar-accent-foreground: 217 78.8% 52%;
   --sidebar-border: 213 10.3% 79%;
   --sidebar-ring: 217 78.8% 52%;
+  --scrollbar-size: 10px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: 213 10.3% 79%;
+  --scrollbar-thumb-hover: 214 20.6% 13.3%;
+  --scrollbar-radius: 9999px;
 }
 
 @theme inline {
@@ -250,4 +255,29 @@ a {
 
 .prose [data-content-id] > pre .line {
   min-height: 20px;
+}
+
+.x-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--scrollbar-thumb)) var(--scrollbar-track);
+}
+
+.x-scrollbar::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+.x-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+.x-scrollbar::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: var(--scrollbar-radius);
+  background-clip: content-box;
+  background-color: hsl(var(--scrollbar-thumb));
+}
+
+.x-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--scrollbar-thumb-hover));
 }

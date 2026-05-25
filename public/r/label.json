@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/label/Label.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { LabelProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { Label } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<LabelProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <Label\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </Label>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { LabelProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { Label } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<LabelProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <Label\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'text-[14px] font-normal leading-[1.5] text-foreground peer-disabled:cursor-not-allowed peer-disabled:text-[var(--gray-400)] peer-disabled:opacity-100',\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </Label>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/label/Label.vue"
     },

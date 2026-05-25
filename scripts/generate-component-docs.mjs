@@ -187,6 +187,43 @@ function summarizeFile(file) {
 }
 
 function propExample(component, prop) {
+  if (component === 'Input') {
+    const inputExamples = {
+      defaultValue: '<Input default-value="默认项目名称" />',
+      modelValue: '<Input v-model="value" />',
+      class: '<Input class="border-primary" />',
+    }
+    if (inputExamples[prop.name]) return inputExamples[prop.name]
+  }
+
+  if (component.startsWith('InputGroup')) {
+    const inputGroupExamples = {
+      InputGroup: {
+        class: '<InputGroup class="max-w-md" />',
+      },
+      InputGroupAddon: {
+        align: '<InputGroupAddon align="inline-start">https://</InputGroupAddon>',
+        class: '<InputGroupAddon class="text-foreground">https://</InputGroupAddon>',
+      },
+      InputGroupButton: {
+        variant: '<InputGroupButton variant="outline">检查</InputGroupButton>',
+        size: '<InputGroupButton size="sm">提交</InputGroupButton>',
+        class: '<InputGroupButton class="text-primary">检查</InputGroupButton>',
+      },
+      InputGroupInput: {
+        class: '<InputGroupInput class="text-foreground" />',
+      },
+      InputGroupText: {
+        class: '<InputGroupText class="text-foreground">可用</InputGroupText>',
+      },
+      InputGroupTextarea: {
+        class: '<InputGroupTextarea class="min-h-24" />',
+      },
+    }
+    const example = inputGroupExamples[component]?.[prop.name]
+    if (example) return example
+  }
+
   const name = kebabCase(prop.name)
   if (prop.name === 'class') return `<${component} class="custom-class" />`
 
@@ -199,6 +236,10 @@ function propExample(component, prop) {
 }
 
 function eventExample(component, eventName) {
+  if (component === 'Input' && eventName === 'update:modelValue') {
+    return '<Input v-model="value" />'
+  }
+
   const handler = eventName.replace(/[:-](\w)/g, (_, char) => char.toUpperCase()).replace(/[^\w]/g, '')
   return `<${component} @${eventName}="${handler}" />`
 }
@@ -211,6 +252,10 @@ function slotExample(component, slotName) {
 }
 
 function basicUsageExample(primaryComponent) {
+  if (primaryComponent === 'Input') {
+    return '<Input v-model="value" placeholder="请输入内容" />'
+  }
+
   return `<${primaryComponent}>\n  示例内容\n</${primaryComponent}>`
 }
 
@@ -520,17 +565,6 @@ import { Button } from '@/components/ui/button'
       </div>
     </HoverCardContent>
   </HoverCard>
-</template>`,
-    'input-group': `${importLine(['InputGroup', 'InputGroupAddon', 'InputGroupButton', 'InputGroupInput', 'InputGroupText', 'InputGroupTextarea'], item.name)}
-
-<template>
-  <InputGroup>
-    <InputGroupAddon>https://</InputGroupAddon>
-    <InputGroupInput placeholder="输入 registry 域名" />
-    <InputGroupButton>检查</InputGroupButton>
-    <InputGroupText>可用</InputGroupText>
-    <InputGroupTextarea class="basis-full" placeholder="补充说明..." />
-  </InputGroup>
 </template>`,
     'item': `${importLine(['Item', 'ItemActions', 'ItemContent', 'ItemDescription', 'ItemFooter', 'ItemGroup', 'ItemHeader', 'ItemMedia', 'ItemSeparator', 'ItemTitle'], item.name)}
 import { Button } from '@/components/ui/button'
@@ -910,6 +944,8 @@ function customDemoSource(item) {
 }
 
 function componentExampleSource(item, indexExports) {
+  if (item.name === 'input') return inputBasicExampleSource()
+
   return (customDemoSource(item) || withScriptSetup(exampleSource(item, indexExports))).trimEnd() + '\n'
 }
 
@@ -1027,9 +1063,499 @@ import { Button } from '@/components/ui/button'
 `
 }
 
+function inputBasicExampleSource() {
+  return `<script setup lang="ts">
+import { Input } from '@/components/ui/input'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-2">
+    <Input placeholder="请输入项目名称" />
+  </div>
+</template>
+`
+}
+
+function inputDefaultValueExampleSource() {
+  return `<script setup lang="ts">
+import { Input } from '@/components/ui/input'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-2">
+    <Input default-value="默认项目名称" />
+  </div>
+</template>
+`
+}
+
+function inputModelValueExampleSource() {
+  return `<script setup lang="ts">
+import { ref } from 'vue'
+import { Input } from '@/components/ui/input'
+
+const value = ref('组件文档')
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-3">
+    <Input v-model="value" placeholder="请输入文档名称" />
+    <p class="text-sm text-muted-foreground">
+      当前输入：{{ value || '暂无内容' }}
+    </p>
+  </div>
+</template>
+`
+}
+
+function inputClassExampleSource() {
+  return `<script setup lang="ts">
+import { Input } from '@/components/ui/input'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-3">
+    <Input
+      class="border-primary bg-accent"
+      placeholder="自定义 class 样式"
+    />
+  </div>
+</template>
+`
+}
+
+function inputDisabledExampleSource() {
+  return `<script setup lang="ts">
+import { Input } from '@/components/ui/input'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-3">
+    <Input disabled model-value="禁用输入内容" />
+  </div>
+</template>
+`
+}
+
+function inputGroupInlineExampleSource() {
+  return `<script setup lang="ts">
+import { Search } from 'lucide-vue-next'
+import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from '@/components/ui/input-group'
+</script>
+
+<template>
+  <div class="grid w-full max-w-md gap-3">
+    <InputGroup>
+      <InputGroupAddon align="inline-start">
+        <Search class="size-4" />
+      </InputGroupAddon>
+      <InputGroupInput placeholder="搜索组件名称" />
+      <InputGroupText>⌘K</InputGroupText>
+    </InputGroup>
+  </div>
+</template>
+`
+}
+
+function inputGroupIconExampleSource() {
+  return `<script setup lang="ts">
+import { Check, CreditCard, Info, Mail, Search, Star } from 'lucide-vue-next'
+import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-4">
+    <InputGroup>
+      <InputGroupInput placeholder="搜索组件..." />
+      <InputGroupAddon>
+        <Search />
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup>
+      <InputGroupInput type="email" placeholder="输入邮箱" />
+      <InputGroupAddon>
+        <Mail />
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup>
+      <InputGroupInput placeholder="银行卡号" />
+      <InputGroupAddon>
+        <CreditCard />
+      </InputGroupAddon>
+      <InputGroupAddon align="inline-end">
+        <Check />
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup>
+      <InputGroupInput placeholder="收藏项目" />
+      <InputGroupAddon align="inline-end">
+        <Star />
+        <Info />
+      </InputGroupAddon>
+    </InputGroup>
+  </div>
+</template>
+`
+}
+
+function inputGroupTextExampleSource() {
+  return `<script setup lang="ts">
+import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText, InputGroupTextarea } from '@/components/ui/input-group'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-4">
+    <InputGroup>
+      <InputGroupAddon>
+        <InputGroupText>$</InputGroupText>
+      </InputGroupAddon>
+      <InputGroupInput placeholder="0.00" />
+      <InputGroupAddon align="inline-end">
+        <InputGroupText>USD</InputGroupText>
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup>
+      <InputGroupAddon>
+        <InputGroupText>https://</InputGroupText>
+      </InputGroupAddon>
+      <InputGroupInput placeholder="example" class="!pl-0.5" />
+      <InputGroupAddon align="inline-end">
+        <InputGroupText>.com</InputGroupText>
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup>
+      <InputGroupInput placeholder="输入用户名" />
+      <InputGroupAddon align="inline-end">
+        <InputGroupText>@company.com</InputGroupText>
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup>
+      <InputGroupTextarea placeholder="输入消息" />
+      <InputGroupAddon align="block-end">
+        <InputGroupText class="text-xs text-muted-foreground">
+          还可输入 120 个字符
+        </InputGroupText>
+      </InputGroupAddon>
+    </InputGroup>
+  </div>
+</template>
+`
+}
+
+function inputGroupButtonExampleSource() {
+  return `<script setup lang="ts">
+import { Check, Copy, Star } from 'lucide-vue-next'
+import { ref } from 'vue'
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/components/ui/input-group'
+
+const copied = ref(false)
+const favorite = ref(false)
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-4">
+    <InputGroup>
+      <InputGroupInput placeholder="https://x.com/x-ui" readonly />
+      <InputGroupAddon align="inline-end">
+        <InputGroupButton
+          aria-label="复制链接"
+          title="复制链接"
+          size="icon-xs"
+          @click="copied = !copied"
+        >
+          <Check v-if="copied" />
+          <Copy v-else />
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup class="[--radius:9999px]">
+      <InputGroupAddon class="pl-3 text-muted-foreground">
+        https://
+      </InputGroupAddon>
+      <InputGroupInput placeholder="example.com" />
+      <InputGroupAddon align="inline-end">
+        <InputGroupButton
+          size="icon-xs"
+          @click="favorite = !favorite"
+        >
+          <Star :class="favorite ? 'fill-primary stroke-primary' : ''" />
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup>
+      <InputGroupInput placeholder="输入搜索内容..." />
+      <InputGroupAddon align="inline-end">
+        <InputGroupButton variant="secondary">
+          搜索
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+  </div>
+</template>
+`
+}
+
+function inputGroupTooltipExampleSource() {
+  return `<script setup lang="ts">
+import { HelpCircle, Info } from 'lucide-vue-next'
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/components/ui/input-group'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-4">
+    <InputGroup>
+      <InputGroupInput placeholder="输入密码" type="password" />
+      <InputGroupAddon align="inline-end">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger as-child>
+              <InputGroupButton variant="ghost" aria-label="密码说明" size="icon-xs">
+                <Info />
+              </InputGroupButton>
+            </TooltipTrigger>
+            <TooltipContent>密码至少需要 8 个字符。</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup>
+      <InputGroupInput placeholder="输入 API Key" />
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger as-child>
+            <InputGroupAddon>
+              <InputGroupButton variant="ghost" aria-label="查看帮助" size="icon-xs">
+                <HelpCircle />
+              </InputGroupButton>
+            </InputGroupAddon>
+          </TooltipTrigger>
+          <TooltipContent side="left">点击查看 API Key 获取方式。</TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    </InputGroup>
+  </div>
+</template>
+`
+}
+
+function inputGroupTextareaExampleSource() {
+  return `<script setup lang="ts">
+import { Braces, Copy, CornerDownLeft, RefreshCw } from 'lucide-vue-next'
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupTextarea } from '@/components/ui/input-group'
+</script>
+
+<template>
+  <div class="grid w-full max-w-md gap-4">
+    <InputGroup>
+      <InputGroupTextarea
+        placeholder="console.log('Hello, world!');"
+        class="min-h-[200px]"
+      />
+      <InputGroupAddon align="block-start" class="border-b">
+        <InputGroupText class="font-mono">
+          <Braces />
+          script.js
+        </InputGroupText>
+        <InputGroupButton class="ml-auto" size="icon-xs">
+          <RefreshCw />
+        </InputGroupButton>
+        <InputGroupButton variant="ghost" size="icon-xs">
+          <Copy />
+        </InputGroupButton>
+      </InputGroupAddon>
+      <InputGroupAddon align="block-end" class="border-t">
+        <InputGroupText>Line 1, Column 1</InputGroupText>
+        <InputGroupButton size="sm" class="ml-auto" variant="default">
+          运行
+          <CornerDownLeft />
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+  </div>
+</template>
+`
+}
+
+function inputGroupSpinnerExampleSource() {
+  return `<script setup lang="ts">
+import { Loader } from 'lucide-vue-next'
+import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from '@/components/ui/input-group'
+import { Spinner } from '@/components/ui/spinner'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-4">
+    <InputGroup data-disabled>
+      <InputGroupInput placeholder="正在搜索..." disabled />
+      <InputGroupAddon align="inline-end">
+        <Spinner />
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup data-disabled>
+      <InputGroupInput placeholder="正在保存更改..." disabled />
+      <InputGroupAddon align="inline-end">
+        <InputGroupText>保存中...</InputGroupText>
+        <Spinner />
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup data-disabled>
+      <InputGroupInput placeholder="正在刷新数据..." disabled />
+      <InputGroupAddon>
+        <Loader class="animate-spin" />
+      </InputGroupAddon>
+      <InputGroupAddon align="inline-end">
+        <InputGroupText class="text-muted-foreground">
+          请稍候...
+        </InputGroupText>
+      </InputGroupAddon>
+    </InputGroup>
+  </div>
+</template>
+`
+}
+
+function inputGroupLabelExampleSource() {
+  return `<script setup lang="ts">
+import { Info } from 'lucide-vue-next'
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/components/ui/input-group'
+import { Label } from '@/components/ui/label'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-4">
+    <InputGroup>
+      <InputGroupInput id="username" placeholder="x-ui" />
+      <InputGroupAddon>
+        <Label for="username">@</Label>
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup>
+      <InputGroupInput id="email" placeholder="x-ui@example.com" />
+      <InputGroupAddon align="block-start">
+        <Label for="email" class="text-foreground">
+          Email
+        </Label>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger as-child>
+              <InputGroupButton variant="ghost" aria-label="邮箱说明" class="ml-auto rounded-full" size="icon-xs">
+                <Info />
+              </InputGroupButton>
+            </TooltipTrigger>
+            <TooltipContent>我们会用它发送通知。</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </InputGroupAddon>
+    </InputGroup>
+  </div>
+</template>
+`
+}
+
+function inputGroupDropdownExampleSource() {
+  return `<script setup lang="ts">
+import { ChevronDown, MoreHorizontal } from 'lucide-vue-next'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/components/ui/input-group'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-4">
+    <InputGroup>
+      <InputGroupInput placeholder="输入文件名" />
+      <InputGroupAddon align="inline-end">
+        <DropdownMenu>
+          <DropdownMenuTrigger as-child>
+            <InputGroupButton variant="ghost" aria-label="更多" size="icon-xs">
+              <MoreHorizontal />
+            </InputGroupButton>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem>设置</DropdownMenuItem>
+            <DropdownMenuItem>复制路径</DropdownMenuItem>
+            <DropdownMenuItem>打开位置</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup class="[--radius:1rem]">
+      <InputGroupInput placeholder="输入搜索内容" />
+      <InputGroupAddon align="inline-end">
+        <DropdownMenu>
+          <DropdownMenuTrigger as-child>
+            <InputGroupButton variant="ghost" class="!pr-1.5 text-xs">
+              搜索范围
+              <ChevronDown class="size-3" />
+            </InputGroupButton>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" class="[--radius:0.95rem]">
+            <DropdownMenuItem>组件文档</DropdownMenuItem>
+            <DropdownMenuItem>开发规范</DropdownMenuItem>
+            <DropdownMenuItem>更新记录</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </InputGroupAddon>
+    </InputGroup>
+  </div>
+</template>
+`
+}
+
+function inputGroupButtonGroupExampleSource() {
+  return `<script setup lang="ts">
+import { Link2 } from 'lucide-vue-next'
+import { ButtonGroup, ButtonGroupText } from '@/components/ui/button-group'
+import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
+import { Label } from '@/components/ui/label'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm">
+    <ButtonGroup class="!gap-0">
+      <ButtonGroupText as-child>
+        <Label for="url">https://</Label>
+      </ButtonGroupText>
+      <InputGroup>
+        <InputGroupInput id="url" />
+        <InputGroupAddon align="inline-end">
+          <Link2 />
+        </InputGroupAddon>
+      </InputGroup>
+      <ButtonGroupText>.com</ButtonGroupText>
+    </ButtonGroup>
+  </div>
+</template>
+`
+}
+
+function inputGroupCustomInputExampleSource() {
+  return `<script setup lang="ts">
+import { InputGroup, InputGroupAddon, InputGroupButton } from '@/components/ui/input-group'
+</script>
+
+<template>
+  <div class="grid w-full max-w-sm gap-4">
+    <InputGroup>
+      <textarea
+        data-slot="input-group-control"
+        class="flex min-h-16 w-full resize-none rounded-md bg-transparent px-3 py-2.5 text-[14px] outline-none"
+        placeholder="自动增高 textarea..."
+      />
+      <InputGroupAddon align="block-end">
+        <InputGroupButton class="ml-auto" size="sm" variant="default">
+          提交
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+  </div>
+</template>
+`
+}
+
 function extraExampleSources(item) {
-  if (item.name !== 'button') return []
-  return [
+  if (item.name === 'button') return [
     {
       fileName: 'Variants.vue',
       title: 'Variant 变体',
@@ -1055,6 +1581,102 @@ function extraExampleSources(item) {
       source: buttonLoadingExampleSource(),
     },
   ]
+
+  if (item.name === 'input') return [
+    {
+      fileName: 'DefaultValue.vue',
+      title: 'DefaultValue 默认值',
+      previewName: 'input default value',
+      source: inputDefaultValueExampleSource(),
+    },
+    {
+      fileName: 'ModelValue.vue',
+      title: 'ModelValue 受控值',
+      previewName: 'input model value',
+      source: inputModelValueExampleSource(),
+    },
+    {
+      fileName: 'Class.vue',
+      title: 'Class 自定义样式',
+      previewName: 'input class',
+      source: inputClassExampleSource(),
+    },
+    {
+      fileName: 'Disabled.vue',
+      title: 'Disabled 禁用',
+      previewName: 'input disabled',
+      source: inputDisabledExampleSource(),
+    },
+  ]
+
+  if (item.name === 'input-group') return [
+    {
+      fileName: 'Icon.vue',
+      title: 'Icon 图标',
+      previewName: 'input-group icon',
+      source: inputGroupIconExampleSource(),
+    },
+    {
+      fileName: 'Text.vue',
+      title: 'Text 文本',
+      previewName: 'input-group text',
+      source: inputGroupTextExampleSource(),
+    },
+    {
+      fileName: 'Button.vue',
+      title: 'Button 操作按钮',
+      previewName: 'input-group button',
+      source: inputGroupButtonExampleSource(),
+    },
+    {
+      fileName: 'Tooltip.vue',
+      title: 'Tooltip 提示',
+      previewName: 'input-group tooltip',
+      source: inputGroupTooltipExampleSource(),
+    },
+    {
+      fileName: 'Textarea.vue',
+      title: 'Textarea 多行输入',
+      previewName: 'input-group textarea',
+      source: inputGroupTextareaExampleSource(),
+    },
+    {
+      fileName: 'Spinner.vue',
+      title: 'Spinner 加载',
+      previewName: 'input-group spinner',
+      source: inputGroupSpinnerExampleSource(),
+    },
+    {
+      fileName: 'Label.vue',
+      title: 'Label 标签',
+      previewName: 'input-group label',
+      source: inputGroupLabelExampleSource(),
+    },
+    {
+      fileName: 'Dropdown.vue',
+      title: 'Dropdown 下拉菜单',
+      previewName: 'input-group dropdown',
+      source: inputGroupDropdownExampleSource(),
+    },
+    {
+      fileName: 'ButtonGroup.vue',
+      title: 'ButtonGroup 按钮组',
+      previewName: 'input-group button group',
+      source: inputGroupButtonGroupExampleSource(),
+    },
+    {
+      fileName: 'CustomInput.vue',
+      title: 'Custom Input 自定义输入',
+      previewName: 'input-group custom input',
+      source: inputGroupCustomInputExampleSource(),
+    },
+  ]
+
+  return []
+}
+
+function hasBasicExample(item) {
+  return item.name !== 'input-group'
 }
 
 function generateDoc(item) {
@@ -1064,9 +1686,55 @@ function generateDoc(item) {
   const components = files.map(summarizeFile)
   const primaryComponent = indexExports.componentExports[0] || pascalCase(item.name)
   const dependencies = unique(components.flatMap((component) => component.imports).filter((dependency) => EXTERNAL_PREFIXES.some((prefix) => dependency.startsWith(prefix))))
-  const allProps = components.flatMap((component) => component.props.map((prop) => ({ ...prop, component: component.component })))
-  const allEmits = components.flatMap((component) => component.emits.map((emit) => ({ ...emit, component: component.component })))
+  const extractedProps = components.flatMap((component) => component.props.map((prop) => ({ ...prop, component: component.component })))
+  const extractedEmits = components.flatMap((component) => component.emits.map((emit) => ({ ...emit, component: component.component })))
+  const allProps = item.name === 'input'
+    ? [
+        { component: 'Input', name: 'defaultValue', type: 'string | number', source: 'Props.defaultValue' },
+        { component: 'Input', name: 'modelValue', type: 'string | number', source: 'Props.modelValue' },
+        { component: 'Input', name: 'class', type: 'HTMLAttributes["class"]', source: 'Props.class' },
+      ]
+    : item.name === 'input-group'
+      ? extractedProps.flatMap((prop) => {
+          if (prop.component !== 'InputGroupButton' || prop.name !== 'props') return [prop]
+          return [
+            { component: 'InputGroupButton', name: 'variant', type: 'ButtonVariants["variant"]', source: 'InputGroupButtonProps.variant' },
+            { component: 'InputGroupButton', name: 'size', type: 'InputGroupButtonVariants["size"]', source: 'InputGroupButtonProps.size' },
+            { component: 'InputGroupButton', name: 'class', type: 'HTMLAttributes["class"]', source: 'InputGroupButtonProps.class' },
+          ]
+        })
+    : extractedProps
+  const allEmits = item.name === 'input'
+    ? [
+        { component: 'Input', name: 'update:modelValue', type: 'payload: string | number', source: 'defineEmits' },
+      ]
+    : extractedEmits
   const allSlots = components.flatMap((component) => component.slots.map((slot) => ({ ...slot, component: component.component })))
+
+  const examplePreviewLines = [
+    '## 示例预览',
+    '',
+  ]
+
+  if (hasBasicExample(item)) {
+    examplePreviewLines.push(
+      '### 基础示例',
+      '',
+      `::component-preview{name="${item.name}" src="${item.name}/Basic.vue"}`,
+      '::',
+      '',
+    )
+  }
+
+  examplePreviewLines.push(
+    ...extraExampleSources(item).flatMap((example) => [
+      `### ${example.title}`,
+      '',
+      `::component-preview{name="${example.previewName}" src="${item.name}/${example.fileName}"}`,
+      '::',
+      '',
+    ]),
+  )
 
   const lines = [
     '---',
@@ -1082,20 +1750,7 @@ function generateDoc(item) {
     '',
     `${primaryComponent} 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层级、稳定间距和可复用组合。文档示例优先展示组件的 registry 安装方式、基础组合方式和源码可提取 API。`,
     '',
-    '## 示例预览',
-    '',
-    '### 基础示例',
-    '',
-    `::component-preview{name="${item.name}" src="${item.name}/Basic.vue"}`,
-    '::',
-    '',
-    ...extraExampleSources(item).flatMap((example) => [
-      `### ${example.title}`,
-      '',
-      `::component-preview{name="${example.previewName}" src="${item.name}/${example.fileName}"}`,
-      '::',
-      '',
-    ]),
+    ...examplePreviewLines,
     '## 安装',
     '',
     codeFence(`bunx shadcn-vue@latest add http://localhost:3000/r/${item.name}.json`, 'bash'),
@@ -1204,7 +1859,16 @@ for (const item of registry.items) {
   const indexExports = indexFile ? extractIndexExports(read(indexFile.path)) : { componentExports: [], apiExports: [] }
   const itemExampleDir = path.join(examplesDir, item.name)
   mkdirSync(itemExampleDir, { recursive: true })
-  writeFileSync(path.join(itemExampleDir, 'Basic.vue'), componentExampleSource(item, indexExports))
+  const expectedExampleFiles = new Set([
+    ...(hasBasicExample(item) ? ['Basic.vue'] : []),
+    ...extraExampleSources(item).map((example) => example.fileName),
+  ])
+  for (const file of readdirSync(itemExampleDir)) {
+    if (file.endsWith('.vue') && !expectedExampleFiles.has(file)) rmSync(path.join(itemExampleDir, file))
+  }
+  if (hasBasicExample(item)) {
+    writeFileSync(path.join(itemExampleDir, 'Basic.vue'), componentExampleSource(item, indexExports))
+  }
   for (const example of extraExampleSources(item)) {
     writeFileSync(path.join(itemExampleDir, example.fileName), example.source)
   }
@@ -1223,7 +1887,7 @@ const componentDocs = registry.items.map((item) => {
     importPath: `@/components/ui/${item.name}`,
     registryPath: `/r/${item.name}.json`,
     componentExports: indexExports.componentExports,
-    examplePath: `${item.name}/Basic.vue`,
+    examplePath: hasBasicExample(item) ? `${item.name}/Basic.vue` : undefined,
   }
 })
 

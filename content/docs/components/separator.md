@@ -15,7 +15,17 @@ Separator 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明�
 
 ### 基础示例
 
-::component-preview{name="separator" src="separator/Basic.vue"}
+::component-preview{name="separator basic" src="separator/Basic.vue"}
+::
+
+### Orientation 方向
+
+::component-preview{name="separator orientation" src="separator/Orientation.vue"}
+::
+
+### Class 自定义样式
+
+::component-preview{name="separator class" src="separator/Class.vue"}
 ::
 
 ## 安装
@@ -33,9 +43,7 @@ import { Separator } from '@/components/ui/separator'
 ## 基础用法
 
 ```vue
-<Separator>
-  示例内容
-</Separator>
+<Separator />
 ```
 
 ## 组件导出
@@ -50,7 +58,9 @@ import { Separator } from '@/components/ui/separator'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Separator` | `props` | `SeparatorProps & { class?: HTMLAttributes["class"] }` | `<Separator :example-prop="example" />` |
+| `Separator` | `orientation` | `SeparatorProps["orientation"]` | `<Separator orientation="vertical" />` |
+| `Separator` | `decorative` | `SeparatorProps["decorative"]` | `<Separator decorative />` |
+| `Separator` | `class` | `HTMLAttributes["class"]` | `<Separator class="bg-primary" />` |
 
 ### Events
 
@@ -66,10 +76,22 @@ import { Separator } from '@/components/ui/separator'
 
 ## API 示例
 
-### Separator.exampleProp
+### Separator.orientation
 
 ```vue
-<Separator :example-prop="example" />
+<Separator orientation="vertical" />
+```
+
+### Separator.decorative
+
+```vue
+<Separator decorative />
+```
+
+### Separator.class
+
+```vue
+<Separator class="bg-primary" />
 ```
 
 ## 依赖
@@ -82,4 +104,3 @@ import { Separator } from '@/components/ui/separator'
 ```txt
 /r/separator.json
 ```
-

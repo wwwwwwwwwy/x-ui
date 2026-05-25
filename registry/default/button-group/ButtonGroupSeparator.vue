@@ -14,6 +14,7 @@ const delegatedProps = reactiveOmit(props, "class")
 <template>
   <Separator
     data-slot="button-group-separator"
+    data-variant="separator"
     v-bind="delegatedProps"
     :orientation="props.orientation"
     :class="cn(

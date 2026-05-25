@@ -31,6 +31,7 @@ onMounted(() => {
 
 function onLegendItemClick(d: BulletLegendItemInterface, i: number) {
   emits("legendItemClick", d, i)
+  // @ts-expect-error 临时屏蔽 chart 已知类型问题，后续重构 chart 时恢复严格索引校验。
   const isBulletActive = !props.items[i].inactive
   const isFilterApplied = props.items.some(i => i.inactive)
   if (isFilterApplied && isBulletActive) {

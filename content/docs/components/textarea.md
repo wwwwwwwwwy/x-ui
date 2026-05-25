@@ -50,9 +50,7 @@ import { Textarea } from '@/components/ui/textarea'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Textarea` | `class` | `HTMLAttributes["class"]` | `<Textarea class="custom-class" />` |
-| `Textarea` | `defaultValue` | `string \| number` | `<Textarea :default-value="1" />` |
-| `Textarea` | `modelValue` | `string \| number` | `<Textarea :model-value="1" />` |
+| `Textarea` | `props` | `Props` | `<Textarea :example-prop="example" />` |
 
 ### Events
 
@@ -70,22 +68,10 @@ import { Textarea } from '@/components/ui/textarea'
 
 ## API 示例
 
-### Textarea.class
+### Textarea.exampleProp
 
 ```vue
-<Textarea class="custom-class" />
-```
-
-### Textarea.defaultValue
-
-```vue
-<Textarea :default-value="1" />
-```
-
-### Textarea.modelValue
-
-```vue
-<Textarea :model-value="1" />
+<Textarea :example-prop="example" />
 ```
 
 ### Textarea.emits

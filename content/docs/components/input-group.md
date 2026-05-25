@@ -13,9 +13,54 @@ InputGroup 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明�
 
 ## 示例预览
 
-### 基础示例
+### Icon 图标
 
-::component-preview{name="input-group" src="input-group/Basic.vue"}
+::component-preview{name="input-group icon" src="input-group/Icon.vue"}
+::
+
+### Text 文本
+
+::component-preview{name="input-group text" src="input-group/Text.vue"}
+::
+
+### Button 操作按钮
+
+::component-preview{name="input-group button" src="input-group/Button.vue"}
+::
+
+### Tooltip 提示
+
+::component-preview{name="input-group tooltip" src="input-group/Tooltip.vue"}
+::
+
+### Textarea 多行输入
+
+::component-preview{name="input-group textarea" src="input-group/Textarea.vue"}
+::
+
+### Spinner 加载
+
+::component-preview{name="input-group spinner" src="input-group/Spinner.vue"}
+::
+
+### Label 标签
+
+::component-preview{name="input-group label" src="input-group/Label.vue"}
+::
+
+### Dropdown 下拉菜单
+
+::component-preview{name="input-group dropdown" src="input-group/Dropdown.vue"}
+::
+
+### ButtonGroup 按钮组
+
+::component-preview{name="input-group button group" src="input-group/ButtonGroup.vue"}
+::
+
+### Custom Input 自定义输入
+
+::component-preview{name="input-group custom input" src="input-group/CustomInput.vue"}
 ::
 
 ## 安装
@@ -55,13 +100,15 @@ import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGr
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `InputGroup` | `class` | `HTMLAttributes["class"]` | `<InputGroup class="custom-class" />` |
-| `InputGroupAddon` | `align` | `InputGroupVariants["align"]` | `<InputGroupAddon :align="example" />` |
-| `InputGroupAddon` | `class` | `HTMLAttributes["class"]` | `<InputGroupAddon class="custom-class" />` |
-| `InputGroupButton` | `props` | `InputGroupButtonProps` | `<InputGroupButton :example-prop="example" />` |
-| `InputGroupInput` | `class` | `HTMLAttributes["class"]` | `<InputGroupInput class="custom-class" />` |
-| `InputGroupText` | `class` | `HTMLAttributes["class"]` | `<InputGroupText class="custom-class" />` |
-| `InputGroupTextarea` | `class` | `HTMLAttributes["class"]` | `<InputGroupTextarea class="custom-class" />` |
+| `InputGroup` | `props` | `Props` | `<InputGroup :example-prop="example" />` |
+| `InputGroupAddon` | `align` | `InputGroupVariants["align"]` | `<InputGroupAddon align="inline-start">https://</InputGroupAddon>` |
+| `InputGroupAddon` | `class` | `HTMLAttributes["class"]` | `<InputGroupAddon class="text-foreground">https://</InputGroupAddon>` |
+| `InputGroupButton` | `variant` | `ButtonVariants["variant"]` | `<InputGroupButton variant="outline">检查</InputGroupButton>` |
+| `InputGroupButton` | `size` | `InputGroupButtonVariants["size"]` | `<InputGroupButton size="sm">提交</InputGroupButton>` |
+| `InputGroupButton` | `class` | `HTMLAttributes["class"]` | `<InputGroupButton class="text-primary">检查</InputGroupButton>` |
+| `InputGroupInput` | `class` | `HTMLAttributes["class"]` | `<InputGroupInput class="text-foreground" />` |
+| `InputGroupText` | `class` | `HTMLAttributes["class"]` | `<InputGroupText class="text-foreground">可用</InputGroupText>` |
+| `InputGroupTextarea` | `class` | `HTMLAttributes["class"]` | `<InputGroupTextarea class="min-h-24" />` |
 
 ### Events
 
@@ -86,46 +133,58 @@ import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGr
 
 ## API 示例
 
-### InputGroup.class
+### InputGroup.exampleProp
 
 ```vue
-<InputGroup class="custom-class" />
+<InputGroup :example-prop="example" />
 ```
 
 ### InputGroupAddon.align
 
 ```vue
-<InputGroupAddon :align="example" />
+<InputGroupAddon align="inline-start">https://</InputGroupAddon>
 ```
 
 ### InputGroupAddon.class
 
 ```vue
-<InputGroupAddon class="custom-class" />
+<InputGroupAddon class="text-foreground">https://</InputGroupAddon>
 ```
 
-### InputGroupButton.exampleProp
+### InputGroupButton.variant
 
 ```vue
-<InputGroupButton :example-prop="example" />
+<InputGroupButton variant="outline">检查</InputGroupButton>
+```
+
+### InputGroupButton.size
+
+```vue
+<InputGroupButton size="sm">提交</InputGroupButton>
+```
+
+### InputGroupButton.class
+
+```vue
+<InputGroupButton class="text-primary">检查</InputGroupButton>
 ```
 
 ### InputGroupInput.class
 
 ```vue
-<InputGroupInput class="custom-class" />
+<InputGroupInput class="text-foreground" />
 ```
 
 ### InputGroupText.class
 
 ```vue
-<InputGroupText class="custom-class" />
+<InputGroupText class="text-foreground">可用</InputGroupText>
 ```
 
 ### InputGroupTextarea.class
 
 ```vue
-<InputGroupTextarea class="custom-class" />
+<InputGroupTextarea class="min-h-24" />
 ```
 
 ### InputGroup slot: default

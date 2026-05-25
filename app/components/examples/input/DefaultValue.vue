@@ -4,6 +4,6 @@ import { Input } from '@/components/ui/input'
 
 <template>
   <div class="grid w-full max-w-sm gap-2">
-    <Input placeholder="请输入项目名称" />
+    <Input default-value="默认项目名称" />
   </div>
 </template>

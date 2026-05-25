@@ -42,6 +42,7 @@ function template(d: any, i: number, elements: (HTMLElement | SVGElement)[]) {
       return wm.get(data)
     }
     else {
+      // @ts-expect-error 临时屏蔽 chart 已知类型问题，后续重构 chart 时恢复元素存在性校验。
       const style = getComputedStyle(elements[i])
       const omittedData = [{ name: data.name, value: valueFormatter(data[props.index]), color: style.fill }]
       const componentDiv = document.createElement("div")

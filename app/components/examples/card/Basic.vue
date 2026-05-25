@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 </script>
 
 <template>
-  <Card class="max-w-sm">
+  <Card class="grid max-w-sm gap-4">
     <CardHeader>
       <CardTitle>组件发布</CardTitle>
       <CardDescription>发布前检查 registry、文档和静态构建状态。</CardDescription>

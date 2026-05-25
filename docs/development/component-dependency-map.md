@@ -18,11 +18,11 @@
 | 顺序 | 状态 | 阶段 | 组件 | 本地依赖 | 修改后重点回归 |
 | --- | --- | --- | --- | --- | --- |
 | 1 | 已完成 | 基础枢纽 | `button` | 无 | `alert-dialog`, `calendar`, `carousel`, `chart`, `input-group`, `pagination`, `range-calendar`, `sidebar` |
-| 2 | 待处理 | 基础枢纽 | `input` | 无 | `input-group`, `sidebar` |
-| 3 | 待处理 | 基础枢纽 | `textarea` | 无 | `input-group` |
-| 4 | 待处理 | 基础枢纽 | `separator` | 无 | `button-group`, `field`, `item`, `sidebar` |
-| 5 | 待处理 | 基础枢纽 | `label` | 无 | `field`, `form` |
-| 6 | 待处理 | 基础枢纽 | `card` | 无 | `chart` |
+| 2 | 已完成 | 基础枢纽 | `input` | 无 | `input-group`, `sidebar` |
+| 3 | 已完成 | 基础枢纽 | `textarea` | 无 | `input-group` |
+| 4 | 已完成 | 基础枢纽 | `separator` | 无 | `button-group`, `field`, `item`, `sidebar` |
+| 5 | 已完成 | 基础枢纽 | `label` | 无 | `field`, `form` |
+| 6 | 已完成 | 基础枢纽 | `card` | 无 | `chart` |
 | 7 | 待处理 | 基础枢纽 | `toggle` | 无 | `toggle-group` |
 | 8 | 待处理 | 基础枢纽 | `tooltip` | 无 | `sidebar` |
 | 9 | 待处理 | 基础枢纽 | `sheet` | 无 | `sidebar` |
@@ -51,7 +51,7 @@
 | 32 | 待处理 | 基础独立 | `progress` | 无 | 当前组件页面 |
 | 33 | 待处理 | 基础独立 | `radio-group` | 无 | 当前组件页面 |
 | 34 | 待处理 | 基础独立 | `resizable` | 无 | 当前组件页面 |
-| 35 | 待处理 | 基础独立 | `scroll-area` | 无 | 当前组件页面 |
+| 35 | 已完成 | 基础独立 | `scroll-area` | 无 | 当前组件页面 |
 | 36 | 待处理 | 基础独立 | `select` | 无 | 当前组件页面 |
 | 37 | 待处理 | 基础独立 | `slider` | 无 | 当前组件页面 |
 | 38 | 待处理 | 基础独立 | `sonner` | 无 | 当前组件页面 |
@@ -62,13 +62,13 @@
 | 43 | 待处理 | 基础独立 | `tabs` | 无 | 当前组件页面 |
 | 44 | 待处理 | 基础独立 | `tags-input` | 无 | 当前组件页面 |
 | 45 | 待处理 | 轻量组合 | `alert-dialog` | `button` | 当前组件页面 |
-| 46 | 待处理 | 轻量组合 | `button-group` | `separator` | 当前组件页面 |
+| 46 | 已完成 | 轻量组合 | `button-group` | `separator` | 当前组件页面 |
 | 47 | 待处理 | 轻量组合 | `calendar` | `button` | 当前组件页面 |
 | 48 | 待处理 | 轻量组合 | `carousel` | `button` | 当前组件页面 |
 | 49 | 待处理 | 轻量组合 | `command` | `dialog` | 当前组件页面 |
 | 50 | 待处理 | 轻量组合 | `field` | `label`, `separator` | 当前组件页面 |
 | 51 | 待处理 | 轻量组合 | `form` | `label` | 当前组件页面 |
-| 52 | 待处理 | 轻量组合 | `input-group` | `button`, `input`, `textarea` | 当前组件页面 |
+| 52 | 已完成 | 轻量组合 | `input-group` | `button`, `input`, `textarea` | 当前组件页面 |
 | 53 | 待处理 | 轻量组合 | `item` | `separator` | 当前组件页面 |
 | 54 | 待处理 | 轻量组合 | `pagination` | `button` | 当前组件页面 |
 | 55 | 待处理 | 轻量组合 | `range-calendar` | `button` | 当前组件页面 |
@@ -265,3 +265,17 @@ tooltip
 - 修改被依赖组件后，至少检查依赖它的组件页面，尤其是 `button` 相关组件。
 - `sidebar` 依赖最多，建议最后处理。
 - 修改组件样式时保持 API、exports、primitive 转发和 install target 不变。
+
+## 已复用的设计细节
+
+以下规则来自 `button`、`input`、`textarea`、`input-group`、`button-group`、`scroll-area` 的本轮修改，后续组件样式调整时优先复用。
+
+| 设计细节 | 当前使用组件 | 说明 |
+| --- | --- | --- |
+| 输入类边框 token | `input`, `textarea`, `input-group`, `button-group` | 默认边框使用 `border-input`，交互高亮使用 `border-primary`，避免直接写 `var(--gray-400)` / `var(--blue-500)`。 |
+| 输入类尺寸与文字规格 | `input`, `textarea`, `input-group` | 单行输入高度统一为 `h-8`，圆角统一为 `rounded-[4px]`，字号使用 `text-[14px]`，行高使用 `leading-[1.5]`。 |
+| 输入类交互状态 | `input`, `textarea`, `input-group` | hover / focus 使用同一套 primary 边框色；focus 输入态同步使用 `caret-primary`。禁用态通过 `disabled:*` 限制交互视觉。 |
+| 组合输入的边框职责 | `input-group` | `InputGroupInput` 自身不画边框，外层 `InputGroup` 负责组合边框、hover 和 focus-within 状态，避免内部控件与外层容器重复画线。 |
+| 相邻组合的接缝处理 | `button-group`, `input-group` | `ButtonGroup` 与 `InputGroup` 紧邻时，通过 `-ml-px` 合并 1px 接缝，并让前一个元素的右边框透明；只强制恢复左边框宽度，不强制锁死边框颜色。 |
+| 滚动条 token | `scroll-area`, `textarea` | 原生滚动条与 `ScrollArea` 共用滚动条 token；需要原生滚动条的输入类组件使用 `.x-scrollbar` 保持视觉一致。 |
+| 文档示例覆盖 | `input`, `input-group`, `textarea` | 组件 API 文档按源码可提取信息补充具体示例，不编造第三方继承 API。 |

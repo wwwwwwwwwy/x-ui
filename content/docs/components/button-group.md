@@ -15,7 +15,7 @@ ButtonGroup 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明
 
 ### 基础示例
 
-::component-preview{name="button-group" src="button-group/Basic.vue"}
+::component-preview{name="button-group basic" src="button-group/Basic.vue"}
 ::
 
 ## 安装
@@ -34,7 +34,10 @@ import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from '@/components
 
 ```vue
 <ButtonGroup>
-  示例内容
+  <Button>保存</Button>
+  <ButtonGroupSeparator />
+  <Button variant="outline">预览</Button>
+  <ButtonGroupText>已同步</ButtonGroupText>
 </ButtonGroup>
 ```
 
@@ -54,8 +57,10 @@ import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from '@/components
 | --- | --- | --- | --- |
 | `ButtonGroup` | `class` | `HTMLAttributes["class"]` | `<ButtonGroup class="custom-class" />` |
 | `ButtonGroup` | `orientation` | `ButtonGroupVariants["orientation"]` | `<ButtonGroup :orientation="example" />` |
-| `ButtonGroupSeparator` | `props` | `SeparatorProps & { class?: HTMLAttributes["class"] }` | `<ButtonGroupSeparator :example-prop="example" />` |
-| `ButtonGroupText` | `props` | `Props` | `<ButtonGroupText :example-prop="example" />` |
+| `ButtonGroupSeparator` | `class` | `HTMLAttributes["class"]` | `<ButtonGroupSeparator class="bg-primary" />` |
+| `ButtonGroupSeparator` | `orientation` | `SeparatorProps["orientation"]` | `<ButtonGroupSeparator orientation="vertical" />` |
+| `ButtonGroupText` | `class` | `HTMLAttributes["class"]` | `<ButtonGroupText class="text-foreground">已同步</ButtonGroupText>` |
+| `ButtonGroupText` | `orientation` | `ButtonGroupVariants["orientation"]` | `<ButtonGroupText :orientation="example">已同步</ButtonGroupText>` |
 
 ### Events
 
@@ -87,16 +92,28 @@ import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from '@/components
 <ButtonGroup :orientation="example" />
 ```
 
-### ButtonGroupSeparator.exampleProp
+### ButtonGroupSeparator.class
 
 ```vue
-<ButtonGroupSeparator :example-prop="example" />
+<ButtonGroupSeparator class="bg-primary" />
 ```
 
-### ButtonGroupText.exampleProp
+### ButtonGroupSeparator.orientation
 
 ```vue
-<ButtonGroupText :example-prop="example" />
+<ButtonGroupSeparator orientation="vertical" />
+```
+
+### ButtonGroupText.class
+
+```vue
+<ButtonGroupText class="text-foreground">已同步</ButtonGroupText>
+```
+
+### ButtonGroupText.orientation
+
+```vue
+<ButtonGroupText :orientation="example">已同步</ButtonGroupText>
 ```
 
 ### ButtonGroup slot: default
@@ -121,4 +138,3 @@ import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from '@/components
 ```txt
 /r/button-group.json
 ```
-

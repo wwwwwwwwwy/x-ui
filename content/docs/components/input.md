@@ -18,6 +18,26 @@ Input 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层
 ::component-preview{name="input" src="input/Basic.vue"}
 ::
 
+### DefaultValue 默认值
+
+::component-preview{name="input default value" src="input/DefaultValue.vue"}
+::
+
+### ModelValue 受控值
+
+::component-preview{name="input model value" src="input/ModelValue.vue"}
+::
+
+### Class 自定义样式
+
+::component-preview{name="input class" src="input/Class.vue"}
+::
+
+### Disabled 禁用
+
+::component-preview{name="input disabled" src="input/Disabled.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -33,9 +53,7 @@ import { Input } from '@/components/ui/input'
 ## 基础用法
 
 ```vue
-<Input>
-  示例内容
-</Input>
+<Input v-model="value" placeholder="请输入内容" />
 ```
 
 ## 组件导出
@@ -50,15 +68,15 @@ import { Input } from '@/components/ui/input'
 
 | 组件 | Prop | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Input` | `defaultValue` | `string \| number` | `<Input :default-value="1" />` |
-| `Input` | `modelValue` | `string \| number` | `<Input :model-value="1" />` |
-| `Input` | `class` | `HTMLAttributes["class"]` | `<Input class="custom-class" />` |
+| `Input` | `defaultValue` | `string \| number` | `<Input default-value="默认项目名称" />` |
+| `Input` | `modelValue` | `string \| number` | `<Input v-model="value" />` |
+| `Input` | `class` | `HTMLAttributes["class"]` | `<Input class="border-primary" />` |
 
 ### Events
 
 | 组件 | 事件 | 类型 / 来源 | 示例 |
 | --- | --- | --- | --- |
-| `Input` | `emits` | `{ (e: "update:modelValue", payload: string \| number): void }` | `<Input @emits="emits" />` |
+| `Input` | `update:modelValue` | `payload: string \| number` | `<Input v-model="value" />` |
 
 ### Slots
 
@@ -73,25 +91,25 @@ import { Input } from '@/components/ui/input'
 ### Input.defaultValue
 
 ```vue
-<Input :default-value="1" />
+<Input default-value="默认项目名称" />
 ```
 
 ### Input.modelValue
 
 ```vue
-<Input :model-value="1" />
+<Input v-model="value" />
 ```
 
 ### Input.class
 
 ```vue
-<Input class="custom-class" />
+<Input class="border-primary" />
 ```
 
-### Input.emits
+### Input.update:modelValue
 
 ```vue
-<Input @emits="emits" />
+<Input v-model="value" />
 ```
 
 ## 依赖
