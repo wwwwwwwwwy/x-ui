@@ -2,6 +2,7 @@
 node_modules/
 .pnp/
 .pnp.*
+.playwright-cli
 
 # Nuxt build output and caches
 .nuxt/
