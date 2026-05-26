@@ -3,8 +3,13 @@ import { cva } from "class-variance-authority"
 
 export { default as Badge } from "./Badge.vue"
 
+/**
+ * Badge 的视觉变体。
+ *
+ * 保持轻量标签语义，默认字重为 normal，避免在信息密集场景中过度强调。
+ */
 export const badgeVariants = cva(
-  "inline-flex gap-1 items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex gap-1 items-center rounded-full border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
   {
     variants: {
       variant: {

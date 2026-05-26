@@ -18,6 +18,26 @@ Checkbox 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确
 ::component-preview{name="checkbox" src="checkbox/Basic.vue"}
 ::
 
+### Group 组合用法
+
+::component-preview{name="checkbox group" src="checkbox/Group.vue"}
+::
+
+### Checked 默认选中
+
+::component-preview{name="checkbox checked" src="checkbox/Checked.vue"}
+::
+
+### Disabled 禁用
+
+::component-preview{name="checkbox disabled" src="checkbox/Disabled.vue"}
+::
+
+### ModelValue 受控值
+
+::component-preview{name="checkbox model value" src="checkbox/ModelValue.vue"}
+::
+
 ### Checkbox.class
 
 ::component-preview{name="checkbox Checkbox class" src="checkbox/CheckboxClass.vue"}

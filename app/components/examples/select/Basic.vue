@@ -4,7 +4,9 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 
 <template>
   <Select :default-value="'preview'" :default-open="true">
-    <SelectTrigger class="w-56"><SelectValue placeholder="选择发布环境" /></SelectTrigger>
+    <SelectTrigger>
+      <SelectValue placeholder="选择发布环境" />
+    </SelectTrigger>
     <SelectContent>
       <SelectGroup>
         <SelectLabel>环境</SelectLabel>

@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 <template>
   <div class="flex items-center gap-3">
     <Avatar>
-      <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=60" alt="林清和" />
+      <AvatarImage src="https://dev.meos.center/meri-plus/avatar-default.png" alt="林清和" />
       <AvatarFallback>林</AvatarFallback>
     </Avatar>
     <div>

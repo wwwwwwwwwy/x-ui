@@ -242,7 +242,8 @@
       "ComboboxInput",
       "ComboboxItem",
       "ComboboxList",
-      "ComboboxSeparator"
+      "ComboboxSeparator",
+      "ComboboxTrigger"
     ],
     "examplePath": "combobox/Basic.vue"
   },
@@ -941,6 +942,7 @@
     "registryPath": "/r/tooltip.json",
     "componentExports": [
       "Tooltip",
+      "TooltipArrow",
       "TooltipContent",
       "TooltipProvider",
       "TooltipTrigger"

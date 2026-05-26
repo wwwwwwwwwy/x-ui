@@ -9,6 +9,9 @@ import {
 } from "reka-ui"
 import { cn } from "@/lib/utils"
 
+/**
+ * AccordionTrigger 透传 reka-ui 的 trigger props，并允许通过 class 扩展触发区样式。
+ */
 const props = defineProps<AccordionTriggerProps & { class?: HTMLAttributes["class"] }>()
 
 const delegatedProps = reactiveOmit(props, "class")
@@ -20,7 +23,7 @@ const delegatedProps = reactiveOmit(props, "class")
       v-bind="delegatedProps"
       :class="
         cn(
-          'flex flex-1 cursor-pointer items-center justify-between py-4 font-medium transition-all enabled:hover:underline disabled:cursor-not-allowed [&[data-state=open]>svg]:rotate-180',
+          'flex flex-1 cursor-pointer items-center justify-between py-1 font-medium transition-all disabled:cursor-not-allowed [&[data-state=open]>svg]:rotate-180',
           props.class,
         )
       "

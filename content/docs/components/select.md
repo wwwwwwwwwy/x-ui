@@ -18,6 +18,36 @@ Select 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确�
 ::component-preview{name="select" src="select/Basic.vue"}
 ::
 
+### Fruits 基础选择
+
+::component-preview{name="select fruits" src="select/Fruits.vue"}
+::
+
+### ModelValue 受控值
+
+::component-preview{name="select controlled" src="select/Controlled.vue"}
+::
+
+### Group 分组选项
+
+::component-preview{name="select groups" src="select/Groups.vue"}
+::
+
+### Disabled 禁用选项
+
+::component-preview{name="select disabled item" src="select/DisabledItem.vue"}
+::
+
+### Scroll 长列表
+
+::component-preview{name="select scroll" src="select/Scroll.vue"}
+::
+
+### ItemText 自定义文本
+
+::component-preview{name="select item text" src="select/ItemText.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -92,7 +122,6 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectItemText, SelectL
 | `SelectScrollDownButton` | `default` | `<SelectScrollDownButton>内容</SelectScrollDownButton>` |
 | `SelectScrollUpButton` | `default` | `<SelectScrollUpButton>内容</SelectScrollUpButton>` |
 | `SelectTrigger` | `default` | `<SelectTrigger>内容</SelectTrigger>` |
-| `SelectValue` | `default` | `<SelectValue>内容</SelectValue>` |
 
 ### Exports
 
@@ -200,12 +229,6 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectItemText, SelectL
 
 ```vue
 <SelectTrigger>内容</SelectTrigger>
-```
-
-### SelectValue slot: default
-
-```vue
-<SelectValue>内容</SelectValue>
 ```
 
 ## 依赖

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 
 <template>
   <Drawer :default-open="true" :modal="false">
-    <DrawerContent class="absolute">
+    <DrawerContent>
       <DrawerHeader>
         <DrawerTitle>任务详情</DrawerTitle>
         <DrawerDescription>从底部抽屉查看当前任务的执行状态。</DrawerDescription>

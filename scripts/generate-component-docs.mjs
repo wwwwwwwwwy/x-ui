@@ -8,7 +8,7 @@ const appDataDir = path.join(root, 'app/data')
 const examplesDir = path.join(root, 'app/components/examples')
 
 const EXTERNAL_PREFIXES = ['@vueuse/', '@unovis/', '@vee-validate/', 'class-variance-authority', 'embla-carousel-vue', '@meri-design/icon-vue', 'lucide-vue-next', 'reka-ui', 'vaul-vue', 'vee-validate', 'vue-sonner', 'zod']
-const CUSTOM_DEMO_COMPONENTS = new Set(['button', 'badge', 'checkbox', 'switch', 'input', 'table'])
+const CUSTOM_DEMO_COMPONENTS = new Set(['button', 'badge', 'switch', 'input', 'table'])
 
 function pascalCase(value) {
   return value
@@ -360,7 +360,7 @@ import { Button } from '@/components/ui/button'
 <template>
   <div class="flex items-center gap-3">
     <Avatar>
-      <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=60" alt="林清和" />
+      <AvatarImage src="https://dev.meos.center/meri-plus/avatar-default.png" alt="林清和" />
       <AvatarFallback>林</AvatarFallback>
     </Avatar>
     <div>
@@ -452,21 +452,21 @@ const open = ref(true)
 
 <template>
   <Collapsible v-model:open="open" class="space-y-2">
-    <div class="flex items-center justify-between rounded-[8px] border border-[#E2E4E9] px-4 py-3">
-      <span class="text-sm font-semibold">高级设置</span>
+    <div class="flex h-8 items-center justify-between rounded-[8px] border border-[#E2E4E9] px-4">
+      <span class="text-sm font-semibold leading-8">高级设置</span>
       <CollapsibleTrigger as-child><Button size="sm" variant="outline">{{ open ? '收起' : '展开' }}</Button></CollapsibleTrigger>
     </div>
-    <CollapsibleContent class="rounded-[8px] border border-[#E2E4E9] bg-[#F5F6F7] p-4 text-sm text-[#434655]">这里展示可折叠的配置内容。</CollapsibleContent>
+    <CollapsibleContent class="rounded-[8px] border border-[#E2E4E9] bg-[#F5F6F7] p-4 text-sm leading-8 text-[#434655]">这里展示可折叠的配置内容。</CollapsibleContent>
   </Collapsible>
 </template>`,
     'combobox': `${importLine(['Combobox', 'ComboboxAnchor', 'ComboboxEmpty', 'ComboboxGroup', 'ComboboxInput', 'ComboboxItem', 'ComboboxList'], item.name)}
 
 <template>
-  <Combobox default-open open-on-focus class="w-full max-w-xs">
-    <ComboboxAnchor class="rounded-[8px] border border-[#E2E4E9] bg-white px-3 py-2">
-      <ComboboxInput placeholder="搜索组件..." class="w-full border-0 bg-transparent p-0 shadow-none outline-none focus-visible:ring-0" />
+  <Combobox default-open open-on-focus>
+    <ComboboxAnchor>
+      <ComboboxInput placeholder="搜索组件..." />
     </ComboboxAnchor>
-    <ComboboxList class="mt-2 rounded-[8px] border border-[#E2E4E9] bg-white p-1">
+    <ComboboxList>
       <ComboboxEmpty>未找到组件</ComboboxEmpty>
       <ComboboxGroup heading="组件">
         <ComboboxItem value="button">按钮 Button</ComboboxItem>
@@ -512,15 +512,16 @@ const open = ref(true)
 import { Button } from '@/components/ui/button'
 
 <template>
-  <Dialog :default-open="true">
-    <DialogTrigger as-child><Button>编辑资料</Button></DialogTrigger>
+  <Dialog>
+    <DialogTrigger as-child>
+      <Button variant="outline">
+        打开对话框
+      </Button>
+    </DialogTrigger>
     <DialogContent>
-      <DialogHeader>
-        <DialogTitle>编辑资料</DialogTitle>
-        <DialogDescription>更新团队成员的基础信息。</DialogDescription>
-      </DialogHeader>
-      <div class="rounded-[8px] bg-[#F5F6F7] p-4 text-sm">姓名：林清和</div>
-      <DialogFooter><Button>保存更改</Button></DialogFooter>
+      <div class="text-sm text-muted-foreground">
+        这是一个基础 Dialog 示例。
+      </div>
     </DialogContent>
   </Dialog>
 </template>`,
@@ -529,7 +530,7 @@ import { Button } from '@/components/ui/button'
 
 <template>
   <Drawer :default-open="true" :modal="false">
-    <DrawerContent class="absolute">
+    <DrawerContent>
       <DrawerHeader>
         <DrawerTitle>任务详情</DrawerTitle>
         <DrawerDescription>从底部抽屉查看当前任务的执行状态。</DrawerDescription>
@@ -798,7 +799,7 @@ const value = ref('weekly')
 import { Button } from '@/components/ui/button'
 
 <template>
-  <Sheet :default-open="true">
+  <Sheet>
     <SheetTrigger as-child><Button>打开侧边面板</Button></SheetTrigger>
     <SheetContent>
       <SheetHeader>
@@ -985,6 +986,9 @@ function customDemoSource(item) {
 
 function componentExampleSource(item, indexExports) {
   if (item.name === 'input') return inputBasicExampleSource()
+  if (item.name === 'checkbox') return checkboxBasicExampleSource()
+  if (item.name === 'combobox') return comboboxBasicExampleSource()
+  if (item.name === 'select') return selectBasicExampleSource()
 
   return (customDemoSource(item) || withScriptSetup(exampleSource(item, indexExports))).trimEnd() + '\n'
 }
@@ -1099,6 +1103,641 @@ import { Button } from '@/components/ui/button'
       自定义图标
     </Button>
   </div>
+</template>
+`
+}
+
+function avatarClassExampleSource() {
+  return `<script setup lang="ts">
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Avatar class="border border-primary text-primary">
+      <AvatarImage src="https://dev.meos.center/meri-plus/avatar-default.png" alt="林清和" />
+      <AvatarFallback>林</AvatarFallback>
+    </Avatar>
+  </div>
+</template>
+`
+}
+
+function avatarSizeExampleSource() {
+  return `<script setup lang="ts">
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+
+const sizes = [
+  { value: 'sm', label: '小' },
+  { value: 'base', label: '中' },
+  { value: 'lg', label: '大' },
+] as const
+</script>
+
+<template>
+  <div class="flex flex-wrap items-end gap-4">
+    <Avatar v-for="item in sizes" :key="item.value" :size="item.value">
+      <AvatarImage src="https://dev.meos.center/meri-plus/avatar-default.png" :alt="item.label" />
+      <AvatarFallback>{{ item.label }}</AvatarFallback>
+    </Avatar>
+  </div>
+</template>
+`
+}
+
+function avatarShapeExampleSource() {
+  return `<script setup lang="ts">
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+
+const shapes = [
+  { value: 'circle', label: '圆形' },
+  { value: 'square', label: '方形' },
+] as const
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-4">
+    <Avatar v-for="item in shapes" :key="item.value" :shape="item.value" size="base">
+      <AvatarImage src="https://dev.meos.center/meri-plus/avatar-default.png" :alt="item.label" />
+      <AvatarFallback>{{ item.label }}</AvatarFallback>
+    </Avatar>
+  </div>
+</template>
+`
+}
+
+function avatarDefaultSlotExampleSource() {
+  return `<script setup lang="ts">
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Avatar>
+      <AvatarFallback>林</AvatarFallback>
+    </Avatar>
+  </div>
+</template>
+`
+}
+
+function avatarImageExampleSource() {
+  return `<script setup lang="ts">
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Avatar size="base">
+      <AvatarImage src="https://dev.meos.center/meri-plus/avatar-default.png" alt="默认头像" />
+      <AvatarFallback>头像</AvatarFallback>
+    </Avatar>
+  </div>
+</template>
+`
+}
+
+function avatarFallbackExampleSource() {
+  return `<script setup lang="ts">
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-3">
+    <Avatar size="base">
+      <AvatarImage src="/avatar-not-found.png" alt="加载失败头像" />
+      <AvatarFallback>林</AvatarFallback>
+    </Avatar>
+  </div>
+</template>
+`
+}
+
+function checkboxBasicExampleSource() {
+  return `<script setup lang="ts">
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+</script>
+
+<template>
+  <div class="flex items-center gap-2">
+    <Checkbox id="terms" />
+    <Label for="terms">接受服务条款</Label>
+  </div>
+</template>
+`
+}
+
+function checkboxCheckedExampleSource() {
+  return `<script setup lang="ts">
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+</script>
+
+<template>
+  <div class="flex items-center gap-2">
+    <Checkbox id="checked" default-value />
+    <Label for="checked">默认选中</Label>
+  </div>
+</template>
+`
+}
+
+function checkboxDisabledExampleSource() {
+  return `<script setup lang="ts">
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+</script>
+
+<template>
+  <div class="grid gap-3">
+    <div class="flex items-center gap-2">
+      <Checkbox id="disabled" disabled />
+      <Label for="disabled" class="text-muted-foreground">禁用未选中</Label>
+    </div>
+    <div class="flex items-center gap-2">
+      <Checkbox id="disabled-checked" disabled default-value />
+      <Label for="disabled-checked" class="text-muted-foreground">禁用已选中</Label>
+    </div>
+  </div>
+</template>
+`
+}
+
+function checkboxModelValueExampleSource() {
+  return `<script setup lang="ts">
+import { ref } from 'vue'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+
+const checked = ref(false)
+</script>
+
+<template>
+  <div class="grid gap-2">
+    <div class="flex items-center gap-2">
+      <Checkbox id="sync" v-model="checked" />
+      <Label for="sync">同步到受控值</Label>
+    </div>
+    <p class="text-sm text-muted-foreground">
+      当前状态：{{ checked ? '已选中' : '未选中' }}
+    </p>
+  </div>
+</template>
+`
+}
+
+function checkboxClassExampleSource() {
+  return `<script setup lang="ts">
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+</script>
+
+<template>
+  <div class="flex items-center gap-2">
+    <Checkbox id="custom-style" class="border-primary text-primary data-[state=checked]:bg-primary" />
+    <Label for="custom-style">自定义样式</Label>
+  </div>
+</template>
+`
+}
+
+function checkboxDefaultSlotExampleSource() {
+  return `<script setup lang="ts">
+import { Minus } from 'lucide-vue-next'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+</script>
+
+<template>
+  <div class="flex items-center gap-2">
+    <Checkbox id="custom-icon" default-value>
+      <Minus class="h-4 w-4" />
+    </Checkbox>
+    <Label for="custom-icon">自定义选中图标</Label>
+  </div>
+</template>
+`
+}
+
+function checkboxGroupExampleSource() {
+  return `<script setup lang="ts">
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+</script>
+
+<template>
+  <div class="flex flex-col gap-6">
+    <div class="flex items-center gap-3">
+      <Checkbox id="terms" />
+      <Label for="terms">接受服务条款</Label>
+    </div>
+
+    <div class="flex items-start gap-3">
+      <Checkbox id="terms-2" :default-value="true" />
+      <div class="grid gap-2">
+        <Label for="terms-2">接受服务条款</Label>
+        <p class="text-sm text-muted-foreground">
+          勾选后表示你同意当前产品的服务条款和隐私说明。
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-start gap-3">
+      <Checkbox id="toggle" disabled />
+      <Label for="toggle">启用消息通知</Label>
+    </div>
+
+    <Label class="flex items-start gap-3 rounded-lg border p-3 hover:bg-accent/50 has-[[aria-checked=true]]:border-blue-600 has-[[aria-checked=true]]:bg-blue-50 dark:has-[[aria-checked=true]]:border-blue-900 dark:has-[[aria-checked=true]]:bg-blue-950">
+      <Checkbox
+        id="toggle-2"
+        :default-value="true"
+        class="data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white dark:data-[state=checked]:border-blue-700 dark:data-[state=checked]:bg-blue-700"
+      />
+      <div class="grid gap-1.5 font-normal">
+        <p class="text-sm font-medium leading-none">
+          启用消息通知
+        </p>
+        <p class="text-sm text-muted-foreground">
+          你可以随时开启或关闭消息通知。
+        </p>
+      </div>
+    </Label>
+  </div>
+</template>
+`
+}
+
+function comboboxBasicExampleSource() {
+  return `<script setup lang="ts">
+import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxList } from '@/components/ui/combobox'
+</script>
+
+<template>
+  <Combobox default-open open-on-focus>
+    <ComboboxAnchor>
+      <ComboboxInput placeholder="搜索组件..." />
+    </ComboboxAnchor>
+    <ComboboxList>
+      <ComboboxEmpty>未找到组件</ComboboxEmpty>
+      <ComboboxGroup heading="组件">
+        <ComboboxItem value="button">按钮 Button</ComboboxItem>
+        <ComboboxItem value="input">输入框 Input</ComboboxItem>
+        <ComboboxItem value="select">选择器 Select</ComboboxItem>
+      </ComboboxGroup>
+    </ComboboxList>
+  </Combobox>
+</template>
+`
+}
+
+function comboboxControlledExampleSource() {
+  return `<script setup lang="ts">
+import { ref } from 'vue'
+import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxList } from '@/components/ui/combobox'
+
+const value = ref('input')
+</script>
+
+<template>
+  <div class="grid w-full max-w-xs gap-2">
+    <Combobox v-model="value" open-on-focus>
+      <ComboboxAnchor>
+        <ComboboxInput placeholder="选择组件..." />
+      </ComboboxAnchor>
+      <ComboboxList>
+        <ComboboxEmpty>未找到组件</ComboboxEmpty>
+        <ComboboxGroup heading="组件">
+          <ComboboxItem value="button">按钮 Button</ComboboxItem>
+          <ComboboxItem value="input">输入框 Input</ComboboxItem>
+          <ComboboxItem value="select">选择器 Select</ComboboxItem>
+        </ComboboxGroup>
+      </ComboboxList>
+    </Combobox>
+    <p class="text-sm text-muted-foreground">
+      当前选中：{{ value }}
+    </p>
+  </div>
+</template>
+`
+}
+
+function comboboxMultipleExampleSource() {
+  return `<script setup lang="ts">
+import { ref } from 'vue'
+import { Check } from 'lucide-vue-next'
+import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxItemIndicator, ComboboxList } from '@/components/ui/combobox'
+
+const value = ref<string[]>(['button', 'input'])
+</script>
+
+<template>
+  <div class="grid w-full max-w-xs gap-2">
+    <Combobox v-model="value" multiple open-on-focus>
+      <ComboboxAnchor>
+        <ComboboxInput placeholder="搜索组件..." />
+      </ComboboxAnchor>
+      <ComboboxList>
+        <ComboboxEmpty>未找到组件</ComboboxEmpty>
+        <ComboboxGroup heading="组件">
+          <ComboboxItem value="button">
+            按钮 Button
+            <ComboboxItemIndicator><Check /></ComboboxItemIndicator>
+          </ComboboxItem>
+          <ComboboxItem value="input">
+            输入框 Input
+            <ComboboxItemIndicator><Check /></ComboboxItemIndicator>
+          </ComboboxItem>
+          <ComboboxItem value="select">
+            选择器 Select
+            <ComboboxItemIndicator><Check /></ComboboxItemIndicator>
+          </ComboboxItem>
+        </ComboboxGroup>
+      </ComboboxList>
+    </Combobox>
+    <p class="text-sm text-muted-foreground">
+      已选择：{{ value.join('、') }}
+    </p>
+  </div>
+</template>
+`
+}
+
+function comboboxGroupsExampleSource() {
+  return `<script setup lang="ts">
+import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxList, ComboboxSeparator } from '@/components/ui/combobox'
+</script>
+
+<template>
+  <Combobox default-open open-on-focus>
+    <ComboboxAnchor>
+      <ComboboxInput placeholder="搜索资源..." />
+    </ComboboxAnchor>
+    <ComboboxList>
+      <ComboboxEmpty>未找到资源</ComboboxEmpty>
+      <ComboboxGroup heading="基础组件">
+        <ComboboxItem value="button">按钮 Button</ComboboxItem>
+        <ComboboxItem value="input">输入框 Input</ComboboxItem>
+      </ComboboxGroup>
+      <ComboboxSeparator />
+      <ComboboxGroup heading="反馈组件">
+        <ComboboxItem value="alert">提示 Alert</ComboboxItem>
+        <ComboboxItem value="tooltip">气泡 Tooltip</ComboboxItem>
+      </ComboboxGroup>
+    </ComboboxList>
+  </Combobox>
+</template>
+`
+}
+
+function comboboxEmptyExampleSource() {
+  return `<script setup lang="ts">
+import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxInput, ComboboxList } from '@/components/ui/combobox'
+</script>
+
+<template>
+  <Combobox default-open open-on-focus>
+    <ComboboxAnchor>
+      <ComboboxInput model-value="没有结果" placeholder="搜索组件..." />
+    </ComboboxAnchor>
+    <ComboboxList>
+      <ComboboxEmpty>未找到匹配结果</ComboboxEmpty>
+    </ComboboxList>
+  </Combobox>
+</template>
+`
+}
+
+function comboboxTriggerExampleSource() {
+  return `<script setup lang="ts">
+import { ChevronsUpDown } from 'lucide-vue-next'
+import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxList, ComboboxTrigger } from '@/components/ui/combobox'
+</script>
+
+<template>
+  <Combobox default-open open-on-focus>
+    <ComboboxAnchor>
+      <ComboboxInput placeholder="搜索组件..." />
+      <ComboboxTrigger>
+        <ChevronsUpDown class="size-4 text-muted-foreground" />
+      </ComboboxTrigger>
+    </ComboboxAnchor>
+    <ComboboxList>
+      <ComboboxEmpty>未找到组件</ComboboxEmpty>
+      <ComboboxGroup heading="组件">
+        <ComboboxItem value="button">按钮 Button</ComboboxItem>
+        <ComboboxItem value="input">输入框 Input</ComboboxItem>
+        <ComboboxItem value="select">选择器 Select</ComboboxItem>
+      </ComboboxGroup>
+    </ComboboxList>
+  </Combobox>
+</template>
+`
+}
+
+function selectBasicExampleSource() {
+  return `<script setup lang="ts">
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+</script>
+
+<template>
+  <Select :default-value="'preview'" :default-open="true">
+    <SelectTrigger>
+      <SelectValue placeholder="选择发布环境" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>环境</SelectLabel>
+        <SelectItem value="preview">预览环境</SelectItem>
+        <SelectItem value="production">生产环境</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</template>
+`
+}
+
+function selectControlledExampleSource() {
+  return `<script setup lang="ts">
+import { ref } from 'vue'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+
+const value = ref('weekly')
+</script>
+
+<template>
+  <div class="grid w-full max-w-xs gap-2">
+    <Select v-model="value">
+      <SelectTrigger>
+        <SelectValue placeholder="选择同步频率" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>同步频率</SelectLabel>
+          <SelectItem value="daily">每日同步</SelectItem>
+          <SelectItem value="weekly">每周同步</SelectItem>
+          <SelectItem value="manual">手动同步</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+    <p class="text-sm text-muted-foreground">
+      当前选中：{{ value }}
+    </p>
+  </div>
+</template>
+`
+}
+
+function selectFruitsExampleSource() {
+  return `<script setup lang="ts">
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+</script>
+
+<template>
+  <Select>
+    <SelectTrigger class="w-[180px]">
+      <SelectValue placeholder="Select a fruit" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        <SelectItem value="apple">
+          Apple
+        </SelectItem>
+        <SelectItem value="banana">
+          Banana
+        </SelectItem>
+        <SelectItem value="blueberry">
+          Blueberry
+        </SelectItem>
+        <SelectItem value="grapes">
+          Grapes
+        </SelectItem>
+        <SelectItem value="pineapple">
+          Pineapple
+        </SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</template>
+`
+}
+
+function selectGroupsExampleSource() {
+  return `<script setup lang="ts">
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSeparator, SelectTrigger, SelectValue } from '@/components/ui/select'
+</script>
+
+<template>
+  <Select :default-open="true">
+    <SelectTrigger>
+      <SelectValue placeholder="选择组件" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>基础组件</SelectLabel>
+        <SelectItem value="button">按钮 Button</SelectItem>
+        <SelectItem value="input">输入框 Input</SelectItem>
+      </SelectGroup>
+      <SelectSeparator />
+      <SelectGroup>
+        <SelectLabel>反馈组件</SelectLabel>
+        <SelectItem value="alert">提示 Alert</SelectItem>
+        <SelectItem value="tooltip">气泡 Tooltip</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</template>
+`
+}
+
+function selectDisabledItemExampleSource() {
+  return `<script setup lang="ts">
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+</script>
+
+<template>
+  <Select :default-open="true">
+    <SelectTrigger>
+      <SelectValue placeholder="选择发布环境" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>环境</SelectLabel>
+        <SelectItem value="preview">预览环境</SelectItem>
+        <SelectItem value="production">生产环境</SelectItem>
+        <SelectItem value="disabled" disabled>维护中</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</template>
+`
+}
+
+function selectScrollExampleSource() {
+  return `<script setup lang="ts">
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectTrigger, SelectValue } from '@/components/ui/select'
+
+const options = Array.from({ length: 16 }, (_, index) => ({
+  value: \`option-\${index + 1}\`,
+  label: \`选项 \${index + 1}\`,
+}))
+</script>
+
+<template>
+  <Select :default-open="true">
+    <SelectTrigger>
+      <SelectValue placeholder="选择长列表选项" />
+    </SelectTrigger>
+    <SelectContent class="max-h-48">
+      <SelectScrollUpButton />
+      <SelectGroup>
+        <SelectLabel>长列表</SelectLabel>
+        <SelectItem v-for="item in options" :key="item.value" :value="item.value">
+          {{ item.label }}
+        </SelectItem>
+      </SelectGroup>
+      <SelectScrollDownButton />
+    </SelectContent>
+  </Select>
+</template>
+`
+}
+
+function selectItemTextExampleSource() {
+  return `<script setup lang="ts">
+import { Select, SelectContent, SelectGroup, SelectItem, SelectItemText, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+</script>
+
+<template>
+  <Select :default-value="'design'" :default-open="true">
+    <SelectTrigger>
+      <SelectValue placeholder="选择团队" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>团队</SelectLabel>
+        <SelectItem value="design">
+          <SelectItemText>
+            设计团队
+          </SelectItemText>
+        </SelectItem>
+        <SelectItem value="engineering">
+          <SelectItemText>
+            工程团队
+          </SelectItemText>
+        </SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
 </template>
 `
 }
@@ -1594,6 +2233,156 @@ import { InputGroup, InputGroupAddon, InputGroupButton } from '@/components/ui/i
 `
 }
 
+function tooltipPlacementExampleSource() {
+  return `<script setup lang="ts">
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Button } from '@/components/ui/button'
+
+const placements = [
+  { label: 'Top', side: 'top', content: '顶部提示' },
+  { label: 'Right', side: 'right', content: '右侧提示' },
+  { label: 'Bottom', side: 'bottom', content: '底部提示' },
+  { label: 'Left', side: 'left', content: '左侧提示' },
+] as const
+</script>
+
+<template>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <TooltipProvider v-for="item in placements" :key="item.side" :delay-duration="0">
+      <Tooltip :open="true">
+        <TooltipTrigger as-child>
+          <Button variant="outline">
+            {{ item.label }}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent :side="item.side">
+          {{ item.content }}
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  </div>
+</template>
+`
+}
+
+function tooltipSideOffsetExampleSource(offset, label) {
+  return `<script setup lang="ts">
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <TooltipProvider :delay-duration="0">
+    <Tooltip :default-open="true">
+      <TooltipTrigger as-child>
+        <Button variant="outline">
+          ${label}
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent side="top" :side-offset="${offset}">
+        sideOffset = ${offset}
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</template>
+`
+}
+
+function tooltipAlignOffsetExampleSource(align, offset, label) {
+  return `<script setup lang="ts">
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <TooltipProvider :delay-duration="0">
+    <Tooltip :default-open="true">
+      <TooltipTrigger as-child>
+        <Button variant="outline">
+          ${label}
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent side="top" align="${align}" :align-offset="${offset}">
+        alignOffset = ${offset}
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</template>
+`
+}
+
+function sheetSideExampleSource(side, label, title) {
+  return `<script setup lang="ts">
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <Sheet>
+    <SheetTrigger as-child>
+      <Button variant="outline">
+        ${label}
+      </Button>
+    </SheetTrigger>
+    <SheetContent side="${side}">
+      <SheetHeader>
+        <SheetTitle>${title}</SheetTitle>
+      </SheetHeader>
+    </SheetContent>
+  </Sheet>
+</template>
+`
+}
+
+function sheetClassExampleSource(componentName, tagName) {
+  return `<script setup lang="ts">
+import { ${componentName} } from '@/components/ui/sheet'
+</script>
+
+<template>
+  <${tagName} class="border-primary">
+    示例内容
+  </${tagName}>
+</template>
+`
+}
+
+function sheetWrappedApiExampleSource(title, body, side = 'right') {
+  return `<script setup lang="ts">
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <Sheet>
+    <SheetTrigger as-child>
+      <Button variant="outline">
+        打开
+      </Button>
+    </SheetTrigger>
+    <SheetContent side="${side}">
+      <SheetHeader>
+        <SheetTitle>${title}</SheetTitle>
+        <SheetDescription>
+          ${body}
+        </SheetDescription>
+      </SheetHeader>
+      <SheetFooter>
+        <SheetClose as-child>
+          <Button variant="outline">
+            关闭
+          </Button>
+        </SheetClose>
+        <Button>
+          保存
+        </Button>
+      </SheetFooter>
+    </SheetContent>
+  </Sheet>
+</template>
+`
+}
+
 function apiPreviewExampleSource(item, api) {
   const component = api.component
   const example = api.kind === 'prop'
@@ -1682,6 +2471,256 @@ function extraExampleSources(item) {
     },
   ]
 
+  if (item.name === 'avatar') return [
+    {
+      fileName: 'AvatarClass.vue',
+      title: 'Avatar.class',
+      previewName: 'avatar Avatar class',
+      source: avatarClassExampleSource(),
+    },
+    {
+      fileName: 'AvatarSize.vue',
+      title: 'Avatar.size',
+      previewName: 'avatar Avatar size',
+      source: avatarSizeExampleSource(),
+    },
+    {
+      fileName: 'AvatarShape.vue',
+      title: 'Avatar.shape',
+      previewName: 'avatar Avatar shape',
+      source: avatarShapeExampleSource(),
+    },
+    {
+      fileName: 'AvatarDefaultSlot.vue',
+      title: 'Avatar slot: default',
+      previewName: 'avatar Avatar default slot',
+      source: avatarDefaultSlotExampleSource(),
+    },
+    {
+      fileName: 'AvatarImageSlot.vue',
+      title: 'AvatarImage 图片',
+      previewName: 'avatar AvatarImage image',
+      source: avatarImageExampleSource(),
+    },
+    {
+      fileName: 'AvatarFallbackSlot.vue',
+      title: 'AvatarFallback 回退',
+      previewName: 'avatar AvatarFallback fallback',
+      source: avatarFallbackExampleSource(),
+    },
+  ]
+
+  if (item.name === 'checkbox') return [
+    {
+      fileName: 'Group.vue',
+      title: 'Group 组合用法',
+      previewName: 'checkbox group',
+      source: checkboxGroupExampleSource(),
+    },
+    {
+      fileName: 'Checked.vue',
+      title: 'Checked 默认选中',
+      previewName: 'checkbox checked',
+      source: checkboxCheckedExampleSource(),
+    },
+    {
+      fileName: 'Disabled.vue',
+      title: 'Disabled 禁用',
+      previewName: 'checkbox disabled',
+      source: checkboxDisabledExampleSource(),
+    },
+    {
+      fileName: 'ModelValue.vue',
+      title: 'ModelValue 受控值',
+      previewName: 'checkbox model value',
+      source: checkboxModelValueExampleSource(),
+    },
+    {
+      fileName: 'CheckboxClass.vue',
+      title: 'Checkbox.class',
+      previewName: 'checkbox Checkbox class',
+      source: checkboxClassExampleSource(),
+    },
+    {
+      fileName: 'CheckboxDefaultSlot.vue',
+      title: 'Checkbox slot: default',
+      previewName: 'checkbox Checkbox default slot',
+      source: checkboxDefaultSlotExampleSource(),
+    },
+  ]
+
+  if (item.name === 'combobox') return [
+    {
+      fileName: 'Controlled.vue',
+      title: 'ModelValue 受控值',
+      previewName: 'combobox controlled',
+      source: comboboxControlledExampleSource(),
+    },
+    {
+      fileName: 'Multiple.vue',
+      title: 'Multiple 多选',
+      previewName: 'combobox multiple',
+      source: comboboxMultipleExampleSource(),
+    },
+    {
+      fileName: 'Groups.vue',
+      title: 'Group 分组选项',
+      previewName: 'combobox groups',
+      source: comboboxGroupsExampleSource(),
+    },
+    {
+      fileName: 'Empty.vue',
+      title: 'Empty 空状态',
+      previewName: 'combobox empty',
+      source: comboboxEmptyExampleSource(),
+    },
+    {
+      fileName: 'Trigger.vue',
+      title: 'Trigger 触发按钮',
+      previewName: 'combobox trigger',
+      source: comboboxTriggerExampleSource(),
+    },
+  ]
+
+  if (item.name === 'dialog') return [
+    {
+      fileName: 'Basic.vue',
+      title: '基础示例',
+      previewName: 'dialog basic',
+      source: `<script setup lang="ts">
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <Dialog>
+    <DialogTrigger as-child>
+      <Button variant="outline">
+        打开对话框
+      </Button>
+    </DialogTrigger>
+    <DialogContent>
+      <div class="text-sm text-muted-foreground">
+        这是一个基础 Dialog 示例。
+      </div>
+    </DialogContent>
+  </Dialog>
+</template>
+`,
+    },
+    {
+      fileName: 'Detail.vue',
+      title: '标题 / 描述 / 底部操作',
+      previewName: 'dialog detail',
+      source: `<script setup lang="ts">
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <Dialog :default-open="true">
+    <DialogTrigger as-child>
+      <Button variant="outline">
+        编辑资料
+      </Button>
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>编辑资料</DialogTitle>
+        <DialogDescription>更新团队成员的基础信息。</DialogDescription>
+      </DialogHeader>
+      <div class="rounded-[8px] bg-[#F5F6F7] p-4 text-sm">
+        姓名：林清和
+      </div>
+      <DialogFooter>
+        <Button variant="outline">
+          取消
+        </Button>
+        <Button>
+          保存更改
+        </Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+</template>
+`,
+    },
+    {
+      fileName: 'Scroll.vue',
+      title: 'Scroll 长内容',
+      previewName: 'dialog scroll',
+      source: `<script setup lang="ts">
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogScrollContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <Dialog>
+    <DialogTrigger as-child>
+      <Button variant="outline">
+        查看长内容
+      </Button>
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>发布检查</DialogTitle>
+        <DialogDescription>确认文档、registry 和类型检查均已通过。</DialogDescription>
+      </DialogHeader>
+      <DialogScrollContent class="max-h-40 rounded-[8px] border border-[#E2E4E9] bg-[#F5F6F7] p-4 text-sm text-[#434655]">
+        <p>1. 文档内容已更新。</p>
+        <p>2. registry 构建通过。</p>
+        <p>3. 类型检查通过。</p>
+        <p>4. 预览页已验证。</p>
+        <p>5. 其余内容用于测试滚动容器。</p>
+        <p>6. 继续补充多行内容。</p>
+        <p>7. 确认滚动区域可以正常显示。</p>
+      </DialogScrollContent>
+    </DialogContent>
+  </Dialog>
+</template>
+`,
+    },
+  ]
+
+  if (item.name === 'select') return [
+    {
+      fileName: 'Fruits.vue',
+      title: 'Fruits 基础选择',
+      previewName: 'select fruits',
+      source: selectFruitsExampleSource(),
+    },
+    {
+      fileName: 'Controlled.vue',
+      title: 'ModelValue 受控值',
+      previewName: 'select controlled',
+      source: selectControlledExampleSource(),
+    },
+    {
+      fileName: 'Groups.vue',
+      title: 'Group 分组选项',
+      previewName: 'select groups',
+      source: selectGroupsExampleSource(),
+    },
+    {
+      fileName: 'DisabledItem.vue',
+      title: 'Disabled 禁用选项',
+      previewName: 'select disabled item',
+      source: selectDisabledItemExampleSource(),
+    },
+    {
+      fileName: 'Scroll.vue',
+      title: 'Scroll 长列表',
+      previewName: 'select scroll',
+      source: selectScrollExampleSource(),
+    },
+    {
+      fileName: 'ItemText.vue',
+      title: 'ItemText 自定义文本',
+      previewName: 'select item text',
+      source: selectItemTextExampleSource(),
+    },
+  ]
+
   if (item.name === 'input-group') return [
     {
       fileName: 'Icon.vue',
@@ -1745,6 +2784,140 @@ function extraExampleSources(item) {
     },
   ]
 
+  if (item.name === 'sheet') return [
+    {
+      fileName: 'RightSide.vue',
+      title: 'RightSide 右侧展开',
+      previewName: 'sheet right side',
+      source: sheetSideExampleSource('right', '右侧展开', '右侧 Sheet'),
+    },
+    {
+      fileName: 'LeftSide.vue',
+      title: 'LeftSide 左侧展开',
+      previewName: 'sheet left side',
+      source: sheetSideExampleSource('left', '左侧展开', '左侧 Sheet'),
+    },
+    {
+      fileName: 'SheetDescription.vue',
+      title: 'SheetDescription 说明文本',
+      previewName: 'sheet description',
+      source: sheetWrappedApiExampleSource('说明文本', '确认文档、registry 和类型检查均已通过。'),
+    },
+    {
+      fileName: 'SheetFooter.vue',
+      title: 'SheetFooter 底部操作',
+      previewName: 'sheet footer',
+      source: sheetWrappedApiExampleSource('底部操作', 'SheetFooter 负责放置底部动作。'),
+    },
+    {
+      fileName: 'SheetHeader.vue',
+      title: 'SheetHeader 标题区',
+      previewName: 'sheet header',
+      source: sheetWrappedApiExampleSource('标题区', 'SheetHeader 负责放置标题与说明。'),
+    },
+    {
+      fileName: 'SheetTitle.vue',
+      title: 'SheetTitle 标题',
+      previewName: 'sheet title',
+      source: sheetWrappedApiExampleSource('发布检查', 'SheetTitle 用于强调当前面板标题。'),
+    },
+    {
+      fileName: 'SheetClose.vue',
+      title: 'SheetClose 关闭',
+      previewName: 'sheet close',
+      source: sheetWrappedApiExampleSource('关闭示例', 'SheetClose 可以通过 as-child 组合到按钮里。'),
+    },
+    {
+      fileName: 'SheetTrigger.vue',
+      title: 'SheetTrigger 触发',
+      previewName: 'sheet trigger',
+      source: sheetWrappedApiExampleSource('触发示例', 'SheetTrigger 负责打开 Sheet。'),
+    },
+  ]
+
+  if (item.name === 'tooltip') return [
+    {
+      fileName: 'Placement.vue',
+      title: 'Placement 位置控制',
+      previewName: 'tooltip placement',
+      source: tooltipPlacementExampleSource(),
+    },
+    {
+      fileName: 'SideOffsetSmall.vue',
+      title: 'SideOffset 小间距',
+      previewName: 'tooltip side offset small',
+      source: tooltipSideOffsetExampleSource(4, 'SideOffset 4'),
+    },
+    {
+      fileName: 'SideOffsetLarge.vue',
+      title: 'SideOffset 大间距',
+      previewName: 'tooltip side offset large',
+      source: tooltipSideOffsetExampleSource(16, 'SideOffset 16'),
+    },
+    {
+      fileName: 'AlignOffsetSmall.vue',
+      title: 'AlignOffset Start',
+      previewName: 'tooltip align offset start',
+      source: tooltipAlignOffsetExampleSource('start', 20, 'Start + 20'),
+    },
+    {
+      fileName: 'AlignOffsetLarge.vue',
+      title: 'AlignOffset End',
+      previewName: 'tooltip align offset end',
+      source: tooltipAlignOffsetExampleSource('end', -20, 'End - 20'),
+    },
+    {
+      fileName: 'Arrow.vue',
+      title: 'Arrow 三角标',
+      previewName: 'tooltip arrow',
+      source: `<script setup lang="ts">
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <TooltipProvider :delay-duration="0">
+    <Tooltip :default-open="true">
+      <TooltipTrigger as-child>
+        <Button variant="outline">
+          Arrow 三角标
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent side="top">
+        TooltipContent 默认带箭头
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</template>
+`,
+    },
+    {
+      fileName: 'DefaultOpen.vue',
+      title: 'DefaultOpen 默认展开',
+      previewName: 'tooltip default open',
+      source: `<script setup lang="ts">
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <TooltipProvider :delay-duration="0">
+    <Tooltip :open="true">
+      <TooltipTrigger as-child>
+        <Button variant="outline">
+          默认展开
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent side="top">
+        Tooltip 默认展开状态
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</template>
+`,
+    },
+  ]
+
   return []
 }
 
@@ -1767,6 +2940,11 @@ function isCompletedComponent(item) {
 }
 
 function isPreviewSafeApi(item, api) {
+  if (item.name === 'avatar') return false
+  if (item.name === 'checkbox') return false
+  if (item.name === 'combobox') return false
+  if (item.name === 'select') return false
+
   const safeComponents = new Set([
     'Alert',
     'AlertDescription',

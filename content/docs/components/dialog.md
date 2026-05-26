@@ -18,6 +18,21 @@ Dialog 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确�
 ::component-preview{name="dialog" src="dialog/Basic.vue"}
 ::
 
+### 基础示例
+
+::component-preview{name="dialog basic" src="dialog/Basic.vue"}
+::
+
+### 标题 / 描述 / 底部操作
+
+::component-preview{name="dialog detail" src="dialog/Detail.vue"}
+::
+
+### Scroll 长内容
+
+::component-preview{name="dialog scroll" src="dialog/Scroll.vue"}
+::
+
 ## 安装
 
 ```bash

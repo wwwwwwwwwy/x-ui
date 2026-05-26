@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
 </script>
 
 <template>
-  <div class="rounded-[8px] border border-[#E2E4E9] bg-white p-5">
-    <Checkbox>
-      中文示例内容
-    </Checkbox>
+  <div class="flex items-center gap-2">
+    <Checkbox id="terms" />
+    <Label for="terms">接受服务条款</Label>
   </div>
 </template>

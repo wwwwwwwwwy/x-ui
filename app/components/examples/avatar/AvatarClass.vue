@@ -4,6 +4,9 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 <template>
   <div class="flex flex-wrap items-center gap-3">
-    <Avatar class="border-primary text-primary">自定义样式</Avatar>
+    <Avatar class="border border-primary text-primary">
+      <AvatarImage src="https://dev.meos.center/meri-plus/avatar-default.png" alt="林清和" />
+      <AvatarFallback>林</AvatarFallback>
+    </Avatar>
   </div>
 </template>

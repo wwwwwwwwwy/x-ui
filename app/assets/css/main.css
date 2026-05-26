@@ -35,6 +35,8 @@
   --scrollbar-thumb: 213 10.3% 79%;
   --scrollbar-thumb-hover: 214 20.6% 13.3%;
   --scrollbar-radius: 9999px;
+  --gray-400: #c4c9cf;
+  --overlay: rgb(0 0 0 / 0.8);
 }
 
 @theme inline {
@@ -63,6 +65,8 @@
   --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
+  --color-gray-400: var(--gray-400);
+  --color-overlay: var(--overlay);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

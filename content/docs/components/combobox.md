@@ -18,6 +18,31 @@ Combobox 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确
 ::component-preview{name="combobox" src="combobox/Basic.vue"}
 ::
 
+### ModelValue 受控值
+
+::component-preview{name="combobox controlled" src="combobox/Controlled.vue"}
+::
+
+### Multiple 多选
+
+::component-preview{name="combobox multiple" src="combobox/Multiple.vue"}
+::
+
+### Group 分组选项
+
+::component-preview{name="combobox groups" src="combobox/Groups.vue"}
+::
+
+### Empty 空状态
+
+::component-preview{name="combobox empty" src="combobox/Empty.vue"}
+::
+
+### Trigger 触发按钮
+
+::component-preview{name="combobox trigger" src="combobox/Trigger.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -27,7 +52,7 @@ bunx shadcn-vue@latest add http://localhost:3000/r/combobox.json
 ## 导入
 
 ```ts
-import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxList, ComboboxSeparator } from '@/components/ui/combobox'
+import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxList, ComboboxSeparator, ComboboxTrigger } from '@/components/ui/combobox'
 ```
 
 ## 基础用法
@@ -48,6 +73,7 @@ import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, 
 - `ComboboxItem`
 - `ComboboxList`
 - `ComboboxSeparator`
+- `ComboboxTrigger`
 
 ## 源码 API
 
@@ -93,7 +119,7 @@ import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, 
 
 ### Exports
 
-- `export { ComboboxCancel, ComboboxItemIndicator, ComboboxTrigger } from "reka-ui"`
+- `export { ComboboxCancel, ComboboxItemIndicator } from "reka-ui"`
 
 ## API 示例
 

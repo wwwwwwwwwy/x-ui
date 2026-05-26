@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 </script>
 
 <template>
-  <Sheet :default-open="true">
+  <Sheet>
     <SheetTrigger as-child><Button>打开侧边面板</Button></SheetTrigger>
     <SheetContent>
       <SheetHeader>

@@ -38,6 +38,16 @@ Avatar 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确�
 ::component-preview{name="avatar Avatar default slot" src="avatar/AvatarDefaultSlot.vue"}
 ::
 
+### AvatarImage 图片
+
+::component-preview{name="avatar AvatarImage image" src="avatar/AvatarImageSlot.vue"}
+::
+
+### AvatarFallback 回退
+
+::component-preview{name="avatar AvatarFallback fallback" src="avatar/AvatarFallbackSlot.vue"}
+::
+
 ## 安装
 
 ```bash

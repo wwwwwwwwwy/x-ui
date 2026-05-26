@@ -15,8 +15,8 @@ const forwarded = useForwardProps(delegatedProps)
 <template>
   <ComboboxTrigger
     v-bind="forwarded"
-    :class="cn('', props.class)"
-    tabindex="0"
+    :class="cn('absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center', props.class)"
+    tabindex="-1"
   >
     <slot />
   </ComboboxTrigger>

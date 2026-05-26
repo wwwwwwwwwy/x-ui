@@ -20,7 +20,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
   <ContextMenuItem
     v-bind="forwarded"
     :class="cn(
-      'relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none [&:not([data-disabled])]:focus:bg-accent [&:not([data-disabled])]:focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
+      'relative flex w-full cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-left text-[14px] font-normal text-gray-900 outline-none [&:not([data-disabled])]:hover:bg-gray-400/30 [&:not([data-disabled])]:focus:bg-gray-400/30 [&:not([data-disabled])]:focus:text-gray-900 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
       inset && 'pl-8',
       props.class,
     )"

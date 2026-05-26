@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 </script>
 
 <template>
   <div class="flex flex-wrap items-center gap-3">
-    <Avatar>默认插槽内容</Avatar>
+    <Avatar>
+      <AvatarFallback>林</AvatarFallback>
+    </Avatar>
   </div>
 </template>

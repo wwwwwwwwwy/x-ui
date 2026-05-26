@@ -18,6 +18,41 @@ Tooltip 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确�
 ::component-preview{name="tooltip" src="tooltip/Basic.vue"}
 ::
 
+### Placement 位置控制
+
+::component-preview{name="tooltip placement" src="tooltip/Placement.vue"}
+::
+
+### SideOffset 小间距
+
+::component-preview{name="tooltip side offset small" src="tooltip/SideOffsetSmall.vue"}
+::
+
+### SideOffset 大间距
+
+::component-preview{name="tooltip side offset large" src="tooltip/SideOffsetLarge.vue"}
+::
+
+### AlignOffset Start
+
+::component-preview{name="tooltip align offset start" src="tooltip/AlignOffsetSmall.vue"}
+::
+
+### AlignOffset End
+
+::component-preview{name="tooltip align offset end" src="tooltip/AlignOffsetLarge.vue"}
+::
+
+### Arrow 三角标
+
+::component-preview{name="tooltip arrow" src="tooltip/Arrow.vue"}
+::
+
+### DefaultOpen 默认展开
+
+::component-preview{name="tooltip default open" src="tooltip/DefaultOpen.vue"}
+::
+
 ## 安装
 
 ```bash
@@ -27,7 +62,7 @@ bunx shadcn-vue@latest add http://localhost:3000/r/tooltip.json
 ## 导入
 
 ```ts
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Tooltip, TooltipArrow, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 ```
 
 ## 基础用法
@@ -41,6 +76,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 ## 组件导出
 
 - `Tooltip`
+- `TooltipArrow`
 - `TooltipContent`
 - `TooltipProvider`
 - `TooltipTrigger`

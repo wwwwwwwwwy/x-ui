@@ -3,6 +3,7 @@ import type { TooltipContentEmits, TooltipContentProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
 import { TooltipContent, TooltipPortal, useForwardPropsEmits } from "reka-ui"
+import { TooltipArrow } from "."
 import { cn } from "@/lib/utils"
 
 defineOptions({
@@ -22,8 +23,9 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 
 <template>
   <TooltipPortal>
-    <TooltipContent v-bind="{ ...forwarded, ...$attrs }" :class="cn('z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2', props.class)">
+    <TooltipContent v-bind="{ ...forwarded, ...$attrs }" :class="cn('z-50 overflow-visible rounded-[4px] border border-gray-300 bg-popover px-3 py-2 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=bottom]:[&_[data-slot=tooltip-arrow]]:translate-y-[-20%] data-[side=left]:slide-in-from-right-2 data-[side=left]:[&_[data-slot=tooltip-arrow]]:translate-y-[-20%] data-[side=right]:slide-in-from-left-2 data-[side=right]:[&_[data-slot=tooltip-arrow]]:translate-y-[-20%] data-[side=top]:slide-in-from-bottom-2 data-[side=top]:[&_[data-slot=tooltip-arrow]]:translate-y-[-20%]', props.class)">
       <slot />
+      <TooltipArrow class="z-[1] fill-popover stroke-gray-300" />
     </TooltipContent>
   </TooltipPortal>
 </template>

@@ -13,13 +13,16 @@ const emits = defineEmits<ComboboxInputEmits>()
 
 const delegatedProps = reactiveOmit(props, "class")
 
+/**
+ * 合并 props 与 emits 后转发给 reka-ui ComboboxInput。
+ */
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
   <ComboboxInput
     v-bind="forwarded"
-    :class="cn('flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50', props.class)"
+    :class="cn('flex h-8 min-h-[30px] w-full rounded-[4px] border border-input bg-[var(--gray-0)] px-3 py-0 text-[14px] font-normal leading-[1.5] text-foreground shadow-none outline-none file:border-0 file:bg-transparent file:text-foreground file:text-[14px] file:font-normal placeholder:text-[#C3C7CB] enabled:hover:border-primary focus-visible:border-primary focus-visible:caret-primary focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:bg-[var(--gray-200)] disabled:text-[var(--gray-400)] disabled:opacity-100', props.class)"
   >
     <slot />
   </ComboboxInput>

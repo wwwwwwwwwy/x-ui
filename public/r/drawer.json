@@ -16,7 +16,7 @@
     },
     {
       "path": "registry/default/drawer/DrawerContent.vue",
-      "content": "<script lang=\"ts\" setup>\nimport type { DialogContentEmits, DialogContentProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { useForwardPropsEmits } from \"reka-ui\"\nimport { DrawerContent, DrawerPortal } from \"vaul-vue\"\nimport { cn } from \"@/lib/utils\"\nimport DrawerOverlay from \"./DrawerOverlay.vue\"\n\nconst props = defineProps<DialogContentProps & { class?: HTMLAttributes[\"class\"] }>()\nconst emits = defineEmits<DialogContentEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DrawerPortal>\n    <DrawerOverlay />\n    <DrawerContent\n      v-bind=\"forwarded\" :class=\"cn(\n        'fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background',\n        props.class,\n      )\"\n    >\n      <div class=\"mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted\" />\n      <slot />\n    </DrawerContent>\n  </DrawerPortal>\n</template>\n",
+      "content": "<script lang=\"ts\" setup>\nimport type { DialogContentEmits, DialogContentProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { useForwardPropsEmits } from \"reka-ui\"\nimport { DrawerContent, DrawerPortal } from \"vaul-vue\"\nimport { cn } from \"@/lib/utils\"\nimport DrawerOverlay from \"./DrawerOverlay.vue\"\n\nconst props = defineProps<DialogContentProps & { class?: HTMLAttributes[\"class\"] }>()\nconst emits = defineEmits<DialogContentEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DrawerPortal>\n    <DrawerOverlay />\n    <DrawerContent\n      v-bind=\"forwarded\" :class=\"cn(\n        'fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] bg-background',\n        props.class,\n      )\"\n    >\n      <div class=\"mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted\" />\n      <slot />\n    </DrawerContent>\n  </DrawerPortal>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/drawer/DrawerContent.vue"
     },
@@ -40,13 +40,13 @@
     },
     {
       "path": "registry/default/drawer/DrawerOverlay.vue",
-      "content": "<script lang=\"ts\" setup>\nimport type { DialogOverlayProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { DrawerOverlay } from \"vaul-vue\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<DialogOverlayProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DrawerOverlay v-bind=\"delegatedProps\" :class=\"cn('fixed inset-0 z-50 bg-black/80', props.class)\" />\n</template>\n",
+      "content": "<script lang=\"ts\" setup>\nimport type { DialogOverlayProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { DrawerOverlay } from \"vaul-vue\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<DialogOverlayProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DrawerOverlay v-bind=\"delegatedProps\" :class=\"cn('fixed inset-0 z-50 bg-overlay', props.class)\" />\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/drawer/DrawerOverlay.vue"
     },
     {
       "path": "registry/default/drawer/DrawerTitle.vue",
-      "content": "<script lang=\"ts\" setup>\nimport type { DrawerTitleProps } from \"vaul-vue\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { DrawerTitle } from \"vaul-vue\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<DrawerTitleProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DrawerTitle v-bind=\"delegatedProps\" :class=\"cn('text-lg font-semibold leading-none tracking-tight', props.class)\">\n    <slot />\n  </DrawerTitle>\n</template>\n",
+      "content": "<script lang=\"ts\" setup>\nimport type { DrawerTitleProps } from \"vaul-vue\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { DrawerTitle } from \"vaul-vue\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<DrawerTitleProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DrawerTitle v-bind=\"delegatedProps\" :class=\"cn('text-[18px] font-bold leading-[1.4] text-[var(--gray-900)]', props.class)\">\n    <slot />\n  </DrawerTitle>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/drawer/DrawerTitle.vue"
     },

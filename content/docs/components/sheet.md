@@ -18,6 +18,46 @@ Sheet 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层
 ::component-preview{name="sheet" src="sheet/Basic.vue"}
 ::
 
+### RightSide 右侧展开
+
+::component-preview{name="sheet right side" src="sheet/RightSide.vue"}
+::
+
+### LeftSide 左侧展开
+
+::component-preview{name="sheet left side" src="sheet/LeftSide.vue"}
+::
+
+### SheetDescription 说明文本
+
+::component-preview{name="sheet description" src="sheet/SheetDescription.vue"}
+::
+
+### SheetFooter 底部操作
+
+::component-preview{name="sheet footer" src="sheet/SheetFooter.vue"}
+::
+
+### SheetHeader 标题区
+
+::component-preview{name="sheet header" src="sheet/SheetHeader.vue"}
+::
+
+### SheetTitle 标题
+
+::component-preview{name="sheet title" src="sheet/SheetTitle.vue"}
+::
+
+### SheetClose 关闭
+
+::component-preview{name="sheet close" src="sheet/SheetClose.vue"}
+::
+
+### SheetTrigger 触发
+
+::component-preview{name="sheet trigger" src="sheet/SheetTrigger.vue"}
+::
+
 ## 安装
 
 ```bash
