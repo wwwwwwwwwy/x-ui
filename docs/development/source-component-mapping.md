@@ -19,6 +19,12 @@
 - registry JSON 静态分发在 `public/r/*.json`。
 - 组件 API 文档在 `content/docs/components/*.md`。
 
+## 开发索引
+
+- [组件依赖关系](./component-dependency-map.md)
+- [组件样式复用清单](./source-component-comparisons/style-reuse-checklist.md)
+- [旧组件与当前组件差异对照](./source-component-comparisons/)
+
 ## 直接或基本对应
 
 | 旧组件 | 旧导出 | 当前组件 | 对应说明 |
