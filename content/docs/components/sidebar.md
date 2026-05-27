@@ -18,6 +18,16 @@ Sidebar 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确�
 ::component-preview{name="sidebar" src="sidebar/Basic.vue"}
 ::
 
+### Menu 状态与操作
+
+::component-preview{name="sidebar menu states" src="sidebar/MenuStates.vue"}
+::
+
+### SidebarInput 搜索
+
+::component-preview{name="sidebar input" src="sidebar/Input.vue"}
+::
+
 ## 安装
 
 ```bash

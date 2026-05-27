@@ -18,6 +18,16 @@ FormControl 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明
 ::component-preview{name="form" src="form/Basic.vue"}
 ::
 
+### FormControl 表单控件
+
+::component-preview{name="form control" src="form/Control.vue"}
+::
+
+### FormMessage 校验消息
+
+::component-preview{name="form message" src="form/Message.vue"}
+::
+
 ## 安装
 
 ```bash

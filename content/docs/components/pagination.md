@@ -18,6 +18,16 @@ Pagination 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明�
 ::component-preview{name="pagination" src="pagination/Basic.vue"}
 ::
 
+### ShowEdges 首尾页
+
+::component-preview{name="pagination edges" src="pagination/Edges.vue"}
+::
+
+### Page 受控页码
+
+::component-preview{name="pagination controlled" src="pagination/Controlled.vue"}
+::
+
 ## 安装
 
 ```bash

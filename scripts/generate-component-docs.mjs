@@ -413,22 +413,13 @@ import { Button } from '@/components/ui/button'
     <CardFooter><Button size="sm">查看详情</Button></CardFooter>
   </Card>
 </template>`,
-    'carousel': `<script setup lang="ts">
-import { Card, CardContent } from '@/components/ui/card'
-${importLine(['Carousel', 'CarouselContent', 'CarouselItem', 'CarouselNext', 'CarouselPrevious'], item.name)}
-</script>
+    'carousel': `${importLine(['Carousel', 'CarouselContent', 'CarouselItem', 'CarouselNext', 'CarouselPrevious'], item.name)}
 
 <template>
-  <Carousel class="w-full max-w-xs">
+  <Carousel class="mx-auto w-full max-w-sm">
     <CarouselContent>
-      <CarouselItem v-for="i in 5" :key="i">
-        <div class="p-1">
-          <Card>
-            <CardContent class="flex aspect-square items-center justify-center p-6">
-              <span class="text-4xl font-semibold">{{ i }}</span>
-            </CardContent>
-          </Card>
-        </div>
+      <CarouselItem v-for="demo in ['组件预览', '源码示例', '安装说明']" :key="demo">
+        <div class="flex h-28 items-center justify-center rounded-[8px] border border-[#E2E4E9] bg-[#F5F6F7] text-sm font-semibold">{{ demo }}</div>
       </CarouselItem>
     </CarouselContent>
     <CarouselPrevious />
@@ -488,7 +479,7 @@ const open = ref(true)
     'command': `${importLine(['Command', 'CommandEmpty', 'CommandGroup', 'CommandInput', 'CommandItem', 'CommandList', 'CommandSeparator', 'CommandShortcut'], item.name)}
 
 <template>
-  <Command class="rounded-[8px] border border-[#E2E4E9]">
+  <Command class="rounded-[8px] border">
     <CommandInput placeholder="输入命令或组件名称..." />
     <CommandList>
       <CommandEmpty>暂无匹配结果</CommandEmpty>
@@ -767,7 +758,7 @@ const value = ref('weekly')
 <template>
   <ResizablePanelGroup
     direction="horizontal"
-    class="max-w-md rounded-lg border-[#E2E4E9] md:min-w-[450px]"
+    class="max-w-md rounded-lg border md:min-w-[450px]"
   >
     <ResizablePanel :default-size="50">
       <div class="flex h-[200px] items-center justify-center p-6">
@@ -888,29 +879,14 @@ const value = ref([64])
     <Slider v-model="value" :max="100" :step="1" />
   </div>
 </template>`,
-    'sonner': `<!-- eslint-disable no-console -->
-<!-- eslint-disable no-template-curly-in-string -->
-<script setup lang="ts">
-import { toast } from 'vue-sonner'
-
-import { Button } from '@/components/ui/button'
-</script>
+    'sonner': `${importLine(['Toaster'], item.name)}
 
 <template>
-  <Button
-    variant="outline"
-    @click="() =>
-      toast('Event has been created', {
-        description: 'Sunday, December 03, 2023 at 9:00 AM',
-        action: {
-          label: 'Undo',
-          onClick: () => console.log('Undo'),
-        },
-      })
-    "
-  >
-    Show Toast
-  </Button>
+  <div class="space-y-4">
+    <Toaster />
+    <p class="text-sm font-semibold">通知容器已挂载</p>
+    <p class="text-xs text-[#434655]">业务页面可通过 vue-sonner 的 toast 方法触发中文通知。</p>
+  </div>
 </template>`,
     'spinner': `${importLine(['Spinner'], item.name)}
 
@@ -1032,10 +1008,8 @@ function customDemoSource(item) {
 function componentExampleSource(item, indexExports) {
   if (item.name === 'input') return inputBasicExampleSource()
   if (item.name === 'checkbox') return checkboxBasicExampleSource()
-  if (item.name === 'carousel') return exampleSource(item, indexExports).trimEnd() + '\n'
   if (item.name === 'combobox') return comboboxBasicExampleSource()
   if (item.name === 'select') return selectBasicExampleSource()
-  if (item.name === 'sonner') return exampleSource(item, indexExports).trimEnd() + '\n'
 
   return (customDemoSource(item) || withScriptSetup(exampleSource(item, indexExports))).trimEnd() + '\n'
 }
@@ -3130,6 +3104,421 @@ import { Button } from '@/components/ui/button'
     },
   ]
 
+  if (item.name === 'field') return [
+    {
+      fileName: 'Orientation.vue',
+      title: 'Orientation 布局方向',
+      previewName: 'field orientation',
+      source: `<script setup lang="ts">
+import { Field, FieldContent, FieldDescription, FieldLabel, FieldTitle } from '@/components/ui/field'
+</script>
+
+<template>
+  <div class="grid w-full max-w-md gap-4">
+    <Field orientation="vertical">
+      <FieldLabel>垂直布局</FieldLabel>
+      <FieldDescription>标签、标题和说明从上到下排列。</FieldDescription>
+    </Field>
+    <Field orientation="horizontal">
+      <FieldContent>
+        <FieldTitle>水平布局</FieldTitle>
+        <FieldDescription>适合开关、复选框等紧凑表单项。</FieldDescription>
+      </FieldContent>
+      <span class="text-sm text-[#434655]">已启用</span>
+    </Field>
+  </div>
+</template>
+`,
+    },
+    {
+      fileName: 'Error.vue',
+      title: 'Error 错误提示',
+      previewName: 'field error',
+      source: `<script setup lang="ts">
+import { Field, FieldDescription, FieldError, FieldLabel } from '@/components/ui/field'
+import { Input } from '@/components/ui/input'
+</script>
+
+<template>
+  <Field data-invalid="true" class="max-w-sm">
+    <FieldLabel>项目标识</FieldLabel>
+    <Input aria-invalid placeholder="x-ui" />
+    <FieldDescription>只能使用小写字母、数字和连字符。</FieldDescription>
+    <FieldError>项目标识已存在，请换一个名称。</FieldError>
+  </Field>
+</template>
+`,
+    },
+    {
+      fileName: 'Separator.vue',
+      title: 'Separator 分组分隔',
+      previewName: 'field separator',
+      source: `<script setup lang="ts">
+import { Field, FieldDescription, FieldGroup, FieldLabel, FieldSeparator, FieldSet, FieldTitle } from '@/components/ui/field'
+</script>
+
+<template>
+  <FieldSet class="max-w-sm">
+    <FieldGroup>
+      <Field>
+        <FieldLabel>基础信息</FieldLabel>
+        <FieldTitle>组件名称</FieldTitle>
+        <FieldDescription>用于 registry 和文档导航。</FieldDescription>
+      </Field>
+      <FieldSeparator>高级配置</FieldSeparator>
+      <Field>
+        <FieldLabel>发布策略</FieldLabel>
+        <FieldDescription>提交前需要通过文档生成和类型检查。</FieldDescription>
+      </Field>
+    </FieldGroup>
+  </FieldSet>
+</template>
+`,
+    },
+  ]
+
+  if (item.name === 'form') return [
+    {
+      fileName: 'Control.vue',
+      title: 'FormControl 表单控件',
+      previewName: 'form control',
+      source: `<script setup lang="ts">
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Form } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+
+function onSubmit(values: Record<string, unknown>) {
+  console.log(values)
+}
+</script>
+
+<template>
+  <Form v-slot="{ handleSubmit }">
+    <form class="grid w-full max-w-sm gap-4" @submit="handleSubmit($event, onSubmit)">
+      <FormField v-slot="{ componentField }" name="name">
+        <FormItem>
+          <FormLabel>项目名称</FormLabel>
+          <FormControl>
+            <Input v-bind="componentField" placeholder="x-ui registry" />
+          </FormControl>
+          <FormDescription>用于展示在文档站导航和 registry 信息里。</FormDescription>
+          <FormMessage />
+        </FormItem>
+      </FormField>
+    </form>
+  </Form>
+</template>
+`,
+    },
+    {
+      fileName: 'Message.vue',
+      title: 'FormMessage 校验消息',
+      previewName: 'form message',
+      source: `<script setup lang="ts">
+import { FormDescription, FormField, FormItem, FormLabel, FormMessage, Form } from '@/components/ui/form'
+</script>
+
+<template>
+  <Form>
+    <FormField name="registry">
+      <FormItem class="max-w-sm">
+        <FormLabel>Registry 地址</FormLabel>
+        <FormDescription>表单消息会和当前字段自动关联。</FormDescription>
+        <FormMessage />
+      </FormItem>
+    </FormField>
+  </Form>
+</template>
+`,
+    },
+  ]
+
+  if (item.name === 'item') return [
+    {
+      fileName: 'Variants.vue',
+      title: 'Variant 变体',
+      previewName: 'item variants',
+      source: `<script setup lang="ts">
+import { Item, ItemContent, ItemDescription, ItemTitle } from '@/components/ui/item'
+</script>
+
+<template>
+  <div class="grid w-full max-w-md gap-3">
+    <Item variant="outline">
+      <ItemContent>
+        <ItemTitle>Outline 项目</ItemTitle>
+        <ItemDescription>带边框的列表项，适合承载操作入口。</ItemDescription>
+      </ItemContent>
+    </Item>
+    <Item variant="muted">
+      <ItemContent>
+        <ItemTitle>Muted 项目</ItemTitle>
+        <ItemDescription>使用弱背景强调当前分组。</ItemDescription>
+      </ItemContent>
+    </Item>
+  </div>
+</template>
+`,
+    },
+    {
+      fileName: 'Media.vue',
+      title: 'Media 媒体区域',
+      previewName: 'item media',
+      source: `<script setup lang="ts">
+import { FileText } from 'lucide-vue-next'
+import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@/components/ui/item'
+</script>
+
+<template>
+  <Item variant="outline" class="max-w-md">
+    <ItemMedia variant="icon">
+      <FileText />
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>组件文档</ItemTitle>
+      <ItemDescription>展示图标、标题和描述的组合布局。</ItemDescription>
+    </ItemContent>
+  </Item>
+</template>
+`,
+    },
+    {
+      fileName: 'Actions.vue',
+      title: 'Actions 操作区域',
+      previewName: 'item actions',
+      source: `<script setup lang="ts">
+import { Button } from '@/components/ui/button'
+import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from '@/components/ui/item'
+</script>
+
+<template>
+  <Item variant="outline" class="max-w-md">
+    <ItemContent>
+      <ItemTitle>发布检查</ItemTitle>
+      <ItemDescription>确认文档、registry 和类型检查均已通过。</ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Button size="sm" variant="outline">查看</Button>
+      <Button size="sm">发布</Button>
+    </ItemActions>
+  </Item>
+</template>
+`,
+    },
+  ]
+
+  if (item.name === 'pagination') return [
+    {
+      fileName: 'Edges.vue',
+      title: 'ShowEdges 首尾页',
+      previewName: 'pagination edges',
+      source: `<script setup lang="ts">
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationFirst,
+  PaginationItem,
+  PaginationLast,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination'
+</script>
+
+<template>
+  <Pagination :total="120" :items-per-page="10" :sibling-count="1" show-edges :default-page="6">
+    <PaginationContent v-slot="{ items }">
+      <PaginationFirst>首页</PaginationFirst>
+      <PaginationPrevious>上一页</PaginationPrevious>
+      <template v-for="(page, index) in items" :key="index">
+        <PaginationItem v-if="page.type === 'page'" :value="page.value" :is-active="page.value === 6">
+          {{ page.value }}
+        </PaginationItem>
+        <PaginationEllipsis v-else />
+      </template>
+      <PaginationNext>下一页</PaginationNext>
+      <PaginationLast>末页</PaginationLast>
+    </PaginationContent>
+  </Pagination>
+</template>
+`,
+    },
+    {
+      fileName: 'Controlled.vue',
+      title: 'Page 受控页码',
+      previewName: 'pagination controlled',
+      source: `<script setup lang="ts">
+import { ref } from 'vue'
+import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
+
+const page = ref(2)
+</script>
+
+<template>
+  <div class="grid gap-3">
+    <Pagination v-model:page="page" :total="50" :items-per-page="10">
+      <PaginationContent v-slot="{ items }">
+        <PaginationPrevious>上一页</PaginationPrevious>
+        <template v-for="(item, index) in items" :key="index">
+          <PaginationItem
+            v-if="item.type === 'page'"
+            :value="item.value"
+            :is-active="item.value === page"
+          >
+            {{ item.value }}
+          </PaginationItem>
+        </template>
+        <PaginationNext>下一页</PaginationNext>
+      </PaginationContent>
+    </Pagination>
+    <p class="text-center text-sm text-[#434655]">当前第 {{ page }} 页</p>
+  </div>
+</template>
+`,
+    },
+  ]
+
+  if (item.name === 'toggle-group') return [
+    {
+      fileName: 'Multiple.vue',
+      title: 'Multiple 多选',
+      previewName: 'toggle-group multiple',
+      source: `<script setup lang="ts">
+import { Bold, Italic, Underline } from 'lucide-vue-next'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+</script>
+
+<template>
+  <ToggleGroup type="multiple" :default-value="['bold']" variant="outline">
+    <ToggleGroupItem value="bold" aria-label="加粗">
+      <Bold />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="italic" aria-label="斜体">
+      <Italic />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="underline" aria-label="下划线">
+      <Underline />
+    </ToggleGroupItem>
+  </ToggleGroup>
+</template>
+`,
+    },
+    {
+      fileName: 'Sizes.vue',
+      title: 'Size 尺寸',
+      previewName: 'toggle-group sizes',
+      source: `<script setup lang="ts">
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+</script>
+
+<template>
+  <div class="flex flex-wrap items-center gap-4">
+    <ToggleGroup type="single" size="sm" default-value="day">
+      <ToggleGroupItem value="day">日</ToggleGroupItem>
+      <ToggleGroupItem value="week">周</ToggleGroupItem>
+    </ToggleGroup>
+    <ToggleGroup type="single" size="lg" default-value="month">
+      <ToggleGroupItem value="month">月</ToggleGroupItem>
+      <ToggleGroupItem value="year">年</ToggleGroupItem>
+    </ToggleGroup>
+  </div>
+</template>
+`,
+    },
+  ]
+
+  if (item.name === 'sidebar') return [
+    {
+      fileName: 'MenuStates.vue',
+      title: 'Menu 状态与操作',
+      previewName: 'sidebar menu states',
+      source: `<script setup lang="ts">
+import { MoreHorizontal } from 'lucide-vue-next'
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuBadge,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSkeleton,
+  SidebarProvider,
+} from '@/components/ui/sidebar'
+</script>
+
+<template>
+  <SidebarProvider default-open class="min-h-64 rounded-[8px] border border-[#E2E4E9]">
+    <Sidebar collapsible="none" class="w-64 border-r border-[#E2E4E9]">
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>任务</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton is-active>组件同步</SidebarMenuButton>
+                <SidebarMenuBadge>12</SidebarMenuBadge>
+                <SidebarMenuAction show-on-hover aria-label="更多操作">
+                  <MoreHorizontal />
+                </SidebarMenuAction>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton>文档检查</SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuSkeleton show-icon />
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  </SidebarProvider>
+</template>
+`,
+    },
+    {
+      fileName: 'Input.vue',
+      title: 'SidebarInput 搜索',
+      previewName: 'sidebar input',
+      source: `<script setup lang="ts">
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarHeader,
+  SidebarInput,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+} from '@/components/ui/sidebar'
+</script>
+
+<template>
+  <SidebarProvider default-open class="min-h-64 rounded-[8px] border border-[#E2E4E9]">
+    <Sidebar collapsible="none" class="w-64 border-r border-[#E2E4E9]">
+      <SidebarHeader class="p-3">
+        <SidebarInput placeholder="搜索组件..." />
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem><SidebarMenuButton>Button</SidebarMenuButton></SidebarMenuItem>
+              <SidebarMenuItem><SidebarMenuButton>Input</SidebarMenuButton></SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  </SidebarProvider>
+</template>
+`,
+    },
+  ]
+
   if (item.name === 'sheet') return [
     {
       fileName: 'RightSide.vue',
@@ -3272,17 +3661,7 @@ function hasBasicExample(item) {
 }
 
 function isCompletedComponent(item) {
-  return new Set([
-    'button',
-    'input',
-    'textarea',
-    'separator',
-    'label',
-    'card',
-    'scroll-area',
-    'button-group',
-    'input-group',
-  ]).has(item.name)
+  return registry.items.some((registryItem) => registryItem.name === item.name)
 }
 
 function isPreviewSafeApi(item, api) {

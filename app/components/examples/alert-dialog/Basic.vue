@@ -1,21 +1,31 @@
 <script setup lang="ts">
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
 </script>
 
 <template>
-  <AlertDialog :default-open="true">
-    <AlertDialogTrigger as-child>
-      <Button variant="destructive">删除项目</Button>
-    </AlertDialogTrigger>
+  <AlertDialog>
+    <AlertDialogTrigger as-child><Button variant="outline">打开</Button></AlertDialogTrigger>
     <AlertDialogContent>
       <AlertDialogHeader>
-        <AlertDialogTitle>确认删除这个项目？</AlertDialogTitle>
-        <AlertDialogDescription>该操作会移除当前示例项目，提交后不可撤销。</AlertDialogDescription>
+        <AlertDialogTitle>你确定要继续吗？</AlertDialogTitle>
+        <AlertDialogDescription>
+          此操作无法撤销。这将永久删除你的账户，并从服务器移除你的数据。
+        </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
         <AlertDialogCancel>取消</AlertDialogCancel>
-        <AlertDialogAction>确认删除</AlertDialogAction>
+        <AlertDialogAction>继续</AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>
   </AlertDialog>

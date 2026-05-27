@@ -18,6 +18,21 @@ Field 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层
 ::component-preview{name="field" src="field/Basic.vue"}
 ::
 
+### Orientation 布局方向
+
+::component-preview{name="field orientation" src="field/Orientation.vue"}
+::
+
+### Error 错误提示
+
+::component-preview{name="field error" src="field/Error.vue"}
+::
+
+### Separator 分组分隔
+
+::component-preview{name="field separator" src="field/Separator.vue"}
+::
+
 ## 安装
 
 ```bash

@@ -18,6 +18,21 @@ Item 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确层�
 ::component-preview{name="item" src="item/Basic.vue"}
 ::
 
+### Variant 变体
+
+::component-preview{name="item variants" src="item/Variants.vue"}
+::
+
+### Media 媒体区域
+
+::component-preview{name="item media" src="item/Media.vue"}
+::
+
+### Actions 操作区域
+
+::component-preview{name="item actions" src="item/Actions.vue"}
+::
+
 ## 安装
 
 ```bash

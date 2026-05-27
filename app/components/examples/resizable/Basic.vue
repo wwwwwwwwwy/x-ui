@@ -5,7 +5,7 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/componen
 <template>
   <ResizablePanelGroup
     direction="horizontal"
-    class="max-w-md rounded-lg border-[#E2E4E9] md:min-w-[450px]"
+    class="max-w-md rounded-lg border md:min-w-[450px]"
   >
     <ResizablePanel :default-size="50">
       <div class="flex h-[200px] items-center justify-center p-6">

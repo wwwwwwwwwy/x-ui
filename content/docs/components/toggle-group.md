@@ -18,6 +18,16 @@ ToggleGroup 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明
 ::component-preview{name="toggle-group" src="toggle-group/Basic.vue"}
 ::
 
+### Multiple 多选
+
+::component-preview{name="toggle-group multiple" src="toggle-group/Multiple.vue"}
+::
+
+### Size 尺寸
+
+::component-preview{name="toggle-group sizes" src="toggle-group/Sizes.vue"}
+::
+
 ## 安装
 
 ```bash

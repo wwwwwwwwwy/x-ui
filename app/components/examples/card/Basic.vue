@@ -1,15 +1,25 @@
 <script setup lang="ts">
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 </script>
 
 <template>
-  <Card class="grid max-w-sm gap-4">
+  <Card>
     <CardHeader>
-      <CardTitle>组件发布</CardTitle>
-      <CardDescription>发布前检查 registry、文档和静态构建状态。</CardDescription>
+      <CardTitle>Card Title</CardTitle>
+      <CardDescription>Card Description</CardDescription>
     </CardHeader>
-    <CardContent class="text-sm text-[#434655]">当前版本已准备进入预览流程。</CardContent>
-    <CardFooter><Button size="sm">查看详情</Button></CardFooter>
+    <CardContent>
+      <p>Card Content</p>
+    </CardContent>
+    <CardFooter>
+      <p>Card Footer</p>
+    </CardFooter>
   </Card>
 </template>

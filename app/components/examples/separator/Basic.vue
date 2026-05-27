@@ -3,14 +3,22 @@ import { Separator } from '@/components/ui/separator'
 </script>
 
 <template>
-  <div class="grid w-full max-w-sm gap-4">
+  <div>
     <div class="space-y-1">
-      <p class="text-sm font-medium text-foreground">项目名称</p>
-      <p class="text-xs text-[#434655]">Separator 作为分隔线使用。</p>
+      <h4 class="text-sm font-medium leading-none">
+        Radix Primitives
+      </h4>
+      <p class="text-sm text-muted-foreground">
+        An open-source UI component library.
+      </p>
     </div>
-    <Separator />
-    <div class="text-sm text-foreground">
-      这里是分隔线下方的内容。
+    <Separator class="my-4" />
+    <div class="flex h-5 items-center space-x-4 text-sm">
+      <div>Blog</div>
+      <Separator orientation="vertical" />
+      <div>Docs</div>
+      <Separator orientation="vertical" />
+      <div>Source</div>
     </div>
   </div>
 </template>

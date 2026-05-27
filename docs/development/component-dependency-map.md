@@ -44,7 +44,7 @@
 | 25 | 已完成 | 基础独立 | `hover-card` | 无 | 当前组件页面 |
 | 26 | 已完成 | 基础独立 | `kbd` | 无 | 当前组件页面 |
 | 27 | 已完成 | 基础独立 | `menubar` | 无 | 当前组件页面 |
-| 28 | 待处理 | 基础独立 | `navigation-menu` | 无 | 当前组件页面 |
+| 28 | 已完成 | 基础独立 | `navigation-menu` | 无 | 当前组件页面 |
 | 29 | 已完成 | 基础独立 | `number-field` | 无 | 当前组件页面 |
 | 30 | 已完成 | 基础独立 | `pin-input` | 无 | 当前组件页面 |
 | 31 | 已完成 | 基础独立 | `popover` | 无 | 当前组件页面 |
@@ -54,27 +54,27 @@
 | 35 | 已完成 | 基础独立 | `scroll-area` | 无 | 当前组件页面 |
 | 36 | 已完成 | 基础独立 | `select` | 无 | 当前组件页面 |
 | 37 | 已完成 | 基础独立 | `slider` | 无 | 当前组件页面 |
-| 38 | 待处理 | 基础独立 | `sonner` | 无 | 当前组件页面 |
+| 38 | 已完成 | 基础独立 | `sonner` | 无 | 当前组件页面 |
 | 39 | 已完成 | 基础独立 | `spinner` | 无 | 当前组件页面 |
 | 40 | 已完成 | 基础独立 | `stepper` | 无 | 当前组件页面 |
 | 41 | 已完成 | 基础独立 | `switch` | 无 | 当前组件页面 |
-| 42 | 待处理 | 基础独立 | `table` | 无 | 当前组件页面 |
-| 43 | 待处理 | 基础独立 | `tabs` | 无 | 当前组件页面 |
-| 44 | 待处理 | 基础独立 | `tags-input` | 无 | 当前组件页面 |
-| 45 | 待处理 | 轻量组合 | `alert-dialog` | `button` | 当前组件页面 |
+| 42 | 已完成 | 基础独立 | `table` | 无 | 当前组件页面 |
+| 43 | 已完成 | 基础独立 | `tabs` | 无 | 当前组件页面 |
+| 44 | 已完成 | 基础独立 | `tags-input` | 无 | 当前组件页面 |
+| 45 | 已完成 | 轻量组合 | `alert-dialog` | `button` | 当前组件页面 |
 | 46 | 已完成 | 轻量组合 | `button-group` | `separator` | 当前组件页面 |
-| 47 | 待处理 | 轻量组合 | `calendar` | `button` | 当前组件页面 |
-| 48 | 待处理 | 轻量组合 | `carousel` | `button` | 当前组件页面 |
-| 49 | 待处理 | 轻量组合 | `command` | `dialog` | 当前组件页面 |
-| 50 | 待处理 | 轻量组合 | `field` | `label`, `separator` | 当前组件页面 |
-| 51 | 待处理 | 轻量组合 | `form` | `label` | 当前组件页面 |
+| 47 | 已完成 | 轻量组合 | `calendar` | `button` | 当前组件页面 |
+| 48 | 已完成 | 轻量组合 | `carousel` | `button` | 当前组件页面 |
+| 49 | 已完成 | 轻量组合 | `command` | `dialog` | 当前组件页面 |
+| 50 | 已完成 | 轻量组合 | `field` | `label`, `separator` | 当前组件页面 |
+| 51 | 已完成 | 轻量组合 | `form` | `label` | 当前组件页面 |
 | 52 | 已完成 | 轻量组合 | `input-group` | `button`, `input`, `textarea` | 当前组件页面 |
-| 53 | 待处理 | 轻量组合 | `item` | `separator` | 当前组件页面 |
-| 54 | 待处理 | 轻量组合 | `pagination` | `button` | 当前组件页面 |
-| 55 | 待处理 | 轻量组合 | `range-calendar` | `button` | 当前组件页面 |
-| 56 | 待处理 | 轻量组合 | `toggle-group` | `toggle` | 当前组件页面 |
-| 57 | 待处理 | 复杂复合 | `chart` | `button`, `card` | `button`, `card`, 当前组件页面 |
-| 58 | 待处理 | 复杂复合 | `sidebar` | `button`, `input`, `separator`, `sheet`, `skeleton`, `tooltip` | 所有布局态、折叠态、移动端 sheet、tooltip |
+| 53 | 已完成 | 轻量组合 | `item` | `separator` | 当前组件页面 |
+| 54 | 已完成 | 轻量组合 | `pagination` | `button` | 当前组件页面 |
+| 55 | 已完成 | 轻量组合 | `range-calendar` | `button` | 当前组件页面 |
+| 56 | 已完成 | 轻量组合 | `toggle-group` | `toggle` | 当前组件页面 |
+| 57 | 已完成 | 复杂复合 | `chart` | `button`, `card` | `button`, `card`, 当前组件页面 |
+| 58 | 已完成 | 复杂复合 | `sidebar` | `button`, `input`, `separator`, `sheet`, `skeleton`, `tooltip` | 所有布局态、折叠态、移动端 sheet、tooltip |
 
 ### 第一层：基础组件
 

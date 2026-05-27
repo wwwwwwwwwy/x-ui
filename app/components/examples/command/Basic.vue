@@ -3,7 +3,7 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 </script>
 
 <template>
-  <Command class="rounded-[8px] border border-[#E2E4E9]">
+  <Command class="rounded-[8px] border">
     <CommandInput placeholder="输入命令或组件名称..." />
     <CommandList>
       <CommandEmpty>暂无匹配结果</CommandEmpty>
