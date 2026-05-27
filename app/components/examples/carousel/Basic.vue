@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { Card, CardContent } from '@/components/ui/card'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 </script>
 
 <template>
-  <Carousel class="mx-auto w-full max-w-sm">
+  <Carousel class="w-full max-w-xs">
     <CarouselContent>
-      <CarouselItem v-for="demo in ['组件预览', '源码示例', '安装说明']" :key="demo">
-        <div class="flex h-28 items-center justify-center rounded-[8px] border border-[#E2E4E9] bg-[#F5F6F7] text-sm font-semibold">{{ demo }}</div>
+      <CarouselItem v-for="i in 5" :key="i">
+        <div class="p-1">
+          <Card>
+            <CardContent class="flex aspect-square items-center justify-center p-6">
+              <span class="text-4xl font-semibold">{{ i }}</span>
+            </CardContent>
+          </Card>
+        </div>
       </CarouselItem>
     </CarouselContent>
     <CarouselPrevious />

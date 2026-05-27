@@ -45,7 +45,7 @@
     },
     {
       "path": "registry/default/stepper/StepperTrigger.vue",
-      "content": "<script lang=\"ts\" setup>\nimport type { StepperTriggerProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\n\nimport { StepperTrigger, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<StepperTriggerProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperTrigger\n    v-bind=\"forwarded\"\n    :class=\"cn('p-2 flex flex-col items-center text-center gap-2 rounded-md', props.class)\"\n  >\n    <slot />\n  </StepperTrigger>\n</template>\n",
+      "content": "<script lang=\"ts\" setup>\nimport type { StepperTriggerProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { reactiveOmit } from \"@vueuse/core\"\n\nimport { StepperTrigger, useForwardProps } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<StepperTriggerProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperTrigger\n    v-bind=\"forwarded\"\n    :class=\"cn('p-2 flex flex-col items-center text-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-0', props.class)\"\n  >\n    <slot />\n  </StepperTrigger>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/stepper/StepperTrigger.vue"
     },

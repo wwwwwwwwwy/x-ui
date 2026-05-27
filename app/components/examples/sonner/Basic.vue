@@ -1,11 +1,24 @@
+<!-- eslint-disable no-console -->
+<!-- eslint-disable no-template-curly-in-string -->
 <script setup lang="ts">
-import { Toaster } from '@/components/ui/sonner'
+import { toast } from 'vue-sonner'
+
+import { Button } from '@/components/ui/button'
 </script>
 
 <template>
-  <div class="space-y-4">
-    <Toaster />
-    <p class="text-sm font-semibold">通知容器已挂载</p>
-    <p class="text-xs text-[#434655]">业务页面可通过 vue-sonner 的 toast 方法触发中文通知。</p>
-  </div>
+  <Button
+    variant="outline"
+    @click="() =>
+      toast('Event has been created', {
+        description: 'Sunday, December 03, 2023 at 9:00 AM',
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo'),
+        },
+      })
+    "
+  >
+    Show Toast
+  </Button>
 </template>

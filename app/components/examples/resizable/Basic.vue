@@ -3,9 +3,30 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/componen
 </script>
 
 <template>
-  <ResizablePanelGroup direction="horizontal" class="h-32 rounded-[8px] border border-[#E2E4E9]">
-    <ResizablePanel :default-size="45" class="flex items-center justify-center text-sm">导航</ResizablePanel>
-    <ResizableHandle with-handle />
-    <ResizablePanel :default-size="55" class="flex items-center justify-center text-sm">内容</ResizablePanel>
+  <ResizablePanelGroup
+    direction="horizontal"
+    class="max-w-md rounded-lg border-[#E2E4E9] md:min-w-[450px]"
+  >
+    <ResizablePanel :default-size="50">
+      <div class="flex h-[200px] items-center justify-center p-6">
+        <span class="font-semibold">面板一</span>
+      </div>
+    </ResizablePanel>
+    <ResizableHandle />
+    <ResizablePanel :default-size="50">
+      <ResizablePanelGroup direction="vertical">
+        <ResizablePanel :default-size="25">
+          <div class="flex h-full items-center justify-center p-6">
+            <span class="font-semibold">面板二</span>
+          </div>
+        </ResizablePanel>
+        <ResizableHandle />
+        <ResizablePanel :default-size="75">
+          <div class="flex h-full items-center justify-center p-6">
+            <span class="font-semibold">面板三</span>
+          </div>
+        </ResizablePanel>
+      </ResizablePanelGroup>
+    </ResizablePanel>
   </ResizablePanelGroup>
 </template>

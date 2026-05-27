@@ -413,13 +413,22 @@ import { Button } from '@/components/ui/button'
     <CardFooter><Button size="sm">查看详情</Button></CardFooter>
   </Card>
 </template>`,
-    'carousel': `${importLine(['Carousel', 'CarouselContent', 'CarouselItem', 'CarouselNext', 'CarouselPrevious'], item.name)}
+    'carousel': `<script setup lang="ts">
+import { Card, CardContent } from '@/components/ui/card'
+${importLine(['Carousel', 'CarouselContent', 'CarouselItem', 'CarouselNext', 'CarouselPrevious'], item.name)}
+</script>
 
 <template>
-  <Carousel class="mx-auto w-full max-w-sm">
+  <Carousel class="w-full max-w-xs">
     <CarouselContent>
-      <CarouselItem v-for="demo in ['组件预览', '源码示例', '安装说明']" :key="demo">
-        <div class="flex h-28 items-center justify-center rounded-[8px] border border-[#E2E4E9] bg-[#F5F6F7] text-sm font-semibold">{{ demo }}</div>
+      <CarouselItem v-for="i in 5" :key="i">
+        <div class="p-1">
+          <Card>
+            <CardContent class="flex aspect-square items-center justify-center p-6">
+              <span class="text-4xl font-semibold">{{ i }}</span>
+            </CardContent>
+          </Card>
+        </div>
       </CarouselItem>
     </CarouselContent>
     <CarouselPrevious />
@@ -756,10 +765,31 @@ const value = ref('weekly')
     'resizable': `${importLine(['ResizableHandle', 'ResizablePanel', 'ResizablePanelGroup'], item.name)}
 
 <template>
-  <ResizablePanelGroup direction="horizontal" class="h-32 rounded-[8px] border border-[#E2E4E9]">
-    <ResizablePanel :default-size="45" class="flex items-center justify-center text-sm">导航</ResizablePanel>
-    <ResizableHandle with-handle />
-    <ResizablePanel :default-size="55" class="flex items-center justify-center text-sm">内容</ResizablePanel>
+  <ResizablePanelGroup
+    direction="horizontal"
+    class="max-w-md rounded-lg border-[#E2E4E9] md:min-w-[450px]"
+  >
+    <ResizablePanel :default-size="50">
+      <div class="flex h-[200px] items-center justify-center p-6">
+        <span class="font-semibold">面板一</span>
+      </div>
+    </ResizablePanel>
+    <ResizableHandle />
+    <ResizablePanel :default-size="50">
+      <ResizablePanelGroup direction="vertical">
+        <ResizablePanel :default-size="25">
+          <div class="flex h-full items-center justify-center p-6">
+            <span class="font-semibold">面板二</span>
+          </div>
+        </ResizablePanel>
+        <ResizableHandle />
+        <ResizablePanel :default-size="75">
+          <div class="flex h-full items-center justify-center p-6">
+            <span class="font-semibold">面板三</span>
+          </div>
+        </ResizablePanel>
+      </ResizablePanelGroup>
+    </ResizablePanel>
   </ResizablePanelGroup>
 </template>`,
     'scroll-area': `${importLine(['ScrollArea'], item.name)}
@@ -858,14 +888,29 @@ const value = ref([64])
     <Slider v-model="value" :max="100" :step="1" />
   </div>
 </template>`,
-    'sonner': `${importLine(['Toaster'], item.name)}
+    'sonner': `<!-- eslint-disable no-console -->
+<!-- eslint-disable no-template-curly-in-string -->
+<script setup lang="ts">
+import { toast } from 'vue-sonner'
+
+import { Button } from '@/components/ui/button'
+</script>
 
 <template>
-  <div class="space-y-4">
-    <Toaster />
-    <p class="text-sm font-semibold">通知容器已挂载</p>
-    <p class="text-xs text-[#434655]">业务页面可通过 vue-sonner 的 toast 方法触发中文通知。</p>
-  </div>
+  <Button
+    variant="outline"
+    @click="() =>
+      toast('Event has been created', {
+        description: 'Sunday, December 03, 2023 at 9:00 AM',
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo'),
+        },
+      })
+    "
+  >
+    Show Toast
+  </Button>
 </template>`,
     'spinner': `${importLine(['Spinner'], item.name)}
 
@@ -987,8 +1032,10 @@ function customDemoSource(item) {
 function componentExampleSource(item, indexExports) {
   if (item.name === 'input') return inputBasicExampleSource()
   if (item.name === 'checkbox') return checkboxBasicExampleSource()
+  if (item.name === 'carousel') return exampleSource(item, indexExports).trimEnd() + '\n'
   if (item.name === 'combobox') return comboboxBasicExampleSource()
   if (item.name === 'select') return selectBasicExampleSource()
+  if (item.name === 'sonner') return exampleSource(item, indexExports).trimEnd() + '\n'
 
   return (customDemoSource(item) || withScriptSetup(exampleSource(item, indexExports))).trimEnd() + '\n'
 }
@@ -1738,6 +1785,257 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectItemText, SelectL
       </SelectGroup>
     </SelectContent>
   </Select>
+</template>
+`
+}
+
+function menubarFullExampleSource() {
+  return `<script setup lang="ts">
+import {
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from '@/components/ui/menubar'
+</script>
+
+<template>
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>文件</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          新建标签页 <MenubarShortcut>⌘T</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          新建窗口 <MenubarShortcut>⌘N</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem disabled>
+          新建无痕窗口
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarSub>
+          <MenubarSubTrigger>分享</MenubarSubTrigger>
+          <MenubarSubContent>
+            <MenubarItem>邮件链接</MenubarItem>
+            <MenubarItem>消息</MenubarItem>
+            <MenubarItem>备忘录</MenubarItem>
+          </MenubarSubContent>
+        </MenubarSub>
+        <MenubarSeparator />
+        <MenubarItem>
+          打印... <MenubarShortcut>⌘P</MenubarShortcut>
+        </MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>编辑</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          撤销 <MenubarShortcut>⌘Z</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          重做 <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarSub>
+          <MenubarSubTrigger>查找</MenubarSubTrigger>
+          <MenubarSubContent>
+            <MenubarItem>搜索网页</MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem>查找...</MenubarItem>
+            <MenubarItem>查找下一个</MenubarItem>
+            <MenubarItem>查找上一个</MenubarItem>
+          </MenubarSubContent>
+        </MenubarSub>
+        <MenubarSeparator />
+        <MenubarItem>剪切</MenubarItem>
+        <MenubarItem>复制</MenubarItem>
+        <MenubarItem>粘贴</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>视图</MenubarTrigger>
+      <MenubarContent>
+        <MenubarCheckboxItem>始终显示书签栏</MenubarCheckboxItem>
+        <MenubarCheckboxItem :model-value="true">
+          始终显示完整 URL
+        </MenubarCheckboxItem>
+        <MenubarSeparator />
+        <MenubarItem inset>
+          重新加载 <MenubarShortcut>⌘R</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem disabled inset>
+          强制重新加载 <MenubarShortcut>⇧⌘R</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem inset>
+          切换全屏
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem inset>
+          隐藏侧边栏
+        </MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>资料</MenubarTrigger>
+      <MenubarContent>
+        <MenubarRadioGroup model-value="benoit">
+          <MenubarRadioItem value="andy">
+            Andy
+          </MenubarRadioItem>
+          <MenubarRadioItem value="benoit">
+            Benoit
+          </MenubarRadioItem>
+          <MenubarRadioItem value="luis">
+            Luis
+          </MenubarRadioItem>
+        </MenubarRadioGroup>
+        <MenubarSeparator />
+        <MenubarItem inset>
+          编辑...
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem inset>
+          添加资料...
+        </MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</template>
+`
+}
+
+function numberFieldControlledExampleSource() {
+  return `<script setup lang="ts">
+import { ref } from 'vue'
+import { NumberField, NumberFieldContent, NumberFieldDecrement, NumberFieldIncrement, NumberFieldInput } from '@/components/ui/number-field'
+
+const count = ref(2)
+</script>
+
+<template>
+  <div class="grid max-w-36 gap-2">
+    <NumberField v-model="count" :min="0" :max="10">
+      <NumberFieldContent>
+        <NumberFieldDecrement />
+        <NumberFieldInput />
+        <NumberFieldIncrement />
+      </NumberFieldContent>
+    </NumberField>
+    <p class="text-sm text-muted-foreground">
+      当前数量：{{ count }}
+    </p>
+  </div>
+</template>
+`
+}
+
+function numberFieldRangeExampleSource() {
+  return `<script setup lang="ts">
+import { NumberField, NumberFieldContent, NumberFieldDecrement, NumberFieldIncrement, NumberFieldInput } from '@/components/ui/number-field'
+</script>
+
+<template>
+  <NumberField :default-value="5" :min="1" :max="9" class="max-w-36">
+    <NumberFieldContent>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldContent>
+  </NumberField>
+</template>
+`
+}
+
+function numberFieldStepExampleSource() {
+  return `<script setup lang="ts">
+import { NumberField, NumberFieldContent, NumberFieldDecrement, NumberFieldIncrement, NumberFieldInput } from '@/components/ui/number-field'
+</script>
+
+<template>
+  <NumberField :default-value="10" :step="5" :min="0" :max="100" class="max-w-36">
+    <NumberFieldContent>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldContent>
+  </NumberField>
+</template>
+`
+}
+
+function numberFieldDecimalExampleSource() {
+  return `<script setup lang="ts">
+import { NumberField, NumberFieldContent, NumberFieldDecrement, NumberFieldIncrement, NumberFieldInput } from '@/components/ui/number-field'
+</script>
+
+<template>
+  <NumberField
+    :default-value="19.9"
+    :step="0.1"
+    :format-options="{
+      style: 'currency',
+      currency: 'CNY',
+      currencyDisplay: 'symbol',
+    }"
+    class="max-w-40"
+  >
+    <NumberFieldContent>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldContent>
+  </NumberField>
+</template>
+`
+}
+
+function numberFieldDisabledExampleSource() {
+  return `<script setup lang="ts">
+import { NumberField, NumberFieldContent, NumberFieldDecrement, NumberFieldIncrement, NumberFieldInput } from '@/components/ui/number-field'
+</script>
+
+<template>
+  <NumberField :default-value="3" disabled class="max-w-36">
+    <NumberFieldContent>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldContent>
+  </NumberField>
+</template>
+`
+}
+
+function numberFieldCustomControlsExampleSource() {
+  return `<script setup lang="ts">
+import { Minus, Plus } from 'lucide-vue-next'
+import { NumberField, NumberFieldContent, NumberFieldDecrement, NumberFieldIncrement, NumberFieldInput } from '@/components/ui/number-field'
+</script>
+
+<template>
+  <NumberField :default-value="1" :min="1" class="max-w-40">
+    <NumberFieldContent>
+      <NumberFieldDecrement>
+        <Minus class="size-3" />
+      </NumberFieldDecrement>
+      <NumberFieldInput />
+      <NumberFieldIncrement>
+        <Plus class="size-3" />
+      </NumberFieldIncrement>
+    </NumberFieldContent>
+  </NumberField>
 </template>
 `
 }
@@ -2679,6 +2977,54 @@ import { Button } from '@/components/ui/button'
   </Dialog>
 </template>
 `,
+    },
+  ]
+
+  if (item.name === 'menubar') return [
+    {
+      fileName: 'Full.vue',
+      title: '完整菜单',
+      previewName: 'menubar full',
+      source: menubarFullExampleSource(),
+    },
+  ]
+
+  if (item.name === 'number-field') return [
+    {
+      fileName: 'Controlled.vue',
+      title: 'ModelValue 受控值',
+      previewName: 'number-field controlled',
+      source: numberFieldControlledExampleSource(),
+    },
+    {
+      fileName: 'Range.vue',
+      title: 'Min / Max 范围',
+      previewName: 'number-field range',
+      source: numberFieldRangeExampleSource(),
+    },
+    {
+      fileName: 'Step.vue',
+      title: 'Step 步进',
+      previewName: 'number-field step',
+      source: numberFieldStepExampleSource(),
+    },
+    {
+      fileName: 'Decimal.vue',
+      title: 'Decimal 小数与格式化',
+      previewName: 'number-field decimal',
+      source: numberFieldDecimalExampleSource(),
+    },
+    {
+      fileName: 'Disabled.vue',
+      title: 'Disabled 禁用',
+      previewName: 'number-field disabled',
+      source: numberFieldDisabledExampleSource(),
+    },
+    {
+      fileName: 'CustomControls.vue',
+      title: 'Controls 自定义按钮',
+      previewName: 'number-field custom controls',
+      source: numberFieldCustomControlsExampleSource(),
     },
   ]
 

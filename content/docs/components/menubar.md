@@ -18,6 +18,11 @@ Menubar 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明确�
 ::component-preview{name="menubar" src="menubar/Basic.vue"}
 ::
 
+### 完整菜单
+
+::component-preview{name="menubar full" src="menubar/Full.vue"}
+::
+
 ## 安装
 
 ```bash

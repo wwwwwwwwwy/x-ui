@@ -18,6 +18,36 @@ NumberField 遵循 Systematic Clarity 的工程化视觉原则：低噪声、明
 ::component-preview{name="number-field" src="number-field/Basic.vue"}
 ::
 
+### ModelValue 受控值
+
+::component-preview{name="number-field controlled" src="number-field/Controlled.vue"}
+::
+
+### Min / Max 范围
+
+::component-preview{name="number-field range" src="number-field/Range.vue"}
+::
+
+### Step 步进
+
+::component-preview{name="number-field step" src="number-field/Step.vue"}
+::
+
+### Decimal 小数与格式化
+
+::component-preview{name="number-field decimal" src="number-field/Decimal.vue"}
+::
+
+### Disabled 禁用
+
+::component-preview{name="number-field disabled" src="number-field/Disabled.vue"}
+::
+
+### Controls 自定义按钮
+
+::component-preview{name="number-field custom controls" src="number-field/CustomControls.vue"}
+::
+
 ## 安装
 
 ```bash
