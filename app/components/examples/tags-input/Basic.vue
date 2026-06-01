@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { TagsInput, TagsInputInput, TagsInputItem, TagsInputItemDelete, TagsInputItemText } from '@/components/ui/tags-input'
 
-const tags = ref(['设计系统', '组件库'])
+const tags = ref(['设计系统', '这是一个很长很长的标签用于验证单个选项超出输入框时显示省略号'])
 </script>
 
 <template>

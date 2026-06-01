@@ -62,7 +62,7 @@ npm run docs:generate
 开发预览：
 
 ```bash
-./node_modules/.bin/nuxi dev --host 127.0.0.1 --port 4001
+./node_modules/.bin/nuxi dev --host 127.0.0.1 --port 4000
 ```
 
 ## 完成标准

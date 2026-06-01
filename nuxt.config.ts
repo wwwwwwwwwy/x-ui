@@ -6,6 +6,10 @@ export default defineNuxtConfig({
   css: ['vue-sonner/style.css', '~/assets/css/main.css'],
   compatibilityDate: '2026-05-21',
   devtools: { enabled: true },
+  devServer: {
+    host: '127.0.0.1',
+    port: 4000,
+  },
   content: {
     build: {
       markdown: {
