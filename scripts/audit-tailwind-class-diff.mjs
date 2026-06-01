@@ -191,7 +191,7 @@ function analyzeComponent(baseDir, component) {
       }
       sources.push(record)
       record.tokens.forEach((token) => tokens.add(token))
-      if (baseDir === shadcnRoot) risks.push(...detectTokenRisks(record))
+      risks.push(...detectTokenRisks(record))
     })
   }
 
@@ -444,7 +444,7 @@ function detectLocationRisks(source) {
       if (base === 'rounded-md' || base === 'rounded-lg') {
         risks.push(tokenRisk(source, token, '语义 token 位置不匹配', '弹层内容圆角应对齐 TooltipContent 基线，优先使用 rounded-[4px]。'))
       }
-      if (base === 'border' || base === 'border-border') {
+      if ((base === 'border' && !hasExplicitBorderColor(source.tokens)) || base === 'border-border') {
         risks.push(tokenRisk(source, token, '语义 token 位置不匹配', '弹层内容边框应使用已验证的弹层边框 token，例如 border-gray-300。'))
       }
     }
@@ -456,7 +456,7 @@ function detectLocationRisks(source) {
       if (base === 'p-6' && /(?:SheetContent|DrawerContent)\.vue$/.test(file)) {
         risks.push(tokenRisk(source, token, '语义 token 位置不匹配', '抽屉 / Sheet 内容容器 padding 应交给 Header/Footer/Body 分区控制，避免根容器固定 p-6。'))
       }
-      if (base === 'border') {
+      if (base === 'border' && !hasExplicitBorderColor(source.tokens)) {
         risks.push(tokenRisk(source, token, '语义 token 位置不匹配', '弹窗或抽屉边框应使用明确边框 token，避免裸 border 依赖默认值。'))
       }
     }
@@ -472,6 +472,13 @@ function detectLocationRisks(source) {
   }
 
   return risks
+}
+
+function hasExplicitBorderColor(tokens) {
+  return tokens.some((token) => {
+    const base = stripVariants(token)
+    return /^border-(?![trblxyse]$|[trblxyse]-|0$|2$|4$|8$|solid$|dashed$|dotted$|double$|none$)/.test(base)
+  })
 }
 
 function tokenRisk(source, token, type, suggestion) {
@@ -552,9 +559,10 @@ function renderReport(analyses, riskItems) {
   if (riskItems.length === 0) {
     lines.push('未发现符合当前规则的 token 风险。', '')
   } else {
-    lines.push('| 组件 | 文件 | 类 | 风险类型 | 建议 |', '| --- | --- | --- | --- | --- |')
+    lines.push('| 组件 | 文件 | 类 | 风险类型 | default 解决状态 | 建议 |', '| --- | --- | --- | --- | --- | --- |')
     for (const risk of riskItems.sort((a, b) => `${a.component}/${a.file}/${a.line}`.localeCompare(`${b.component}/${b.file}/${b.line}`))) {
-      lines.push(`| \`${risk.component}\` | \`${risk.file}:${risk.line}\` | \`${escapePipe(risk.token)}\` | ${risk.type} | ${risk.suggestion} |`)
+      const defaultStatus = resolveDefaultStatus(analyses.find((item) => item.component === risk.component), risk)
+      lines.push(`| \`${risk.component}\` | \`${risk.file}:${risk.line}\` | \`${escapePipe(risk.token)}\` | ${risk.type} | ${defaultStatus} | ${risk.suggestion} |`)
     }
     lines.push('')
   }
@@ -588,6 +596,14 @@ function renderReport(analyses, riskItems) {
   }
 
   return `${lines.join('\n')}\n`
+}
+
+function resolveDefaultStatus(analysis, risk) {
+  if (!analysis?.default.exists) return '缺少 default 组件'
+  const matchingDefaultRisks = analysis.default.risks.filter((item) => item.file === risk.file && item.token === risk.token && item.type === risk.type)
+  if (matchingDefaultRisks.length > 0) return '待处理'
+
+  return '已解决'
 }
 
 function formatTokens(tokens) {

@@ -65,7 +65,7 @@
     },
     {
       "path": "registry/default/sidebar/SidebarInput.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\nimport { Input } from \"@/registry/default/ui/input\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <Input\n    data-sidebar=\"input\"\n    :class=\"cn(\n      'h-8 w-full bg-background shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring',\n      props.class,\n    )\"\n  >\n    <slot />\n  </Input>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { cn } from \"@/lib/utils\"\nimport { Input } from \"@/registry/default/ui/input\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <Input\n    data-sidebar=\"input\"\n    :class=\"cn(\n      'h-8 w-full shadow-none focus-visible:ring-0',\n      props.class,\n    )\"\n  >\n    <slot />\n  </Input>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/sidebar/SidebarInput.vue"
     },

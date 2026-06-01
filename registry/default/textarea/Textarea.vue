@@ -47,7 +47,7 @@ const modelValue = useVModel(props, "modelValue", emits, {
   <textarea
     v-model="modelValue"
     :class="cn(
-      'x-scrollbar flex min-h-20 w-full resize-y overflow-y-auto rounded-[4px] border border-input bg-[var(--gray-0)] px-3 py-2 text-[14px] leading-[1.5] text-foreground shadow-none outline-none placeholder:text-[#C3C7CB] enabled:hover:border-primary focus-visible:border-primary focus-visible:caret-primary focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:bg-[var(--gray-200)] disabled:text-[var(--gray-400)] disabled:opacity-100',
+      'x-scrollbar flex min-h-20 w-full resize-y overflow-y-auto rounded-[4px] border border-input bg-[var(--gray-0)] px-3 py-1.5 text-[14px] leading-[1.5] text-foreground shadow-none outline-none placeholder:text-[#C3C7CB] enabled:hover:border-primary focus-visible:border-primary focus-visible:caret-primary focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:bg-[var(--gray-200)] disabled:text-[var(--gray-400)] disabled:opacity-100',
       props.class,
     )"
   />

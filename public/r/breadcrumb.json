@@ -27,7 +27,7 @@
     },
     {
       "path": "registry/default/breadcrumb/BreadcrumbLink.vue",
-      "content": "<script lang=\"ts\" setup>\nimport type { PrimitiveProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { Primitive } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(defineProps<PrimitiveProps & { class?: HTMLAttributes[\"class\"] }>(), {\n  as: \"a\",\n})\n</script>\n\n<template>\n  <Primitive\n    :as=\"as\"\n    :as-child=\"asChild\"\n    :class=\"cn('cursor-pointer transition-colors hover:text-foreground', props.class)\"\n  >\n    <slot />\n  </Primitive>\n</template>\n",
+      "content": "<script lang=\"ts\" setup>\nimport type { PrimitiveProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { Primitive } from \"reka-ui\"\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(defineProps<PrimitiveProps & { class?: HTMLAttributes[\"class\"] }>(), {\n  as: \"a\",\n})\n</script>\n\n<template>\n  <Primitive\n    :as=\"as\"\n    :as-child=\"asChild\"\n    :class=\"cn('cursor-pointer transition-colors enabled:hover:text-foreground', props.class)\"\n  >\n    <slot />\n  </Primitive>\n</template>\n",
       "type": "registry:ui",
       "target": "components/ui/breadcrumb/BreadcrumbLink.vue"
     },

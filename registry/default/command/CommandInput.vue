@@ -29,7 +29,7 @@ const { filterState } = useCommand()
       v-bind="{ ...forwardedProps, ...$attrs }"
       v-model="filterState.search"
       auto-focus
-      :class="cn('flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50', props.class)"
+      :class="cn('flex h-8 w-full rounded-[4px] bg-transparent py-0 text-[14px] leading-[1.5] text-foreground outline-none placeholder:text-[#C3C7CB] disabled:cursor-not-allowed disabled:text-[var(--gray-400)] disabled:opacity-100', props.class)"
     />
   </div>
 </template>
